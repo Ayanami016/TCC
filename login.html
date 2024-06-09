@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Favicon/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!--MENU-->
+    <header>
+        <span class="logo">
+            <a href="index.html"><img src="img/Bella Logo com Fundo.png" alt="Logo" width="70vh"></a>
+        </span>
+
+        <nav class="menu">
+            <a href="#">Alianças</a>
+            <a href="#">Brincos</a>
+            <a href="#">Colares</a>
+
+            <button class="btnconta">Minha Conta</button>
+            <button class="btnlogin">Login</button>
+        </nav>
+    </header>
+
+    <div class="wrapper">
+        <div class="form-box login">
+            <h2>Iniciar Sessão</h2>
+
+            <!--CADASTRO-->
+            <form action="#">
+                <!--Email-->
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <!--Senha-->
+                <div class="input-box">
+                    <span class="icon-relevarsenha" onclick="mostrarSenha()">
+                        <ion-icon name="eye-off-outline"></ion-icon>
+                    </span>
+
+                    <input type="password" name="senha" id="senha" required>
+                    <label for="senha">Senha</label>
+                </div>
+
+                <!--Esqueceu a Senha-->
+                <div class="remember-forgot">
+                    <a href="#">Esqueceu a Senha?</a>
+                </div>
+
+                <!--Iniciar Sessão-->
+                <button type="submit" class="btn-iniciar">INICIAR SESSÃO</button>
+                <div class="login-register">
+                    <p>Não tem uma conta? <a href="cadastro.html" class="register">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--JAVASCRIPT-->
+    <script src="javascript.js" type="text/javascript"></script>
+        <!--Ícones-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>

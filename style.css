@@ -1,0 +1,237 @@
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+font-family: sans-serif;
+}
+
+/*Variáveis*/
+:root {
+    --cor1: #764f84;
+    --cor2: #845f96;
+    --cor3: #a777b4;
+    --cor4: #d9b4e0;
+    --cor5: #E2CCE3;
+}
+
+@font-face {
+    font-family: 'Vogue';
+    src: url('Fontes/Vogue.ttf');
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url('images.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 10%;
+    max-height: 15%;
+    padding: 20px 100px;
+    background: var(--cor3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav > a {
+    padding: 30px;
+    color: var(--cor1);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+    height: 100%;
+}
+
+nav > a:hover {
+    background-color: var(--cor4);
+}
+
+.menu a {
+    position: relative;
+    font-size: 1.2em;
+    color: var(--cor1);
+    text-decoration: none;
+    font-weight: 800;
+    margin-left: 10px;
+}
+
+.menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 3px;
+    background-color: var(--cor1);
+    border-radius: 5px;
+    transform: scaleX(0);
+    transition: transform .3s;
+}
+
+.menu a:hover::after {transform: scaleX(1);}
+
+.menu .btnlogin, .menu .btnconta {
+    max-width: 140px;
+    height: 40px;
+    padding: 10px;
+    background: transparent;
+    border: 2px solid white;
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    font-weight: 500;
+    margin-left: 10px;
+    transition: .3s;
+}
+
+.menu .btnlogin:hover, .menu .btnconta:hover {
+    background: white;
+    color: var(--cor1);
+}
+
+.wrapper {
+    position: relative;
+    top: 50px;
+    width: 400px;
+    height: 70vh;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, 0.463);
+    border-radius: 20px;
+    backdrop-filter: blur(00px);
+    box-shadow: 0 0 20px rgba(44, 59, 71, 0.301);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper .form-box {
+    width: 100%;
+    height: 70vh;
+    padding: 50px;
+
+}
+.form-box h2 {
+    font-size: 2em;
+    color: var(--cor3);
+    text-align: center;
+}
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid black;
+    margin: 25px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 70%;
+    left: 0px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+    pointer-events: none;
+    transition: .3s;
+}
+
+.input-box input:focus~label, .input-box input:valid~label {
+    top: -5px;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: black;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon, .icon-relevarsenha {
+    position: absolute;
+    top: -16px;
+    right: 8px;
+    font-size: 1.2em;
+    color: black;
+    line-height: 80px;
+}
+
+.icon-relevarsenha {cursor: pointer;}
+
+.remember-forgot a {
+    margin-top: 10px;
+    font-size: .9em;
+    color: var(--cor2);
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    color: var(--cor1);
+    font-weight: 600;
+}
+
+.btn-iniciar {
+    width: 100%;
+    height: 50px;
+    background-color: var(--cor4);
+    border: none;
+    outline: none;
+    margin-top: 50px;
+    border-radius: 34px;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--cor1);
+    font-weight: 600;
+    transition: .3s;
+} 
+
+.btn-iniciar:hover {
+    color: var(--cor4);
+    background-color: var(--cor2);
+    transition: .3s;
+}
+
+.login-register {
+    font-size: .9em;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px; 
+}
+
+.login-register p a {
+    color: var(--cor3);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register a:hover {
+    color: var(--cor1);
+}
+
+/* nav > a {
+    padding: 10px;
+    color: var(--cor1);
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition-duration: 0.5s;
+} */
