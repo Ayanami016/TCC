@@ -1,0 +1,202 @@
+/* Configuração geral */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+/*Variáveis*/
+:root {
+    --cor1: #764f84;
+    --cor2: #845f96;
+    --cor3: #a777b4;
+    --cor4: #d9b4e0;
+    --cor5: #E2CCE3;
+    --cinza: rgb(78, 78, 78);
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Cabeçalho */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    width: 100%;
+    height: 15%;
+    background-color: var(--cor3);
+}
+
+    /* Itens do Menu */
+nav a {
+    padding: 44.5px 20px;
+    color: var(--cor1);
+    font-size: 1.3em;
+    font-weight: bold;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+
+nav a:hover {background-color: var(--cor4);}
+
+    /* Botões do Menu */
+nav .btnlogin {
+    margin-left: 5px;
+    width: 70px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 7px;
+    background-color: white;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: var(--cor1);
+    transition-duration: 0.3s;  
+}
+
+nav .btnconta {
+    width: 130px;
+    height: 40px;
+    border: 2px solid white;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: white;
+    background: transparent;
+    transition-duration: 0.3s;
+}
+
+nav .btnlogin:hover {
+    background-color: var(--cor2);
+    border: 3px solid var(--cor1);
+    color: white;
+}
+
+nav .btnconta:hover {
+    background-color: white;
+    color: var(--cor1);
+}
+
+/* Caixa de Login */
+.caixalogin {
+    position: absolute;
+    top: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+    padding: 30px;
+    border: 0px solid rgba(128, 128, 128, 0.300);
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(128, 128, 128, 0.300);
+}
+
+.caixalogin h1 {
+    color: var(--cor3);
+    text-align: center;
+}
+
+    /* Caixas de texto */
+.input-box {
+    position: relative;
+    margin: 25px 0;
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid var(--cinza);
+    
+}
+
+.input-box label {
+    position: absolute;
+    top: 70%;
+    left: 0px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--cinza);
+    pointer-events: none;
+    transition-duration: 0.3s;
+}
+
+.input-box input:focus~label, .input-box input:valid~label {top: -5px;}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: black;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon, .icon-relevarsenha {
+    position: absolute;
+    top: -16px;
+    right: 8px;
+    font-size: 1.2em;
+    color: black;
+    line-height: 80px;
+}
+
+.icon-relevarsenha {cursor: pointer;}
+
+    /* Esqueceu senha */
+.remember-forgot a {
+    margin-top: 10px;
+    font-size: .9em;
+    color: var(--cor2);
+    text-decoration: none;
+}
+
+.remember-forgot a:hover {
+    color: var(--cor1);
+    font-weight: bold;
+}
+
+    /* Botão Login */
+.btn-iniciar {
+    margin-top: 20px;
+    width: 100%;
+    height: 50px;
+    background-color: var(--cor4);
+    border: none;
+    border-radius: 35px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    color: var(--cor1);
+    transition-duration: 0.3s;
+}
+
+.btn-iniciar:hover {
+    color: var(--cor4);
+    background-color: var(--cor2);
+    transition: 0.3s;
+}
+
+    /* Não tem conta */
+.semconta {
+    margin-top: 50px;
+    font-size: .9em;
+    text-align: center;
+    color: var(--cinza);
+}
+
+.semconta a {
+    color: var(--cor3);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.semconta a:hover {color: var(--cor1);}

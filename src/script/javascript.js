@@ -34,3 +34,9 @@ campoTel.addEventListener("keypress", ()=>{
         campoTel.value += "-"
     }
 })
+
+//Ativa o menu mobile
+document.getElementById('mobile-menu').addEventListener('click', function() {
+    var nav = document.querySelector('.nav');
+    nav.classList.toggle('active');
+});
