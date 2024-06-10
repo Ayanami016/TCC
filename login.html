@@ -24,6 +24,7 @@
         </nav>
     </header>
 
+    <!--LOGIN-->
     <div class="caixalogin">
         <div class="form-box">
             <h1>Iniciar Sessão</h1>
@@ -40,7 +41,7 @@
                 <!--Senha-->
                 <div class="input-box">
                     <span class="icon-relevarsenha" onclick="mostrarSenha()">
-                        <ion-icon name="eye-off-outline"></ion-icon>
+                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="mudaricon()"></ion-icon>
                     </span>
                     <input type="password" name="senha" id="senha" required>
                     <label for="senha">Senha</label>

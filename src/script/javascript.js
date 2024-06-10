@@ -1,9 +1,20 @@
+//Mostra a senha ao clicar no icon
 function mostrarSenha() {
     var x = document.getElementById("senha")
     if (x.type === "password") {
         x.type = "text"
     } else {
         x.type = "password"
+    }
+}
+
+//Muda o icon ao clicar para revelar a senha
+function mudaricon() {
+    var icon = document.getElementById('iconsenha');
+    if (icon.name === 'eye-off-outline') {
+        icon.name = 'eye-outline';
+    } else {
+        icon.name = 'eye-off-outline';
     }
 }
 
