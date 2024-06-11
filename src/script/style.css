@@ -38,6 +38,15 @@ header {
 }
 
     /* Itens do Menu */
+nav ion-icon.iconmenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    left: 150px;
+    font-size: 6vh;
+}
+
 nav a {
     padding: 6.05vh 20px;
     color: var(--cor1);
@@ -64,6 +73,7 @@ nav .btnlogin {
 }
 
 nav .btnconta {
+    margin-left: 20px;
     width: 130px;
     height: 40px;
     border: 2px solid white;
