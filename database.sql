@@ -25,6 +25,7 @@ nome_cli varchar (80) not null,
 senha_cli varchar (20) not null,
 email_cli varchar(80) not null unique,
 tel_cli varchar(14) not null unique,
+cpf_cli varchar(14) not null unique,
 fk_endereco int(8) -- FK
 ) charset = utf8;
 
@@ -87,8 +88,8 @@ fk_endereco int(8) -- FK
 -- AS FK nao precisam estar entre aspas simples
 insert into endereco (rua_end, numero_end, complemento_end, bairro_end, cidade_end, estado_end, cep_end, fk_cliente)
 	values ('rua vivara grande','69','casa 0','vila cuzil','sao paulo','SP','03379-020',1);
-insert into cliente (nome_cli, senha_cli, email_cli, tel_cli, fk_endereco)
-	values ('agustinho','soumuitofoda123','agustinho@gmail.com','(11)12345-6789',1);
+insert into cliente (nome_cli, senha_cli, email_cli, tel_cli, cpf_cli, fk_endereco)
+	values ('agustinho','soumuitofoda123','agustinho@gmail.com','(11)12345-6789','123.456.789-10',1);
 insert into produto (descricao_prod, nome_prod, tipo_prod, cor_prod, material_prod, tamanho_prod, estoque, preco, fk_fornec)
 	values ('muito lindo!!!!','joia linda','joia','dourado','ouro','médio','90','289.99',1);
 insert into pedido (quantidade_ped, data_ped, hora_ped, valor_ped, pagamento_metodo_ped, status_ped, comprovante_ped, frete_ped, fk_prod, fk_cliente)
