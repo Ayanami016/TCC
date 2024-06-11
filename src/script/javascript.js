@@ -1,3 +1,8 @@
+// Funções que redirecionam a outras páginas ao clicar nos
+// botões "minha conta" e "login"
+function redirecMinhaConta() {window.location.href = '#'}
+function redirecLogin() {window.location.href = 'login.html'}
+
 //Mostra a senha ao clicar no icon
 function mostrarSenha() {
     var x = document.getElementById("senha")
