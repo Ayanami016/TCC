@@ -1,3 +1,33 @@
-@media (max-width: 768px) {
-    
+@media (max-width: 772px) {
+    .alterna-menu {display: flex;}
+
+    #menu-pc {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    #menu-pc.active {display: flex;}
+}
+
+@media (max-width: 400px) {
+    .caixalogin {
+        position: absolute;
+        top: 30%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 30px;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .alterna-botoes {display: flex;}
+
+    #botoes-pc {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
 }

@@ -43,9 +43,17 @@ nav ion-icon.iconmenu {
     justify-content: center;
     align-items: center;
     position: absolute;
-    left: 150px;
+    left: 10px;
     font-size: 6vh;
 }
+
+nav ion-icon.iconconta, nav ion-icon.iconlogin {
+    position: absolute;
+    font-size: 6vh;
+}
+
+.iconconta {right: 70px;}
+.iconlogin {right: 20px;}
 
 nav a {
     padding: 6.05vh 20px;
@@ -57,6 +65,14 @@ nav a {
 }
 
 nav a:hover {background-color: var(--cor4);}
+
+    /*Alterna menu*/
+.alterna-menu, .alterna-botoes {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
 
     /* Botões do Menu */
 nav .btnlogin {
@@ -73,7 +89,7 @@ nav .btnlogin {
 }
 
 nav .btnconta {
-    margin-left: 20px;
+    margin-left: 20p;
     width: 130px;
     height: 40px;
     border: 2px solid white;

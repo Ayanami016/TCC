@@ -52,7 +52,7 @@ campoTel.addEventListener("keypress", ()=>{
 })
 
 //Ativa o menu mobile
-document.getElementById('mobile-menu').addEventListener('click', function() {
-    var nav = document.querySelector('.nav');
-    nav.classList.toggle('active');
+document.getElementById('menu-mobile').addEventListener('click', function() {
+    var menupc = document.querySelector('#menu-pc');
+    menupc.classList.toggle('active');
 });
