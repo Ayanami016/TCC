@@ -23,7 +23,11 @@
         box-shadow: none;
     }
 
-    .alterna-botoes {display: flex;}
+    .alterna-botoes, .alterna-menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
     #botoes-pc {
         display: none;

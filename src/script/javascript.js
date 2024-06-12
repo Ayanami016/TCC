@@ -4,8 +4,16 @@ function redirecMinhaConta() {window.location.href = '#'}
 function redirecLogin() {window.location.href = 'login.html'}
 
 //Mostra a senha ao clicar no icon
-function mostrarSenha() {
+function Mostrar_Senha() {
     var x = document.getElementById("senha")
+    if (x.type === "password") {
+        x.type = "text"
+    } else {
+        x.type = "password"
+    }
+}
+function Mostrar_ConfirmarSenha() {
+    var x = document.getElementById("confirmarsenha")
     if (x.type === "password") {
         x.type = "text"
     } else {
@@ -14,12 +22,20 @@ function mostrarSenha() {
 }
 
 //Muda o icon ao clicar para revelar a senha
-function mudaricon() {
-    var icon = document.getElementById('iconsenha');
-    if (icon.name === 'eye-off-outline') {
-        icon.name = 'eye-outline';
+function Mudar_IconSenha() {
+    var icon_senha = document.getElementById('iconsenha')
+    if (icon_senha.name === 'eye-off-outline') {
+        icon_senha.name = 'eye-outline'
     } else {
-        icon.name = 'eye-off-outline';
+        icon_senha.name = 'eye-off-outline'
+    }
+}
+function Mudar_IconConfirmarSenha() {
+    var icon_confirmarsenha = document.getElementById('iconconfirmarsenha')
+    if (icon_confirmarsenha.name === 'eye-off-outline') {
+        icon_confirmarsenha.name = 'eye-outline'
+    } else {
+        icon_confirmarsenha.name = 'eye-off-outline'
     }
 }
 

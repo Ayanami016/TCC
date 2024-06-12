@@ -11,7 +11,7 @@
 <body>
     <!--MENU-->
     <header>
-        <span class="logo">
+        <span>  
             <a href="index.html"><img src="src/img/Bella Logo com Fundo.png" alt="Logo" width="70vh"></a>
         </span>
 
@@ -29,12 +29,12 @@
 
             <!--Menu Mobile-->
             <span class="alterna-botoes">
-                <ion-icon name="person-circle" class="iconconta"></ion-icon>
-                <ion-icon name="log-in" class="iconlogin"></ion-icon>
+                <ion-icon name="person-circle" class="iconconta" onclick="redirecMinhaConta()"></ion-icon>
+                <ion-icon name="log-in" class="iconlogin" onclick="redirecLogin()"></ion-icon>
             </span>
 
             <span id="botoes-pc">
-                <button class="btnconta">Minha Conta</button>
+                <button class="btnconta" onclick="redirecMinhaConta()">Minha Conta</button>
                 <button class="btnlogin" onclick="redirecLogin()">Login</button>
             </span>
         </nav>
@@ -84,11 +84,19 @@
 
                 <!--Senha-->
                 <div class="input-box">
-                    <span class="icon-relevarsenha" onclick="mostrarSenha()">
-                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="mudaricon()"></ion-icon>
+                    <span class="icon-relevarsenha" onclick="Mostrar_Senha()">
+                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="Mudar_IconSenha()"></ion-icon>
                     </span>
                     <input type="password" name="senha" id="senha" required>
                     <label for="senha">Senha</label>
+                </div>
+
+                <div class="input-box">
+                    <span class="icon-relevarsenha" onclick="Mostrar_ConfirmarSenha()">
+                        <ion-icon name="eye-off-outline" id="iconconfirmarsenha" onclick="Mudar_IconConfirmarSenha()"></ion-icon>
+                    </span>
+                    <input type="password" name="confirmarsenha" id="confirmarsenha" required>
+                    <label for="confirmarsenha">Confirmar Senha</label>
                 </div>
 
                 <!--Cadastrar-->
@@ -99,19 +107,6 @@
             </form>
         </div>
     </div>
-
-    <!-- <h1>Crie sua conta!</h1>
-    <div>
-        <form action="">
-            Email: <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required> <br>
-            Telefone: <input type="text" name="tel" id="tel" class="tel" placeholder="Digite seu telefone" maxlength="14" required> <br>
-            CPF: <input type="text" name="cpf" id="cpf" class="cpf" placeholder="Digite seu CPF" maxlength="14" required> <br>
-            Senha: <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
-            <input type="checkbox" onclick="mostrarSenha()"> Revelar <br>
-
-            <input type="button" value="Cadastrar">
-        </form>
-    </div> -->
 
     <!--JAVASCRIPT-->
     <script src="src/script/javascript.js" type="text/javascript"></script>

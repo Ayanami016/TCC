@@ -1,0 +1,5 @@
+12.06.24
+- Remoção do line-height dos ícones de cadastro e login;
+- Adição de functions nos botões do menu mobile;
+- Adição de campo de texto para confirmar senha;
+- Centralização dos ícones do menu mobile;

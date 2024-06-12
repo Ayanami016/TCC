@@ -30,8 +30,8 @@
 
             <!--Menu Mobile-->
             <span class="alterna-botoes">
-                <ion-icon name="person-circle" class="iconconta"></ion-icon>
-                <ion-icon name="log-in" class="iconlogin"></ion-icon>
+                <ion-icon name="person-circle" class="iconconta" onclick="redirecMinhaConta()"></ion-icon>
+                <ion-icon name="log-in" class="iconlogin" onclick="redirecLogin()"></ion-icon>
             </span>
 
             <!--Menu PC-->
@@ -57,8 +57,8 @@
                 </div>
                 <!--Senha-->
                 <div class="input-box">
-                    <span class="icon-relevarsenha" onclick="mostrarSenha()">
-                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="mudaricon()"></ion-icon>
+                    <span class="icon-relevarsenha" onclick="Mostrar_Senha()">
+                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="Mudar_IconSenha()"></ion-icon>
                     </span>
                     <input type="password" name="senha" id="senha" required>
                     <label for="senha">Senha</label>

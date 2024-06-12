@@ -174,11 +174,10 @@ nav .btnconta:hover {
 
 .input-box .icon, .icon-relevarsenha {
     position: absolute;
-    top: -16px;
+    top: 10px;
     right: 8px;
     font-size: 1.2em;
     color: black;
-    line-height: 80px;
 }
 
 .icon-relevarsenha {cursor: pointer;}
