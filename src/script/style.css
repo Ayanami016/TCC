@@ -113,29 +113,36 @@ nav .btnconta:hover {
 }
 
 /* Caixa de Login */
-.caixa {
+#caixa {
     position: absolute;
-    top: 30%;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
+    width: 450px;
     padding: 30px;
     border: 0px solid rgba(128, 128, 128, 0.300);
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(128, 128, 128, 0.300);
 }
 
-.caixa h1 {
+#caixa h1 {
+    position: relative;
+    left: -10px;
     color: var(--cor3);
     text-align: center;
 }
 
+.cadastro {top: 19%;}
+.login {top: 30%;}
+
     /* Caixas de texto */
 .input-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    margin: 25px 0;
-    width: 100%;
+    margin: 25px -20px;
+    width: 110%;
     height: 40px;
     border-bottom: 1px solid var(--cinza);  
 }
@@ -190,7 +197,7 @@ nav .btnconta:hover {
 }
 
     /* Botão Login */
-.btn-iniciar {
+.btn-form {
     margin-top: 20px;
     width: 100%;
     height: 50px;
@@ -204,24 +211,24 @@ nav .btnconta:hover {
     transition-duration: 0.3s;
 }
 
-.btn-iniciar:hover {
+.btn-form:hover {
     color: var(--cor4);
     background-color: var(--cor2);
     transition: 0.3s;
 }
 
     /* Não tem conta */
-.semconta {
-    margin-top: 50px;
+.cad-login {
+    margin-top: 30px;
     font-size: .9em;
     text-align: center;
     color: var(--cinza);
 }
 
-.semconta a {
+.cad-login a {
     color: var(--cor3);
     text-decoration: none;
     font-weight: 600;
 }
 
-.semconta a:hover {color: var(--cor1);}
+.cad-login a:hover {color: var(--cor1);}

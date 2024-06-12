@@ -10,10 +10,10 @@
     #menu-pc.active {display: flex;}
 }
 
-@media (max-width: 400px) {
-    .caixa {
+@media (max-width: 500px) {
+    #caixa {
         position: absolute;
-        top: 30%;
+        top: 19%;
         display: flex;
         justify-content: center;
         align-items: center;

@@ -5,10 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
     <link rel="stylesheet" href="src/script/style.css">
+    <link rel="stylesheet" href="src/script/responsivo.css">
     <link rel="shortcut icon" href="src/favicon/android-chrome-512x512.png" type="image/x-icon">
 </head>
 <body>
-    <h1>Crie sua conta!</h1>
+    <!--MENU-->
+    <header>
+        <span class="logo">
+            <a href="index.html"><img src="src/img/Bella Logo com Fundo.png" alt="Logo" width="70vh"></a>
+        </span>
+
+        <nav>
+            <!--Menu Mobile-->
+            <span class="alterna-menu" id="menu-mobile">
+                <ion-icon name="menu" class="iconmenu"></ion-icon>
+            </span>
+
+            <span id="menu-pc">
+                <a href="#">Alianças</a>
+                <a href="#">Brincos</a>
+                <a href="#">Colares</a>
+            </span>
+
+            <!--Menu Mobile-->
+            <span class="alterna-botoes">
+                <ion-icon name="person-circle" class="iconconta"></ion-icon>
+                <ion-icon name="log-in" class="iconlogin"></ion-icon>
+            </span>
+
+            <span id="botoes-pc">
+                <button class="btnconta">Minha Conta</button>
+                <button class="btnlogin" onclick="redirecLogin()">Login</button>
+            </span>
+        </nav>
+    </header>
+
+    <!--CADASTRO-->
+    <!--Nome, email, cpf, telefone e senha-->
+    <div id="caixa" class="cadastro">
+        <div class="form-box">
+            <h1>&#x1F48E Crie sua conta!</h1>
+            <form action="#">
+                <!--Nome-->
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </span>
+                    <input type="text" name="nome" id="nome" required>
+                    <label for="nome">Nome</label>
+                </div>
+
+                <!--Email-->
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+
+                <!--CPF-->
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="terminal-outline"></ion-icon>
+                    </span>
+                    <input type="text" name="cpf" id="cpf" class="cpf" maxlength="14" required>
+                    <label for="cpf">CPF</label>
+                </div>
+
+                <!--Telefone-->
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="call-outline"></ion-icon>
+                    </span>
+                    <input type="text" name="tel" id="tel" class="tel" maxlength="14" required>
+                    <label for="tel">Telefone</label>
+                </div>
+
+                <!--Senha-->
+                <div class="input-box">
+                    <span class="icon-relevarsenha" onclick="mostrarSenha()">
+                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="mudaricon()"></ion-icon>
+                    </span>
+                    <input type="password" name="senha" id="senha" required>
+                    <label for="senha">Senha</label>
+                </div>
+
+                <!--Cadastrar-->
+                <button type="submit" class="btn-form">CADASTRAR</button>
+                <div class="cad-login">
+                    <p>Já possui uma conta? <a href="login.html">Entre aqui!</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- <h1>Crie sua conta!</h1>
     <div>
         <form action="">
             Email: <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required> <br>
@@ -19,9 +111,12 @@
 
             <input type="button" value="Cadastrar">
         </form>
-    </div>
+    </div> -->
 
     <!--JAVASCRIPT-->
     <script src="src/script/javascript.js" type="text/javascript"></script>
+        <!--Ícones-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
