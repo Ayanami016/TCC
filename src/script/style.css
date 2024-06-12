@@ -113,7 +113,7 @@ nav .btnconta:hover {
 }
 
 /* Caixa de Login */
-.caixalogin {
+.caixa {
     position: absolute;
     top: 30%;
     display: flex;
@@ -126,7 +126,7 @@ nav .btnconta:hover {
     box-shadow: 0 0 20px rgba(128, 128, 128, 0.300);
 }
 
-.caixalogin h1 {
+.caixa h1 {
     color: var(--cor3);
     text-align: center;
 }

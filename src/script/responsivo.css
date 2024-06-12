@@ -11,7 +11,7 @@
 }
 
 @media (max-width: 400px) {
-    .caixalogin {
+    .caixa {
         position: absolute;
         top: 30%;
         display: flex;
