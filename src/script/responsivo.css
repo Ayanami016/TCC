@@ -1,4 +1,4 @@
-@media (max-width: 772px) {
+@media (max-width: 790px) {
     .alterna-menu {display: flex;}
 
     #menu-pc {
@@ -7,7 +7,9 @@
         width: 100%;
     }
 
-    #menu-pc.active {display: flex;}
+    #menu-pc.active {
+        display: flex;
+    }
 }
 
 @media (max-width: 500px) {
