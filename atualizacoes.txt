@@ -3,3 +3,6 @@
 - Adição de functions nos botões do menu mobile;
 - Adição de campo de texto para confirmar senha;
 - Centralização dos ícones do menu mobile;
+
+13.06.24
+- Mudança de cor nos ícones do menu;
