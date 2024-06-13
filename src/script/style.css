@@ -37,6 +37,8 @@ header {
     background-color: var(--cor3);
 }
 
+.logo {width: 12vh;}
+
     /* Itens do Menu */
 nav ion-icon.iconmenu {
     display: flex;
@@ -56,7 +58,7 @@ nav ion-icon.iconconta, nav ion-icon.iconlogin {
 .iconlogin {right: 20px;}
 
 nav a {
-    padding: 6.05vh 20px;
+    padding: 5.9% 20px;
     color: var(--cor1);
     font-size: 1.3em;
     font-weight: bold;
@@ -184,6 +186,8 @@ nav .btnconta:hover {
 
     /* Esqueceu senha */
 .remember-forgot a {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
     font-size: .9em;
     color: var(--cor2);

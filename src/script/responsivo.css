@@ -11,9 +11,13 @@
 }
 
 @media (max-width: 500px) {
+    header {height: 10%;}
+
+    .logo {width: 8vh;}
+
     #caixa {
         position: absolute;
-        top: 19%;
+        top: 10%;
         display: flex;
         justify-content: center;
         align-items: center;

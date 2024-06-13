@@ -6,3 +6,4 @@
 
 13.06.24
 - Mudança de cor nos ícones do menu;
+- Alteração do tamanho do menu mobile;
