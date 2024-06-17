@@ -182,6 +182,10 @@ nav .btnconta:hover {
     color: black;
 }
 
+    /* Estilos para validação dos campos */
+.valido {border: 2px solid green;}
+.invalido {border: 2px solid red;}
+
 .icon-relevarsenha {cursor: pointer;}
 
     /* Esqueceu senha */
