@@ -8,3 +8,6 @@
 - Mudança de cor nos ícones do menu;
 - Alteração do tamanho do menu mobile;
 - Adição de functions para validação dos campos. Ainda é necessário testes e coreções.
+
+16.06.24
+- Reagrupamento de arquivos e início de testes;
