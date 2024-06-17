@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validação de Formulário</title>
+    <style>
+        .invalido {
+            border: 2px solid red;
+        }
+        .valido {
+            border: 2px solid green;
+        }
+        .mensagem-erro {
+            color: red;
+            font-size: 0.9em;
+        }
+        .mensagem-sucesso {
+            color: green;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <label for="cpf">CPF:</label>
+        <input type="text" id="cpf" class="cpf" placeholder="Digite seu CPF">
+        <p id="cpf-erro" class="mensagem-erro"></p>
+        
+        <label for="telefone">Telefone:</label>
+        <input type="text" id="telefone" class="telefone" placeholder="Digite seu telefone">
+        <p id="telefone-erro" class="mensagem-erro"></p>
+        
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" placeholder="Digite sua senha">
+        
+        <label for="confirmarSenha">Confirme a Senha:</label>
+        <input type="password" id="confirmarSenha" placeholder="Confirme sua senha">
+        <p id="senha-erro" class="mensagem-erro"></p>
+        
+        <p id="resultado"></p>
+    </form>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let campoCPF = document.querySelector(".cpf");
+            let campoTelefone = document.querySelector(".telefone");
+            let campoSenha = document.getElementById("senha");
+            let campoConfirmarSenha = document.getElementById("confirmarSenha");
+            
+            // Função para formatar o CPF
+            campoCPF.addEventListener("input", () => {
+                let cpf = campoCPF.value.replace(/\D/g, '');
+                if (cpf.length > 11) cpf = cpf.substring(0, 11);
+                
+                let cpfFormatado = cpf.replace(/(\d{3})(\d)/, "$1.$2")
+                                      .replace(/(\d{3})(\d)/, "$1.$2")
+                                      .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+                
+                campoCPF.value = cpfFormatado;
+            });
+            
+            // Função para validar o CPF
+            function validarCPF(cpf) {
+                if (cpf.length !== 14) {
+                    return false;
+                }
+                cpf = cpf.replace(/[^\d]+/g, '');
+                if (/^(\d)\1+$/.test(cpf)) {
+                    return false;
+                }
+                return true;
+            }
+            
+            // Função para validar o telefone
+            function validarTelefone(telefone) {
+                const regex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
+                return regex.test(telefone);
+            }
+            
+            // Função para validar a confirmação de senha
+            function validarConfirmacaoSenha() {
+                let senhaValor = campoSenha.value.trim();
+                let confirmarSenhaValor = campoConfirmarSenha.value.trim();
+                
+                return senhaValor === confirmarSenhaValor;
+            }
+            
+            // Adicionar eventos de validação
+            campoCPF.addEventListener("blur", () => {
+                const cpf = campoCPF.value;
+                const mensagemErro = document.getElementById("cpf-erro");
+                
+                if (validarCPF(cpf)) {
+                    campoCPF.classList.add("valido");
+                    campoCPF.classList.remove("invalido");
+                    mensagemErro.textContent = "";
+                } else {
+                    campoCPF.classList.add("invalido");
+                    campoCPF.classList.remove("valido");
+                    mensagemErro.textContent = "CPF inválido!";
+                }
+            });
+            
+            campoTelefone.addEventListener("blur", () => {
+                const telefone = campoTelefone.value;
+                const mensagemErro = document.getElementById("telefone-erro");
+                
+                if (validarTelefone(telefone)) {
+                    campoTelefone.classList.add("valido");
+                    campoTelefone.classList.remove("invalido");
+                    mensagemErro.textContent = "";
+                } else {
+                    campoTelefone.classList.add("invalido");
+                    campoTelefone.classList.remove("valido");
+                    mensagemErro.textContent = "Telefone inválido!";
+                }
+            });
+            
+            campoConfirmarSenha.addEventListener("blur", () => {
+                const mensagemErro = document.getElementById("senha-erro");
+                
+                if (validarConfirmacaoSenha()) {
+                    campoConfirmarSenha.classList.add("valido");
+                    campoConfirmarSenha.classList.remove("invalido");
+                    mensagemErro.textContent = "";
+                } else {
+                    campoConfirmarSenha.classList.add("invalido");
+                    campoConfirmarSenha.classList.remove("valido");
+                    mensagemErro.textContent = "As senhas não coincidem!";
+                }
+            });
+        });
+    </script>
+</body>
+</html>
