@@ -37,7 +37,7 @@ header {
     background-color: var(--cor3);
 }
 
-.logo {width: 12vh;}
+.logo {width: 10vh;}
 
     /* Itens do Menu */
 nav ion-icon.iconmenu {
@@ -49,16 +49,20 @@ nav ion-icon.iconmenu {
     font-size: 6vh;
 }
 
-nav ion-icon.iconconta, nav ion-icon.iconlogin {
+nav ion-icon.iconconta, nav ion-icon.iconsuporte, nav ion-icon.iconcarrinho {
     position: absolute;
     font-size: 6vh;
 }
 
-.iconconta {right: 70px;}
-.iconlogin {right: 20px;}
+.iconconta {right: 120px;}
+.iconsuporte {right: 70px;}
+.iconcarrinho {right: 20px;}
 
 nav a {
-    padding: 5.9% 20px;
+    position: relative;
+    bottom: 16px;
+    margin: -2px;
+    padding: 43px 20px;
     color: var(--cor1);
     font-size: 1.3em;
     font-weight: bold;
@@ -71,20 +75,18 @@ nav a:hover {background-color: var(--cor4);}
     /*Alterna menu*/
 .alterna-menu, .alterna-botoes {
     display: none;
-    flex-direction: column;
     cursor: pointer;
 }
 
     /* Botões do Menu */
 nav .btnmenu {
-    margin: 2.5px;
     padding: 5px;
-    width: 130px;
-    height: 70px;
-    border: 2px solid white;
+    width: 80px;
+    height: 80px;
+    border: none;
     border-radius: 7px;
     cursor: pointer;
-    font-size: 1.1em;
+    font-size: 16px;
     color: white;
     background: transparent;
     transition-duration: 0.3s;
@@ -93,7 +95,7 @@ nav .btnmenu {
 nav .btnmenu .iconbtn {font-size: 2em;}
 
 nav .btnmenu:hover {
-    background-color: white;
+    background-color: var(--cor4);
     color: var(--cor1);
 }
 

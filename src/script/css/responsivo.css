@@ -1,5 +1,10 @@
-@media (max-width: 790px) {
-    .alterna-menu {display: flex;}
+@media (max-width: 870px) {
+    .alterna-menu {
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 30px;
+    }
 
     #menu-pc {
         display: none;
@@ -15,8 +20,6 @@
 @media (max-width: 500px) {
     header {height: 10%;}
 
-    .logo {width: 8vh;}
-
     #caixa {
         position: absolute;
         top: 10%;
@@ -29,10 +32,18 @@
         box-shadow: none;
     }
 
+    .logo {width: 8vh;}
+
     .alterna-botoes, .alterna-menu {
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .alterna-menu {
+        position: absolute;
+        left: 0;
+        top: 35px;
     }
 
     #botoes-pc {
