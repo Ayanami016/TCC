@@ -1,136 +1,92 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Validação de Formulário</title>
-    <style>
-        .invalido {
-            border: 2px solid red;
-        }
-        .valido {
-            border: 2px solid green;
-        }
-        .mensagem-erro {
-            color: red;
-            font-size: 0.9em;
-        }
-        .mensagem-sucesso {
-            color: green;
-            font-size: 0.9em;
-        }
-    </style>
+    <title>Login</title>
+    <link rel="stylesheet" href="src/script/css/style.css">
+    <link rel="stylesheet" href="src/script/css/responsivo.css">
+    <link rel="shortcut icon" href="src/favicon/android-chrome-512x512.png" type="image/x-icon">
 </head>
 <body>
-    <form>
-        <label for="cpf">CPF:</label>
-        <input type="text" id="cpf" class="cpf" placeholder="Digite seu CPF">
-        <p id="cpf-erro" class="mensagem-erro"></p>
-        
-        <label for="telefone">Telefone:</label>
-        <input type="text" id="telefone" class="telefone" placeholder="Digite seu telefone">
-        <p id="telefone-erro" class="mensagem-erro"></p>
-        
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" placeholder="Digite sua senha">
-        
-        <label for="confirmarSenha">Confirme a Senha:</label>
-        <input type="password" id="confirmarSenha" placeholder="Confirme sua senha">
-        <p id="senha-erro" class="mensagem-erro"></p>
-        
-        <p id="resultado"></p>
-    </form>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            let campoCPF = document.querySelector(".cpf");
-            let campoTelefone = document.querySelector(".telefone");
-            let campoSenha = document.getElementById("senha");
-            let campoConfirmarSenha = document.getElementById("confirmarSenha");
-            
-            // Função para formatar o CPF
-            campoCPF.addEventListener("input", () => {
-                let cpf = campoCPF.value.replace(/\D/g, '');
-                if (cpf.length > 11) cpf = cpf.substring(0, 11);
-                
-                let cpfFormatado = cpf.replace(/(\d{3})(\d)/, "$1.$2")
-                                      .replace(/(\d{3})(\d)/, "$1.$2")
-                                      .replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-                
-                campoCPF.value = cpfFormatado;
-            });
-            
-            // Função para validar o CPF
-            function validarCPF(cpf) {
-                if (cpf.length !== 14) {
-                    return false;
-                }
-                cpf = cpf.replace(/[^\d]+/g, '');
-                if (/^(\d)\1+$/.test(cpf)) {
-                    return false;
-                }
-                return true;
-            }
-            
-            // Função para validar o telefone
-            function validarTelefone(telefone) {
-                const regex = /^\(\d{2}\) \d{4,5}-\d{4}$/;
-                return regex.test(telefone);
-            }
-            
-            // Função para validar a confirmação de senha
-            function validarConfirmacaoSenha() {
-                let senhaValor = campoSenha.value.trim();
-                let confirmarSenhaValor = campoConfirmarSenha.value.trim();
-                
-                return senhaValor === confirmarSenhaValor;
-            }
-            
-            // Adicionar eventos de validação
-            campoCPF.addEventListener("blur", () => {
-                const cpf = campoCPF.value;
-                const mensagemErro = document.getElementById("cpf-erro");
-                
-                if (validarCPF(cpf)) {
-                    campoCPF.classList.add("valido");
-                    campoCPF.classList.remove("invalido");
-                    mensagemErro.textContent = "";
-                } else {
-                    campoCPF.classList.add("invalido");
-                    campoCPF.classList.remove("valido");
-                    mensagemErro.textContent = "CPF inválido!";
-                }
-            });
-            
-            campoTelefone.addEventListener("blur", () => {
-                const telefone = campoTelefone.value;
-                const mensagemErro = document.getElementById("telefone-erro");
-                
-                if (validarTelefone(telefone)) {
-                    campoTelefone.classList.add("valido");
-                    campoTelefone.classList.remove("invalido");
-                    mensagemErro.textContent = "";
-                } else {
-                    campoTelefone.classList.add("invalido");
-                    campoTelefone.classList.remove("valido");
-                    mensagemErro.textContent = "Telefone inválido!";
-                }
-            });
-            
-            campoConfirmarSenha.addEventListener("blur", () => {
-                const mensagemErro = document.getElementById("senha-erro");
-                
-                if (validarConfirmacaoSenha()) {
-                    campoConfirmarSenha.classList.add("valido");
-                    campoConfirmarSenha.classList.remove("invalido");
-                    mensagemErro.textContent = "";
-                } else {
-                    campoConfirmarSenha.classList.add("invalido");
-                    campoConfirmarSenha.classList.remove("valido");
-                    mensagemErro.textContent = "As senhas não coincidem!";
-                }
-            });
-        });
-    </script>
+    <!--MENU-->
+    <header>
+        <span>
+            <a href="index.html"><img src="src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
+        </span>
+
+        <nav>
+            <!--Menu Mobile-->
+            <span class="alterna-menu" id="menu-mobile">
+                <ion-icon name="menu" class="iconmenu" color="light"></ion-icon>
+            </span>
+
+            <!--Menu PC-->
+            <span id="menu-pc">
+                <a href="#">Alianças</a>
+                <a href="#">Brincos</a>
+                <a href="#">Colares</a>
+            </span>
+
+            <!--Menu Mobile-->
+            <span class="alterna-botoes">
+                <ion-icon name="person-circle" class="iconconta" onclick="redirecMinhaConta()" color="light"></ion-icon>
+                <ion-icon name="log-in" class="iconlogin" onclick="redirecLogin()" color="light"></ion-icon>
+            </span>
+
+            <!--Menu PC-->
+            <span id="botoes-pc">
+                <button class="btnmenu">
+                    <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>Minha Conta
+                </button>
+                <button class="btnmenu">
+                    <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
+                </button>
+                <button class="btnmenu">
+                    <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Meu Carrinho
+                </button>
+            </span>
+        </nav>
+    </header>
+
+    <!--LOGIN-->
+    <div id="caixa" class="login">
+        <div class="form-box">
+            <h1>&#x1F44B Iniciar Sessão</h1>
+            <form action="#">
+                <!--Email-->
+                <div class="input-box">
+                    <span class="icon">
+                        <ion-icon name="mail-outline"></ion-icon>
+                    </span>
+                    <input type="email" name="email" id="email" required>
+                    <label for="email">Email</label>
+                </div>
+                <!--Senha-->
+                <div class="input-box">
+                    <span class="icon-relevarsenha" onclick="Mostrar_Senha()">
+                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="Mudar_IconSenha()"></ion-icon>
+                    </span>
+                    <input type="password" name="senha" id="senha" required>
+                    <label for="senha">Senha</label>
+                </div>
+                <!--Esqueceu a Senha-->
+                <div class="remember-forgot">
+                    <a href="#">Esqueceu a Senha?</a>
+                </div>
+                <!--Iniciar Sessão-->
+                <button type="submit" class="btn-form">INICIAR SESSÃO</button>
+                <div class="cad-login">
+                    <p>Não tem uma conta? <a href="cadastro.html">Cadastre-se</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--JAVASCRIPT-->
+    <script src="src/script/javascript/diversos.js" type="text/javascript"></script>
+        <!--Ícones-->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>

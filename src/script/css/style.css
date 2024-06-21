@@ -75,25 +75,12 @@ nav a:hover {background-color: var(--cor4);}
     cursor: pointer;
 }
 
-
     /* Botões do Menu */
-nav .btnlogin {
-    margin-left: 5px;
-    width: 70px;
-    height: 40px;
-    border: 2px solid white;
-    border-radius: 7px;
-    background-color: white;
-    cursor: pointer;
-    font-size: 1.1em;
-    color: var(--cor1);
-    transition-duration: 0.3s;  
-}
-
-nav .btnconta {
-    margin-left: 20p;
+nav .btnmenu {
+    margin: 2.5px;
+    padding: 5px;
     width: 130px;
-    height: 40px;
+    height: 70px;
     border: 2px solid white;
     border-radius: 7px;
     cursor: pointer;
@@ -103,13 +90,9 @@ nav .btnconta {
     transition-duration: 0.3s;
 }
 
-nav .btnlogin:hover {
-    background-color: var(--cor2);
-    border-color: var(--cor1);
-    color: white;
-}
+nav .btnmenu .iconbtn {font-size: 2em;}
 
-nav .btnconta:hover {
+nav .btnmenu:hover {
     background-color: white;
     color: var(--cor1);
 }
