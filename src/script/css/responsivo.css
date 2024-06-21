@@ -6,14 +6,31 @@
         top: 30px;
     }
 
-    #menu-pc {
-        display: none;
-        flex-direction: column;
-        width: 100%;
+    #menu-pc {display: none;}
+
+    .menu-pc-mobile.active {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        top: 109.5px;
+        height: 6vh;
+        background-color: var(--cor2);
+        padding: 0px 30px;
+        /* background-color: rgba(255, 0, 0, 0.372); */
     }
 
-    #menu-pc.active {
-        display: flex;
+    .menu-pc-mobile a {
+        text-decoration: none;
+        font-size: 1.3em;
+        padding: 1.3vh 3vh;
+        font-weight: bold;
+        color: var(--cor0);
+        transition-duration: 0.3s;
+    }
+
+    .menu-pc-mobile a:hover {
+        background-color: var(--cor3);
     }
 }
 
@@ -22,7 +39,7 @@
 
     #caixa {
         position: absolute;
-        top: 10%;
+        top: 15%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -33,6 +50,10 @@
     }
 
     .logo {width: 8vh;}
+
+    .menu-pc-mobile.active {
+        top: 73px;
+    }
 
     .alterna-botoes, .alterna-menu {
         display: flex;

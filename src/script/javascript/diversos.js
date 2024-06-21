@@ -69,6 +69,6 @@ function Mudar_IconConfirmarSenha() {
 
 //Ativa o menu mobile
 document.getElementById('menu-mobile').addEventListener('click', function() {
-    var menupc = document.querySelector('#menu-pc')
+    var menupc = document.querySelector('.menu-pc-mobile')
     menupc.classList.toggle('active')
 });

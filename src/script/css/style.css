@@ -8,6 +8,7 @@
 
 /*Variáveis*/
 :root {
+    --cor0: #51305d;
     --cor1: #764f84;
     --cor2: #845f96;
     --cor3: #a777b4;
@@ -76,6 +77,11 @@ nav a:hover {background-color: var(--cor4);}
 .alterna-menu, .alterna-botoes {
     display: none;
     cursor: pointer;
+}
+
+.menu-pc-mobile {
+    display: none;
+    width: 100%;
 }
 
     /* Botões do Menu */
