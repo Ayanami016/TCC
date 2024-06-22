@@ -1,8 +1,3 @@
-// Funções que redirecionam a outras páginas ao clicar nos
-// botões "minha conta" e "login"
-function redirecMinhaConta() {window.location.href = '#'}
-function redirecLogin() {window.location.href = 'login.html'}
-
 //Mostra a senha ao clicar no icon
 function Mostrar_Senha() {
     var x = document.getElementById("senha")
@@ -39,6 +34,33 @@ function Mudar_IconConfirmarSenha() {
     }
 }
 
+//Ativa o menu mobile
+document.getElementById('menu-mobile').addEventListener('click', function() {
+    var menupc = document.querySelector('.menu-pc-mobile')
+    menupc.classList.toggle('active')
+});
+
+//Ativa as Listas do Menu ao passar o mouse em cima (válido em conta, suporte e carrinho)
+document.addEventListener("DOMContentLoaded", () => {
+    const botoes = document.querySelectorAll(".btnmenu");
+
+    botoes.forEach(botao => {
+        botao.addEventListener("mouseenter", () => {
+            const listamenu = botao.querySelector(".listamenu");
+            if (listamenu) {
+                listamenu.style.display = "block";
+            }
+        });
+
+        botao.addEventListener("mouseleave", () => {
+            const listamenu = botao.querySelector(".listamenu");
+            if (listamenu) {
+                listamenu.style.display = "none";
+            }
+        });
+    });
+});
+
 // //Formata o campo CPF para adicionar . e -
 // let campoCPF = document.querySelector(".cpf")
 
@@ -66,9 +88,3 @@ function Mudar_IconConfirmarSenha() {
 //         campoTel.value += "-"
 //     }
 // })
-
-//Ativa o menu mobile
-document.getElementById('menu-mobile').addEventListener('click', function() {
-    var menupc = document.querySelector('.menu-pc-mobile')
-    menupc.classList.toggle('active')
-});

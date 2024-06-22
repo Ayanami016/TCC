@@ -3,7 +3,7 @@
         display: flex;
         position: absolute;
         left: 0;
-        top: 30px;
+        top: 4.5vh;
     }
 
     #menu-pc {display: none;}
@@ -63,7 +63,7 @@
     .alterna-menu {
         position: absolute;
         left: 0;
-        top: 35px;
+        top: 5vh;
     }
 
     #botoes-pc {

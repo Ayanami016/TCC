@@ -58,7 +58,7 @@ nav ion-icon.iconconta, nav ion-icon.iconsuporte, nav ion-icon.iconcarrinho {
 .iconsuporte {right: 70px;}
 .iconcarrinho {right: 20px;}
 
-nav a {
+nav a.link-menupc {
     position: relative;
     bottom: 16px;
     margin: -2px;
@@ -89,7 +89,7 @@ nav .btnmenu {
     width: 80px;
     height: 80px;
     border: none;
-    border-radius: 7px;
+    border-radius: 7px 7px 0px 0px;
     cursor: pointer;
     font-size: 16px;
     color: white;
@@ -102,6 +102,32 @@ nav .btnmenu .iconbtn {font-size: 2em;}
 nav .btnmenu:hover {
     background-color: var(--cor4);
     color: var(--cor1);
+}
+
+    /* Listas do Menu - Apenas quando passa o mouse por cima */
+.listamenu {
+    display: none;
+    position: fixed;
+    top: 93px;
+    border-radius: 0px 0px 7px 7px;
+    background-color: var(--cor4);
+}
+
+.listamenu.btnconta {right: 27vh;}
+.listamenu.btnsuporte {right: 19.35vh;}
+.listamenu.btncarrinho {right: 5vh;}
+
+.listamenu a.link-listamenu {
+    display: block;
+    padding: 10px;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: var(--cor1);
+    transition-duration: 0.3s;
+}
+
+.listamenu a.link-listamenu:hover {
+    background-color: #f0f0f0;
 }
 
 /* Caixa de Login */
