@@ -23,25 +23,56 @@
 
             <!--Menu PC-->
             <span id="menu-pc">
-                <a href="#">Alianças</a>
-                <a href="#">Brincos</a>
-                <a href="#">Colares</a>
+                <a href="#" class="link-menupc">Alianças</a>
+                <a href="#" class="link-menupc">Brincos</a>
+                <a href="#" class="link-menupc" style="margin-right: 50px;">Colares</a>
             </span>
 
             <!--Menu Mobile-->
             <span class="alterna-botoes">
-                <ion-icon name="person-circle" class="iconconta" onclick="redirecMinhaConta()" color="light"></ion-icon>
-                <ion-icon name="log-in" class="iconlogin" onclick="redirecLogin()" color="light"></ion-icon>
+                <ion-icon name="person-circle-outline" class="iconconta" onclick="redirecMinhaConta()" color="light"></ion-icon>
+                <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
+                <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
             </span>
 
             <!--Menu PC-->
             <span id="botoes-pc">
-                <button class="btnconta">Minha Conta</button>
-                <button class="btnlogin" onclick="redirecLogin()">Login</button>
+                <!-- Conta -->
+                <button class="btnmenu">
+                    <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>Conta
+                    <div class="listamenu btnconta">
+                        <a href="login.html" class="link-listamenu">Iniciar Sessão</a>
+                        <a href="#" class="link-listamenu">Criar Conta</a>
+                    </div>
+                </button>
+
+                <!-- Suporte -->
+                <button class="btnmenu">
+                    <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
+                    <div class="listamenu btnsuporte">
+                        <a href="#" class="link-listamenu">Contato</a>
+                        <a href="#" class="link-listamenu">FAQ</a>
+                    </div>
+                </button>
+
+                <!-- Carrinho -->
+                <button class="btnmenu">
+                    <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
+                    <div class="listamenu btncarrinho">
+                        <a href="#" class="link-listamenu">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="#" class="link-listamenu">Histórico</a>
+                    </div>
+                </button>
             </span>
         </nav>
     </header>
-
+    <span class="menu-pc-mobile">
+        <a href="#">Alianças</a>
+        <a href="#">Brincos</a>
+        <a href="#">Colares</a>
+    </span>
+    
     <!--LOGIN-->
     <div id="caixa" class="login">
         <div class="form-box">
@@ -77,7 +108,7 @@
     </div>
 
     <!--JAVASCRIPT-->
-    <script src="src/script/javascript/diversos.js" type="text/javascript"></script>
+    <script src="src/script/javascript/javascript.js" type="text/javascript"></script>
         <!--Ícones-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>

@@ -50,9 +50,7 @@
 
     .logo {width: 8vh;}
 
-    .menu-pc-mobile.active {
-        top: 10vh;
-    }
+    .menu-pc-mobile.active {top: 10vh;}
 
     .alterna-botoes, .alterna-menu {
         display: flex;
@@ -66,9 +64,16 @@
         top: 5vh;
     }
 
+    .alterna-botoes ion-icon {
+        position: relative;
+        top: 2.5vh;
+    }
+
     #botoes-pc {
         display: none;
         flex-direction: column;
         width: 100%;
     }
+
+    .listamenu {left: 37vh;}
 }
