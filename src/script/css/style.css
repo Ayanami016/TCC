@@ -14,6 +14,7 @@
     --cor4: #d9b4e0;
     --cor5: #E2CCE3;
     --cinza: rgb(78, 78, 78);
+    --sombra: rgba(66, 34, 87, 0.247);
 }
 
 body {
@@ -85,11 +86,11 @@ nav a:hover {background-color: var(--cor4);}
 
     /* Botões do Menu */
 nav .btnmenu {
+    margin: -2.2px;
     padding: 5px;
     width: 80px;
-    height: 80px;
+    height: 110px;
     border: none;
-    border-radius: 7px 7px 0px 0px;
     cursor: pointer;
     font-size: 16px;
     color: white;
@@ -108,13 +109,14 @@ nav .btnmenu:hover {
 .listamenu {
     display: none;
     position: fixed;
-    top: 93px;
+    top: 15vh;
     border-radius: 0px 0px 7px 7px;
+    box-shadow: 2px 2px 2px var(--sombra);
     background-color: var(--cor4);
 }
 
-.listamenu.btnconta {right: 27vh;}
-.listamenu.btnsuporte {right: 19.35vh;}
+.listamenu.btnconta {right: 26vh;}
+.listamenu.btnsuporte {right: 18.3vh;}
 .listamenu.btncarrinho {right: 5vh;}
 
 .listamenu a.link-listamenu {
@@ -127,7 +129,28 @@ nav .btnmenu:hover {
 }
 
 .listamenu a.link-listamenu:hover {
-    background-color: #f0f0f0;
+    color: white;
+    border-radius: 0px 0px 7px 7px;
+}
+
+    /* Resolução para surgir e sumir .listamenu
+    Está sendo aplicado no JavaScript */
+@keyframes surge-listamenu {
+    from {opacity: 0;}
+    to {
+        opacity: 1;
+        display: block;
+    }
+}
+@keyframes some-listamenu {
+    from {
+        opacity: 1;
+        display: block;
+    }
+    to {
+        opacity: 0;
+        display: none;
+    }
 }
 
 /* Caixa de Login */
@@ -138,9 +161,9 @@ nav .btnmenu:hover {
     align-items: center;
     width: 450px;
     padding: 30px;
-    border: 0px solid rgba(128, 128, 128, 0.300);
+    border: 0px solid var(--sombra);
     border-radius: 20px;
-    box-shadow: 0 0 20px rgba(128, 128, 128, 0.300);
+    box-shadow: 0 0 20px var(--sombra);
 }
 
 #caixa h1 {

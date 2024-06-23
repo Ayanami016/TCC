@@ -48,14 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
         botao.addEventListener("mouseenter", () => {
             const listamenu = botao.querySelector(".listamenu");
             if (listamenu) {
-                listamenu.style.display = "block";
+                listamenu.style = "display: block; animation: surge-listamenu 0.3s;";
             }
         });
 
         botao.addEventListener("mouseleave", () => {
             const listamenu = botao.querySelector(".listamenu");
             if (listamenu) {
-                listamenu.style.display = "none";
+                listamenu.style = "display: none; animation: some-listamenu 0.3s;";
             }
         });
     });
