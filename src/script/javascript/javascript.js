@@ -67,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
         botao_menumobile.addEventListener("mouseenter", () => {
             const listamenu = botao_menumobile.querySelector(".listamenu");
             if (listamenu) {
-                listamenu.style = "display: block; animation: surge-listamenu 0.3s;";
+                listamenu.style = "display: block; animation: surge-listamenu 0.3s; z-index: 3;";
             }
         });
 
         botao_menumobile.addEventListener("mouseleave", () => {
             const listamenu = botao_menumobile.querySelector(".listamenu");
             if (listamenu) {
-                listamenu.style = "display: none; animation: some-listamenu 0.3s;";
+                listamenu.style = "display: none; animation: some-listamenu 0.3s; z-index: 3;";
             }
         });
     });

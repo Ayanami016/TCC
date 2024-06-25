@@ -16,8 +16,7 @@
         top: 15vh;
         height: 6vh;
         background-color: var(--cor2);
-        padding: 0px 30px;;
-        /* background-color: rgba(255, 0, 0, 0.372); */
+        padding: 0px 30px;
     }
 
     .menu-pc-mobile a {
