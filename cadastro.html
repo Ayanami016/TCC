@@ -30,15 +30,39 @@
 
             <!--Menu Mobile-->
             <span class="alterna-botoes">
-                <ion-icon name="person-circle-outline" class="iconconta" onclick="redirecMinhaConta()" color="light"></ion-icon>
-                <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
+                <!-- Conta -->
+                <button class="btnmenu-mobile">
+                    <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
+                    <div class="listamenu">
+                        <a href="#" class="link-listamenu">Iniciar Sessão</a>
+                        <a href="#" class="link-listamenu">Criar Conta</a>
+                    </div>
+                </button>
+
+                <!-- Suporte -->
+                <button class="btnmenu-mobile">
+                    <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
+                    <div class="listamenu">
+                        <a href="#" class="link-listamenu">Contato</a>
+                        <a href="#" class="link-listamenu">FAQ</a>
+                    </div>
+                </button>
+
+                <!-- Carrinho -->
+                <button class="btnmenu-mobile">
+                    <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
+                    <div class="listamenu">
+                        <a href="#" class="link-listamenu">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="#" class="link-listamenu">Histórico</a>
+                    </div>
+                </button>
             </span>
 
             <!--Menu PC-->
             <span id="botoes-pc">
                 <!-- Conta -->
-                <button class="btnmenu">
+                <button class="btnmenu-pc">
                     <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>Conta
                     <div class="listamenu btnconta">
                         <a href="#" class="link-listamenu">Iniciar Sessão</a>
@@ -47,7 +71,7 @@
                 </button>
 
                 <!-- Suporte -->
-                <button class="btnmenu">
+                <button class="btnmenu-pc">
                     <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
                     <div class="listamenu btnsuporte">
                         <a href="#" class="link-listamenu">Contato</a>
@@ -56,7 +80,7 @@
                 </button>
 
                 <!-- Carrinho -->
-                <button class="btnmenu">
+                <button class="btnmenu-pc">
                     <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
                     <div class="listamenu btncarrinho">
                         <a href="#" class="link-listamenu">Ver Carrinho</a>
