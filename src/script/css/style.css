@@ -9,7 +9,7 @@
 /* OGC */
 /*Variáveis*/
 :root {
-    --cor1: #764f84;
+    --cor1: #623c6f;
     --cor2: #845f96;
     --cor3: #a777b4;
     --cor4: #d9b4e0;
@@ -66,7 +66,7 @@ nav a.link-menupc {
     position: relative;
     bottom: 16px;
     margin: -2px;
-    padding: 43px 20px;
+    padding: 5.9vh 20px;
     color: var(--cor1);
     font-size: 1.3em;
     font-weight: bold;
@@ -176,7 +176,6 @@ nav .btnmenu-mobile {
     align-items: center;
     width: 450px;
     padding: 30px;
-    border: 0px solid var(--sombra);
     border-radius: 20px;
     box-shadow: 0 0 20px var(--sombra);
     z-index: 1;
@@ -237,10 +236,6 @@ nav .btnmenu-mobile {
     color: black;
 }
 
-    /* Estilos para validação dos campos */
-.valido {border: 2px solid green;}
-.invalido {border: 2px solid red;}
-
 .icon-relevarsenha {cursor: pointer;}
 
     /* Esqueceu senha */
@@ -294,3 +289,36 @@ nav .btnmenu-mobile {
 }
 
 .cad-login a:hover {color: var(--cor1);}
+
+/* RODAPÉ */
+
+#rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background-color: var(--cor3);
+    text-align: center;
+}
+
+#rodape h1 {
+    color: var(--cor1);
+    font-size: 1.1em;
+}
+
+#rodape li, a {
+    text-decoration: none;
+    list-style: none;
+    color: var(--cor5);
+}
+
+#rodape a:hover {text-decoration: underline;}
+
+#rodape i {
+    margin: 3px;
+    font-size: 2.5em;
+    color: var(--cor5);
+}

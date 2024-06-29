@@ -31,6 +31,16 @@
         background-color: var(--cor3);
     }
 }
+@media (max-width: 727px) {
+    #rodape {
+        display: block;
+        padding: 10px;
+    }
+
+    #rodape li.ultimo {
+        margin-bottom: 20px;
+    }
+}
 
 @media (max-width: 500px) {
     header {height: 10%;}
