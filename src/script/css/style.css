@@ -313,8 +313,40 @@ nav .btnmenu-mobile {
 
 .cad-login a:hover {color: var(--cor1);}
 
-/* RODAPÉ */
+/* MINHA CONTA */
+#minha-conta {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    height: 60%;
+    padding: 0px 60px;
+    border: 2px solid red;
+}
 
+#minha-conta h1 {
+    font-size: 2.2em;
+    color: var(--cor1);
+}
+
+.caixa-minha-conta, .caixa-compra {
+    width: 60vh;
+    text-align: center;
+    height: 30vh;
+    border-radius: 18px;
+    border: 3px solid var(--cor4);
+}
+
+.caixa-minha-conta h2, .caixa-compra h2 {
+    padding: 10px;
+    background-color: var(--cor5);
+    font-size: 1.3em;
+    color: var(--cor2);
+    border-radius: 15px 15px 0px 0px;
+}
+
+/* RODAPÉ */
 #rodape {
     display: flex;
     justify-content: space-between;
