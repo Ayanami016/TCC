@@ -83,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
 //Formata o campo CPF para adicionar . e -
 let campoCPF = document.querySelector(".cpf")
 
-campoCPF.addEventListener("keypress", ()=>{
+campoCPF.addEventListener("keypress", ()=> {
     let tamCampoCPF = campoCPF.value.length
 
     if (tamCampoCPF == 3 || tamCampoCPF == 7) {

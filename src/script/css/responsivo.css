@@ -1,4 +1,4 @@
-@media (max-width: 870px) {
+@media (max-width: 1320px) {
     .alterna-menu {
         display: flex;
         position: absolute;
@@ -16,7 +16,7 @@
         top: 15vh;
         height: 6vh;
         background-color: var(--cor2);
-        padding: 0px 30px;
+        padding: 0px 40px;
     }
 
     .menu-pc-mobile a {
@@ -30,8 +30,20 @@
     .menu-pc-mobile a:hover {
         background-color: var(--cor3);
     }
+
+    .menu-pesquisa {
+        position: absolute;
+        left: 19vh;
+    }
 }
-@media (max-width: 727px) {
+
+@media (max-width: 1063px) {
+    .menu-pesquisa {
+        width: 42%;
+    }
+}
+
+@media (max-width: 770px) {
     #rodape {
         display: block;
         padding: 10px;
@@ -40,9 +52,7 @@
     #rodape li.ultimo {
         margin-bottom: 20px;
     }
-}
 
-@media (max-width: 500px) {
     header {height: 10%;}
 
     #caixa {
@@ -85,4 +95,9 @@
     }
 
     .listamenu {left: 37vh;}
+
+    .menu-pesquisa {
+        left: 17vh;
+        width: 20vh;
+    }
 }

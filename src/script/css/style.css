@@ -25,7 +25,7 @@ body {
     height: 100vh;
 }
 
-/* Cabeçalho */
+/* CABEÇALHO */
 header {
     position: fixed;
     top: 0;
@@ -41,9 +41,25 @@ header {
     z-index: 3;
 }
 
-.logo {width: 10vh;}
 
     /* Itens do Menu */
+.logo {width: 10vh;}
+
+.menu-pesquisa {
+    margin: 10px;
+    padding: 5px 5px 5px 10px;
+    width: 80vh;
+    font-size: 1em;
+    line-height: 30px;
+    border-radius: 15px;
+    border: none;
+}
+
+.menu-pesquisa:focus {
+    outline: none;
+    border: 2px solid var(--cor2);
+}
+
 nav ion-icon.iconmenu {
     display: flex;
     justify-content: center;
