@@ -60,6 +60,13 @@ header {
     border: 2px solid var(--cor2);
 }
 
+    /* Campo de Pesquisa para Mobile */
+.menu-pesquisa-mobile {
+    display: none;
+    width: 100%;
+    box-shadow: 0px 2px 5px var(--sombra);
+}
+
 nav ion-icon.iconmenu {
     display: flex;
     justify-content: center;

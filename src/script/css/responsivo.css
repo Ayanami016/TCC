@@ -98,6 +98,34 @@
 
     .menu-pesquisa {
         left: 17vh;
-        width: 20vh;
+        width: 40%;
+    }
+}
+
+@media (max-width: 530px) {
+    .menu-pesquisa {display: none;}
+
+    .menu-pesquisa-mobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 10vh;
+        left: 0;
+        height: 6vh;
+        background-color: var(--cor5);
+    }
+
+    .menu-pesquisa-mobile input {
+        padding: 5px 5px 5px 10px;
+        width: 80%;
+        border: none;
+        font-size: 1em;
+        border-radius: 15px;
+    }
+
+    .menu-pesquisa-mobile input:focus {
+        outline: none;
+        border: 2px solid var(--cor2);
     }
 }
