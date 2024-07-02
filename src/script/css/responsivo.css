@@ -100,6 +100,8 @@
         left: 17vh;
         width: 40%;
     }
+
+    #minha-conta {flex-direction: column;}
 }
 
 @media (max-width: 530px) {
@@ -127,5 +129,11 @@
     .menu-pesquisa-mobile input:focus {
         outline: none;
         border: 2px solid var(--cor2);
+    }
+
+    #minha-conta {padding: 5px;}
+
+    .caixa-minha-conta, .caixa-compra {
+        width: 100%;
     }
 }
