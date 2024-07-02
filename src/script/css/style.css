@@ -20,6 +20,7 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -316,12 +317,12 @@ nav .btnmenu-mobile {
 
 /* MINHA CONTA */
 #minha-conta {
-    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20vh;
     width: 90%;
-    height: 60%;
+    min-height: 90vh;
     padding: 0px 60px;
 }
 
@@ -387,7 +388,7 @@ nav .btnmenu-mobile {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: absolute;
+    position: relative;
     bottom: 0;
     width: 100%;
     padding: 20px 100px;

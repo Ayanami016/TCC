@@ -101,7 +101,11 @@
         width: 40%;
     }
 
-    #minha-conta {flex-direction: column;}
+    #minha-conta {
+        margin-top: 180px;
+        justify-content: flex-end;
+        flex-direction: column;
+    }
 }
 
 @media (max-width: 530px) {
@@ -131,7 +135,9 @@
         border: 2px solid var(--cor2);
     }
 
-    #minha-conta {padding: 5px;}
+    #minha-conta {
+        padding: 5px;
+    }
 
     .caixa-minha-conta, .caixa-compra {
         width: 100%;
