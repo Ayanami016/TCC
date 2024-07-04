@@ -368,19 +368,40 @@ nav .btnmenu-mobile {
 
 .conteudo-minhaconta p {color: var(--cinza);}
 
-.btn-minhaconta {
-    width: 200px;
+.btn-minhaconta, .btn-compra {
+    width: 150px;
     padding: 15px;
     margin: 15px;
-    background-color: var(--cor3);
     border: none;
     border-radius: 13px;
     cursor: pointer;
+    transition-duration: 0.3s;
 }
 
-.btn-minhaconta a {
+.btn-minhaconta::after, .btn-compra::after {
+    content: attr(btn-placeholder);
     font-size: 1.3em;
     font-weight: bold;
+}
+
+.btn-minhaconta {
+    color: var(--cor3);
+    background-color: var(--cor5);
+}
+
+.btn-minhaconta:hover {
+    color: var(--cor5);
+    background-color: var(--cor3);
+}
+
+.btn-compra {
+    color: var(--cor5);
+    background-color: var(--cor3);
+}
+
+.btn-compra:hover {
+    color: var(--cor3);
+    background-color: var(--cor5);
 }
 
 /* RODAPÉ */
