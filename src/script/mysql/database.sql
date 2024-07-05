@@ -36,7 +36,7 @@ nome_prod varchar(80) not null,
 tipo_prod varchar(80) not null,
 cor_prod varchar(20) not null,
 material_prod varchar(80) not null,
-tamanho_prod varchar(10) not null,
+tamanho_prod varchar(80) not null,
 estoque int(8) not null,
 preco decimal(10,2) not null,
 fk_fornec int(8) -- FK
@@ -101,7 +101,6 @@ insert into fornecedor (nome_fornec, tel_fornec, descricao_fornec, historico_ped
 insert into entrega (status_ent, metodo_envio, fk_cliente, fk_prod, fk_endereco)
 	values ('Enviando','Sedex',1,1,1);
 
-
 -- FOREIGN KEY - TABELAS A SEREM ALTERADAS: endereco, cliente, produto, entrega
 -- EXECUTAR ISSO PRIMEIRO CASO HAJA DROP TABLES
 SET foreign_key_checks = 0;
@@ -116,8 +115,8 @@ alter table entrega add constraint fk_id_prod_entrega foreign key (fk_prod) refe
 alter table entrega add constraint fk_id_endereco_entrega foreign key (fk_endereco) references endereco (id_endereco);
 
 show tables;
-select * from pedido;
-drop database tcc;
+select * from produto;
+drop table produto;
 
 /*LISTA DE COMANDOS
 Ver tabela: select * from [nome_tabela]
@@ -132,3 +131,6 @@ add constraint nome da fk - aqui voce personaliza
 foreign key (fk)
 references nome da tabela onde a fk se encontra (fk)
 */
+
+insert into produto (id, descricao, nome, tipo) values
+(1,'Pulseira elegante com pedras naturais variadas, ideal para ocasiões especiais.',	'Pulseira de Prata com Pedras Naturais',	'Pulseira')

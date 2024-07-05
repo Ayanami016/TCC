@@ -3,7 +3,7 @@
         display: flex;
         position: absolute;
         left: 0;
-        top: 4.5vh;
+        top: 3vh;
     }
 
     #menu-pc {display: none;}
@@ -27,9 +27,7 @@
         transition-duration: 0.3s;
     }
 
-    .menu-pc-mobile a:hover {
-        background-color: var(--cor3);
-    }
+    .menu-pc-mobile a:hover {background-color: var(--cor3);}
 
     .menu-pesquisa {
         position: absolute;
@@ -38,9 +36,7 @@
 }
 
 @media (max-width: 1063px) {
-    .menu-pesquisa {
-        width: 42%;
-    }
+    .menu-pesquisa {width: 42%;}
 }
 
 @media (max-width: 770px) {
@@ -49,9 +45,7 @@
         padding: 10px;
     }
 
-    #rodape li.ultimo {
-        margin-bottom: 20px;
-    }
+    #rodape li.ultimo {margin-bottom: 20px;}
 
     header {height: 10%;}
 
@@ -67,7 +61,7 @@
         box-shadow: none;
     }
 
-    .logo {width: 8vh;}
+    .logo {width: 7vh;}
 
     .menu-pc-mobile.active {top: 10vh;}
 
@@ -135,11 +129,7 @@
         border: 2px solid var(--cor2);
     }
 
-    #minha-conta {
-        padding: 5px;
-    }
+    #minha-conta {padding: 5px;}
 
-    .caixa-minha-conta, .caixa-compra {
-        width: 100%;
-    }
+    .caixa-minha-conta, .caixa-compra {width: 100%;}
 }

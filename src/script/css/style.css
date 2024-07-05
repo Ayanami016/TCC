@@ -36,19 +36,18 @@ header {
     align-items: center;
     padding: 0px 60px;
     width: 100%;
-    height: 15%;
+    height: 13%;
     background-color: var(--cor3);
     box-shadow: 0 3px 10px var(--sombra);
     z-index: 3;
 }
 
-
     /* Itens do Menu */
-.logo {width: 10vh;}
+.logo {width: 9vh;}
 
 .menu-pesquisa {
     margin: 10px;
-    padding: 5px 5px 5px 10px;
+    padding: 2px 2px 2px 15px;
     width: 80vh;
     font-size: 1em;
     line-height: 30px;
@@ -91,7 +90,7 @@ nav a.link-menupc {
     position: relative;
     bottom: 16px;
     margin: -2px;
-    padding: 5.9vh 20px;
+    padding: 4.7vh 19px;
     color: var(--cor1);
     font-size: 1.3em;
     font-weight: bold;
@@ -119,7 +118,7 @@ nav .btnmenu-pc {
     margin: -2.2px;
     padding: 5px;
     width: 80px;
-    height: 110px;
+    height: 13vh; /* Mesmo valor da altura do header */
     border: none;
     cursor: pointer;
     font-size: 1em;
@@ -146,7 +145,7 @@ nav .btnmenu-mobile {
 .listamenu {
     display: none;
     position: fixed;
-    top: 15vh;
+    top: 13vh; /* Mesmo valor da altura do header */
     border-radius: 0px 0px 7px 7px;
     box-shadow: 3px 3px 5px var(--sombra);
     background-color: var(--cor4);
@@ -155,9 +154,9 @@ nav .btnmenu-mobile {
 
 .btnmenu-mobile .listamenu {top: 10vh;}
 
-.listamenu.btnconta {right: 26vh;}
-.listamenu.btnsuporte {right: 18.3vh;}
-.listamenu.btncarrinho {right: 5vh;}
+.listamenu.btnconta {right: 29.5vh;}
+.listamenu.btnsuporte {right: 21.3vh;}
+.listamenu.btncarrinho {right: 5.5vh;}
 
 .listamenu a.link-listamenu {
     display: block;
@@ -337,7 +336,6 @@ nav .btnmenu-mobile {
     flex-direction: column;
     width: 50vh;
     text-align: center;
-    height: 30vh;
     border-radius: 18px;
     border: 3px solid var(--cor5);
 }
