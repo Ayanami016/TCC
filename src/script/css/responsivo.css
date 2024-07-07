@@ -1,4 +1,4 @@
-@media (max-width: 1320px) {
+@media (max-width: 1200px) {
     .alterna-menu {
         display: flex;
         position: absolute;
@@ -22,7 +22,7 @@
     .menu-pc-mobile a {
         text-decoration: none;
         font-size: 1.3em;
-        padding: 1.3vh 3vh;
+        padding: 0.7vh 3vh;
         color: white;
         transition-duration: 0.3s;
     }
@@ -100,6 +100,8 @@
         justify-content: flex-end;
         flex-direction: column;
     }
+
+    .caixa-minha-conta, .caixa-compra {margin: 0 0 5vh 0;}
 }
 
 @media (max-width: 530px) {

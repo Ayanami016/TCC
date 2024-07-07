@@ -1,13 +1,12 @@
-/* Configuração geral */
+/* CONFIGURAÇÃO GERAL */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: texto, sans-serif;
 }
 
-/* OGC */
-/*Variáveis*/
+/* VARIÁVEIS */
 :root {
     --cor1: #623c6f;
     --cor2: #845f96;
@@ -16,6 +15,23 @@
     --cor5: #E2CCE3;
     --cinza: rgb(78, 78, 78);
     --sombra: rgba(66, 34, 87, 0.247);
+}
+
+/* FONTES */
+@font-face {
+    font-family: titulo;
+    src: url(../fontes/Facelio.ttf);
+    font-weight: bolder;
+}
+
+@font-face {
+    font-family: texto;
+    src: url(../fontes/Wellingtons-Regular.otf);
+}
+
+@font-face {
+    font-family: texto-negrito;
+    src: url(../fontes/Wellingtons-Bold.otf);
 }
 
 body {
@@ -90,9 +106,10 @@ nav a.link-menupc {
     position: relative;
     bottom: 16px;
     margin: -2px;
-    padding: 4.7vh 19px;
+    padding: 5vh 19px 4.4vh 19px;
     color: var(--cor1);
     font-size: 1.3em;
+    font-family: texto-negrito;
     font-weight: bold;
     text-decoration: none;
     transition-duration: 0.3s;
@@ -122,7 +139,7 @@ nav .btnmenu-pc {
     border: none;
     cursor: pointer;
     font-size: 1em;
-    color: white;
+    color: var(--cor5);
     background: transparent;
     transition-duration: 0.3s;
 }
@@ -208,6 +225,8 @@ nav .btnmenu-mobile {
 #caixa h1 {
     position: relative;
     left: -10px;
+    font-size: 2.3em;
+    font-family: titulo;
     color: var(--cor3);
     text-align: center;
 }
@@ -273,7 +292,7 @@ nav .btnmenu-mobile {
 }
 
 .remember-forgot a:hover {
-    color: var(--cor1);
+    color: var(--cor2);
     font-weight: bold;
 }
 
@@ -327,7 +346,8 @@ nav .btnmenu-mobile {
 
 #minha-conta h1 {
     padding: 10px;
-    font-size: 2.2em;
+    font-size: 3em;
+    font-family: titulo;
     color: var(--cor1);
 }
 
@@ -354,6 +374,7 @@ nav .btnmenu-mobile {
     padding: 10px;
     background-color: var(--cor5);
     font-size: 1.3em;
+    font-family: texto-negrito;
     color: var(--cor2);
     border-radius: 15px 15px 0px 0px;
 }
@@ -368,7 +389,7 @@ nav .btnmenu-mobile {
 
 .btn-minhaconta, .btn-compra {
     width: 150px;
-    padding: 15px;
+    padding: 10px;
     margin: 15px;
     border: none;
     border-radius: 13px;
