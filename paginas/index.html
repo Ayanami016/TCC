@@ -11,7 +11,7 @@
 <body>
     <header>
         <span>
-            <a href="../index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
+            <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
         <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
@@ -105,7 +105,67 @@
     </span>
 
     <!-- CATÁLOGO -->
-     <p>AAAAAAAAAAAAAAAAAAAAAAAAAAAAÁÁÁÁ´´AASSOFDFOERSOFDIFR. . . . . </p>
+        <!-- Min-width maior para o menor -->
+    <picture id="catalogo">
+        <source media="(min-width: 1485px)" srcset="../src/img/ph-catalogo-pc.jpg">
+        <img src="../src/img/ph-catalogo-pc.jpg" alt="Imagem de Catálogo">
+    </picture>
+
+    <!-- SOBRE A LOJA -->
+    <article class="sobre-loja">
+        <h1>Sobre a Loja</h1>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellendus alias illum pariatur provident repellat ipsa molestias libero? Delectus nesciunt deleniti, sunt maxime nisi ad, magnam est cumque quisquam animi totam! Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda praesentium obcaecati dignissimos eveniet, ea molestias minus at porro pariatur adipisci voluptates accusantium, sapiente soluta aliquam cum vero, numquam deserunt cumque!</p>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Autem, accusamus perferendis consectetur vero totam aliquid illo quo, deserunt facere voluptatum nulla deleniti repudiandae ipsa qui sint minus optio tempore ab?</p>
+        <a href="#"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+    </article>
+
+    <!-- MAIS VENDIDOS -->
+    <article id="mais-vendidos">
+        <h1>Mais Vendidos</h1>
+        <div class="produto">
+            <img src="../src/img/ph-produto.jpg" alt="Produto" width="250px" style="border: 2px solid red;">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p class="preco">R$900,00</p>
+
+            <div class="botoes-produto">
+                <button class="btn-compra" btn-placeholder="Comprar"></button>
+                <ion-icon name="add-outline"></ion-icon>
+            </div>
+        </div>
+
+        <div class="produto">
+            <img src="../src/img/ph-produto.jpg" alt="Produto" width="250px" style="border: 2px solid red;">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p class="preco">R$900,00</p>
+
+            <div class="botoes-produto">
+                <button class="btn-compra" btn-placeholder="Comprar"></button>
+                <ion-icon name="add-outline"></ion-icon>
+            </div>
+        </div>
+        
+        <div class="produto">
+            <img src="../src/img/ph-produto.jpg" alt="Produto" width="250px" style="border: 2px solid red;">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p class="preco">R$900,00</p>
+
+            <div class="botoes-produto">
+                <button class="btn-compra" btn-placeholder="Comprar"></button>
+                <ion-icon name="add-outline"></ion-icon>
+            </div>
+        </div>
+
+        <div class="produto">
+            <img src="../src/img/ph-produto.jpg" alt="Produto" width="250px" style="border: 2px solid red;">
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
+            <p class="preco">R$900,00</p>
+
+            <div class="botoes-produto">
+                <button class="btn-compra" btn-placeholder="Comprar"></button>
+                <ion-icon name="add-outline"></ion-icon>
+            </div>
+        </div>
+    </article>
 
     <!-- RODAPÉ -->
     <footer id="rodape">

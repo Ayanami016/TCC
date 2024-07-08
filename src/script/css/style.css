@@ -42,6 +42,8 @@ body {
     height: 100vh;
 }
 
+h1 {font-family: titulo;}
+
 /* CABEÇALHO */
 header {
     position: fixed;
@@ -226,7 +228,6 @@ nav .btnmenu-mobile {
     position: relative;
     left: -10px;
     font-size: 2.3em;
-    font-family: titulo;
     color: var(--cor3);
     text-align: center;
 }
@@ -333,6 +334,70 @@ nav .btnmenu-mobile {
 
 .cad-login a:hover {color: var(--cor1);}
 
+/* PÁGINA INICIAL */
+#catalogo {
+    margin-top: 35%;
+    border: 2px solid red;
+}
+
+.sobre-loja, #mais-vendidos {
+    width: 95%;
+    margin-top: 5vh;
+    border: 2px solid red;
+}
+
+.sobre-loja, #mais-vendidos {padding: 20px;}
+
+.sobre-loja h1, #mais-vendidos h1 {
+    font-size: 3em;
+    color: var(--cor1);
+}
+
+.sobre-loja p {
+    margin-top: 10px;
+    line-height: 1.5em;
+}
+
+#mais-vendidos {
+    text-align: center;
+}
+
+/* ATRIBUTOS PARA PRODUTO */
+.produto {
+    display: inline-block;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    width: 40vh;
+    padding: 20px;
+    border: 2px solid blue;
+}
+
+.preco {
+    font-size: 1.2em;
+    font-family: texto-negrito;
+    justify-content: space-between;
+}
+
+.botoes-produto {
+    border: 2px solid green;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-compra {
+    position: relative;
+    left: 35px;
+}
+
+.botoes-produto ion-icon {
+    font-size: 1.5em;
+    color: var(--cinza);
+}
+
 /* MINHA CONTA */
 #minha-conta {
     display: flex;
@@ -347,7 +412,6 @@ nav .btnmenu-mobile {
 #minha-conta h1 {
     padding: 10px;
     font-size: 3em;
-    font-family: titulo;
     color: var(--cor1);
 }
 
@@ -387,7 +451,7 @@ nav .btnmenu-mobile {
 
 .conteudo-minhaconta p {color: var(--cinza);}
 
-.btn-minhaconta, .btn-compra {
+.btn-minhaconta, .btn-index, .btn-saibamais, .btn-compra {
     width: 150px;
     padding: 10px;
     margin: 15px;
@@ -397,10 +461,10 @@ nav .btnmenu-mobile {
     transition-duration: 0.3s;
 }
 
-.btn-minhaconta::after, .btn-compra::after {
+.btn-minhaconta::after, .btn-index::after, .btn-saibamais::after, .btn-compra::after {
     content: attr(btn-placeholder);
     font-size: 1.3em;
-    font-weight: bold;
+    font-family: texto-negrito;
 }
 
 .btn-minhaconta {
@@ -413,12 +477,12 @@ nav .btnmenu-mobile {
     background-color: var(--cor3);
 }
 
-.btn-compra {
+.btn-index, .btn-saibamais, .btn-compra, .btn-compra {
     color: var(--cor5);
     background-color: var(--cor3);
 }
 
-.btn-compra:hover {
+.btn-index:hover, .btn-saibamais:hover, .btn-compra:hover, .btn-compra:hover {
     color: var(--cor3);
     background-color: var(--cor5);
 }
