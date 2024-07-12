@@ -1,3 +1,4 @@
+/* COMPUTADOR */
 @media (max-width: 1485px) {
     .alterna-menu {
         display: flex;
@@ -33,10 +34,15 @@
         position: absolute;
         left: 19vh;
     }
+
+    .produto {width: 35vh;}
 }
 
+/* TABLET */
 @media (max-width: 1063px) {
     .menu-pesquisa {width: 42%;}
+
+    .sobre-loja {text-align: center;}
 }
 
 @media (max-width: 770px) {
@@ -104,6 +110,7 @@
     .caixa-minha-conta, .caixa-compra {margin: 0 0 5vh 0;}
 }
 
+/* MOBILE */
 @media (max-width: 530px) {
     .menu-pesquisa {display: none;}
 
@@ -134,4 +141,6 @@
     #minha-conta {padding: 5px;}
 
     .caixa-minha-conta, .caixa-compra {width: 100%;}
+
+    .produto {width: 80%;}
 }

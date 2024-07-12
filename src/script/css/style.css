@@ -347,7 +347,7 @@ nav .btnmenu-mobile {
 
     /* Sobre a Loja */
 .sobre-loja, .produtos, .prod-destaque-direita, .prod-destaque-esquerda {margin-top: 5vh;}
-.prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja {width: 88.5%;}
+.prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja {width: 85%;}
 
 .sobre-loja h1, .produtos h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1 {
     font-size: 3.5em;
@@ -416,8 +416,8 @@ nav .btnmenu-mobile {
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin: 20px;
-    width: 40vh;
+    margin: 10px;
+    width: 20%;
     padding: 20px;
     box-shadow: 0 0 10px var(--sombra);
 }
