@@ -20,18 +20,18 @@
 /* FONTES */
 @font-face {
     font-family: titulo;
-    src: url(../fontes/Facelio.ttf);
+    src: url(./fontes/Facelio.ttf);
     font-weight: bolder;
 }
 
 @font-face {
     font-family: texto;
-    src: url(../fontes/Wellingtons-Regular.otf);
+    src: url(./fontes/Wellingtons-Regular.otf);
 }
 
 @font-face {
     font-family: texto-negrito;
-    src: url(../fontes/Wellingtons-Bold.otf);
+    src: url(./fontes/Wellingtons-Bold.otf);
 }
 
 html {scroll-behavior: smooth;}
@@ -335,6 +335,25 @@ nav .btnmenu-mobile {
 }
 
 .cad-login a:hover {color: var(--cor1);}
+
+/*MENSAGEM ERRO  LOGO*/
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px; /* Altura do contêiner flexível */
+    width: 100%; /* Largura do contêiner flexível */
+    
+}
+
+    /* CSS para formatar a imagem */
+#image {
+    display: none;
+    width: 350px; /* Largura da imagem */
+    height: auto; /* Altura automática para manter a proporção */
+    opacity: 100%;
+    z-index: 2;
+}
 
 /* PÁGINA INICIAL */
     /* Catálogo */

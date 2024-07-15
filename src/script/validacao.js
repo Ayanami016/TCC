@@ -7,11 +7,11 @@ function clickNome() {
     nomeSobrenome = /\b[A-Za-zÀ-ú][A-Za-zÀ-ú]+,?\s[A-Za-zÀ-ú][A-Za-zÀ-ú]{2,19}\b/gi;    
     if(!(nomeSobrenome.test(texto))){
          nunNome = 0
-            alert ('NOME Inválido ' + nunNome);          
+                     
         }else{
             //campo valido
          nunNome = 1
-            alert ('NOME Válido ' + nunNome);}
+            }
 }
 
 //Cpf
@@ -21,10 +21,10 @@ function clickCpf(){
     if(tamanho === 14){
         //campo valido
      nunCpf = 1
-        alert ("CPF valido " + nunCpf)
+       
     }else{
         nunCpf = 0
-        alert("CPF invalido " + nunCpf)}
+        }
 }
 
 //telefone
@@ -34,10 +34,10 @@ function clickTell(){
     if(size === 14){
         //campo valido
         nunTell = 1  
-        alert ("Tel valido "+ nunTell) 
+       
     }else{
         nunTell = 0 
-    alert("Tel invalido " + nunTell)}
+   }
 }
 
 //senha
@@ -52,20 +52,19 @@ if(tamanhosenha >= 8){
     if(senha1 == senha2){
         //campo valido
         nunSenha = 1
-        alert("SENHA TA CERTA " + nunSenha)       
+               
     }else{
-        alert("SENHA TA ERRADA " + nunSenha)}
+       }
         nunSenha = 0
     }  else{
         nunSenha = 0
-    alert("senha prescisa ser maior " + nunSenha)}
+    }
 }
 
 //função de confirmação
 function confirmacao(){
     //soma de todos os campos considerados validos
     var campos = nunCpf + nunNome + nunSenha + nunTell
-alert ("teste de mesa: " + campos)
 
 if(campos === 3 ){
     //se for considerado valido ira conectar no banco e inserir os dados logo apos levar a outra pagina (obs: ainda fazer)
@@ -78,7 +77,7 @@ document.getElementById("btn").addEventListener('click', function errado() {
     img.style.display = 'block'
     setTimeout(function errado() {
         img.style.display = 'none'
-    }, 5000); // 5000 milissegundos = 5 segundos possivel mudar 
+    }, 6000); // 5000 milissegundos = 5 segundos possivel mudar 
 })
 }
 } 

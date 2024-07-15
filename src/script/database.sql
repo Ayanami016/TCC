@@ -22,10 +22,10 @@ fk_cliente int(8) -- FK
 create table cliente (
 id_cliente int(8) auto_increment primary key,
 nome_cli varchar (80) not null,
-senha_cli varchar (20) not null,
 email_cli varchar(80) not null unique,
-tel_cli varchar(14) not null unique,
 cpf_cli varchar(14) not null unique,
+tel_cli varchar(14) not null unique,
+senha_cli varchar (20) not null,
 fk_endereco int(8) -- FK
 ) charset = utf8;
 
