@@ -8,7 +8,7 @@
     $telefone = $_POST['tel'];
     $senha = $_POST['senha'];
 
-    $insere = "insert into cliente (nome_cli, email_cli, cpf_cli, tel_cli, senha_cli) values ('$nome','$email','$cpf','$tel','$senha')";
+    $insere = "insert into cliente (nome_cli, email_cli, cpf_cli, tel_cli, senha_cli) values ('$nome','$email','$cpf','$telefone','$senha')";
     $resultado = mysqli_query($conexao,$insere);
 
     if (!$resultado) {

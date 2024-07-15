@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Login</title>
+<!DOCTYPE html>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
@@ -36,8 +37,8 @@
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
                     <div class="listamenu">
-                        <a href="login.html" class="link-listamenu">Iniciar Sessão</a>
-                        <a href="cadastro.html" class="link-listamenu">Criar Conta</a>
+                        <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
+                        <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
                         <a href="minha-conta.html" class="link-listamenu">Minha Conta</a>
                     </div>
                 </button>
@@ -68,8 +69,8 @@
                 <button class="btnmenu-pc">
                     <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>Conta
                     <div class="listamenu btnconta">
-                        <a href="login.html" class="link-listamenu">Iniciar Sessão</a>
-                        <a href="cadastro.html" class="link-listamenu">Criar Conta</a>
+                        <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
+                        <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
                         <a href="minha-conta.html" class="link-listamenu">Minha Conta</a>
                     </div>
                 </button>
@@ -105,21 +106,11 @@
         <a href="#">Colares</a>
     </span>
 
-    <!--CADASTRO-->
-    <!--Nome, email, cpf, telefone e senha-->
-    <div id="caixa" class="cadastro">
+    <!--LOGIN-->
+    <div id="caixa" class="login">
         <div class="form-box">
-            <h1>&#x1F48E Crie sua conta!</h1>
-            <form action="" id="form-cad">
-                <!--Nome-->
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <input type="text" name="nome" id="nome" required>
-                    <label for="nome">Nome</label>
-                </div>
-
+            <h1>&#x1F44B Iniciar Sessão</h1>
+            <form action="#">
                 <!--Email-->
                 <div class="input-box">
                     <span class="icon">
@@ -128,25 +119,6 @@
                     <input type="email" name="email" id="email" required>
                     <label for="email">Email</label>
                 </div>
-
-                <!--CPF-->
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="terminal-outline"></ion-icon>
-                    </span>
-                    <input type="text" name="cpf" id="cpf" class="cpf" maxlength="14" required>
-                    <label for="cpf">CPF</label>
-                </div>
-
-                <!--Telefone-->
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="call-outline"></ion-icon>
-                    </span>
-                    <input type="text" name="tel" id="tel" class="tel" maxlength="14" required>
-                    <label for="tel">Telefone</label>
-                </div>
-
                 <!--Senha-->
                 <div class="input-box">
                     <span class="icon-relevarsenha" onclick="Mostrar_Senha()">
@@ -155,20 +127,14 @@
                     <input type="password" name="senha" id="senha" required>
                     <label for="senha">Senha</label>
                 </div>
-
-                <!--Confirmar Senha-->
-                <div class="input-box">
-                    <span class="icon-relevarsenha" onclick="Mostrar_ConfirmarSenha()">
-                        <ion-icon name="eye-off-outline" id="iconconfirmarsenha" onclick="Mudar_IconConfirmarSenha()"></ion-icon>
-                    </span>
-                    <input type="password" name="confirmarsenha" id="confirmarsenha" required>
-                    <label for="confirmarsenha">Confirmar Senha</label>
+                <!--Esqueceu a Senha-->
+                <div class="remember-forgot">
+                    <a href="#">Esqueceu a Senha?</a>
                 </div>
-
-                <!--Cadastrar-->
-                <input type="submit" class="btn-form" value="CADASTRAR"></input>
+                <!--Iniciar Sessão-->
+                <input type="submit" class="btn-form" value="INICIAR SESSÃO"></input>
                 <div class="cad-login">
-                    <p>Já possui uma conta? <a href="login.html">Entre aqui!</a></p>
+                    <p>Não tem uma conta? <a href="cadastro.php">Cadastre-se</a></p>
                 </div>
             </form>
         </div>
@@ -176,14 +142,8 @@
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
-    <script src="../src/script/validacao.js" type="text/javascript"></script>
         <!--Ícones-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <!--Notificação de erro-->
-    <div class="image-container">
-        <img id="image" src="../src/img/alertMessage.jpg" alt="Imagem de Alerta">
-    </div>
 </body>
 </html>
