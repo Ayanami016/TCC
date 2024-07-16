@@ -176,14 +176,8 @@
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
-    <!-- <script src="../src/script/validacao.js" type="text/javascript"></script> -->
-        <!--Ícones-->
+        <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
-    <!--Notificação de erro-->
-    <!-- <div class="image-container">
-        <img id="image" src="../src/img/alertMessage.jpg" alt="Imagem de Alerta">
-    </div> -->
 </body>
 </html>
