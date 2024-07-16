@@ -166,7 +166,7 @@
                 </div>
 
                 <!--Cadastrar-->
-                <input type="submit" class="btn-form" value="CADASTRAR"></input>
+                <input type="submit" class="btn-form" value="CADASTRAR" onclick="clickNome(),clickCpf(),clickTell(),clickSenha(),confirmacao()"></input>
                 <div class="cad-login">
                     <p>Já possui uma conta? <a href="login.php">Entre aqui!</a></p>
                 </div>
@@ -176,14 +176,14 @@
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
-    <script src="../src/script/validacao.js" type="text/javascript"></script>
+    <!-- <script src="../src/script/validacao.js" type="text/javascript"></script> -->
         <!--Ícones-->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
     <!--Notificação de erro-->
-    <div class="image-container">
+    <!-- <div class="image-container">
         <img id="image" src="../src/img/alertMessage.jpg" alt="Imagem de Alerta">
-    </div>
+    </div> -->
 </body>
 </html>
