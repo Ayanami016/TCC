@@ -161,5 +161,8 @@
 
     .produto {width: 80%;}
 
-    .prod-destaque-direita img, .prod-destaque-esquerda img {width: 85%;}
+    .prod-destaque-direita img, .prod-destaque-esquerda img {
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
 }

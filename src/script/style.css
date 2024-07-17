@@ -36,6 +36,10 @@
 
 html {scroll-behavior: smooth;}
 
+/* Testar */
+html::-webkit-scrollbar-thumb {background: var(--cor3);}
+html::-webkit-scrollbar-track {background: var(--cor5);}
+
 body {
     display: flex;
     flex-direction: column;
@@ -364,10 +368,10 @@ nav .btnmenu-mobile {
 }
 
     /* Sobre a Loja */
-.sobre-loja, .produtos, .prod-destaque-direita, .prod-destaque-esquerda {margin-top: 5vh;}
-.prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja {width: 85%;}
+.sobre-loja, .produtos, .prod-destaque-direita, .prod-destaque-esquerda, .conheca-produtos {margin-top: 5vh;}
+.prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja, .conheca-produtos {width: 85%;}
 
-.sobre-loja h1, .produtos h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1 {
+.sobre-loja h1, .produtos h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1, .conheca-produtos h1 {
     font-size: 3.5em;
     color: var(--cor1);
 }
@@ -377,8 +381,46 @@ nav .btnmenu-mobile {
     font-size: 1.2em;
     line-height: 1.5em;
 }
-    /* Mais Vendidos */
-.produtos {text-align: center;}
+    /* Mais Vendidos e Conheça nossos Produtos*/
+.produtos, .conheca-produtos {text-align: center;}
+
+.conheca-produtos {
+    padding: 30px;
+    box-shadow: 0 0 20px var(--sombra);
+}
+
+.conhecaproduto {
+    display: inline-block;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.conhecaproduto img {
+    display: flex;
+    justify-content: space-between;
+    width: 180px;
+    margin: 2em 2em 0.5em 2em;
+    border-radius: 100%;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+.conhecaproduto a { 
+    font-size: 1.3em;
+    font-family: texto-negrito;
+    color: var(--cor2);
+    transition-duration: 0.3s;
+}
+
+.conhecaproduto img:hover {
+    width: 200px;
+    box-shadow: 0 0 20px var(--sombra);
+}
+
+.conhecaproduto a:hover {
+    color: var(--cor1);
+    font-size: 1.4em;
+}
 
     /* Produtos em Destaque */
         /* Direita */
@@ -443,9 +485,7 @@ nav .btnmenu-mobile {
     box-shadow: 0 0 10px var(--sombra);
 }
 
-.produto img {
-    width: 100%;
-}
+.produto img {width: 100%;}
 
 .preco {
     font-size: 1.2em;
