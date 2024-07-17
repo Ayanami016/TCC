@@ -114,9 +114,8 @@ alter table entrega add constraint fk_id_cliente_entrega foreign key (fk_cliente
 alter table entrega add constraint fk_id_prod_entrega foreign key (fk_prod) references produto (id_prod);
 alter table entrega add constraint fk_id_endereco_entrega foreign key (fk_endereco) references endereco (id_endereco);
 
-show tables;
-select * from produto;
-drop table produto;
+select * from cliente;
+delete from cliente where id_cliente = 8;
 
 /*LISTA DE COMANDOS
 Ver tabela: select * from [nome_tabela]

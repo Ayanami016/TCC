@@ -361,7 +361,6 @@ nav .btnmenu-mobile {
     max-width: 100%;
     height: 100%;
     margin-top: 15vh;
-    border: 2px solid red;
 }
 
     /* Sobre a Loja */
@@ -402,7 +401,10 @@ nav .btnmenu-mobile {
     font-size: 1.2em;
 }
 
-.prod-destaque-direita img {margin-left: 3vw;}
+.prod-destaque-direita img {
+    width: 100%;
+    margin-left: 3vw;
+}
 
         /* Esquerda */
 .prod-destaque-esquerda {

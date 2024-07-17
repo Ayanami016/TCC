@@ -14,16 +14,15 @@
         justify-content: space-between;
         align-items: center;
         position: fixed;
-        top: 15vh;
+        top: 13vh;
         height: 6vh;
         background-color: var(--cor2);
-        padding: 0px 40px;
     }
 
     .menu-pc-mobile a {
         text-decoration: none;
         font-size: 1.3em;
-        padding: 0.7vh 3vh;
+        padding: 0.7vh 5vh;
         color: white;
         transition-duration: 0.3s;
     }
@@ -43,6 +42,20 @@
     .menu-pesquisa {width: 42%;}
 
     .sobre-loja {text-align: center;}
+
+    .prod-destaque-direita {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .prod-destaque-direita .pdd-texto, .prod-destaque-esquerda .pdd-texto {align-items: center;}
+
+    .prod-destaque-direita img, .prod-destaque-esquerda img {width: 65%;}
+
+    .prod-destaque-esquerda {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 @media (max-width: 770px) {
@@ -112,6 +125,10 @@
 
 /* MOBILE */
 @media (max-width: 530px) {
+    .menu-pc-mobile a {
+        font-size: 1.1em;
+        padding: 1.2vh 2vh;
+    }
     .menu-pesquisa {display: none;}
 
     .menu-pesquisa-mobile {
@@ -143,4 +160,6 @@
     .caixa-minha-conta, .caixa-compra {width: 100%;}
 
     .produto {width: 80%;}
+
+    .prod-destaque-direita img, .prod-destaque-esquerda img {width: 85%;}
 }
