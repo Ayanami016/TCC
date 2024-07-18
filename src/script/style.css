@@ -372,8 +372,8 @@ nav .btnmenu-mobile {
 .prod-destaque-direita, .prod-destaque-esquerda {margin: 20vh 0 5vh 0;}
 .prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja, .conheca-produtos, .produtos-index {width: 85%;}
 
-.sobre-loja h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1, .conheca-produtos h1 {
-    font-size: 3.5em;
+.sobre-loja h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1, .conheca-produtos h1, .produtos-index h1 {
+    font-size: 3em;
     color: var(--cor1);
 }
 
