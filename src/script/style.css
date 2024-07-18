@@ -368,11 +368,11 @@ nav .btnmenu-mobile {
 }
 
     /* Sobre a Loja */
-.sobre-loja, .produtos, .conheca-produtos {margin-top: 5vh;}
+.sobre-loja, .produtos-index, .conheca-produtos {margin-top: 5vh;}
 .prod-destaque-direita, .prod-destaque-esquerda {margin: 20vh 0 5vh 0;}
-.prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja, .conheca-produtos {width: 85%;}
+.prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja, .conheca-produtos, .produtos-index {width: 85%;}
 
-.sobre-loja h1, .produtos h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1, .conheca-produtos h1 {
+.sobre-loja h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1, .conheca-produtos h1 {
     font-size: 3.5em;
     color: var(--cor1);
 }
@@ -383,7 +383,7 @@ nav .btnmenu-mobile {
     line-height: 1.5em;
 }
     /* Mais Vendidos e Conheça nossos Produtos*/
-.produtos, .conheca-produtos {text-align: center;}
+.produtos-index, .conheca-produtos {text-align: center;}
 
 .conheca-produtos {
     padding: 30px;
@@ -476,6 +476,11 @@ nav .btnmenu-mobile {
 .prod-destaque-esquerda img {margin-right: 3vw;}
 
 .prod-destaque-direita img, .prod-destaque-esquerda img {box-shadow: 0 0 10px var(--sombra);}
+
+.produtos-conteudo {
+    display: flex;
+    justify-content: space-between;
+}
 
 /* ATRIBUTOS PARA PRODUTO */
 .produto {

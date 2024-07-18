@@ -48,7 +48,7 @@
         align-items: center;
     }
 
-    .conheca-conteudo {overflow: scroll;}
+    .conheca-conteudo, .produtos-conteudo {overflow: scroll;}
 
     .prod-destaque-direita .pdd-texto, .prod-destaque-esquerda .pdd-texto {align-items: center;}
 
@@ -123,6 +123,8 @@
     }
 
     .caixa-minha-conta, .caixa-compra {margin: 0 0 5vh 0;}
+
+    .conheca-produtos h1 {font-size: 2.5em;}
 }
 
 /* MOBILE */
@@ -162,6 +164,10 @@
     .caixa-minha-conta, .caixa-compra {width: 100%;}
 
     .produto {width: 80%;}
+
+    .conheca-produtos h1 {font-size: 1.6em;}
+
+    .conhecaproduto img {width: 130px;}
 
     .prod-destaque-direita img, .prod-destaque-esquerda img {
         width: 100%;
