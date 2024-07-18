@@ -165,10 +165,6 @@
 
     .produto {width: 80%;}
 
-    .conheca-produtos h1 {font-size: 1.6em;}
-
-    .conhecaproduto img {width: 130px;}
-
     .prod-destaque-direita img, .prod-destaque-esquerda img {
         width: 100%;
         margin-bottom: 1.5em;
