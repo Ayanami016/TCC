@@ -368,7 +368,8 @@ nav .btnmenu-mobile {
 }
 
     /* Sobre a Loja */
-.sobre-loja, .produtos, .prod-destaque-direita, .prod-destaque-esquerda, .conheca-produtos {margin-top: 5vh;}
+.sobre-loja, .produtos, .conheca-produtos {margin-top: 5vh;}
+.prod-destaque-direita, .prod-destaque-esquerda {margin: 20vh 0 5vh 0;}
 .prod-destaque-direita, .prod-destaque-esquerda, .sobre-loja, .conheca-produtos {width: 85%;}
 
 .sobre-loja h1, .produtos h1, .prod-destaque-direita h1, .prod-destaque-esquerda h1, .conheca-produtos h1 {
@@ -395,11 +396,15 @@ nav .btnmenu-mobile {
     align-items: center;
 }
 
-.conhecaproduto img {
+.conheca-conteudo {
     display: flex;
     justify-content: space-between;
-    width: 180px;
-    margin: 2em 2em 0.5em 2em;
+}
+
+.conhecaproduto img {
+    display: flex;
+    width: 160px;
+    margin: 3vh;
     border-radius: 100%;
     transition-duration: 0.3s;
     cursor: pointer;
@@ -413,7 +418,7 @@ nav .btnmenu-mobile {
 }
 
 .conhecaproduto img:hover {
-    width: 200px;
+    width: 170px;
     box-shadow: 0 0 20px var(--sombra);
 }
 

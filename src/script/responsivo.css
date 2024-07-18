@@ -48,6 +48,8 @@
         align-items: center;
     }
 
+    .conheca-conteudo {overflow: scroll;}
+
     .prod-destaque-direita .pdd-texto, .prod-destaque-esquerda .pdd-texto {align-items: center;}
 
     .prod-destaque-direita img, .prod-destaque-esquerda img {width: 65%;}
