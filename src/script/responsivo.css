@@ -116,11 +116,7 @@
         width: 40%;
     }
 
-    #minha-conta {
-        margin-top: 180px;
-        justify-content: flex-end;
-        flex-direction: column;
-    }
+    #minha-conta {flex-direction: column;}
 
     .caixa-minha-conta, .caixa-compra {margin: 0 0 5vh 0;}
 

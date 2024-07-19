@@ -112,7 +112,7 @@
     <div id="caixa" class="cadastro">
         <div class="form-box">
             <h1>&#x1F48E Crie sua conta!</h1>
-            <form action="#" id="form-cad">
+            <form action="../src/script/cad_login.php" method="post" id="form-cad">
                 <!--Nome-->
                 <div class="input-box">
                     <span class="icon">
@@ -168,7 +168,7 @@
                 </div>
 
                 <!--Cadastrar-->
-                <button type="submit" class="btn-form">CADASTRAR</button>
+                <input type="submit" class="btn-form" value="CADASTRAR" onclick="clickNome(),clickCpf(),clickTell(),clickSenha(),confirmacao()"></input>
                 <div class="cad-login">
                     <p>Já possui uma conta? <a href="login.php">Entre aqui!</a></p>
                 </div>
@@ -178,8 +178,7 @@
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
-    <script src="../src/script/validacao.js" type="text/javascript"></script>
-        <!--Ícones-->
+        <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
