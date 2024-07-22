@@ -16,7 +16,9 @@
             <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
-        <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
+        <form action="pesquisa.php" method="post">
+            <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
+        </form>
 
         <nav>
             <!--Menu Mobile-->

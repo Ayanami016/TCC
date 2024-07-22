@@ -127,11 +127,6 @@
 
     .conheca-produtos h1 {font-size: 2.5em;}
 
-    .prod-destaque-direita img, .prod-destaque-esquerda img {
-        width: 100%;
-        margin-bottom: 1.5em;
-    }
-
     .produtos-index {width: 100%;}
 }
 
@@ -172,4 +167,10 @@
     .caixa-minha-conta, .caixa-compra {width: 100%;}
 
     .produto {width: 80%;}
+
+    
+    .prod-destaque-direita img, .prod-destaque-esquerda img {
+        width: 100%;
+        margin-bottom: 1.5em;
+    }
 }

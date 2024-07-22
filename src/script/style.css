@@ -482,6 +482,13 @@ nav .btnmenu-mobile {
     justify-content: space-between;
 }
 
+/* PRODUTOS - RESULTADO */
+.produtos-resultado {
+    margin-top: 10vh;
+    width: 85%;
+    text-align: center;
+}
+
 /* ATRIBUTOS PARA PRODUTO */
 .produto {
     display: inline-block;
