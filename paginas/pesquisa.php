@@ -3,19 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Pesquisa</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
 </head>
 <body>
-    <!--MENU-->
     <header>
         <span>
             <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
-        <form action="../src/script/pesquisa.php" method="post">
+        <form action="pesquisa.php" method="post">
             <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
         </form>
 
@@ -27,9 +26,10 @@
 
             <!--Menu PC-->
             <span id="menu-pc">
+                <a href="#" class="link-menupc">Pulseiras</a>
                 <a href="#" class="link-menupc">Anéis</a>
+                <a href="#" class="link-menupc">Colares</a>
                 <a href="#" class="link-menupc">Brincos</a>
-                <a href="#" class="link-menupc" style="margin-right: 10px;">Colares</a>
             </span>
 
             <!--Menu Mobile-->
@@ -102,84 +102,105 @@
         <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
     </span>
     <span class="menu-pc-mobile">
-        <a href="#">Alianças</a>
-        <a href="#">Brincos</a>
+        <a href="#">Pulseiras</a>
+        <a href="#">Anéis</a>
         <a href="#">Colares</a>
+        <a href="#">Brincos</a>
     </span>
 
-    <!--CADASTRO-->
-    <!--Nome, email, cpf, telefone e senha-->
-    <div id="caixa" class="cadastro">
-        <div class="form-box">
-            <h1>&#x1F48E Crie sua conta!</h1>
-            <form action="../src/script/cad_login.php" method="post" id="form-cad">
-                <!--Nome-->
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="person-outline"></ion-icon>
-                    </span>
-                    <input type="text" name="nome" id="nome" required>
-                    <label for="nome">Nome</label>
-                </div>
+    <!-- Link âncora para voltar ao topo da página -->
+    <a name="topo"></a>
 
-                <!--Email-->
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="mail-outline"></ion-icon>
-                    </span>
-                    <input type="email" name="email" id="email" required>
-                    <label for="email">Email</label>
-                </div>
+<?php
+    include("../src/script/conexao.php");
 
-                <!--CPF-->
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="terminal-outline"></ion-icon>
-                    </span>
-                    <input type="text" name="cpf" id="cpf" class="cpf" maxlength="14" required>
-                    <label for="cpf">CPF</label>
-                </div>
+    if ($conexao->connect_error) {
+        die("Há uma falha no banco de dados!" . $conexao->connect_error);
+    }
 
-                <!--Telefone-->
-                <div class="input-box">
-                    <span class="icon">
-                        <ion-icon name="call-outline"></ion-icon>
-                    </span>
-                    <input type="text" name="tel" id="tel" class="tel" maxlength="14" required>
-                    <label for="tel">Telefone</label>
-                </div>
+    //Início Div Produtos
+    echo "<div class='produtos-resultado'>";
 
-                <!--Senha-->
-                <div class="input-box">
-                    <span class="icon-relevarsenha" onclick="Mostrar_Senha()">
-                        <ion-icon name="eye-off-outline" id="iconsenha" onclick="Mudar_IconSenha()"></ion-icon>
-                    </span>
-                    <input type="password" name="senha" id="senha" required>
-                    <label for="senha">Senha</label>
-                </div>
+    // Pesquisa
+    $pesquisa = $_POST['pesquisa'];
+    $result_pesquisa = "select * from produto where 
+        descricao_prod like '%$pesquisa%' or
+        nome_prod like '%$pesquisa%' or
+        tipo_prod like '%$pesquisa%' or
+        cor_prod like '%$pesquisa%' or
+        material_prod like '%$pesquisa%' or
+        tamanho_prod like '%$pesquisa%'";
 
-                <!--Confirmar Senha-->
-                <div class="input-box">
-                    <span class="icon-relevarsenha" onclick="Mostrar_ConfirmarSenha()">
-                        <ion-icon name="eye-off-outline" id="iconconfirmarsenha" onclick="Mudar_IconConfirmarSenha()"></ion-icon>
-                    </span>
-                    <input type="password" name="confirmarsenha" id="confirmarsenha" required>
-                    <label for="confirmarsenha">Confirmar Senha</label>
-                </div>
+    $resultados = mysqli_query($conexao, $result_pesquisa);
 
-                <!--Cadastrar-->
-                <input type="submit" class="btn-form" value="CADASTRAR" onclick="clickNome(),clickCpf(),clickTell(),clickSenha(),confirmacao()"></input>
-                <div class="cad-login">
-                    <p>Já possui uma conta? <a href="login.php">Entre aqui!</a></p>
-                </div>
-            </form>
-        </div>
+    // Listando Resultados
+    while ($row_produtos = mysqli_fetch_array($resultados)) {
+        echo
+        "<div class='produto'>
+            <img src='../src/img/ph-produto-anel.jpg' alt='Produto'>
+            <p>" . $row_produtos['nome_prod'] . "</p>" .
+            "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
+            "<div class='botoes-produto'>
+                <button class='btn-compra' btn-placeholder='Comprar'></button>
+                <ion-icon name='add-outline'></ion-icon>
+            </div>
+        </div>";
+    }
+
+    //Fim Div Produtos
+    echo "</div>";
+
+    mysqli_close($conexao);
+?>
+
+    <!-- VOLTAR AO TOPO -->
+    <div class="voltar-topo">
+        <a href="#topo">Voltar ao Topo <ion-icon name="chevron-up-outline"></ion-icon></a>
     </div>
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <!-- Categorias -->
+       <span>
+            <h1>Categorias</h1>
+            <ul>
+                <li><a href="#">Pulseiras</a></li>
+                <li><a href="#">Anéis</a></li>
+                <li><a href="#">Colares</a></li>
+                <li class="ultimo"><a href="#">Brincos</a></li>
+            </ul>
+        </span>
+
+        <!-- Minha Conta -->
+        <span>
+            <h1>Conta</h1>
+            <ul>
+                <li><a href="login.php">Iniciar Sessão</a></li>
+                <li class="ultimo"><a href="cadastro.php">Criar Conta</a></li>
+            </ul>
+        </span>
+
+        <!-- Contato -->
+        <span>
+            <h1>Entre em Contato</h1>
+            <ul>
+                <li><a href="#">Número de Telefone</a></li>
+                <li class="ultimo"><a href="#">E-mail</a></li>
+            </ul>
+        </span>
+
+        <!-- Brands -->
+        <span>
+            <a href="https://github.com/Ayanami016/TCC" target="_blank"><i class="fab fa-github fa-lg"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+        </span>
+    </footer>
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
         <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+        <!-- Font Awesome - usado para o rodapé -->
+    <script src="https://kit.fontawesome.com/750ae9b6a4.js" crossorigin="anonymous"></script>
 </body>
 </html>

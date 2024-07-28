@@ -16,7 +16,9 @@
             <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
-        <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
+        <form action="pesquisa.php" method="post">
+            <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
+        </form>
 
         <nav>
             <!--Menu Mobile-->
@@ -26,9 +28,10 @@
 
             <!--Menu PC-->
             <span id="menu-pc">
+                <a href="#" class="link-menupc">Pulseiras</a>
                 <a href="#" class="link-menupc">Anéis</a>
+                <a href="#" class="link-menupc">Colares</a>
                 <a href="#" class="link-menupc">Brincos</a>
-                <a href="#" class="link-menupc" style="margin-right: 10px;">Colares</a>
             </span>
 
             <!--Menu Mobile-->
@@ -101,9 +104,10 @@
         <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
     </span>
     <span class="menu-pc-mobile">
-        <a href="#">Alianças</a>
-        <a href="#">Brincos</a>
+        <a href="#">Pulseiras</a>
+        <a href="#">Anéis</a>
         <a href="#">Colares</a>
+        <a href="#">Brincos</a>
     </span>
 
     <!--LOGIN-->

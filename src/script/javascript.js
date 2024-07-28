@@ -80,6 +80,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//Ativa a barra lateral do carrinho
+document.addEventListener('DOMContentLoaded', function() {
+    const mostrarCarrinho = document.getElementById("mostrarcarrinho");
+    const carrinho = document.getElementById("carrinho");
+    const fecharCarrinho = document.getElementById("fecharcarrinho");
+
+    mostrarCarrinho.addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log('Link clicado');
+        carrinho.style = "display: flex;"; // Altera o display para flex para mostrar a aba lateral
+    });
+
+    fecharCarrinho.addEventListener('click', function() {
+        carrinho.style = "display: none;"; // Altera o display para none para esconder a aba lateral
+    });
+});
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     const link_carrinho = document.querySelectorAll(".carrinho");
+
+//     link_carrinho.forEach(link_carrinho => {
+//         link_carrinho.addEventListener("click", () => {
+//             const carrinho = link_carrinho.getElementById("historico");
+//             if (carrinho) {
+//                 carrinho.style = "display: flex;";
+//             }
+//         });
+
+//         link_carrinho.addEventListener("mouseleave", () => {
+//             const carrinho = link_carrinho.getElementById("historico");
+//             if (carrinho) {
+//                 carrinho.style = "display: none;";
+//             }
+//         })
+//     });
+// });
+
 //Formata o campo CPF para adicionar . e -
 let campoCPF = document.querySelector(".cpf")
 
