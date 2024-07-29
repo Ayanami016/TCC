@@ -118,9 +118,6 @@
         die("Há uma falha no banco de dados!" . $conexao->connect_error);
     }
 
-    //Início Div Produtos
-    echo "<div class='produtos-resultado'>";
-
     // Pesquisa
     $pesquisa = $_POST['pesquisa'];
     $result_pesquisa = "select * from produto where 
@@ -132,6 +129,17 @@
         tamanho_prod like '%$pesquisa%'";
 
     $resultados = mysqli_query($conexao, $result_pesquisa);
+
+    // Contagem de Resultados para exibição
+    //Início div que contém quantia de resultados e produtos
+    $quantia_results = mysqli_num_rows($resultados);
+    echo "<div class='container-produtos'>
+        <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>
+        <p>Resultado: " . $quantia_results . " produtos</p>"
+        ;
+
+    //Início Div Produtos
+    echo "<div class='produtos-resultado'>";
 
     // Listando Resultados
     while ($row_produtos = mysqli_fetch_array($resultados)) {
@@ -148,7 +156,7 @@
     }
 
     //Fim Div Produtos
-    echo "</div>";
+    echo "</div> </div>";
 
     mysqli_close($conexao);
 ?>

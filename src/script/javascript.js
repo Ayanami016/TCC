@@ -82,18 +82,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 //Ativa a barra lateral do carrinho
 document.addEventListener('DOMContentLoaded', function() {
-    const mostrarCarrinho = document.getElementById("mostrarcarrinho");
+    const mostrarCarrinho = document.querySelectorAll(".mostrarcarrinho");
     const carrinho = document.getElementById("carrinho");
     const fecharCarrinho = document.getElementById("fecharcarrinho");
 
-    mostrarCarrinho.addEventListener('click', function(event) {
-        event.preventDefault();
+    mostrarCarrinho.addEventListener('click', function() {
         console.log('Link clicado');
-        carrinho.style = "display: flex;"; // Altera o display para flex para mostrar a aba lateral
+        carrinho.style = "display: flex;";
     });
 
     fecharCarrinho.addEventListener('click', function() {
-        carrinho.style = "display: none;"; // Altera o display para none para esconder a aba lateral
+        console.log('Link clicado');
+        carrinho.style = "display: none;";
     });
 });
 

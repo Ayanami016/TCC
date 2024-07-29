@@ -340,15 +340,13 @@ nav .btnmenu-mobile {
 
 .cad-login a:hover {color: var(--cor1);}
 
-/* BARRA LATERAL - HISTÓRICO */
+/* BARRA LATERAL - CARRINHO */
 #carrinho {
-    display: none; /* Display inicial */
     z-index: 5;
     position: fixed;
     top: 0;
     right: 0;
     flex-direction: column;
-    align-items: flex-end;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -372,6 +370,7 @@ nav .btnmenu-mobile {
 #carrinho a {
     font-family: texto-negrito;
     color: var(--cor3);
+    cursor: pointer;
 }
 
 #carrinho a:hover {
@@ -503,24 +502,39 @@ nav .btnmenu-mobile {
 }
 
 /* PRODUTOS - RESULTADO */
+.container-produtos {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20vh;
+    align-items: center;
+}
+
 .produtos-resultado {
-    margin-top: 10vh;
+    display: flex;
+    flex-wrap: wrap;
     width: 85%;
+    justify-content: space-around;
     text-align: center;
 }
 
 /* ATRIBUTOS PARA PRODUTO */
 .produto {
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
     margin: 10px;
+    width: 20%;
+    height: 430px;
     padding: 20px;
+    justify-content: space-around;
     box-shadow: 0 0 10px var(--sombra);
 }
 
 .produto img {width: 100%;}
 
+.produto p {margin-top: 1.5vh;}
+
 .preco {
-    font-size: 1.2em;
+    font-size: 1.3em;
     font-family: texto-negrito;
     justify-content: space-between;
 }
