@@ -81,41 +81,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 //Ativa a barra lateral do carrinho
+//Ao ser ativado, o fundo ficará escuro
 document.addEventListener('DOMContentLoaded', function() {
-    const mostrarCarrinho = document.querySelectorAll(".mostrarcarrinho");
+    const mostrarCarrinho = document.querySelectorAll('.mostrarcarrinho');
     const carrinho = document.getElementById("carrinho");
     const fecharCarrinho = document.getElementById("fecharcarrinho");
+    const pedrismo = document.getElementById("escuro");
 
-    mostrarCarrinho.addEventListener('click', function() {
-        console.log('Link clicado');
-        carrinho.style = "display: flex;";
+    mostrarCarrinho.forEach (function(link) {
+        link.addEventListener('click', function (mostrarAba) {
+            mostrarAba.preventDefault();
+            carrinho.style.display = "flex";
+            pedrismo.style = "display: block; z-index: 4; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #00000082;";
+        });
     });
 
     fecharCarrinho.addEventListener('click', function() {
-        console.log('Link clicado');
         carrinho.style = "display: none;";
+        pedrismo.style = "display: none;";
     });
 });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     const link_carrinho = document.querySelectorAll(".carrinho");
-
-//     link_carrinho.forEach(link_carrinho => {
-//         link_carrinho.addEventListener("click", () => {
-//             const carrinho = link_carrinho.getElementById("historico");
-//             if (carrinho) {
-//                 carrinho.style = "display: flex;";
-//             }
-//         });
-
-//         link_carrinho.addEventListener("mouseleave", () => {
-//             const carrinho = link_carrinho.getElementById("historico");
-//             if (carrinho) {
-//                 carrinho.style = "display: none;";
-//             }
-//         })
-//     });
-// });
 
 //Formata o campo CPF para adicionar . e -
 let campoCPF = document.querySelector(".cpf")

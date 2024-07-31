@@ -109,6 +109,14 @@
         <a href="#">Brincos</a>
     </span>
 
+    <!-- BARRA LATERAL - HISTÓRICO -->
+    <aside id="carrinho" style="display: none;">
+        <ion-icon name="cart-outline"></ion-icon>
+        <h1>Seu carrinho está vazio!</h1> <br>
+        <p>Escolha algum produto e adicione ao carrinho para realizar sua compra!</p> <br>
+        <a id="fecharcarrinho">Voltar</a>
+    </aside>
+
     <!--CADASTRO-->
     <!--Nome, email, cpf, telefone e senha-->
     <div id="caixa" class="cadastro">

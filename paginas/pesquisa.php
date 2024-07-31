@@ -108,6 +108,14 @@
         <a href="#">Brincos</a>
     </span>
 
+    <!-- BARRA LATERAL - HISTÓRICO -->
+    <aside id="carrinho" style="display: none;">
+        <ion-icon name="cart-outline"></ion-icon>
+        <h1>Seu carrinho está vazio!</h1> <br>
+        <p>Escolha algum produto e adicione ao carrinho para realizar sua compra!</p> <br>
+        <a id="fecharcarrinho">Voltar</a>
+    </aside>
+
     <!-- Link âncora para voltar ao topo da página -->
     <a name="topo"></a>
 
@@ -135,8 +143,7 @@
     $quantia_results = mysqli_num_rows($resultados);
     echo "<div class='container-produtos'>
         <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>
-        <p>Resultado: " . $quantia_results . " produtos</p>"
-        ;
+        <p>Resultado: " . $quantia_results . " produtos</p>";
 
     //Início Div Produtos
     echo "<div class='produtos-resultado'>";

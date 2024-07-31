@@ -50,6 +50,8 @@ body {
 
 h1 {font-family: titulo;}
 
+.pinto {color: #00000082}
+
 /* CABEÇALHO */
 header {
     position: fixed;
@@ -506,13 +508,17 @@ nav .btnmenu-mobile {
     display: flex;
     flex-direction: column;
     margin-top: 20vh;
-    align-items: center;
+    width: 70%;
+    border: 2px solid red;
+    align-items: flex-start;
 }
+
+.container-produtos h1 {color: var(--cor1);}
+.container-produtos h1, .container-produtos p {padding-left: 3.5vh;}
 
 .produtos-resultado {
     display: flex;
     flex-wrap: wrap;
-    width: 85%;
     justify-content: space-around;
     text-align: center;
 }
