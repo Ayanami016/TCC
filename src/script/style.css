@@ -508,7 +508,7 @@ nav .btnmenu-mobile {
     display: flex;
     flex-direction: column;
     margin-top: 20vh;
-    width: 70%;
+    width: 80%;
     border: 2px solid red;
     align-items: flex-start;
 }

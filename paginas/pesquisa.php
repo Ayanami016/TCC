@@ -57,7 +57,7 @@
                 <button class="btnmenu-mobile">
                     <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
                     <div class="listamenu">
-                        <a href="#" class="link-listamenu">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                         <a href="#" class="link-listamenu">Histórico</a>
                     </div>
@@ -89,7 +89,7 @@
                 <button class="btnmenu-pc">
                     <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
                     <div class="listamenu btncarrinho">
-                        <a href="#" class="link-listamenu">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                         <a href="#" class="link-listamenu">Histórico</a>
                     </div>
@@ -167,6 +167,9 @@
 
     mysqli_close($conexao);
 ?>
+
+    <!-- Escuro -->
+    <div id="escuro" style="display: none;"></div>
 
     <!-- VOLTAR AO TOPO -->
     <div class="voltar-topo">
