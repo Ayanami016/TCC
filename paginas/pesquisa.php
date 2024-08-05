@@ -155,10 +155,50 @@
 
     echo 
     "<div id='filtro'>
-        <input type='text'>
-        <input type='text'>
-        <input type='text'>
-        <input type='text'>
+        <!-- PREÇO -->
+        <h1>Preço</h1>
+        <label for='preco'>Ordenar por:</label>
+        <select name='preco'>
+            <option>A escolher</option>
+            <option>Maiores preços</option>
+            <option>Menores preços</option>
+        </select>
+
+        <!-- MATERIAL -->
+        <h1>Material</h1>
+        <select>
+            <option>A escolher</option>
+            <option>Couro</option>
+            <option>Metal</option>
+            <option>Prata</option>
+            <option>Aço inoxidável</option>
+            <option>Algodão</option>
+            <option>Pérolas</option>
+            <option>Zircônia</option>
+            <option>Tungstênio</option>
+            <option>Ouro</option>
+            <option>Topázio</option>
+        </select>
+
+        <!-- TAMANHO -->
+        <h1>Tamanho</h1>
+        <select>
+            <option>A escolher</option>
+            <option>P</option>
+            <option>M</option>
+            <option>G</option>
+            <option>Ajustável</option>
+        </select>
+
+        <!-- TIPO - CATEGORIA -->
+        <h1>Categoria</h1>
+        <select>
+            <option>A escolher</option>
+            <option>Pulseiras</option>
+            <option>Anéis</option>
+            <option>Colares</option>
+            <option>Brincos</option>
+        </select>
     </div>";
 
     // Div Produtos

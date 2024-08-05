@@ -2,17 +2,17 @@
 function Mostrar_Senha() {
     var x = document.getElementById("senha")
     if (x.type === "password") {
-        x.type = "text"
+        x.type = "text";
     } else {
-        x.type = "password"
+        x.type = "password";
     }
 }
 function Mostrar_ConfirmarSenha() {
     var x = document.getElementById("confirmarsenha")
     if (x.type === "password") {
-        x.type = "text"
+        x.type = "text";
     } else {
-        x.type = "password"
+        x.type = "password";
     }
 }
 
@@ -20,24 +20,24 @@ function Mostrar_ConfirmarSenha() {
 function Mudar_IconSenha() {
     var icon_senha = document.getElementById('iconsenha')
     if (icon_senha.name === 'eye-off-outline') {
-        icon_senha.name = 'eye-outline'
+        icon_senha.name = 'eye-outline';
     } else {
-        icon_senha.name = 'eye-off-outline'
+        icon_senha.name = 'eye-off-outline';
     }
 }
 function Mudar_IconConfirmarSenha() {
     var icon_confirmarsenha = document.getElementById('iconconfirmarsenha')
     if (icon_confirmarsenha.name === 'eye-off-outline') {
-        icon_confirmarsenha.name = 'eye-outline'
+        icon_confirmarsenha.name = 'eye-outline';
     } else {
-        icon_confirmarsenha.name = 'eye-off-outline'
+        icon_confirmarsenha.name = 'eye-off-outline';
     }
 }
 
 //Ativa o menu mobile
 document.getElementById('menu-mobile').addEventListener('click', function() {
-    var menupc = document.querySelector('.menu-pc-mobile')
-    menupc.classList.toggle('active')
+    var menupc = document.querySelector('.menu-pc-mobile');
+    menupc.classList.toggle('active');
 });
 
 //Ativa as Listas do Menu ao passar o mouse em cima (válido em conta, suporte e carrinho)
@@ -109,15 +109,15 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //Formata o campo CPF para adicionar . e -
-let campoCPF = document.querySelector(".cpf")
+let campoCPF = document.querySelector(".cpf");
 
 campoCPF.addEventListener("keypress", ()=> {
-    let tamCampoCPF = campoCPF.value.length
+    let tamCampoCPF = campoCPF.value.length;
 
     if (tamCampoCPF == 3 || tamCampoCPF == 7) {
-        campoCPF.value += "."
+        campoCPF.value += ".";
     } else if(tamCampoCPF == 11) {
-        campoCPF.value += "-"
+        campoCPF.value += "-";
     }
 })
 
@@ -125,13 +125,13 @@ campoCPF.addEventListener("keypress", ()=> {
 let campoTel = document.querySelector(".tel")
 
 campoTel.addEventListener("keypress", ()=>{
-    let tamCampoTel = campoTel.value.length
+    let tamCampoTel = campoTel.value.length;
 
     if (tamCampoTel == 0) {
-        campoTel.value += "("
+        campoTel.value += "(";
     } else if (tamCampoTel == 3) {
-        campoTel.value += ")"
+        campoTel.value += ")";
     } else if (tamCampoTel == 9) {
-        campoTel.value += "-"
+        campoTel.value += "-";
     }
 })
