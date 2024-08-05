@@ -504,23 +504,40 @@ nav .btnmenu-mobile {
 }
 
 /* PRODUTOS - RESULTADO */
-.container-produtos {
+#container-produtos {
     display: flex;
     flex-direction: column;
     margin-top: 20vh;
-    width: 80%;
+    width: 95%;
     border: 2px solid red;
     align-items: flex-start;
+    padding: 10px;
 }
 
-.container-produtos h1 {color: var(--cor1);}
-.container-produtos h1, .container-produtos p {padding-left: 3.5vh;}
+#container-produtos h1 {color: var(--cor1);}
 
 .produtos-resultado {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     text-align: center;
+    border: 2px solid blue;
+    width: 80%;
+}
+
+/* PESQUISA */
+/* Container que agrupa todos os elementos da pesquisa.php */
+#pesquisa-prod {
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid greenyellow;
+}
+
+    /* Filtro */
+#filtro {
+    padding: 10px;
+    width: 25%;
+    border: 2px solid orange;
 }
 
 /* ATRIBUTOS PARA PRODUTO */
@@ -563,7 +580,7 @@ nav .btnmenu-mobile {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 20vh;
+    margin-top: 10vh;
     width: 90%;
     min-height: 90vh;
     padding: 0px 60px;

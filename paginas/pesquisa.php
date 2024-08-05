@@ -141,17 +141,33 @@
     // Contagem de Resultados para exibição
     //Início div que contém quantia de resultados e produtos
     $quantia_results = mysqli_num_rows($resultados);
-    echo "<div class='container-produtos'>
-        <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>
-        <p>Resultado: " . $quantia_results . " produtos</p>";
+    echo "<div id='container-produtos'>
+        <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>";
+        
+    if (mysqli_num_rows($resultados) == 0) {
+        echo "<p>Não encontramos resultados para sua pesquisa :(</p>";
+    } else {
+        echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+    }
 
-    //Início Div Produtos
+    // Div que agrupa filtros e produtos mostrados
+    echo "<div id='pesquisa-prod'>";
+
+    echo 
+    "<div id='filtro'>
+        <input type='text'>
+        <input type='text'>
+        <input type='text'>
+        <input type='text'>
+    </div>";
+
+    // Div Produtos
     echo "<div class='produtos-resultado'>";
 
     // Listando Resultados
     while ($row_produtos = mysqli_fetch_array($resultados)) {
         echo
-        "<div class='produto'>
+        "<div class='produto' style='margin-top: 0px;'>
             <img src='../src/img/ph-produto-anel.jpg' alt='Produto'>
             <p>" . $row_produtos['nome_prod'] . "</p>" .
             "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
@@ -162,8 +178,8 @@
         </div>";
     }
 
-    //Fim Div Produtos
-    echo "</div> </div>";
+    //Fim DIVs
+    echo "</div></div></div>";
 
     mysqli_close($conexao);
 ?>

@@ -100,6 +100,12 @@ document.addEventListener('DOMContentLoaded', function() {
         carrinho.style = "display: none;";
         pedrismo.style = "display: none;";
     });
+    
+    //Fechar carrinho ao clicar na div escura
+    pedrismo.addEventListener('click', function() {
+        carrinho.style = "display: none;";
+        pedrismo.style = "display: none;";
+    });
 });
 
 //Formata o campo CPF para adicionar . e -
