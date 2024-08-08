@@ -121,6 +121,7 @@
 
 <?php
     include("../src/script/conexao.php");
+    include("../scr/script/filtro.php");
 
     if ($conexao->connect_error) {
         die("Há uma falha no banco de dados!" . $conexao->connect_error);
@@ -157,7 +158,7 @@
     echo 
     "<div id='filtro'>
         <!-- PREÇO -->
-        <form action='pesquisa.php' method='post'>
+        <form action='../src/script/filtro.php' method='get' id='pesquisa-filtro'>
             <h1>Preço</h1>
                 <span class='filtrar-preco'>
                     <input type='text' class='txt-preco' name='min' id='min' placeholder='Min.'>
@@ -166,7 +167,7 @@
                 <br>
 
             <label for='preco'>Ordenar por:</label>
-            <select name='preco'>
+            <select name='preco-ordem' id='preco-ordem'>
                 <option>A escolher</option>
                 <option>Maiores preços</option>
                 <option>Menores preços</option>
@@ -174,7 +175,7 @@
 
             <!-- MATERIAL -->
             <h1>Material</h1>
-            <select>
+            <select name='material' id='material'>
                 <option>A escolher</option>
                 <option>Couro</option>
                 <option>Metal</option>
@@ -190,7 +191,7 @@
 
             <!-- TAMANHO -->
             <h1>Tamanho</h1>
-            <select>
+            <select name='tamanho' id='tamanho'>
                 <option>A escolher</option>
                 <option>P</option>
                 <option>M</option>
@@ -200,7 +201,7 @@
 
             <!-- TIPO - CATEGORIA -->
             <h1>Categoria</h1>
-            <select>
+            <select name='categoria' id='categoria'>
                 <option>A escolher</option>
                 <option>Pulseiras</option>
                 <option>Anéis</option>
@@ -209,7 +210,7 @@
             </select>
 
             <!-- BOTÃO FILTRAR -->
-            <input type='button' value='Filtrar' class='btn-filtrar'>
+            <input type='submit' value='Filtrar' class='btn-filtrar'>
         </form>
     </div>";
 
