@@ -515,7 +515,7 @@ nav .btnmenu-mobile {
 
 #container-produtos h1 {color: var(--cor1);}
 
-.produtos-resultado {
+#produtos-resultado {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -534,7 +534,7 @@ nav .btnmenu-mobile {
     /* Filtro */
 #filtro {
     position: sticky; /* Testar */
-    top: 15vh;
+    top: 15%;
     padding: 10px 10px 10px 0;
     width: 20%;
 }
@@ -545,19 +545,46 @@ nav .btnmenu-mobile {
     color: var(--cor2);
 }
 
-#filtro input, #filtro select {
+#filtro .txt-preco, #filtro select {
     margin: 2px 0 20px 0;
     padding: 5px;
-    height: 5vh;
     width: 100%;
+    height: 5vh;
     font-size: 0.9em;
     border-color: var(--cinza);
 }
 
-#filtro select:focus {
-    outline: none;
-    border-color: var(--cor1);
+#filtro .txt-preco {
+    width: 10vh;
+    border: 1px solid var(--cinza);
 }
+
+#filtro .btn-filtrar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: var(--cor4);
+    font-size: 1em;
+    font-family: texto-negrito;
+    color: var(--cor2);
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+#filtro .btn-filtrar:hover {
+    background-color: var(--cor2);
+    color: var(--cor4);
+}
+
+    /* Barra de Preço */
+#preco-display {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+
+#barra-preco {accent-color: var(--cor3);}
 
 /* ATRIBUTOS PARA PRODUTO */
 .produto {
