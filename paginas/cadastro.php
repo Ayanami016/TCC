@@ -15,7 +15,7 @@
             <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
-        <form action="pesquisa.php" method="post">
+        <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
             <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
         </form>
 
