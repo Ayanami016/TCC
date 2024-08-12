@@ -127,7 +127,8 @@
     }
 
     // Pesquisa - Menu method post
-    $pesquisa = $_POST['pesquisa'];
+    $pesquisa = isset($_POST['pesquisa']) ? $_POST['pesquisa'] : '';
+
     // Filtro method get
     $preco_ordem = $_GET['preco-ordem'];
     $precomin = $_GET['min'];
@@ -182,15 +183,24 @@
     // Contagem de Resultados para exibição
     $quantia_results = mysqli_num_rows($resultados);
 
-    echo "<div id='container-produtos'>
-        <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>";
-        
-    if (mysqli_num_rows($resultados) == 0) {
-        echo "<p>Não encontramos resultados para sua pesquisa :(</p>";
-    } else {
+    echo "<div id='container-produtos'>";
+    // pesquisa maior que 0
+    if ($pesquisa != '' && mysqli_num_rows($resultados) > 0) {
+        echo "<h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
         echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+    // pesquisa igual a 0
+    } else if ($pesquisa != '' && mysqli_num_rows($resultados) == 0) {
+        echo "<h1>NENHUM RESULTADO ENCONTRADO PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
+    // pesquisa relacionada ao filtro, pois não terá termo definido na $pesquisa
+    } else {
+        if (mysqli_num_rows($resultados) == 0) {
+            echo "<h1>NENHUM RESULTADO ENCONTRADO :( </h1>";
+        } else {
+            echo "<h1>EXIBINDO RESULTADOS</h1>";
+            echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+        }
     }
-
+    
     // Div que agrupa filtros e produtos mostrados
     echo "<div id='pesquisa-prod'>";
     // FILTRO

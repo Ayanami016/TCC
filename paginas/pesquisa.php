@@ -14,7 +14,7 @@
             <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
-        <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
+        <form action="teste.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
             <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
         </form>
 
@@ -121,7 +121,6 @@
 
 <?php
     include("../src/script/conexao.php");
-    include("../scr/script/filtro.php");
 
     if ($conexao->connect_error) {
         die("Há uma falha no banco de dados!" . $conexao->connect_error);
@@ -129,7 +128,6 @@
 
     // Pesquisa - Menu method post
     $pesquisa = $_POST['pesquisa'];
-
     // Filtro method get
     $preco_ordem = $_GET['preco-ordem'];
     $precomin = $_GET['min'];
@@ -163,8 +161,7 @@
         material_prod like '%$pesquisa%' or
         tamanho_prod like '%$pesquisa%'
     )";
-
-    // Condicionais para o filtro        
+       
         // Material, Tamanho e Categoria
     if (!empty($mat)) {$result_pesquisa .= "and material_prod = '$mat'";}
     if (!empty($tam)) {$result_pesquisa .= "and tamanho_prod = '$tam'";}
@@ -184,12 +181,81 @@
 
     // Contagem de Resultados para exibição
     $quantia_results = mysqli_num_rows($resultados);
-    echo "<div class='container-produtos'>
-        <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>
-        <p>Resultado: " . $quantia_results . " produtos</p>";
 
-    //Início Div Produtos
-    echo "<div class='produtos-resultado'>";
+    echo "<div id='container-produtos'>
+        <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>";
+        
+    if (mysqli_num_rows($resultados) == 0) {
+        echo "<p>Não encontramos resultados para sua pesquisa :(</p>";
+    } else {
+        echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+    }
+
+    // Div que agrupa filtros e produtos mostrados
+    echo "<div id='pesquisa-prod'>";
+    // FILTRO
+    echo 
+    "<div id='filtro'>    
+        <form action='teste.php' method='get' name='pesquisa-filtro' id='pesquisa-filtro'>
+        
+        <!-- PREÇO -->
+        <h1>Preço</h1>
+            <span class='filtrar-preco'>
+                <input type='text' class='txt-preco' name='min' id='min' placeholder='Min.'>
+                <input type='text' class='txt-preco' name='max' id='max' placeholder='Máx.'>
+            </span>
+            <br>
+
+        <label for='preco'>Ordenar por:</label>
+        <select name='preco-ordem' id='preco-ordem'>
+            <option value=''>A escolher</option>
+            <option value='desc'>Maiores preços</option>
+            <option value='asc'>Menores preços</option>
+        </select>
+
+        <!-- MATERIAL -->
+        <h1>Material</h1>
+        <select name='material' id='material'>
+            <option value=''>A escolher</option>
+            <option value='Couro'>Couro</option>
+            <option value='Metal'>Metal</option>
+            <option value='Prata'>Prata</option>
+            <option value='Aço Inoxidável'>Aço inoxidável</option>
+            <option value='Algodão'>Algodão</option>
+            <option value='Pérolas>Pérolas</option>
+            <option value='Zircônia'>Zircônia</option>
+            <option value='Tungstênio'>Tungstênio</option>
+            <option value='Ouro'>Ouro</option>
+            <option value='Topázio'>Topázio</option>
+        </select>
+
+        <!-- TAMANHO -->
+        <h1>Tamanho</h1>
+        <select name='tamanho' id='tamanho'>
+            <option value=''>A escolher</option>
+            <option value='pequeno'>Pequeno</option>
+            <option value='médio'>Médio</option>
+            <option value='diversos'>Diversos</option>
+            <option value='ajustavel'>Ajustável</option>
+        </select>
+
+        <!-- TIPO - CATEGORIA -->
+        <h1>Categoria</h1>
+        <select name='categoria' id='categoria'>
+            <option value=''>A escolher</option>
+            <option value='pulseira'>Pulseiras</option>
+            <option value='anel'>Anéis</option>
+            <option value='colar'>Colares</option>
+            <option value='brinco'>Brincos</option>
+        </select>
+
+        <!-- BOTÃO FILTRAR -->
+        <input type='submit' value='Filtrar' class='btn-filtrar'>
+        </form>
+    </div>";
+
+    // Div Produtos
+    echo "<div id='produtos-resultado'>";
 
     // Listando Resultados
     while ($row_produtos = mysqli_fetch_array($resultados)) {
