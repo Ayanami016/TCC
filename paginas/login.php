@@ -27,11 +27,11 @@
             </span>
 
             <!--Menu PC-->
-            <span id="menu-pc">
-                <a href="#" class="link-menupc">Pulseiras</a>
-                <a href="#" class="link-menupc">Anéis</a>
-                <a href="#" class="link-menupc">Colares</a>
-                <a href="#" class="link-menupc">Brincos</a>
+                        <span id="menu-pc">
+                <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira" class="link-menupc">Pulseiras</a>
+                <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel" class="link-menupc">Anéis</a>
+                <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar" class="link-menupc">Colares</a>
+                <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco" class="link-menupc">Brincos</a>
             </span>
 
             <!--Menu Mobile-->
@@ -103,11 +103,11 @@
     <span class="menu-pesquisa-mobile">
         <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
     </span>
-    <span class="menu-pc-mobile">
-        <a href="#">Pulseiras</a>
-        <a href="#">Anéis</a>
-        <a href="#">Colares</a>
-        <a href="#">Brincos</a>
+        <span class="menu-pc-mobile">
+        <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a>
+        <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel">Anéis</a>
+        <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a>
+        <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a>
     </span>
 
     <!-- BARRA LATERAL - HISTÓRICO -->

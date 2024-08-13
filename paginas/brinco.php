@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa</title>
+    <title>Brincos</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
@@ -25,7 +25,7 @@
             </span>
 
             <!--Menu PC-->
-                        <span id="menu-pc">
+            <span id="menu-pc">
                 <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira" class="link-menupc">Pulseiras</a>
                 <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel" class="link-menupc">Anéis</a>
                 <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar" class="link-menupc">Colares</a>
@@ -119,6 +119,15 @@
     <!-- Link âncora para voltar ao topo da página -->
     <a name="topo"></a>
 
+    <article id="catalogo">
+        <!-- Imagens (por enquanto placeholders, eles são originais do index) -->
+        <picture>
+            <source media="(min-width: 1063px)" srcset="../src/img/catalogo-pc.jpeg">
+            <source media="(min-width: 530px)" srcset="../src/img/catalogo-tablet.jpeg">
+            <source media="(min-width: 0px)" srcset="../src/img/catalogo-mobile.jpeg">
+            <img src="../src/img/ph-catalogo-pc.jpg" alt="Imagem de Catálogo">
+        </picture>
+    </article>
 <?php
     include("../src/script/conexao.php");
 
@@ -183,7 +192,7 @@
     // Contagem de Resultados para exibição
     $quantia_results = mysqli_num_rows($resultados);
 
-    echo "<div id='container-produtos'>";
+    echo "<div id='container-produtos' style='margin-top: 0;'>";
     // pesquisa maior que 0
     if ($pesquisa != '' && mysqli_num_rows($resultados) > 0) {
         echo "<h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";

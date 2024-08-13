@@ -536,8 +536,9 @@ nav .btnmenu-mobile {
     position: sticky; /* Testar */
     top: 15%;
     padding: 10px 10px 10px 0;
-    width: 20%;
 }
+
+#filtro form {width: 100%;}
 
 #filtro h1 {
     font-size: 1.2em;

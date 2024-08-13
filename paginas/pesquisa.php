@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pesquisa</title>
+    <title>Nossos Produtos</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
@@ -25,11 +25,11 @@
             </span>
 
             <!--Menu PC-->
-            <span id="menu-pc">
-                <a href="#" class="link-menupc">Pulseiras</a>
-                <a href="#" class="link-menupc">Anéis</a>
-                <a href="#" class="link-menupc">Colares</a>
-                <a href="#" class="link-menupc">Brincos</a>
+                        <span id="menu-pc">
+                <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira" class="link-menupc">Pulseiras</a>
+                <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel" class="link-menupc">Anéis</a>
+                <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar" class="link-menupc">Colares</a>
+                <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco" class="link-menupc">Brincos</a>
             </span>
 
             <!--Menu Mobile-->
@@ -101,11 +101,11 @@
     <span class="menu-pesquisa-mobile">
         <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
     </span>
-    <span class="menu-pc-mobile">
-        <a href="#">Pulseiras</a>
-        <a href="#">Anéis</a>
-        <a href="#">Colares</a>
-        <a href="#">Brincos</a>
+        <span class="menu-pc-mobile">
+        <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a>
+        <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel">Anéis</a>
+        <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a>
+        <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a>
     </span>
 
     <!-- BARRA LATERAL - HISTÓRICO -->
@@ -127,7 +127,8 @@
     }
 
     // Pesquisa - Menu method post
-    $pesquisa = $_POST['pesquisa'];
+    $pesquisa = isset($_POST['pesquisa']) ? $_POST['pesquisa'] : '';
+
     // Filtro method get
     $preco_ordem = $_GET['preco-ordem'];
     $precomin = $_GET['min'];
@@ -182,15 +183,24 @@
     // Contagem de Resultados para exibição
     $quantia_results = mysqli_num_rows($resultados);
 
-    echo "<div id='container-produtos'>
-        <h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper($pesquisa) . "&#34;</h1>";
-        
-    if (mysqli_num_rows($resultados) == 0) {
-        echo "<p>Não encontramos resultados para sua pesquisa :(</p>";
-    } else {
+    echo "<div id='container-produtos'>";
+    // pesquisa maior que 0
+    if ($pesquisa != '' && mysqli_num_rows($resultados) > 0) {
+        echo "<h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
         echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+    // pesquisa igual a 0
+    } else if ($pesquisa != '' && mysqli_num_rows($resultados) == 0) {
+        echo "<h1>NENHUM RESULTADO ENCONTRADO PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
+    // pesquisa relacionada ao filtro, pois não terá termo definido na $pesquisa
+    } else {
+        if (mysqli_num_rows($resultados) == 0) {
+            echo "<h1>NENHUM RESULTADO ENCONTRADO :( </h1>";
+        } else {
+            echo "<h1>EXIBINDO RESULTADOS</h1>";
+            echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+        }
     }
-
+    
     // Div que agrupa filtros e produtos mostrados
     echo "<div id='pesquisa-prod'>";
     // FILTRO
