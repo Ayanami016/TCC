@@ -41,7 +41,7 @@
                     <div class="listamenu">
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.html" class="link-listamenu">Minha Conta</a>
+                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
                     </div>
                 </button>
 
@@ -73,7 +73,7 @@
                     <div class="listamenu btnconta">
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.html" class="link-listamenu">Minha Conta</a>
+                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
                     </div>
                 </button>
 

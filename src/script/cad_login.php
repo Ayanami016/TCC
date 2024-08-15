@@ -53,14 +53,24 @@
         $pontos = $pontos + 1;
     }
 
-    //Para validar, $pontos == 5
-    //Inserção no Banco
+    // Para validar, $pontos == 5
+    // Inserção no Banco
     if ($pontos == 5) {
         $insert = "insert into cliente (nome_cli, email_cli, cpf_cli, tel_cli, senha_cli) values ('$nome','$email','$cpf','$telefone','$senha')";
-
+    
         if (mysqli_query($conexao, $insert)) {
+            // Verificação se os dados existem no banco
+            $query = "SELECT * FROM cliente WHERE nome_cli = '$nome' AND email_cli = '$email' AND tel_cli = '$telefone'";
+            $resultado = mysqli_query($conexao, $query);
+            $usuario = mysqli_fetch_assoc($resultado);
+
+            session_start();
+            $_SESSION['nome_exibir'] = $usuario['nome_cli'];
+            $_SESSION['email_exibir'] = $usuario['email_cli'];
+            $_SESSION['tell_exibir'] = $usuario['tel_cli'];
+            
             echo "<script>alert('Dados registrados com sucesso!');</script>";
-            echo "<script>window.location.href='/TCC/paginas/minha-conta.html';</script>";
+            echo "<script>window.location.href='/TCC/paginas/minha-conta.php';</script>";
         } else {
             die(mysqli_error($conexao));
             echo "<script>window.location.href='/TCC/paginas/cadastro.php';</script>";

@@ -1,3 +1,8 @@
+<?php
+include ('TCC/src/script/cad_login.php');
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -41,7 +46,7 @@
                     <div class="listamenu">
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.html" class="link-listamenu">Minha Conta</a>
+                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
                     </div>
                 </button>
 
@@ -73,7 +78,7 @@
                     <div class="listamenu btnconta">
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.html" class="link-listamenu">Minha Conta</a>
+                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
                     </div>
                 </button>
 
@@ -124,9 +129,9 @@
         <div class="caixa-minha-conta">
             <h2>Dados Pessoais</h2>
             <div class="conteudo-minhaconta">
-                <strong style="font-size: 1.3em;">Nome do Usuário</strong>
-                <p>Email</p>
-                <p>Telefone: (xx)xxxxx-xxxx</p>
+                <strong style="font-size: 1.3em;"><?php echo $_SESSION['nome_exibir']; ?></strong>
+                <p><?php echo $_SESSION['email_exibir']; ?></p>
+                <p><?php echo $_SESSION['tell_exibir']; ?></p>
                 <a href="#"><button class="btn-minhaconta" btn-placeholder="Editar Dados"></button></a>
             </div>
         </div>
