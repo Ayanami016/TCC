@@ -1,6 +1,15 @@
 <?php
 include ('TCC/src/script/cad_login.php');
+// Verifica se usuário está logado
 session_start();
+if (isset($_SESSION['nome_exibir'])) {
+    // Divida o nome completo em partes
+    $nomeCompleto = $_SESSION['nome_exibir'];
+    $partesNome = explode(' ', $nomeCompleto);
+    $primeiroNome = $partesNome[0];
+} else {
+    $primeiroNome = '';
+}
 ?>
 
 <!DOCTYPE html>
@@ -12,6 +21,13 @@ session_start();
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
+    <style>
+        <?php if (!empty($primeiroNome)): ?>
+        nav a.link-menupc {padding: 5vh 19px 4.8vh 19px;}
+
+        nav .ajusteconta {width: 105px;}
+        <?php endif; ?>
+    </style>
 </head>
 <body>
     <!-- MENU -->
@@ -31,7 +47,7 @@ session_start();
             </span>
 
             <!--Menu PC-->
-                        <span id="menu-pc">
+            <span id="menu-pc">
                 <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira" class="link-menupc">Pulseiras</a>
                 <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel" class="link-menupc">Anéis</a>
                 <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar" class="link-menupc">Colares</a>
@@ -73,12 +89,27 @@ session_start();
             <!--Menu PC-->
             <span id="botoes-pc">
                 <!-- Conta -->
-                <button class="btnmenu-pc">
-                    <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>Conta
+                <button class="btnmenu-pc ajusteconta">
+                    <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>
+                    <?php if (!empty($primeiroNome)): ?>
+                        <!-- Se logado, exibe o primeiro nome do usuário -->
+                        Olá, <?php echo htmlspecialchars($primeiroNome); ?>!
+                    <?php else: ?>
+                        <!-- Se não estiver logado, exibe "Conta" -->
+                        Conta
+                    <?php endif; ?>
+
                     <div class="listamenu btnconta">
-                        <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
-                        <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                        <?php if (!empty($primeiroNome)): ?>
+                            <!-- Itens do menu para usuários logados -->
+                            <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                            <a href="#" class="link-listamenu">Histórico</a>
+                            <a href="../src/script/destroy_session.php" class="link-listamenu">Encerrar Sessão</a>
+                        <?php else: ?>
+                            <!-- Itens do menu para usuários não logados -->
+                            <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
+                            <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
+                        <?php endif; ?>
                     </div>
                 </button>
 
