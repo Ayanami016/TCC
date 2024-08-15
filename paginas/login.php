@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-<!DOCTYPE html>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
@@ -13,7 +12,7 @@
     <!--MENU-->
     <header>
         <span>
-            <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
+            <a href="index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
         <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
@@ -69,12 +68,27 @@
             <!--Menu PC-->
             <span id="botoes-pc">
                 <!-- Conta -->
-                <button class="btnmenu-pc">
-                    <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>Conta
+                <button class="btnmenu-pc ajusteconta">
+                    <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>
+                    <?php if (!empty($primeiroNome)): ?>
+                        <!-- Se logado, exibe o primeiro nome do usuário -->
+                        Olá, <?php echo htmlspecialchars($primeiroNome); ?>!
+                    <?php else: ?>
+                        <!-- Se não estiver logado, exibe "Conta" -->
+                        Conta
+                    <?php endif; ?>
+
                     <div class="listamenu btnconta">
-                        <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
-                        <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                        <?php if (!empty($primeiroNome)): ?>
+                            <!-- Itens do menu para usuários logados -->
+                            <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                            <a href="#" class="link-listamenu">Histórico</a>
+                            <a href="../src/script/destroy_session.php" class="link-listamenu">Encerrar Sessão</a>
+                        <?php else: ?>
+                            <!-- Itens do menu para usuários não logados -->
+                            <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
+                            <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
+                        <?php endif; ?>
                     </div>
                 </button>
 
@@ -122,7 +136,7 @@
     <div id="caixa" class="login">
         <div class="form-box">
             <h1>&#x1F44B Iniciar Sessão</h1>
-            <form action="#">
+            <form action="../src/script/script_login.php" method="post">
                 <!--Email-->
                 <div class="input-box">
                     <span class="icon">

@@ -65,9 +65,9 @@
             $usuario = mysqli_fetch_assoc($resultado);
 
             session_start();
-            $_SESSION['nome_exibir'] = $usuario['nome_cli'];
-            $_SESSION['email_exibir'] = $usuario['email_cli'];
-            $_SESSION['tell_exibir'] = $usuario['tel_cli'];
+            $_SESSION['nome_exibir'] = $usuario['nome_cli'] ? $usuario['nome_cli'] : '';
+            $_SESSION['email_exibir'] = $usuario['email_cli'] ? $usuario['email_cli'] : '';
+            $_SESSION['tell_exibir'] = $usuario['tel_cli'] ? $usuario['tel_cli'] : '';
             
             echo "<script>alert('Dados registrados com sucesso!');</script>";
             echo "<script>window.location.href='/TCC/paginas/minha-conta.php';</script>";

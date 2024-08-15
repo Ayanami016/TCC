@@ -1,5 +1,5 @@
 <?php
-include ('TCC/src/script/cad_login.php');
+
 // Verifica se usuário está logado
 session_start();
 if (isset($_SESSION['nome_exibir'])) {
@@ -33,7 +33,7 @@ if (isset($_SESSION['nome_exibir'])) {
     <!-- MENU -->
     <header>
         <span>
-            <a href="index.html"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
+            <a href="index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
         <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
@@ -170,7 +170,7 @@ if (isset($_SESSION['nome_exibir'])) {
         <div class="caixa-compra">
             <ion-icon name="cart-outline"></ion-icon>
             <p>Realize a sua primeira compra!</p>
-            <a href="index.html"><button class="btn-index" btn-placeholder="Ir para Loja"></button></a>
+            <a href="index.php"><button class="btn-index" btn-placeholder="Ir para Loja"></button></a>
         </div>
     </article>
 
