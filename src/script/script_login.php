@@ -4,10 +4,11 @@
     //Variáveis
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $query = "SELECT * FROM cliente WHERE email_cli = '$email' AND senha_cli = '$senha'";
 
-    if (mysqli_query($conexao, $query)) {
-        $resultado = mysqli_query($conexao, $query);
+    $query = "SELECT * FROM cliente WHERE email_cli = '$email' AND senha_cli = '$senha'";
+    $resultado = mysqli_query($conexao, $query);
+
+    if (mysqli_num_rows($resultado) > 0) {    
         $usuario = mysqli_fetch_assoc($resultado);
 
         session_start();
