@@ -41,10 +41,11 @@ if (isset($_SESSION['nome_exibir'])) {
             <!--Menu PC-->
             <span id="menu-pc">
                 <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira" class="link-menupc">Pulseiras</a>
-                <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel" class="link-menupc">Anéis</a>
                 <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar" class="link-menupc">Colares</a>
                 <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco" class="link-menupc">Brincos</a>
+                <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto" class="link-menupc">Conjuntos</a>
             </span>
+
 
             <!--Menu Mobile-->
             <span class="alterna-botoes">
@@ -52,9 +53,15 @@ if (isset($_SESSION['nome_exibir'])) {
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
                     <div class="listamenu">
+                        <?php if (!empty($primeiroNome)) : ?>
+                        <!-- Logado -->
+                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                        <a href="#" class="link-listamenu">Histórico</a>
+                        <a href="../src/script/destroy_session.php" class="link-listamenu">Encessar Sessão</a>
+                        <?php else: ?>
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                        <?php endif; ?>
                     </div>
                 </button>
 
@@ -71,9 +78,8 @@ if (isset($_SESSION['nome_exibir'])) {
                 <button class="btnmenu-mobile">
                     <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
                     <div class="listamenu">
-                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
-                        <a href="#" class="link-listamenu">Histórico</a>
                     </div>
                 </button>
             </span>
@@ -118,9 +124,8 @@ if (isset($_SESSION['nome_exibir'])) {
                 <button class="btnmenu-pc">
                     <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
                     <div class="listamenu btncarrinho">
-                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
-                        <a href="#" class="link-listamenu">Histórico</a>
                     </div>
                 </button>
             </span>
@@ -128,13 +133,15 @@ if (isset($_SESSION['nome_exibir'])) {
     </header>
 
     <span class="menu-pesquisa-mobile">
-        <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
+        <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
+            <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
+        </form>
     </span>
         <span class="menu-pc-mobile">
         <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a>
-        <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel">Anéis</a>
         <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a>
         <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a>
+        <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto">Conjuntos</a>
     </span>
 
     <!-- BARRA LATERAL - HISTÓRICO -->
@@ -265,16 +272,9 @@ if (isset($_SESSION['nome_exibir'])) {
         <h1>Material</h1>
         <select name='material' id='material'>
             <option value=''>A escolher</option>
-            <option value='Couro'>Couro</option>
-            <option value='Metal'>Metal</option>
             <option value='Prata'>Prata</option>
+            <option value='Joia'>Pedras</option>
             <option value='Aço Inoxidável'>Aço inoxidável</option>
-            <option value='Algodão'>Algodão</option>
-            <option value='Pérolas>Pérolas</option>
-            <option value='Zircônia'>Zircônia</option>
-            <option value='Tungstênio'>Tungstênio</option>
-            <option value='Ouro'>Ouro</option>
-            <option value='Topázio'>Topázio</option>
         </select>
 
         <!-- TAMANHO -->
@@ -283,7 +283,7 @@ if (isset($_SESSION['nome_exibir'])) {
             <option value=''>A escolher</option>
             <option value='pequeno'>Pequeno</option>
             <option value='médio'>Médio</option>
-            <option value='diversos'>Diversos</option>
+            <option value='grande'>Grande</option>
             <option value='ajustavel'>Ajustável</option>
         </select>
 
@@ -292,9 +292,9 @@ if (isset($_SESSION['nome_exibir'])) {
         <select name='categoria' id='categoria'>
             <option value=''>A escolher</option>
             <option value='pulseira'>Pulseiras</option>
-            <option value='anel'>Anéis</option>
             <option value='colar'>Colares</option>
             <option value='brinco'>Brincos</option>
+            <option value='conjunto'>Conjuntos</option>
         </select>
 
         <!-- BOTÃO FILTRAR -->
@@ -340,10 +340,10 @@ if (isset($_SESSION['nome_exibir'])) {
        <span>
             <h1>Categorias</h1>
             <ul>
-                <li><a href="#">Pulseiras</a></li>
-                <li><a href="#">Anéis</a></li>
-                <li><a href="#">Colares</a></li>
-                <li class="ultimo"><a href="#">Brincos</a></li>
+                <li><a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a></li>
+                <li><a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a></li>
+                <li><a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a></li>
+                <li class="ultimo"><a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto">Conjuntos</a></li>
             </ul>
         </span>
 

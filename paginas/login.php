@@ -28,10 +28,11 @@
             <!--Menu PC-->
                         <span id="menu-pc">
                 <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira" class="link-menupc">Pulseiras</a>
-                <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel" class="link-menupc">Anéis</a>
                 <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar" class="link-menupc">Colares</a>
                 <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco" class="link-menupc">Brincos</a>
+                <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto" class="link-menupc">Conjuntos</a>
             </span>
+
 
             <!--Menu Mobile-->
             <span class="alterna-botoes">
@@ -39,9 +40,15 @@
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
                     <div class="listamenu">
+                        <?php if (!empty($primeiroNome)) : ?>
+                        <!-- Logado -->
+                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                        <a href="#" class="link-listamenu">Histórico</a>
+                        <a href="../src/script/destroy_session.php" class="link-listamenu">Encessar Sessão</a>
+                        <?php else: ?>
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
-                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                        <?php endif; ?>
                     </div>
                 </button>
 
@@ -58,9 +65,8 @@
                 <button class="btnmenu-mobile">
                     <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
                     <div class="listamenu">
-                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
-                        <a href="#" class="link-listamenu">Histórico</a>
                     </div>
                 </button>
             </span>
@@ -105,9 +111,8 @@
                 <button class="btnmenu-pc">
                     <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
                     <div class="listamenu btncarrinho">
-                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
-                        <a href="#" class="link-listamenu">Histórico</a>
                     </div>
                 </button>
             </span>
@@ -115,13 +120,15 @@
     </header>
 
     <span class="menu-pesquisa-mobile">
-        <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
+        <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
+            <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
+        </form>
     </span>
         <span class="menu-pc-mobile">
         <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a>
-        <a href="anel.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=anel">Anéis</a>
         <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a>
         <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a>
+        <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto">Conjuntos</a>
     </span>
 
     <!-- BARRA LATERAL - HISTÓRICO -->
