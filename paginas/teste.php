@@ -28,7 +28,7 @@ if (isset($_SESSION['nome_exibir'])) {
             <a href="index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
-        <form action="teste.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
+        <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
             <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
         </form>
 
@@ -298,9 +298,11 @@ if (isset($_SESSION['nome_exibir'])) {
 
     // Listando Resultados
     while ($row_produtos = mysqli_fetch_array($resultados)) {
+        $id = $row_produtos['id_prod'];
+        $nome_img = "../src/img/produto" . $id . ".png";
         echo
         "<div class='produto' style='margin-top: 0px;'>
-            <img src='../src/img/ph-produto-anel.jpg' alt='Produto'>
+            <img src='$nome_img' alt='Produto'>
             <p>" . $row_produtos['nome_prod'] . "</p>" .
             "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
             "<div class='botoes-produto'>

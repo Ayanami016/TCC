@@ -23,7 +23,7 @@ if (isset($_SESSION['nome_exibir'])) {
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
     <style>
         <?php if (!empty($primeiroNome)): ?>
-        nav a.link-menupc {padding: 5vh 19px 4.8vh 19px;}
+        /* nav a.link-menupc {padding: 5vh 19px 4.8vh 19px;} */
 
         nav .ajusteconta {width: 105px;}
         <?php endif; ?>

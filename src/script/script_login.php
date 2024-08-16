@@ -15,7 +15,6 @@
         $_SESSION['email_exibir'] = $usuario['email_cli'] ? $usuario['email_cli'] : '';
         $_SESSION['tell_exibir'] = $usuario['tel_cli'] ? $usuario['tel_cli'] : '';
 
-        echo "<script>alert('Login bem-sucedido!');</script>";
         echo "<script>window.location.href='/TCC/paginas/minha-conta.php';</script>";
         exit;
     } else {
