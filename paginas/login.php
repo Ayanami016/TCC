@@ -83,7 +83,6 @@
                         <!-- Se não estiver logado, exibe "Conta" -->
                         Conta
                     <?php endif; ?>
-
                     <div class="listamenu btnconta">
                         <?php if (!empty($primeiroNome)): ?>
                             <!-- Itens do menu para usuários logados -->
@@ -111,7 +110,7 @@
                 <button class="btnmenu-pc">
                     <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
                     <div class="listamenu btncarrinho">
-<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>

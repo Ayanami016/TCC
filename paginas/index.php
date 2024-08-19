@@ -1,15 +1,15 @@
 <?php
-  
-// Verifica se usuário está logado
-session_start();
-if (isset($_SESSION['nome_exibir'])) {
-    // Divida o nome completo em partes
-    $nomeCompleto = $_SESSION['nome_exibir'];
-    $partesNome = explode(' ', $nomeCompleto);
-    $primeiroNome = $partesNome[0];
-} else {
-    $primeiroNome = '';
-}
+    include('../src/script/conexao.php');
+    // Verifica se usuário está logado
+    session_start();
+    if (isset($_SESSION['nome_exibir'])) {
+        // Divida o nome completo em partes
+        $nomeCompleto = $_SESSION['nome_exibir'];
+        $partesNome = explode(' ', $nomeCompleto);
+        $primeiroNome = $partesNome[0];
+    } else {
+        $primeiroNome = '';
+    }
 ?>
 
 <!DOCTYPE html>
@@ -86,7 +86,7 @@ if (isset($_SESSION['nome_exibir'])) {
                 <button class="btnmenu-mobile">
                     <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
                     <div class="listamenu">
-<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -132,7 +132,7 @@ if (isset($_SESSION['nome_exibir'])) {
                 <button class="btnmenu-pc">
                     <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
                     <div class="listamenu btncarrinho">
-<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -145,7 +145,7 @@ if (isset($_SESSION['nome_exibir'])) {
             <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
         </form>
     </span>
-        <span class="menu-pc-mobile">
+    <span class="menu-pc-mobile">
         <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a>
         <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a>
         <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a>
@@ -184,9 +184,31 @@ if (isset($_SESSION['nome_exibir'])) {
     <!-- MAIS VENDIDOS -->
     <article class="produtos-index">
         <h1>Mais Vendidos</h1>
-        <span class="produtos-conteudo">
+        <?php
+            echo "<span class='produtos-conteudo'>";
+
+            $maisvendidos = "SELECT * FROM produto WHERE tipo_prod like '%Mais Vendidos%';";
+            $resultado = mysqli_query($conexao, $maisvendidos);
+
+            while ($row_produtos = mysqli_fetch_array($resultado)) {
+                $id = $row_produtos['id_prod'];
+                $nome_img = "../src/img/produto" . $id . ".png";
+                echo
+                "<div class='produto' style='margin-top: 0px;'>
+                    <img src='$nome_img' alt='Produto'>
+                    <p>" . $row_produtos['nome_prod'] . "</p>" .
+                    "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
+                    "<div class='botoes-produto'>
+                        <button class='btn-compra' btn-placeholder='Comprar'></button>
+                        <ion-icon name='add-outline'></ion-icon>
+                    </div>
+                </div>";
+            }
+            echo "</span>";
+        ?>
+        <!-- <span class="produtos-conteudo">
             <div class="produto">
-                <img src="../src/img/ph-produto-anel.jpg" alt="Produto"  >
+                <img src="../src/img/ph-produto-anel.jpg" alt="Produto">
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
                 <p class="preco">R$900,00</p>
                 <div class="botoes-produto">
@@ -222,7 +244,7 @@ if (isset($_SESSION['nome_exibir'])) {
                     <ion-icon name="add-outline"></ion-icon>
                 </div>
             </div>
-        </span>
+        </span> -->
     </article>
 
     <!-- CONHEÇA NOSSOS PRODUTOS -->
@@ -230,19 +252,15 @@ if (isset($_SESSION['nome_exibir'])) {
         <h1>Conheça nossos Produtos</h1>
         <span class="conheca-conteudo">
             <div class="conhecaproduto">
-                <a href="#pulseira"><img src="../src/img/ph-produto-pulseira.jpg" alt="Conheça Pulseiras"></a>
+                <a href="#pulseira"><img src="../src/img/produto1.png" alt="Conheça Pulseiras"></a>
                 <a href="#pulseira">Pulseira</a>
             </div>
             <div class="conhecaproduto">
-                 <a href="#anel"><img src="../src/img/ph-produto-anel.jpg" alt="Conheça Anéis"></a>
-                 <a href="#anel">Anel</a>
-            </div>
-            <div class="conhecaproduto">
-                <a href="#colar"><img src="../src/img/ph-produto-colar.jpg" alt="Conheça Colares"></a>
+                <a href="#colar"><img src="../src/img/produto7.png" alt="Conheça Colares"></a>
                 <a href="#colar">Colar</a>
             </div>
             <div class="conhecaproduto">
-                <a href="#brinco"><img src="../src/img/ph-produto-brinco.jpg" alt="Conheça Brincos"></a>
+                <a href="#brinco"><img src="../src/img/produto36.png" alt="Conheça Brincos"></a>
                 <a href="#brinco">Brinco</a>
             </div>
         </span>    
@@ -251,105 +269,36 @@ if (isset($_SESSION['nome_exibir'])) {
     <!-- PRODUTOS -->
         <!-- Pulseira -->
     <a name="pulseira"></a>
-    <article class="prod-destaque-direita">
+    <article class="prod-destaque-esquerda">
+        <img src="../src/img/destaque-pulseira.png" alt="Pulseira em Destaque">
         <div class="pdd-texto">
             <h1>Pulseiras</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
             <a href="#"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
-            <img src="../src/img/ph-produto-destaque-pulseira.jpg" alt="Pulseira em Destaque">
     </article>
 
     <article class="produtos-index">
         <span class="produtos-conteudo">
-            <div class="produto">
-                <img src="../src/img/ph-produto-pulseira.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-pulseira.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-pulseira.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-pulseira.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-        </span>
-    </article>
-
-        <!-- Anel -->
-    <a name="anel"></a>
-    <article class="prod-destaque-esquerda">
-        <img src="../src/img/ph-produto-destaque-anel.jpg" alt="Pulseira em Destaque">
-        <div class="pdd-texto">
-            <h1>Anéis</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="#"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
-        </div>
-    </article>
+            <?php
+                $pulseiras = "SELECT * FROM produto WHERE tipo_prod like 'Pulseira, Index';";
+                $resultado = mysqli_query($conexao, $pulseiras);
     
-    <article class="produtos-index">
-        <span class="produtos-conteudo">
-            <div class="produto">
-                <img src="../src/img/ph-produto-anel.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-anel.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            
-            <div class="produto">
-                <img src="../src/img/ph-produto-anel.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-anel.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
+                while ($row_produtos = mysqli_fetch_array($resultado)) {
+                    $id = $row_produtos['id_prod'];
+                    $nome_img = "../src/img/produto" . $id . ".png";
+                    echo
+                    "<div class='produto' style='margin-top: 0px;'>
+                        <img src='$nome_img' alt='Produto'>
+                        <p>" . $row_produtos['nome_prod'] . "</p>" .
+                        "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
+                        "<div class='botoes-produto'>
+                            <button class='btn-compra' btn-placeholder='Comprar'></button>
+                            <ion-icon name='add-outline'></ion-icon>
+                        </div>
+                    </div>";
+                }
+            ?>
             </div>
         </span>
     </article>
@@ -362,55 +311,37 @@ if (isset($_SESSION['nome_exibir'])) {
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
             <a href="#"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
-        <img src="../src/img/ph-produto-destaque-colar.jpg" alt="Pulseira em Destaque">
+        <img src="../src/img/destaque-colar.png" alt="Pulseira em Destaque">
     </article>
 
     <article class="produtos-index">
         <span class="produtos-conteudo">
-            <div class="produto">
-                <img src="../src/img/ph-produto-colar.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-colar.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            
-            <div class="produto">
-                <img src="../src/img/ph-produto-colar.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-colar.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
+            <?php
+                $colares = "SELECT * FROM produto WHERE tipo_prod like 'Colar, Index';";
+                $resultado = mysqli_query($conexao, $colares);
+
+                while ($row_produtos = mysqli_fetch_array($resultado)) {
+                    $id = $row_produtos['id_prod'];
+                    $nome_img = "../src/img/produto" . $id . ".png";
+                    echo
+                    "<div class='produto' style='margin-top: 0px;'>
+                        <img src='$nome_img' alt='Produto'>
+                        <p>" . $row_produtos['nome_prod'] . "</p>" .
+                        "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
+                        "<div class='botoes-produto'>
+                            <button class='btn-compra' btn-placeholder='Comprar'></button>
+                            <ion-icon name='add-outline'></ion-icon>
+                        </div>
+                    </div>";
+                }
+            ?>
         </span>
     </article>
     
         <!-- Brinco -->
     <a name="brinco"></a>
     <article class="prod-destaque-esquerda">
-        <img src="../src/img/ph-produto-destaque-brinco.jpg" alt="Pulseira em Destaque">
+        <img src="../src/img/destaque-brinco.png" alt="Pulseira em Destaque">
         <div class="pdd-texto">
             <h1>Brincos</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
@@ -420,43 +351,25 @@ if (isset($_SESSION['nome_exibir'])) {
     
     <article class="produtos-index">
         <span class="produtos-conteudo">
-            <div class="produto">
-                <img src="../src/img/ph-produto-brinco.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-brinco.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            
-            <div class="produto">
-                <img src="../src/img/ph-produto-brinco.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-brinco.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
+        <?php
+            $brincos = "SELECT * FROM produto WHERE tipo_prod like 'Brinco, Index';";
+            $resultado = mysqli_query($conexao, $brincos);
+
+            while ($row_produtos = mysqli_fetch_array($resultado)) {
+                $id = $row_produtos['id_prod'];
+                $nome_img = "../src/img/produto" . $id . ".png";
+                echo
+                "<div class='produto' style='margin-top: 0px;'>
+                    <img src='$nome_img' alt='Produto'>
+                    <p>" . $row_produtos['nome_prod'] . "</p>" .
+                    "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
+                    "<div class='botoes-produto'>
+                        <button class='btn-compra' btn-placeholder='Comprar'></button>
+                        <ion-icon name='add-outline'></ion-icon>
+                    </div>
+                </div>";
+                }
+            ?>
         </span>
     </article>
 
