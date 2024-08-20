@@ -40,10 +40,10 @@ if (isset($_SESSION['nome_exibir'])) {
 
             <!--Menu PC-->
             <span id="menu-pc">
-                <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira" class="link-menupc">Pulseiras</a>
-                <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar" class="link-menupc">Colares</a>
-                <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco" class="link-menupc">Brincos</a>
-                <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto" class="link-menupc">Conjuntos</a>
+                <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25" class="link-menupc">Pulseiras</a>
+                <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index" class="link-menupc">Colares</a>
+                <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25" class="link-menupc">Brincos</a>
+                <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25conjunto%25" class="link-menupc">Conjuntos</a>
             </span>
 
 
@@ -138,10 +138,10 @@ if (isset($_SESSION['nome_exibir'])) {
         </form>
     </span>
         <span class="menu-pc-mobile">
-        <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a>
-        <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a>
-        <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a>
-        <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto">Conjuntos</a>
+        <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25">Pulseiras</a>
+        <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index">Colares</a>
+        <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25">Brincos</a>
+        <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25">Conjuntos</a>
     </span>
 
     <!-- BARRA LATERAL - HISTÓRICO -->
@@ -209,9 +209,9 @@ if (isset($_SESSION['nome_exibir'])) {
     )";
        
         // Material, Tamanho e Categoria
-    if (!empty($mat)) {$result_pesquisa .= "and material_prod = '$mat'";}
-    if (!empty($tam)) {$result_pesquisa .= "and tamanho_prod = '$tam'";}
-    if (!empty($cat)) {$result_pesquisa .= " and tipo_prod = '$cat'";}
+    if (!empty($mat)) {$result_pesquisa .= " and material_prod like '$mat'";}
+    if (!empty($tam)) {$result_pesquisa .= " and tamanho_prod like '$tam'";}
+    if (!empty($cat)) {$result_pesquisa .= " and tipo_prod like '$cat'";}
 
         // Preço Ordenado
     if (!empty($preco_ordem)) {
@@ -272,9 +272,9 @@ if (isset($_SESSION['nome_exibir'])) {
         <h1>Material</h1>
         <select name='material' id='material'>
             <option value=''>A escolher</option>
-            <option value='Prata'>Prata</option>
-            <option value='Joia'>Pedras</option>
-            <option value='Aço Inoxidável'>Aço inoxidável</option>
+            <option value='%Prata%'>Prata</option>
+            <option value='%Joia%'>Pedras</option>
+            <option value='%Aço Inoxidável%'>Aço inoxidável</option>
         </select>
 
         <!-- TAMANHO -->
@@ -291,10 +291,10 @@ if (isset($_SESSION['nome_exibir'])) {
         <h1>Categoria</h1>
         <select name='categoria' id='categoria'>
             <option value=''>A escolher</option>
-            <option value='pulseira'>Pulseiras</option>
-            <option value='colar'>Colares</option>
-            <option value='brinco'>Brincos</option>
-            <option value='conjunto'>Conjuntos</option>
+            <option value='%pulseira%'>Pulseiras</option>
+            <option value='%colar%'>Colares</option>
+            <option value='%brinco%'>Brincos</option>
+            <option value='%conjunto%'>Conjuntos</option>
         </select>
 
         <!-- BOTÃO FILTRAR -->
@@ -341,7 +341,7 @@ if (isset($_SESSION['nome_exibir'])) {
             <h1>Categorias</h1>
             <ul>
                 <li><a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a></li>
-                <li><a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=colar">Colares</a></li>
+                <li><a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index">Colares</a></li>
                 <li><a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a></li>
                 <li class="ultimo"><a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto">Conjuntos</a></li>
             </ul>
