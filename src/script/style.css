@@ -531,12 +531,17 @@ nav .btnmenu-mobile {
 
     /* Filtro */
 #filtro {
+    z-index: 2;
     position: sticky; /* Testar */
-    top: 15%;
+    top: 15vh;
     padding: 10px 10px 10px 0;
 }
 
-#filtro form {width: 100%;}
+#filtro form {
+    position: sticky;
+    top: 25%;
+    width: 100%;
+}
 
 #filtro h1 {
     font-size: 1.2em;
