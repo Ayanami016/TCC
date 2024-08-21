@@ -222,7 +222,7 @@ if (isset($_SESSION['nome_exibir'])) {
     // pesquisa maior que 0
     if ($pesquisa != '' && mysqli_num_rows($resultados) > 0) {
         echo "<h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
-        echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+        echo "<p>Resultado: " . $quantia_results . " produto(s)</p>";
     // pesquisa igual a 0
     } else if ($pesquisa != '' && mysqli_num_rows($resultados) == 0) {
         echo "<h1>NENHUM RESULTADO ENCONTRADO PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
@@ -232,7 +232,7 @@ if (isset($_SESSION['nome_exibir'])) {
             echo "<h1>NENHUM RESULTADO ENCONTRADO :( </h1>";
         } else {
             echo "<h1>EXIBINDO RESULTADOS</h1>";
-            echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+            echo "<p>Resultado: " . $quantia_results . " produto(s)</p>";
         }
     }
     

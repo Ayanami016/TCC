@@ -596,14 +596,17 @@ nav .btnmenu-mobile {
     display: flex;
     flex-wrap: wrap;
     margin: 10px;
-    width: 21%;
+    width: 33.4vh;
     height: 460px;
     padding: 20px;
     justify-content: space-around;
     box-shadow: 0 0 10px var(--sombra);
 }
 
-.produto img {width: 100%;}
+.produto img {
+    height: 50%;
+    width: 100%;
+}
 
 .produto p {margin-top: 1.5vh;}
 

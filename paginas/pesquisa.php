@@ -78,7 +78,7 @@ if (isset($_SESSION['nome_exibir'])) {
                 <button class="btnmenu-mobile">
                     <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
                     <div class="listamenu">
-<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -124,7 +124,7 @@ if (isset($_SESSION['nome_exibir'])) {
                 <button class="btnmenu-pc">
                     <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
                     <div class="listamenu btncarrinho">
-<a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -223,7 +223,7 @@ if (isset($_SESSION['nome_exibir'])) {
     // pesquisa maior que 0
     if ($pesquisa != '' && mysqli_num_rows($resultados) > 0) {
         echo "<h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
-        echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+        echo "<p>Resultado: " . $quantia_results . " produto(s)</p>";
     // pesquisa igual a 0
     } else if ($pesquisa != '' && mysqli_num_rows($resultados) == 0) {
         echo "<h1>NENHUM RESULTADO ENCONTRADO PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
@@ -233,7 +233,7 @@ if (isset($_SESSION['nome_exibir'])) {
             echo "<h1>NENHUM RESULTADO ENCONTRADO :( </h1>";
         } else {
             echo "<h1>EXIBINDO RESULTADOS</h1>";
-            echo "<p>Resultado: " . $quantia_results . " produtos</p>";
+            echo "<p>Resultado: " . $quantia_results . " produto(s)</p>";
         }
     }
     
