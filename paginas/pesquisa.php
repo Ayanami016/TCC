@@ -303,11 +303,13 @@ if (isset($_SESSION['nome_exibir'])) {
         echo
         "<div class='produto' style='margin-top: 0px;'>
             <img src='$nome_img' alt='Produto'>
-            <p>" . $row_produtos['nome_prod'] . "</p>" .
-            "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
-            "<div class='botoes-produto'>
-                <button class='btn-compra' btn-placeholder='Comprar'></button>
-                <ion-icon name='add-outline'></ion-icon>
+            <div class='info-prod-mobile'>
+                <p>" . $row_produtos['nome_prod'] . "</p>" .
+                "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
+                "<div class='botoes-produto'>
+                    <button class='btn-compra' btn-placeholder='Comprar'></button>
+                    <ion-icon name='add-outline'></ion-icon>
+                </div>
             </div>
         </div>";
     }

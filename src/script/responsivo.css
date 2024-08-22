@@ -60,6 +60,26 @@
     }
 }
 
+@media (max-width: 870px) {
+    #produtos-resultado .produto {
+        flex-direction: column;
+        width: 100%;
+        height: 210px;
+    }
+
+    #produtos-resultado .produto img {
+        width: 23vh;
+        height: 23vh;
+    }
+
+    .info-prod-mobile {
+        display: flex;
+        width: 40vh;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 @media (max-width: 770px) {
     #rodape {
         display: block;
