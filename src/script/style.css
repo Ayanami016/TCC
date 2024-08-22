@@ -597,7 +597,7 @@ nav .btnmenu-mobile {
     flex-wrap: wrap;
     margin: 10px;
     width: 33.4vh;
-    height: 460px;
+    height: 450px;
     padding: 20px;
     justify-content: space-around;
     box-shadow: 0 0 10px var(--sombra);

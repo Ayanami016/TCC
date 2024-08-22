@@ -252,16 +252,16 @@
         <h1>Conheça nossos Produtos</h1>
         <span class="conheca-conteudo">
             <div class="conhecaproduto">
-                <a href="#pulseira"><img src="../src/img/produto1.png" alt="Conheça Pulseiras"></a>
-                <a href="#pulseira">Pulseira</a>
+                <a href="#pulseira"><img src="../src/img/produto1.png" alt="Conheça Pulseiras">Pulseira</a>
             </div>
             <div class="conhecaproduto">
-                <a href="#colar"><img src="../src/img/produto7.png" alt="Conheça Colares"></a>
-                <a href="#colar">Colar</a>
+                <a href="#colar"><img src="../src/img/produto7.png" alt="Conheça Colares">Colar</a>
             </div>
             <div class="conhecaproduto">
-                <a href="#brinco"><img src="../src/img/produto36.png" alt="Conheça Brincos"></a>
-                <a href="#brinco">Brinco</a>
+                <a href="#brinco"><img src="../src/img/produto36.png" alt="Conheça Brincos">Brinco</a>
+            </div>
+            <div class="conhecaproduto">
+                <a href="#conjunto"><img src="../src/img/produto13.png" alt="Conheça Conjuntos">Conjunto</a>
             </div>
         </span>    
      </article>
@@ -274,7 +274,7 @@
         <div class="pdd-texto">
             <h1>Pulseiras</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="#"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+            <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
     </article>
 
@@ -309,9 +309,9 @@
         <div class="pdd-texto">
             <h1>Colares</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="#"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+            <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
-        <img src="../src/img/destaque-colar.png" alt="Pulseira em Destaque">
+        <img src="../src/img/destaque-colar.png" alt="Colar em Destaque">
     </article>
 
     <article class="produtos-index">
@@ -341,11 +341,11 @@
         <!-- Brinco -->
     <a name="brinco"></a>
     <article class="prod-destaque-esquerda">
-        <img src="../src/img/destaque-brinco.png" alt="Pulseira em Destaque">
+        <img src="../src/img/destaque-brinco.png" alt="Brinco em Destaque">
         <div class="pdd-texto">
             <h1>Brincos</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="#"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+            <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
     </article>
     
@@ -373,6 +373,40 @@
         </span>
     </article>
 
+     <!-- Conjunto -->
+     <a name="conjunto"></a>
+    <article class="prod-destaque-direita">
+        <div class="pdd-texto">
+            <h1>Conjuntos</h1>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
+            <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+        </div>
+        <img src="../src/img/destaque-conjunto.png" alt="Conjunto em Destaque">
+    </article>
+
+    <article class="produtos-index">
+        <span class="produtos-conteudo">
+            <?php
+                $colares = "SELECT * FROM produto WHERE tipo_prod like '%Conjunto%';";
+                $resultado = mysqli_query($conexao, $colares);
+
+                while ($row_produtos = mysqli_fetch_array($resultado)) {
+                    $id = $row_produtos['id_prod'];
+                    $nome_img = "../src/img/produto" . $id . ".png";
+                    echo
+                    "<div class='produto' style='margin-top: 0px;'>
+                        <img src='$nome_img' alt='Produto'>
+                        <p>" . $row_produtos['nome_prod'] . "</p>" .
+                        "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
+                        "<div class='botoes-produto'>
+                            <button class='btn-compra' btn-placeholder='Comprar'></button>
+                            <ion-icon name='add-outline'></ion-icon>
+                        </div>
+                    </div>";
+                }
+            ?>
+        </span>
+    </article>
     <!-- Escuro -->
     <div id="escuro" style="display: none;"></div>
 
