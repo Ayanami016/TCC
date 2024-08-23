@@ -34,7 +34,7 @@ id_prod int(8) auto_increment primary key,
 descricao_prod varchar(255) not null,
 nome_prod varchar(80) not null,
 tipo_prod varchar(80) not null,
-cor_prod varchar(20) not null,
+cor_prod varchar(80) not null,
 material_prod varchar(80) not null,
 tamanho_prod varchar(80) not null,
 estoque int(8) not null,
@@ -86,7 +86,7 @@ fk_endereco int(8) -- FK
 
 -- DADOS GENÉRICOS
 -- AS FK nao precisam estar entre aspas simples
-insert into endereco (rua_end, numero_end, complemento_end, bairro_end, cidade_end, estado_end, cep_end, fk_cliente)
+/* insert into endereco (rua_end, numero_end, complemento_end, bairro_end, cidade_end, estado_end, cep_end, fk_cliente)
 	values ('rua vivara grande','69','casa 0','vila cuzil','sao paulo','SP','03379-020',1);
 insert into cliente (nome_cli, senha_cli, email_cli, tel_cli, cpf_cli, fk_endereco)
 	values ('agustinho','soumuitofoda123','agustinho@gmail.com','(11)12345-6789','123.456.789-10',1);
@@ -99,7 +99,7 @@ insert into administrador (cpf_adm, nome_adm, senha_adm, tel_adm)
 insert into fornecedor (nome_fornec, tel_fornec, descricao_fornec, historico_pedidos)
 	values ('Chines 25 de março','(45)12345-6789','SOU CHINA MUITO LEGAL BIJUTERIA','Nao sei o que colocar aqui');
 insert into entrega (status_ent, metodo_envio, fk_cliente, fk_prod, fk_endereco)
-	values ('Enviando','Sedex',1,1,1);
+	values ('Enviando','Sedex',1,1,1); */
 
 -- FOREIGN KEY - TABELAS A SEREM ALTERADAS: endereco, cliente, produto, entrega
 -- EXECUTAR ISSO PRIMEIRO CASO HAJA DROP TABLES
@@ -114,22 +114,7 @@ alter table entrega add constraint fk_id_cliente_entrega foreign key (fk_cliente
 alter table entrega add constraint fk_id_prod_entrega foreign key (fk_prod) references produto (id_prod);
 alter table entrega add constraint fk_id_endereco_entrega foreign key (fk_endereco) references endereco (id_endereco);
 
+use tcc;
+select * from produto;
 select * from cliente;
-delete from cliente where id_cliente = 8;
-
-/*LISTA DE COMANDOS
-Ver tabela: select * from [nome_tabela]
-Mostrar todas as tabelas: show tables;
-Deletar tabela: drop table [nome_tabela]
-
-AJUSTAR PRIMEIRO AS FK: SET foreign_key_checks = 0
-
-Adicionar FK: 
-alter table nometabeka
-add constraint nome da fk - aqui voce personaliza
-foreign key (fk)
-references nome da tabela onde a fk se encontra (fk)
-*/
-
-insert into produto (id, descricao, nome, tipo) values
-(1,'Pulseira elegante com pedras naturais variadas, ideal para ocasiões especiais.',	'Pulseira de Prata com Pedras Naturais',	'Pulseira')
+SELECT * FROM produto WHERE material_prod like '%Prata%';
