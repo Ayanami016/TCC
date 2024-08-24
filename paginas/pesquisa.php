@@ -76,9 +76,9 @@ if (isset($_SESSION['nome_exibir'])) {
 
                 <!-- Carrinho -->
                 <button class="btnmenu-mobile">
-                    <ion-icon name="cart-outline" class="iconcarrinho" color="light"></ion-icon>
+                    <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
                     <div class="listamenu">
-                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -122,9 +122,9 @@ if (isset($_SESSION['nome_exibir'])) {
 
                 <!-- Carrinho -->
                 <button class="btnmenu-pc">
-                    <ion-icon name="cart-outline" class="iconbtn"></ion-icon><br>Carrinho
+                    <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu btncarrinho">
-                        <a href="#" class="link-listamenu mostrarcarrinho">Ver Carrinho</a>
+                        <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -146,7 +146,7 @@ if (isset($_SESSION['nome_exibir'])) {
 
     <!-- BARRA LATERAL - HISTÓRICO -->
     <aside id="carrinho" style="display: none;">
-        <ion-icon name="cart-outline"></ion-icon>
+        <ion-icon name="bag-handle-outline"></ion-icon>
         <h1>Seu carrinho está vazio!</h1> <br>
         <p>Escolha algum produto e adicione ao carrinho para realizar sua compra!</p> <br>
         <a id="fecharcarrinho">Voltar</a>

@@ -101,14 +101,14 @@ nav ion-icon.iconmenu {
     font-size: 6vh;
 }
 
-nav ion-icon.iconconta, nav ion-icon.iconsuporte, nav ion-icon.iconcarrinho {
+nav ion-icon.iconconta, nav ion-icon.iconsuporte, nav ion-icon.iconsacola {
     position: absolute;
     font-size: 6vh;
 }
 
 .iconconta {right: 120px;}
 .iconsuporte {right: 70px;}
-.iconcarrinho {right: 20px;}
+.iconsacola {right: 20px;}
 
 nav a.link-menupc {
     position: relative;

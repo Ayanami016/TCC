@@ -83,12 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
 //Ativa a barra lateral do carrinho
 //Ao ser ativado, o fundo ficará escuro
 document.addEventListener('DOMContentLoaded', function() {
-    const mostrarCarrinho = document.querySelectorAll('.mostrarcarrinho');
+    const mostrarsacola = document.querySelectorAll('.mostrarsacola');
     const carrinho = document.getElementById("carrinho");
     const fecharCarrinho = document.getElementById("fecharcarrinho");
     const pedrismo = document.getElementById("escuro");
 
-    mostrarCarrinho.forEach (function(link) {
+    mostrarsacola.forEach (function(link) {
         link.addEventListener('click', function (mostrarAba) {
             mostrarAba.preventDefault();
             carrinho.style.display = "flex";
