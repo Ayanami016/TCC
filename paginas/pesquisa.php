@@ -304,11 +304,15 @@ if (isset($_SESSION['nome_exibir'])) {
         "<div class='produto' style='margin-top: 0px;'>
             <img src='$nome_img' alt='Produto'>
             <div class='info-prod-mobile'>
-                <p>" . $row_produtos['nome_prod'] . "</p>" .
-                "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
-                "<div class='botoes-produto'>
+                <div class='info-txt'>
+                    <p>" . $row_produtos['nome_prod'] . "</p>
+                    <p class='preco'> R$" . $row_produtos['preco'] . 
+                    "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
+                </div>
+                <div class='botoes-produto'>
                     <button class='btn-compra' btn-placeholder='Comprar'></button>
                     <ion-icon name='add-outline'></ion-icon>
+                    <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
                 </div>
             </div>
         </div>";

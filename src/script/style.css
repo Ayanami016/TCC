@@ -629,6 +629,8 @@ nav .btnmenu-mobile {
     color: var(--cinza);
 }
 
+.icon-mobile-compra, .descricao-prod {display: none;}
+
 /* MINHA CONTA */
 #minha-conta {
     display: flex;
