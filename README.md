@@ -24,11 +24,11 @@ Antes de tudo, ao baixar o projeto, <u>renomeie o nome da pasta "TCC-Main" para 
    - Certifique-se que tanto o Apache quanto o MySQL esteja ligado para o PHP carregar corretamente.
 
 ## :chart_with_upwards_trend: Status
-[:large_orange_diamond:] Interface <br>
-[:white_check_mark:] Produtos <br>
-[:white_check_mark:] Cadastro e Login de usuário <br>
-[:large_orange_diamond:] Alteração de dados <br>
-[:x:] Compra <br>
+[ :large_orange_diamond: ] Interface <br>
+[ :white_check_mark: ] Produtos <br>
+[ :white_check_mark: ] Cadastro e Login de usuário <br>
+[ :large_orange_diamond: ] Alteração de dados <br>
+[ :x: ] Compra <br>
 
 ## :information_desk_person: Contribuintes
 - **Fullstack:** [Ayanami016](https://github.com/Ayanami016)
