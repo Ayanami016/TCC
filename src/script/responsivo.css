@@ -61,6 +61,9 @@
 }
 
 @media (max-width: 870px) {
+    .produtos-conteudo .botoes-produto ion-icon {font-size: 1.5em;}
+    .produtos-conteudo img {width: 100%;}
+
     #produtos-resultado .produto {
         flex-direction: column;
         justify-content: center;
@@ -101,13 +104,13 @@
         color: var(--cinza);
     }
 
-    .botoes-produto {
+    #produtos-resultado .botoes-produto {
         flex-direction: column;
         justify-content: space-between;
         height: 130px;
     }
 
-    .botoes-produto button {display: none;}
+    #produtos-resultado .botoes-produto button {display: none;}
 
     .botoes-produto ion-icon {
         font-size: 5.5vh;
@@ -115,6 +118,23 @@
     }
 
     .icon-mobile-compra, .descricao-prod {display: inherit;}
+
+    #filtro-mobile {
+        z-index: 2;
+        position: fixed;
+        right: 40px;
+        display: inherit;
+        padding: 10px;
+        font-size: 5vh;
+        border-radius: 50px;
+        cursor: pointer;
+        color: var(--cor2);
+        background-color: white;
+        box-shadow: 0 0 10px var(--sombra);
+    }
+
+    .ajuste-filtro-mobile {top: 20%;}
+    .ajustar-aba-filtro {top: 15%;}
 }
 
 @media (max-width: 770px) {
@@ -205,13 +225,16 @@
 
     .info-prod-mobile {margin-left: 1vh;}
 
-    .info-prod-mobile p, .info-prod-mobile .preco {font-size: 0.9em;}
+    .info-prod-mobile p {font-size: 1em;}
+    .info-prod-mobile .preco {font-size: 0.9em;}
     .info-txt .descricao-prod {font-size: 0.6em;}
 
     .botoes-produto ion-icon {
         font-size: 4vh;
         margin: 0 1vh;
     }
+
+    #filtro-mobile {right: 10px;}
 }
 
 /* MOBILE */
@@ -233,9 +256,16 @@
         background-color: var(--cor5);
     }
 
+    .menu-pesquisa-mobile form {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+    }
+
     .menu-pesquisa-mobile input {
-        padding: 5px 5px 5px 10px;
-        width: 80%;
+        margin: 0 10px;
+        padding: 5px 10px 5px 10px;
+        width: 85%;
         border: none;
         font-size: 1em;
         border-radius: 15px;
@@ -253,13 +283,13 @@
     #container-produtos h1 {font-size: 1.6em;}
 
     #produtos-resultado .produto {
-        height: 140px;
+        height: 150px;
         padding-left: 0;
     }
 
     #produtos-resultado .produto img {
-        height: 140px;
-        width: 140px;
+        height: 150px;
+        width: 150px;
     }
 
     .info-prod-mobile {
@@ -267,13 +297,14 @@
         width: 60%;
     }
 
+    #produtos-resultado .botoes-produto {
+        height: 90px;
+        padding-right: 1vh;
+    }
+
     .info-prod-mobile p, .info-prod-mobile .preco {font-size: 0.8em;}
 
     .info-txt .descricao-prod {display: none;}
-
-    .botoes-produto {
-        height: 100px;
-    }
 
     .botoes-produto ion-icon {
         font-size: 3.5vh;
@@ -283,4 +314,6 @@
         width: 100%;
         margin-bottom: 1.5em;
     }
+
+    #aba-filtro-mobile h1 {font-size: 1.2em;}
 }

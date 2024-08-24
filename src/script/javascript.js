@@ -108,6 +108,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+//Ativa o filtro mobile
+document.addEventListener('DOMContentLoaded', function () {
+    const icon_filtro = document.getElementById("filtro-mobile");
+    const filtro = document.getElementById("aba-filtro-mobile");
+    const pedrismo = document.getElementById("escuro");
+
+    icon_filtro.addEventListener('click', function(mostrarFiltro) {
+        mostrarFiltro.preventDefault();
+        filtro.style = "position: fixed; display: flex; z-index: 5; justify-content: center; align-items: center; left: 10%; right: 10%;";
+        pedrismo.style = "display: block; z-index: 4; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #00000082;";
+    });
+
+    pedrismo.addEventListener('click', function() {
+        filtro.style = "display: none;";
+        pedrismo.style = "display: none;";
+    });
+});
+
 //Formata o campo CPF para adicionar . e -
 let campoCPF = document.querySelector(".cpf");
 

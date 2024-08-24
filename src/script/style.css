@@ -538,13 +538,13 @@ nav .btnmenu-mobile {
     padding: 10px 10px 10px 0;
 }
 
-#filtro form {
+#filtro form, #aba-filtro-mobile form {
     position: sticky;
     top: 25%;
     width: 100%;
 }
 
-#filtro h1 {
+#filtro h1, #aba-filtro-mobile h1 {
     font-size: 1.2em;
     font-family: texto-negrito;
     color: var(--cor2);
@@ -559,12 +559,23 @@ nav .btnmenu-mobile {
     border-color: var(--cinza);
 }
 
-#filtro .txt-preco {
+#aba-filtro-mobile .txt-preco, #aba-filtro-mobile select {
+    margin: 2px 0 20px 0;
+    padding: 5px;
+    width: 60%;
+    height: 5vh;
+    font-size: 0.9em;
+    border-color: var(--cinza);
+}
+
+#aba-filtro-mobile select {width: 100%;}
+
+#filtro .txt-preco,  #aba-filtro-mobile .txt-preco {
     width: 10vh;
     border: 1px solid var(--cinza);
 }
 
-#filtro .btn-filtrar {
+#filtro .btn-filtrar,  #aba-filtro-mobile .btn-filtrar {
     width: 100%;
     padding: 10px;
     border-radius: 15px;
@@ -577,19 +588,18 @@ nav .btnmenu-mobile {
     transition-duration: 0.3s;
 }
 
-#filtro .btn-filtrar:hover {
+#filtro .btn-filtrar:hover,  #aba-filtro-mobile .btn-filtrar:hover {
     background-color: var(--cor2);
     color: var(--cor4);
 }
 
-    /* Barra de Preço */
-#preco-display {
-    display: flex;
-    justify-content: space-between;
-    margin: 10px 0;
-}
+#filtro-mobile, #aba-filtro-mobile {display: none;}
 
-#barra-preco {accent-color: var(--cor3);}
+#aba-filtro-mobile {
+    padding: 25px;
+    background-color: white;
+    border-radius: 25px;
+}
 
 /* ATRIBUTOS PARA PRODUTO */
 .produto {
@@ -604,8 +614,8 @@ nav .btnmenu-mobile {
 }
 
 .produto img {
-    height: 50%;
-    width: 100%;
+    height: 200px;
+    width: 200px;
 }
 
 .produto p {margin-top: 1.5vh;}

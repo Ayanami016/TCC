@@ -236,6 +236,61 @@ if (isset($_SESSION['nome_exibir'])) {
             echo "<p>Resultado: " . $quantia_results . " produto(s)</p>";
         }
     }
+
+    //FILTRO MOBILE
+    echo "<span id='filtro-mobile'><ion-icon name='options-outline'></ion-icon></span>";
+    echo 
+    "<div id='aba-filtro-mobile'>    
+        <form action='pesquisa.php' method='get' name='pesquisa-filtro' id='pesquisa-filtro'>
+        
+        <!-- PREÇO -->
+        <h1>Preço</h1>
+            <span class='filtrar-preco'>
+                <input type='text' class='txt-preco' name='min' id='min' placeholder='Min.'>
+                <input type='text' class='txt-preco' name='max' id='max' placeholder='Máx.'>
+            </span>
+            <br>
+
+        <label for='preco'>Ordenar por:</label>
+        <select name='preco-ordem' id='preco-ordem'>
+            <option value=''>A escolher</option>
+            <option value='desc'>Maiores preços</option>
+            <option value='asc'>Menores preços</option>
+        </select>
+
+        <!-- MATERIAL -->
+        <h1>Material</h1>
+        <select name='material' id='material'>
+            <option value=''>A escolher</option>
+            <option value='%Prata%'>Prata</option>
+            <option value='%Joia%'>Pedras</option>
+            <option value='%Aço Inoxidável%'>Aço inoxidável</option>
+        </select>
+
+        <!-- TAMANHO -->
+        <h1>Tamanho</h1>
+        <select name='tamanho' id='tamanho'>
+            <option value=''>A escolher</option>
+            <option value='pequeno'>Pequeno</option>
+            <option value='médio'>Médio</option>
+            <option value='grande'>Grande</option>
+            <option value='ajustavel'>Ajustável</option>
+        </select>
+
+        <!-- TIPO - CATEGORIA -->
+        <h1>Categoria</h1>
+        <select name='categoria' id='categoria'>
+            <option value=''>A escolher</option>
+            <option value='%pulseira%'>Pulseiras</option>
+            <option value='%colar%'>Colares</option>
+            <option value='%brinco%'>Brincos</option>
+            <option value='%conjunto%'>Conjuntos</option>
+        </select>
+
+        <!-- BOTÃO FILTRAR -->
+        <input type='submit' value='Filtrar' class='btn-filtrar'>
+        </form>
+    </div>";
     
     // Div que agrupa filtros e produtos mostrados
     echo "<div id='pesquisa-prod'>";
