@@ -64,17 +64,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const botao_menumobile = document.querySelectorAll(".btnmenu-mobile");
 
     botao_menumobile.forEach(botao_menumobile => {
-        botao_menumobile.addEventListener("mouseenter", () => {
+        botao_menumobile.addEventListener("click", () => {
             const listamenu = botao_menumobile.querySelector(".listamenu");
             if (listamenu) {
-                listamenu.style = "display: block; animation: surge-listamenu 0.3s; z-index: 3;";
+                listamenu.style = "display: block; position: absolute; animation: surge-listamenu 0.3s; z-index: 3;";
             }
         });
 
         botao_menumobile.addEventListener("mouseleave", () => {
             const listamenu = botao_menumobile.querySelector(".listamenu");
             if (listamenu) {
-                listamenu.style = "display: none; animation: some-listamenu 0.3s; z-index: 3;";
+                listamenu.style = "display: none; position: absolute; animation: some-listamenu 0.3s; z-index: 3;";
             }
         });
     });

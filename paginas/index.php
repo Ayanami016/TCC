@@ -60,7 +60,7 @@
                 <!-- Conta -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnconta">
                         <?php if (!empty($primeiroNome)) : ?>
                         <!-- Logado -->
                         <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
@@ -76,7 +76,7 @@
                 <!-- Suporte -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnsuporte">
                         <a href="#" class="link-listamenu">Contato</a>
                         <a href="faq.html" class="link-listamenu">FAQ</a>
                     </div>
@@ -85,7 +85,7 @@
                 <!-- Carrinho -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnsacola">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
@@ -105,7 +105,7 @@
                         Conta
                     <?php endif; ?>
 
-                    <div class="listamenu btnconta">
+                    <div class="listamenu">
                         <?php if (!empty($primeiroNome)): ?>
                             <!-- Itens do menu para usuários logados -->
                             <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
@@ -122,7 +122,7 @@
                 <!-- Suporte -->
                 <button class="btnmenu-pc">
                     <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
-                    <div class="listamenu btnsuporte">
+                    <div class="listamenu">
                         <a href="#" class="link-listamenu">Contato</a>
                         <a href="#" class="link-listamenu">FAQ</a>
                     </div>
@@ -131,7 +131,7 @@
                 <!-- Carrinho -->
                 <button class="btnmenu-pc">
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
-                    <div class="listamenu btncarrinho">
+                    <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
