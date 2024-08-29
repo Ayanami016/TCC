@@ -366,7 +366,9 @@ if (isset($_SESSION['nome_exibir'])) {
         $nome_img = "../src/img/produto" . $id . ".png";
         echo
         "<div class='produto' style='margin-top: 0px;'>
-            <img src='$nome_img' alt='Produto'>
+            <a href='produto.php?id=$id'>
+                <img src='$nome_img' alt='Produto'>
+            </a>
             <div class='info-prod-mobile'>
                 <div class='info-txt'>
                     <p>" . $row_produtos['nome_prod'] . "</p>
@@ -374,7 +376,9 @@ if (isset($_SESSION['nome_exibir'])) {
                     "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
                 </div>
                 <div class='botoes-produto'>
+                <a href='produto.php?id=$id'>
                     <button class='btn-compra' btn-placeholder='Comprar'></button>
+                </a>
                     <ion-icon name='add-outline'></ion-icon>
                     <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
                 </div>

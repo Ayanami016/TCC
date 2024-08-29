@@ -195,12 +195,22 @@
                 $nome_img = "../src/img/produto" . $id . ".png";
                 echo
                 "<div class='produto' style='margin-top: 0px;'>
-                    <img src='$nome_img' alt='Produto'>
-                    <p>" . $row_produtos['nome_prod'] . "</p>" .
-                    "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
-                    "<div class='botoes-produto'>
-                        <button class='btn-compra' btn-placeholder='Comprar'></button>
-                        <ion-icon name='add-outline'></ion-icon>
+                    <a href='produto.php?id=$id'>
+                        <img src='$nome_img' alt='Produto'>
+                    </a>
+                    <div class='info-prod-mobile'>
+                        <div class='info-txt'>
+                            <p>" . $row_produtos['nome_prod'] . "</p>
+                            <p class='preco'> R$" . $row_produtos['preco'] . 
+                            "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
+                        </div>
+                        <div class='botoes-produto'>
+                        <a href='produto.php?id=$id'>
+                            <button class='btn-compra' btn-placeholder='Comprar'></button>
+                        </a>
+                            <ion-icon name='add-outline'></ion-icon>
+                            <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                        </div>
                     </div>
                 </div>";
             }
@@ -283,18 +293,28 @@
             <?php
                 $pulseiras = "SELECT * FROM produto WHERE tipo_prod like 'Pulseira, Index';";
                 $resultado = mysqli_query($conexao, $pulseiras);
-    
+
                 while ($row_produtos = mysqli_fetch_array($resultado)) {
                     $id = $row_produtos['id_prod'];
                     $nome_img = "../src/img/produto" . $id . ".png";
                     echo
                     "<div class='produto' style='margin-top: 0px;'>
-                        <img src='$nome_img' alt='Produto'>
-                        <p>" . $row_produtos['nome_prod'] . "</p>" .
-                        "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
-                        "<div class='botoes-produto'>
-                            <button class='btn-compra' btn-placeholder='Comprar'></button>
-                            <ion-icon name='add-outline'></ion-icon>
+                        <a href='produto.php?id=$id'>
+                            <img src='$nome_img' alt='Produto'>
+                        </a>
+                        <div class='info-prod-mobile'>
+                            <div class='info-txt'>
+                                <p>" . $row_produtos['nome_prod'] . "</p>
+                                <p class='preco'> R$" . $row_produtos['preco'] . 
+                                "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
+                            </div>
+                            <div class='botoes-produto'>
+                            <a href='produto.php?id=$id'>
+                                <button class='btn-compra' btn-placeholder='Comprar'></button>
+                            </a>
+                                <ion-icon name='add-outline'></ion-icon>
+                                <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                            </div>
                         </div>
                     </div>";
                 }
@@ -325,12 +345,22 @@
                     $nome_img = "../src/img/produto" . $id . ".png";
                     echo
                     "<div class='produto' style='margin-top: 0px;'>
-                        <img src='$nome_img' alt='Produto'>
-                        <p>" . $row_produtos['nome_prod'] . "</p>" .
-                        "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
-                        "<div class='botoes-produto'>
-                            <button class='btn-compra' btn-placeholder='Comprar'></button>
-                            <ion-icon name='add-outline'></ion-icon>
+                        <a href='produto.php?id=$id'>
+                            <img src='$nome_img' alt='Produto'>
+                        </a>
+                        <div class='info-prod-mobile'>
+                            <div class='info-txt'>
+                                <p>" . $row_produtos['nome_prod'] . "</p>
+                                <p class='preco'> R$" . $row_produtos['preco'] . 
+                                "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
+                            </div>
+                            <div class='botoes-produto'>
+                            <a href='produto.php?id=$id'>
+                                <button class='btn-compra' btn-placeholder='Comprar'></button>
+                            </a>
+                                <ion-icon name='add-outline'></ion-icon>
+                                <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                            </div>
                         </div>
                     </div>";
                 }
@@ -360,15 +390,25 @@
                 $nome_img = "../src/img/produto" . $id . ".png";
                 echo
                 "<div class='produto' style='margin-top: 0px;'>
-                    <img src='$nome_img' alt='Produto'>
-                    <p>" . $row_produtos['nome_prod'] . "</p>" .
-                    "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
-                    "<div class='botoes-produto'>
-                        <button class='btn-compra' btn-placeholder='Comprar'></button>
-                        <ion-icon name='add-outline'></ion-icon>
+                    <a href='produto.php?id=$id'>
+                        <img src='$nome_img' alt='Produto'>
+                    </a>
+                    <div class='info-prod-mobile'>
+                        <div class='info-txt'>
+                            <p>" . $row_produtos['nome_prod'] . "</p>
+                            <p class='preco'> R$" . $row_produtos['preco'] . 
+                            "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
+                        </div>
+                        <div class='botoes-produto'>
+                        <a href='produto.php?id=$id'>
+                            <button class='btn-compra' btn-placeholder='Comprar'></button>
+                        </a>
+                            <ion-icon name='add-outline'></ion-icon>
+                            <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                        </div>
                     </div>
                 </div>";
-                }
+            }
             ?>
         </span>
     </article>
@@ -395,12 +435,22 @@
                     $nome_img = "../src/img/produto" . $id . ".png";
                     echo
                     "<div class='produto' style='margin-top: 0px;'>
-                        <img src='$nome_img' alt='Produto'>
-                        <p>" . $row_produtos['nome_prod'] . "</p>" .
-                        "<p class='preco'> R$" . $row_produtos['preco'] . "</p>" .
-                        "<div class='botoes-produto'>
-                            <button class='btn-compra' btn-placeholder='Comprar'></button>
-                            <ion-icon name='add-outline'></ion-icon>
+                        <a href='produto.php?id=$id'>
+                            <img src='$nome_img' alt='Produto'>
+                        </a>
+                        <div class='info-prod-mobile'>
+                            <div class='info-txt'>
+                                <p>" . $row_produtos['nome_prod'] . "</p>
+                                <p class='preco'> R$" . $row_produtos['preco'] . 
+                                "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
+                            </div>
+                            <div class='botoes-produto'>
+                            <a href='produto.php?id=$id'>
+                                <button class='btn-compra' btn-placeholder='Comprar'></button>
+                            </a>
+                                <ion-icon name='add-outline'></ion-icon>
+                                <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                            </div>
                         </div>
                     </div>";
                 }
