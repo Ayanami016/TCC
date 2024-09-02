@@ -316,4 +316,15 @@
     }
 
     #aba-filtro-mobile h1 {font-size: 1.2em;}
+
+    #alterar-dados h1 {font-size: 2.5em;}
+
+    #alterar-dados input[type="submit"] {
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+    #alterar-dados .btn-altdados {
+        flex-direction: column;
+    }
 }

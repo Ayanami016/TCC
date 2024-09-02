@@ -17,13 +17,13 @@ if (isset($_SESSION['nome_exibir'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Conta</title>
+    <title>Bella Acessórios - Página Inicial</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
     <style>
         <?php if (!empty($primeiroNome)): ?>
-        /* nav a.link-menupc {padding: 5vh 19px 4.8vh 19px;} */
+        nav a.link-menupc {padding: 5vh 19px 4.4vh 19px;}
 
         nav .ajusteconta {width: 105px;}
         <?php endif; ?>
@@ -60,7 +60,7 @@ if (isset($_SESSION['nome_exibir'])) {
                 <!-- Conta -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnconta">
                         <?php if (!empty($primeiroNome)) : ?>
                         <!-- Logado -->
                         <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
@@ -76,7 +76,7 @@ if (isset($_SESSION['nome_exibir'])) {
                 <!-- Suporte -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnsuporte">
                         <a href="#" class="link-listamenu">Contato</a>
                         <a href="faq.html" class="link-listamenu">FAQ</a>
                     </div>
@@ -85,8 +85,8 @@ if (isset($_SESSION['nome_exibir'])) {
                 <!-- Carrinho -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
-                    <div class="listamenu">
-<a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
+                    <div class="listamenu btnsacola">
+                        <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -105,7 +105,7 @@ if (isset($_SESSION['nome_exibir'])) {
                         Conta
                     <?php endif; ?>
 
-                    <div class="listamenu btnconta">
+                    <div class="listamenu">
                         <?php if (!empty($primeiroNome)): ?>
                             <!-- Itens do menu para usuários logados -->
                             <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
@@ -122,7 +122,7 @@ if (isset($_SESSION['nome_exibir'])) {
                 <!-- Suporte -->
                 <button class="btnmenu-pc">
                     <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
-                    <div class="listamenu btnsuporte">
+                    <div class="listamenu">
                         <a href="#" class="link-listamenu">Contato</a>
                         <a href="#" class="link-listamenu">FAQ</a>
                     </div>
@@ -131,8 +131,8 @@ if (isset($_SESSION['nome_exibir'])) {
                 <!-- Carrinho -->
                 <button class="btnmenu-pc">
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
-                    <div class="listamenu btncarrinho">
-<a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
+                    <div class="listamenu">
+                        <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="#" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -145,7 +145,7 @@ if (isset($_SESSION['nome_exibir'])) {
             <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
         </form>
     </span>
-        <span class="menu-pc-mobile">
+    <span class="menu-pc-mobile">
         <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25">Pulseiras</a>
         <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index">Colares</a>
         <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25">Brincos</a>
@@ -160,32 +160,28 @@ if (isset($_SESSION['nome_exibir'])) {
         <a id="fecharcarrinho">Voltar</a>
     </aside>
 
-    <!-- MINHA CONTA -->
-    <article id="minha-conta">
-        <h1>Minha Conta</h1>
-        <!-- Minha Conta -->
-        <div class="caixa-minha-conta">
-            <h2>Dados Pessoais</h2>
-            <div class="conteudo-minhaconta">
-                <strong style="font-size: 1.3em;"><?php echo $_SESSION['nome_exibir']; ?></strong>
-                <p><?php echo $_SESSION['email_exibir']; ?></p>
-                <p><?php echo $_SESSION['tel_exibir']; ?></p>
-                <a href="editar-dados.php"><button class="btn-minhaconta" btn-placeholder="Editar Dados"></button></a>
+    <!-- ALTERAR DADOS -->
+    <article id="alterar-dados">
+        <form action="" method="post">
+            <h1>Alterar Dados</h1>
+            <label for="editar-nome">Novo nome: </label> <br>
+            <input type="text" name="editar-nome" id="editar-nome" placeholder="<?php echo 'Nome atual: ' . $_SESSION['nome_exibir']?>"> <br>
+
+            <label for="editar-tel">Novo telefone: </label> <br>
+            <input type="tel" name="editar-tel" id="editar-tel" placeholder="<?php echo 'Telefone atual: ' . $_SESSION['tel_exibir']?>"> <br>
+
+            <label for="editar-senha">Nova senha:  </label> <br>
+            <input type="password" name="editar-senha" id="editar-senha" placeholder="Digite sua nova senha"> <br>
+            
+            <div class="btn-altdados">
+                <input type="submit" value="Alterar">
+                <input type="submit"value="Excluir minha conta" class="excluir-conta">
             </div>
-        </div>
-        <!-- Realizar Compra -->
-        <div class="caixa-compra">
-            <ion-icon name="bag-handle-outline"></ion-icon>
-            <p>Realize a sua primeira compra!</p>
-            <a href="index.php"><button class="btn-index" btn-placeholder="Ir para Loja"></button></a>
-        </div>
+        </form>
     </article>
 
-    <!-- Escuro -->
-    <div id="escuro" style="display: none;"></div>
-
     <!-- RODAPÉ -->
-     <footer id="rodape">
+    <footer id="rodape">
         <!-- Categorias -->
        <span>
             <h1>Categorias</h1>
@@ -220,11 +216,11 @@ if (isset($_SESSION['nome_exibir'])) {
             <a href="https://github.com/Ayanami016/TCC" target="_blank"><i class="fab fa-github fa-lg"></i></a>
             <a href="#" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
         </span>
-     </footer>
+    </footer>
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
-        <!--Ícones-->
+        <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
         <!-- Font Awesome - usado para o rodapé -->

@@ -67,7 +67,7 @@
             session_start();
             $_SESSION['nome_exibir'] = $usuario['nome_cli'] ? $usuario['nome_cli'] : '';
             $_SESSION['email_exibir'] = $usuario['email_cli'] ? $usuario['email_cli'] : '';
-            $_SESSION['tell_exibir'] = $usuario['tel_cli'] ? $usuario['tel_cli'] : '';
+            $_SESSION['tel_exibir'] = $usuario['tel_cli'] ? $usuario['tel_cli'] : '';
             
             echo "<script>window.location.href='/TCC/paginas/minha-conta.php';</script>";
         } else {

@@ -13,6 +13,7 @@
     --cor3: #a777b4;
     --cor4: #d9b4e0;
     --cor5: #E2CCE3;
+    --vermelho: #d90b0b;
     --cinza: rgb(78, 78, 78);
     --sombra: rgba(66, 34, 87, 0.247);
 }
@@ -731,6 +732,66 @@ nav .btnmenu-mobile {
 .btn-index:hover, .btn-saibamais:hover, .btn-compra:hover, .btn-compra:hover {
     color: var(--cor3);
     background-color: var(--cor5);
+}
+
+/* ALTERAR DADOS */
+#alterar-dados {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin-top: 10vh;
+    min-height: 90vh;
+}
+
+#alterar-dados h1 {
+    text-align: center;
+    padding: 10px;
+    font-size: 3em;
+    color: var(--cor1);
+}
+
+#alterar-dados form {
+    width: 60vh;
+    padding: 15px;
+}
+
+#alterar-dados input {
+    padding-left: 10px;
+    width: 100%;
+    height: 5vh;
+    margin-bottom: 10px;
+}
+
+#alterar-dados input[type="submit"] {
+    width: 50%;
+    padding: 0;
+    border: none;
+    border-radius: 8px;
+    font-family: texto-negrito;
+    color: white;
+    background-color: var(--cor3);
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#alterar-dados input[type="submit"]:hover {
+    color: var(--cor3);
+    background-color: white;
+}
+
+.excluir-conta {background-color: var(--vermelho) !important;}
+
+.excluir-conta:hover {
+    color: var(--vermelho) !important;
+    background-color: white !important;
+    transition-duration: 0.3s;
+}
+
+#alterar-dados .btn-altdados {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 /* VOLTAR AO TOPO */
