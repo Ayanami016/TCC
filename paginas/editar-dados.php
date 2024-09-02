@@ -162,7 +162,7 @@ if (isset($_SESSION['nome_exibir'])) {
 
     <!-- ALTERAR DADOS -->
     <article id="alterar-dados">
-        <form action="" method="post">
+        <form action="../src/script/altera_dados.php" method="post">
             <h1>Alterar Dados</h1>
             <label for="editar-nome">Novo nome: </label> <br>
             <input type="text" name="editar-nome" id="editar-nome" placeholder="<?php echo 'Nome atual: ' . $_SESSION['nome_exibir']?>"> <br>
