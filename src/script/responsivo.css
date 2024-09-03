@@ -276,7 +276,10 @@
         border: 2px solid var(--cor2);
     }
 
-    #minha-conta {padding: 5px;}
+    #minha-conta {
+        margin-top: 15vh;
+        padding: 5px;
+    }
 
     .caixa-minha-conta, .caixa-compra {width: 100%;}
 
@@ -319,7 +322,7 @@
 
     #alterar-dados h1 {font-size: 2.5em;}
 
-    #alterar-dados input[type="submit"] {
+    #alterar-dados input[type="submit"], #alterar-dados a {
         width: 100%;
         margin-bottom: 0;
     }

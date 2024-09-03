@@ -153,3 +153,17 @@ campoTel.addEventListener("keypress", ()=>{
         campoTel.value += "-";
     }
 })
+
+let campoEditarTel = document.querySelector(".Editartel")
+
+campoEditarTel.addEventListener("keypress", ()=>{
+    let tamCampoEditarTel = campoEditarTel.value.length;
+
+    if (tamCampoEditarTel == 0) {
+        campoEditarTel.value += "(";
+    } else if (tamCampoEditarTel == 3) {
+        campoEditarTel.value += ")";
+    } else if (tamCampoEditarTel == 9) {
+        campoEditarTel.value += "-";
+    }
+})

@@ -192,6 +192,9 @@
     <!-- Link âncora para voltar ao topo da página -->
     <a name="topo"></a>
 
+    <!-- Escuro -->
+    <div id="escuro" style="display: none;"></div>
+
     <!-- RODAPÉ -->
     <footer id="rodape">
         <!-- Categorias -->

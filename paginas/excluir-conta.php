@@ -160,26 +160,15 @@ if (isset($_SESSION['nome_exibir'])) {
         <a id="fecharcarrinho">Voltar</a>
     </aside>
 
-    <!-- ALTERAR DADOS -->
-    <article id="alterar-dados">
-        <form action="../src/script/altera_dados.php" method="post">
-            <h1>Alterar Dados</h1>
-            <label for="editar-nome">Novo nome: </label> <br>
-            <input type="text" name="editar-nome" id="editar-nome" placeholder="<?php echo 'Nome atual: ' . $_SESSION['nome_exibir']?>"> <br>
-
-            <label for="editar-tel">Novo telefone: </label> <br>
-            <input type="text" name="editar-tel" id="editar-tel" class="editar-tel" maxlength="14" placeholder="<?php echo 'Telefone atual: ' . $_SESSION['tel_exibir']?>"> <br>
-
-            <label for="editar-senha">Nova senha:  </label> <br>
-            <input type="password" name="editar-senha" id="editar-senha" placeholder="Digite sua nova senha"> <br>
-            
-            <div class="btn-altdados">
-                <input type="submit" value="Alterar">
-                <a href="excluir-conta.php" class="excluir-conta">Excluir minha conta</a>
-                <!-- <input type="submit"value="Excluir minha conta" class="excluir-conta"> -->
-            </div>
+    <!-- EXCLUIR CONTA -->
+     <article id="excluir-conta">
+        <form action="../src/script/script_excluir.php" method="post">
+            <ion-icon name="warning-outline" color="medium"></ion-icon>
+            <p>Tem certeza que deseja excluir sua conta?</p>
+            <a href="minha-conta.php">Voltar</a>
+            <input type="submit" value="Excluir conta">
         </form>
-    </article>
+     </article>
 
     <!-- Escuro -->
     <div id="escuro" style="display: none;"></div>

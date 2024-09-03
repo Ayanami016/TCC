@@ -15,11 +15,20 @@
         $updates[] = "nome_cli='$nome'";
     }
     if (!empty($tel)) {
-        $updates[] = "tel_cli='$tel'";
+        if (strlen($tel) != 14) {
+            echo "<script>alert('Telefone inválido!')</script>";
+            echo "<script>window.location.href='/TCC/paginas/editar-dados.php';</script>";
+        } else {
+           $updates[] = "tel_cli='$tel'"; 
+        }
     }
     if (!empty($senha)) {
-        // Hash da senha antes de armazenar
-        $updates[] = "senha_cli='$senha'";
+        if (strlen($senha) < 8) {
+            echo "<script>alert('A senha deve conter pelo menos 8 caracteres!')</script>";
+            echo "<script>window.location.href='/TCC/paginas/editar-dados.php';</script>";
+        } else {
+            $updates[] = "senha_cli='$senha'";
+        }
     }
 
     if (count($updates) > 0) {
@@ -40,13 +49,16 @@
             }
             
             echo "<script>alert('Dados atualizados com sucesso!'); window.location.href='/TCC/paginas/minha-conta.php';</script>";
+
+        } elseif (count($updates) == 0) {
+            echo "<script>window.location.href='/TCC/paginas/minha-conta.php';</script>";
+        }
         } else {
-            echo "Erro ao atualizar os dados: " . mysqli_error($conexao);
+            echo "<script>alert('Erro ao atualizar os dados.'); window.location.href='/TCC/paginas/minha-conta.php';</script>" . mysqli_error($conexao);
         }
     } else {
         // Se nenhum dado foi preenchido, exibe uma mensagem informando o usuário
-        echo "<script>alert('Nenhum dado foi alterado.'); window.location.href='/TCC/paginas/minha-conta.php';</script>";
+        echo "<script>window.location.href='/TCC/paginas/minha-conta.php';</script>";
     }
     mysqli_close($conexao);
-    }
 ?>

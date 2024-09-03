@@ -735,7 +735,7 @@ nav .btnmenu-mobile {
 }
 
 /* ALTERAR DADOS */
-#alterar-dados {
+#alterar-dados, #excluir-conta {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -763,20 +763,25 @@ nav .btnmenu-mobile {
     margin-bottom: 10px;
 }
 
-#alterar-dados input[type="submit"] {
+#alterar-dados input[type="submit"], #alterar-dados a, #excluir-conta a, #excluir-conta input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin-top: 10px;
     width: 50%;
+    height: 40px;
     padding: 0;
     border: none;
     border-radius: 8px;
     font-family: texto-negrito;
+    font-size: 0.9em;
     color: white;
     background-color: var(--cor3);
     transition-duration: 0.3s;
     cursor: pointer;
 }
 
-#alterar-dados input[type="submit"]:hover {
+#alterar-dados input[type="submit"]:hover, #excluir-conta a:hover {
     color: var(--cor3);
     background-color: white;
 }
@@ -793,6 +798,35 @@ nav .btnmenu-mobile {
     display: flex;
     justify-content: center;
     gap: 20px;
+}
+
+/* EXCLUIR CONTA */
+#excluir-conta ion-icon {
+    font-size: 7em;
+    margin-bottom: 15px;
+}
+
+#excluir-conta p {
+    font-size: 1.2em;
+    text-align: center;
+}
+
+#excluir-conta a {margin-top: 35px;}
+
+#excluir-conta form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#excluir-conta input {
+    color: var(--vermelho);
+    background-color: white;
+}
+
+#excluir-conta input:hover {
+    color: white;
+    background-color: var(--vermelho);
 }
 
 /* VOLTAR AO TOPO */
