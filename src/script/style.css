@@ -764,6 +764,7 @@ nav .btnmenu-mobile {
 }
 
 #alterar-dados input[type="submit"] {
+    margin-top: 10px;
     width: 50%;
     padding: 0;
     border: none;
