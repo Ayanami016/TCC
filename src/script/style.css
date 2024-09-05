@@ -829,6 +829,64 @@ nav .btnmenu-mobile {
     background-color: var(--vermelho);
 }
 
+/* PÁGINA ESPECÍFICA DO PRODUTO SELECIONADO */
+#pag-produto {
+    border: 2px solid red;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    margin-top: 30vh;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+#pag-produto h1 {
+    font-size: 2.5em;
+}
+
+    /* Class que agrupa tanto a imagem principal quanto as laterais */
+.img-pag-produto {
+    display: flex;
+}
+
+.img-pag-produto img {border-radius: 10px;}
+
+.mais-img-produto {
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+
+.mais-img-produto img {
+    width: 100px;
+    margin: 2px 0;
+}
+
+.txt-pag-produto {margin-left: 20px;}
+
+.txt-pag-produto a {color: var(--cor3);}
+
+.txt-pag-produto input {
+    margin-top: 10px;
+    padding: 5px;
+    background-color: var(--cor3);
+    border: none;
+    border-radius: 15px;
+    font-size: 1.2em;
+    width: 200px;
+    color: white;
+    cursor: pointer;
+}
+
+.txt-pag-produto a:hover {color: var(--cor1);}
+
+.preco-pag-produto {
+    font-size: 2em;
+    font-family: texto-negrito;
+    color: var(--cor1);
+}
+
 /* VOLTAR AO TOPO */
 .voltar-topo {
     width: 100%;

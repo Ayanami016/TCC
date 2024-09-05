@@ -14,26 +14,51 @@
     if (isset($_GET['id'])) {
         $id_produto = $_GET['id'];
     
-        // Consulta para buscar os detalhes do produto com base no ID
+        // Consulta dos detalhes do produto
         $query = "SELECT * FROM produto WHERE id_prod = $id_produto";
         $resultado = mysqli_query($conexao, $query);
-    
-        // Verifica se o produto foi encontrado
+
+        // Se o produto foi encontrado
         if (mysqli_num_rows($resultado) > 0) {
-            // Extrai os dados do produto
+            $nome_img = "../src/img/produto" . $id_produto . ".png";
             $produto = mysqli_fetch_assoc($resultado);
-    
-            // Exibe os detalhes do produto
-            echo "<h1>" . $produto['nome_prod'] . "</h1>";
-            echo "<p>Preço: R$" . $produto['preco'] . "</p>";
-            echo "<p>Descrição: " . $produto['descricao_prod'] . "</p>";
-            // Você pode adicionar mais detalhes aqui, como imagens, estoque, etc.
+            // Início DIV #pag-produto
+            echo "<div id='pag-produto'>";
+            echo // DIV responsável por agrupar as imagens
+            "<div class='img-pag-produto'>
+                <div class='mais-img-produto'>";
+                    $contagem = 0;
+
+                    while (true) {
+                        $caminho = $contagem == 0 ? $nome_img : "../src/img/produto" . $id_produto . "_" . $contagem . ".png";
+
+                        if (file_exists($caminho)) {
+                            echo "<img src='$caminho'>";
+                        } else {
+                            break;
+                        }
+                        $contagem++;
+                    }
+            echo "</div>
+
+                <img src='$nome_img' alt='Produto'>
+            </div>";
+            echo // DIV responsável pelo texto
+            "<div class='txt-pag-produto'>
+                <form action='' method=''>
+                    <h1>" . $produto['nome_prod'] . "</h1>
+                    <p class='preco-pag-produto'>R$" . $produto['preco'] . "</p>
+                    <a href='linkdescricao'>Ver mais detalhes</a> <br>
+                    <input type='submit' value='Comprar'>
+                </form>
+            </div>";
+
+            //Fim DIV #pag-produto
+            echo "</div>";
         } else {
-            // Se o produto não for encontrado
             echo "<p>Produto não encontrado.</p>";
         }
     } else {
-        // Se nenhum ID foi passado
         echo "<p>Nenhum produto selecionado.</p>";
     }
     
