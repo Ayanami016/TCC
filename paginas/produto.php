@@ -11,6 +11,11 @@
         $primeiroNome = '';
     }
 
+    echo "
+    <head>
+        <link rel='shortcut icon' href='../src/favicon/android-chrome-512x512.png' type='image/x-icon'>
+    </head>";
+
     if (isset($_GET['id'])) {
         $id_produto = $_GET['id'];
     
@@ -18,10 +23,38 @@
         $query = "SELECT * FROM produto WHERE id_prod = $id_produto";
         $resultado = mysqli_query($conexao, $query);
 
+        // Lista de cores disponiveis
+        $cor_disponivel = [
+            'Azul Escuro' => '#0f37a6',
+            'Azul Claro' => '#2cc0de',
+            'Preto' => '#000000',
+            'Rosa' => '#ed558d',
+            'Rosa Claro' => '#f797ba',
+            'Rosa Choque' => '#f7075f',
+            'Prata' => 'background-color: #e0e0e0; background: var(--prateado)',
+            'Transparente' => 'background-color: #ffffff; background: var(--transparente)',
+        ];
+        // $cor_disponivel = [
+        //     ['Azul Escuro' => '#0f37a6', 'borda' => '#040e66'],
+        //     ['Azul Claro' => '#2cc0de', 'borda' => '#0b5d9c'],
+        //     ['Preto' => '#000000', 'borda' => '##808080'],
+        //     ['Rosa' => '#ed558d', 'borda' => '#d11755'],
+        //     ['Rosa Claro' => '#f797ba', 'borda' => '#db608d'],
+        //     ['Rosa Choque' => '#f7075f', 'borda' => '#ab0537'],
+        //     ['Prata' => 'background-color: #e0e0e0; background: var(--prateado)', 'borda' => '#a3a3a3'],
+        //     ['Transparente' => 'background-color: #ffffff; background: var(--transparente)', 'borda' => '#8a8787'],
+        // ];
+
+
         // Se o produto foi encontrado
         if (mysqli_num_rows($resultado) > 0) {
             $nome_img = "../src/img/produto" . $id_produto . ".png";
             $produto = mysqli_fetch_assoc($resultado);
+
+            // Cores
+            $cores = explode(', ', $produto['cor_prod']);
+
+            echo "<a name='topo'></a>"; // Link âncora para voltar ao topo
             // Início DIV #pag-produto
             echo "<div id='pag-produto'>";
             echo // DIV responsável por agrupar as imagens
@@ -45,10 +78,22 @@
             </div>";
             echo // DIV responsável pelo texto
             "<div class='txt-pag-produto'>
-                <form action='' method=''>
+                <form action='' method='post'>
                     <h1>" . $produto['nome_prod'] . "</h1>
                     <p class='preco-pag-produto'>R$" . $produto['preco'] . "</p>
-                    <a href='linkdescricao'>Ver mais detalhes</a> <br>
+                        <div class='checkbox-cor'>";
+
+                    foreach ($cores as $cor_prod) {
+                        $hex = isset($cor_disponivel[$cor_prod]) ? $cor_disponivel[$cor_prod] : '#000000';
+
+                        echo "
+                                <input type='radio' name='cores[]' id='cor_$cor_prod' value='$cor_prod'>
+                                <label for='cor_$cor_prod' class='quadrado-cor' style='background-color: $hex;' title='$cor_prod'></label>";
+                    }
+
+                    echo "</div>"; // Fim da DIV checkbox-cor
+                    
+                    echo "<a href='linkdescricao'>Ver mais detalhes</a> <br>
                     <input type='submit' value='Comprar'>
                 </form>
             </div>";
@@ -214,12 +259,14 @@
         <a id="fecharcarrinho">Voltar</a>
     </aside>
 
-    <!-- Link âncora para voltar ao topo da página -->
-    <a name="topo"></a>
-
     <!-- Escuro -->
     <div id="escuro" style="display: none;"></div>
 
+    <!-- VOLTAR AO TOPO -->
+    <div class="voltar-topo">
+        <a href="#topo">Voltar ao Topo <ion-icon name="chevron-up-outline"></ion-icon></a>
+    </div>
+    
     <!-- RODAPÉ -->
     <footer id="rodape">
         <!-- Categorias -->

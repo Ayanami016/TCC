@@ -14,6 +14,8 @@
     --cor4: #d9b4e0;
     --cor5: #E2CCE3;
     --vermelho: #d90b0b;
+    --prateado: linear-gradient(135deg, #e0e0e0, #f1f1f1, #d1d1d1, #f1f1f1, #e0e0e0);
+    --transparente: linear-gradient(360deg, #b8b8b85b, #ffffff); 
     --cinza: rgb(78, 78, 78);
     --sombra: rgba(66, 34, 87, 0.247);
 }
@@ -831,17 +833,17 @@ nav .btnmenu-mobile {
 
 /* PÁGINA ESPECÍFICA DO PRODUTO SELECIONADO */
 #pag-produto {
-    border: 2px solid red;
     display: flex;
     justify-content: space-around;
     align-items: center;
     width: 90%;
-    margin-top: 30vh;
+    margin-top: 50vh;
     min-height: 100vh;
     padding: 20px;
 }
 
 #pag-produto h1 {
+    color: var(--cor1);
     font-size: 2.5em;
 }
 
@@ -863,7 +865,7 @@ nav .btnmenu-mobile {
     margin: 2px 0;
 }
 
-.txt-pag-produto {margin-left: 20px;}
+.txt-pag-produto {margin-left: 50px;}
 
 .txt-pag-produto a {color: var(--cor3);}
 
@@ -884,7 +886,28 @@ nav .btnmenu-mobile {
 .preco-pag-produto {
     font-size: 2em;
     font-family: texto-negrito;
-    color: var(--cor1);
+}
+
+.checkbox-cor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    gap: 10px;
+}
+
+.checkbox-cor input[type="radio"] {display: none;}
+
+.checkbox-cor .quadrado-cor {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Estilo aplicado quando o checkbox está selecionado */
+.checkbox-cor input[type="radio"]:checked + .quadrado-cor {
+    border: 2.5px solid var(--vermelho);
 }
 
 /* VOLTAR AO TOPO */
