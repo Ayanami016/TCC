@@ -432,8 +432,8 @@ if (isset($_SESSION['nome_exibir'])) {
 
         <!-- Brands -->
         <span>
-            <a href="https://github.com/Ayanami016/TCC" target="_blank"><i class="fab fa-github fa-lg"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://github.com/Ayanami016/TCC" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+            <a href="#" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
         </span>
     </footer>
 
@@ -442,7 +442,6 @@ if (isset($_SESSION['nome_exibir'])) {
         <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <!-- Font Awesome - usado para o rodapé -->
-    <script src="https://kit.fontawesome.com/750ae9b6a4.js" crossorigin="anonymous"></script>
+         
 </body>
 </html>

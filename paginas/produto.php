@@ -34,17 +34,6 @@
             'Prata' => 'background-color: #e0e0e0; background: var(--prateado)',
             'Transparente' => 'background-color: #ffffff; background: var(--transparente)',
         ];
-        // $cor_disponivel = [
-        //     ['Azul Escuro' => '#0f37a6', 'borda' => '#040e66'],
-        //     ['Azul Claro' => '#2cc0de', 'borda' => '#0b5d9c'],
-        //     ['Preto' => '#000000', 'borda' => '##808080'],
-        //     ['Rosa' => '#ed558d', 'borda' => '#d11755'],
-        //     ['Rosa Claro' => '#f797ba', 'borda' => '#db608d'],
-        //     ['Rosa Choque' => '#f7075f', 'borda' => '#ab0537'],
-        //     ['Prata' => 'background-color: #e0e0e0; background: var(--prateado)', 'borda' => '#a3a3a3'],
-        //     ['Transparente' => 'background-color: #ffffff; background: var(--transparente)', 'borda' => '#8a8787'],
-        // ];
-
 
         // Se o produto foi encontrado
         if (mysqli_num_rows($resultado) > 0) {
@@ -81,7 +70,8 @@
                 <form action='' method='post'>
                     <h1>" . $produto['nome_prod'] . "</h1>
                     <p class='preco-pag-produto'>R$" . $produto['preco'] . "</p>
-                        <div class='checkbox-cor'>";
+                        <div class='checkbox-cor'>
+                            <p>Cores disponíveis: </p>";
 
                     foreach ($cores as $cor_prod) {
                         $hex = isset($cor_disponivel[$cor_prod]) ? $cor_disponivel[$cor_prod] : '#000000';
@@ -300,8 +290,8 @@
 
         <!-- Brands -->
         <span>
-            <a href="https://github.com/Ayanami016/TCC" target="_blank"><i class="fab fa-github fa-lg"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram fa-lg"></i></a>
+            <a href="https://github.com/Ayanami016/TCC" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
+            <a href="#" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
         </span>
     </footer>
 
@@ -310,7 +300,6 @@
         <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <!-- Font Awesome - usado para o rodapé -->
-    <script src="https://kit.fontawesome.com/750ae9b6a4.js" crossorigin="anonymous"></script>
+         
 </body>
 </html>

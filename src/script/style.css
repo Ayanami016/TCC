@@ -849,6 +849,8 @@ nav .btnmenu-mobile {
 
     /* Class que agrupa tanto a imagem principal quanto as laterais */
 .img-pag-produto {
+    position: sticky;
+    top: 20vh;
     display: flex;
 }
 
@@ -876,9 +878,16 @@ nav .btnmenu-mobile {
     border: none;
     border-radius: 15px;
     font-size: 1.2em;
+    font-family: texto-negrito;
     width: 200px;
     color: white;
     cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.txt-pag-produto input:hover {
+    background-color: var(--cor4);
+    color: var(--cor2);
 }
 
 .txt-pag-produto a:hover {color: var(--cor1);}
@@ -888,10 +897,11 @@ nav .btnmenu-mobile {
     font-family: texto-negrito;
 }
 
+    /* Configurações da checkbox de cor */
 .checkbox-cor {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     gap: 10px;
 }
 
@@ -907,7 +917,9 @@ nav .btnmenu-mobile {
 
 /* Estilo aplicado quando o checkbox está selecionado */
 .checkbox-cor input[type="radio"]:checked + .quadrado-cor {
-    border: 2.5px solid var(--vermelho);
+    box-sizing: content-box;
+    border: 2.5px solid white;
+    box-shadow: 3px 3px 3px var(--sombra);
 }
 
 /* VOLTAR AO TOPO */
@@ -952,7 +964,7 @@ nav .btnmenu-mobile {
 
 #rodape a:hover {text-decoration: underline;}
 
-#rodape i {
+#rodape ion-icon {
     margin: 3px;
     font-size: 2.5em;
     color: var(--cor5);
