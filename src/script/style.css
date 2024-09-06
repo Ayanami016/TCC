@@ -867,6 +867,8 @@ nav .btnmenu-mobile {
     margin: 2px 0;
 }
 
+.img-lateral {cursor: pointer;}
+
 .txt-pag-produto {margin: 100px 0 0 50px;}
 
 .txt-pag-produto a {

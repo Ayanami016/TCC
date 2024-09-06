@@ -167,3 +167,8 @@ campoEditarTel.addEventListener("keypress", ()=>{
         campoEditarTel.value += "-";
     }
 })
+
+// Alterando imagem principal na página específica do produto
+function trocarImagem(novaImagem) {
+    document.getElementById('img-principal').src = novaImagem;
+}

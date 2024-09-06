@@ -49,21 +49,21 @@
             echo // DIV responsável por agrupar as imagens
             "<div class='img-pag-produto'>
                 <div class='mais-img-produto'>";
-                    $contagem = 0;
+                $contagem = 0;
 
-                    while (true) {
-                        $caminho = $contagem == 0 ? $nome_img : "../src/img/produto" . $id_produto . "_" . $contagem . ".png";
-
-                        if (file_exists($caminho)) {
-                            echo "<img src='$caminho'>";
-                        } else {
-                            break;
-                        }
-                        $contagem++;
+                while (true) {
+                    $caminho = $contagem == 0 ? $nome_img : "../src/img/produto" . $id_produto . "_" . $contagem . ".png";
+            
+                    if (file_exists($caminho)) {
+                        echo "<img src='$caminho' class='img-lateral' alt='Imagem do produto' onclick='trocarImagem(\"$caminho\")' onmouseover='trocarImagem(\"$caminho\")'>";
+                    } else {
+                        break;
                     }
+                    $contagem++;
+                }
             echo "</div>
 
-                <img src='$nome_img' alt='Produto'>
+                <img id='img-principal' src='$nome_img' alt='Produto'>
             </div>";
             echo // DIV responsável pelo texto
             "<div class='txt-pag-produto'>
@@ -84,6 +84,7 @@
                     echo "</div>"; // Fim da DIV checkbox-cor
                     
                     echo "<input type='submit' value='Comprar'>
+
                 </form>
                 <p style='font-family: texto-negrito;'><ion-icon name='refresh-outline'></ion-icon> Troca Rápida e Fácil</p>
                 <p class='info-pag-produto'>
