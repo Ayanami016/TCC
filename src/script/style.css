@@ -867,12 +867,21 @@ nav .btnmenu-mobile {
     margin: 2px 0;
 }
 
-.txt-pag-produto {margin-left: 50px;}
+.txt-pag-produto {margin: 100px 0 0 50px;}
 
-.txt-pag-produto a {color: var(--cor3);}
+.txt-pag-produto a {
+    display: flex;
+    align-items: center;
+    color: var(--cor3);
+}
+
+.txt-pag-produto p {
+    display: flex;
+    align-items: center;
+}
 
 .txt-pag-produto input {
-    margin-top: 10px;
+    margin: 10px 0 30px 0;
     padding: 5px;
     background-color: var(--cor3);
     border: none;
@@ -892,7 +901,10 @@ nav .btnmenu-mobile {
 
 .txt-pag-produto a:hover {color: var(--cor1);}
 
+.txt-pag-produto ul {margin-left: 15px;}
+
 .preco-pag-produto {
+    margin: 10px 0;
     font-size: 2em;
     font-family: texto-negrito;
 }
@@ -901,7 +913,7 @@ nav .btnmenu-mobile {
 .checkbox-cor {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     gap: 10px;
 }
 
@@ -915,12 +927,19 @@ nav .btnmenu-mobile {
     cursor: pointer;
 }
 
-/* Estilo aplicado quando o checkbox está selecionado */
 .checkbox-cor input[type="radio"]:checked + .quadrado-cor {
     box-sizing: content-box;
     border: 2.5px solid white;
     box-shadow: 3px 3px 3px var(--sombra);
 }
+
+.info-pag-produto, .descr-pag-produto {
+    font-size: 0.9em;
+    color: var(--cinza);
+    margin-bottom: 15px;
+}
+
+.descr-pag-produto {margin-bottom: 0;}
 
 /* VOLTAR AO TOPO */
 .voltar-topo {

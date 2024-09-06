@@ -83,12 +83,34 @@
 
                     echo "</div>"; // Fim da DIV checkbox-cor
                     
-                    echo "<a href='linkdescricao'>Ver mais detalhes</a> <br>
-                    <input type='submit' value='Comprar'>
+                    echo "<input type='submit' value='Comprar'>
                 </form>
-            </div>";
+                <p style='font-family: texto-negrito;'><ion-icon name='refresh-outline'></ion-icon> Troca Rápida e Fácil</p>
+                <p class='info-pag-produto'>
+                    Se você não gostou, pode fazer a troca  <strong>&nbsp;GRÁTIS&nbsp;</strong> em até 7 dias!
+                </p>
 
-            //Fim DIV #pag-produto
+                <p style='font-family: texto-negrito; margin-bottom: 15px;'><ion-icon name='car-outline'></ion-icon> Entrega para todo o Brasil</p>
+                
+                <p style='font-family: texto-negrito;'><ion-icon name='shield-checkmark-outline'></ion-icon> Compra Segura</p>
+                <p class='info-pag-produto'>
+                    Nos preocupamos e valorizamos a privacidade e segurança dos dados pessoais de nossos clientes acima de tudo. 
+                    Em respeito a isso, asseguramos que em momento algum retemos quaisquer informações relacionadas aos cartões de crédito de nossos clientesem nossos sistemas.
+                    Esta medida visa garantir uma experiência de compra tranquila e segura, proporcionando confiança em cada transação realizada conosco.
+                </p>
+                
+                <p style='margin-top: 25px; font-family: texto-negrito;'>Sobre o Produto</p>
+                <ul>
+                    <li class='descr-pag-produto'> "  . $produto['descricao_prod'] . "</li>
+                    <li class='descr-pag-produto'> Disponível nas cores: " . $produto['cor_prod'] . "</p>
+                    <li class='descr-pag-produto'> Material: " . $produto['material_prod'] . "</li>
+                    <li class='descr-pag-produto'> Tamanho: " . $produto['tamanho_prod'] . "</li>
+                    <li class='descr-pag-produto'> Estoque: " . $produto['estoque'] . "</li>
+                </ul>
+                
+            </div>"; // Fim DIV .txt-pag-produto
+
+            // Fim DIV #pag-produto
             echo "</div>";
         } else {
             echo "<p>Produto não encontrado.</p>";
