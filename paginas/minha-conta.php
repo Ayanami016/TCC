@@ -33,7 +33,7 @@ if (isset($_SESSION['nome_exibir'])) {
     <!-- MENU -->
     <header>
         <span>
-            <a href="index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
+            <a href="../index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
         <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">

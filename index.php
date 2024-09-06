@@ -1,5 +1,5 @@
 <?php
-    include('../src/script/conexao.php');
+    include('src/script/conexao.php');
     // Verifica se usuário está logado
     session_start();
     if (isset($_SESSION['nome_exibir'])) {
@@ -18,9 +18,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bella Acessórios - Página Inicial</title>
-    <link rel="stylesheet" href="../src/script/style.css">
-    <link rel="stylesheet" href="../src/script/responsivo.css">
-    <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
+    <link rel="stylesheet" href="src/script/style.css">
+    <link rel="stylesheet" href="src/script/responsivo.css">
+    <link rel="shortcut icon" href="src/favicon/android-chrome-512x512.png" type="image/x-icon">
     <style>
         <?php if (!empty($primeiroNome)): ?>
         nav a.link-menupc {padding: 5vh 19px 4.4vh 19px;}
@@ -33,10 +33,10 @@
     <!-- MENU -->
     <header>
         <span>
-            <a href="index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
+            <a href="index.php"><img src="src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
-        <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
+        <form action="paginas/pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
             <input type="search" name="pesquisa" id="pesquisa" class="menu-pesquisa" placeholder="Buscar">
         </form>
 
@@ -48,10 +48,10 @@
 
             <!--Menu PC-->
             <span id="menu-pc">
-                <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25" class="link-menupc">Pulseiras</a>
-                <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index" class="link-menupc">Colares</a>
-                <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25" class="link-menupc">Brincos</a>
-                <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25conjunto%25" class="link-menupc">Conjuntos</a>
+                <a href="paginas/pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25" class="link-menupc">Pulseiras</a>
+                <a href="paginas/colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index" class="link-menupc">Colares</a>
+                <a href="paginas/brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25" class="link-menupc">Brincos</a>
+                <a href="paginas/conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25conjunto%25" class="link-menupc">Conjuntos</a>
             </span>
 
 
@@ -63,12 +63,12 @@
                     <div class="listamenu btnconta">
                         <?php if (!empty($primeiroNome)) : ?>
                         <!-- Logado -->
-                        <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                        <a href="paginas/minha-conta.php" class="link-listamenu">Minha Conta</a>
                         <a href="#" class="link-listamenu">Histórico</a>
-                        <a href="../src/script/destroy_session.php" class="link-listamenu">Encessar Sessão</a>
+                        <a href="src/script/destroy_session.php" class="link-listamenu">Encessar Sessão</a>
                         <?php else: ?>
-                        <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
-                        <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
+                        <a href="paginas/login.php" class="link-listamenu">Iniciar Sessão</a>
+                        <a href="paginas/cadastro.php" class="link-listamenu">Criar Conta</a>
                         <?php endif; ?>
                     </div>
                 </button>
@@ -78,7 +78,7 @@
                     <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
                     <div class="listamenu btnsuporte">
                         <a href="#" class="link-listamenu">Contato</a>
-                        <a href="faq.html" class="link-listamenu">FAQ</a>
+                        <a href="paginas/faq.html" class="link-listamenu">FAQ</a>
                     </div>
                 </button>
 
@@ -108,13 +108,13 @@
                     <div class="listamenu">
                         <?php if (!empty($primeiroNome)): ?>
                             <!-- Itens do menu para usuários logados -->
-                            <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
+                            <a href="paginas/minha-conta.php" class="link-listamenu">Minha Conta</a>
                             <a href="#" class="link-listamenu">Histórico</a>
-                            <a href="../src/script/destroy_session.php" class="link-listamenu">Encerrar Sessão</a>
+                            <a href="src/script/destroy_session.php" class="link-listamenu">Encerrar Sessão</a>
                         <?php else: ?>
                             <!-- Itens do menu para usuários não logados -->
-                            <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
-                            <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
+                            <a href="paginas/login.php" class="link-listamenu">Iniciar Sessão</a>
+                            <a href="paginas/cadastro.php" class="link-listamenu">Criar Conta</a>
                         <?php endif; ?>
                     </div>
                 </button>
@@ -146,10 +146,10 @@
         </form>
     </span>
     <span class="menu-pc-mobile">
-        <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25">Pulseiras</a>
-        <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index">Colares</a>
-        <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25">Brincos</a>
-        <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25">Conjuntos</a>
+        <a href="paginas/pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25">Pulseiras</a>
+        <a href="paginas/colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index">Colares</a>
+        <a href="paginas/brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25">Brincos</a>
+        <a href="paginas/conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25">Conjuntos</a>
     </span>
 
     <!-- BARRA LATERAL - HISTÓRICO -->
@@ -167,10 +167,10 @@
     <article id="catalogo">
         <!-- Min-width maior para o menor -->
         <picture>
-            <source media="(min-width: 1063px)" srcset="../src/img/catalogo-pc.jpeg">
-            <source media="(min-width: 530px)" srcset="../src/img/catalogo-tablet.jpeg">
-            <source media="(min-width: 0px)" srcset="../src/img/catalogo-mobile.jpeg">
-            <img src="../src/img/ph-catalogo-pc.jpg" alt="Imagem de Catálogo">
+            <source media="(min-width: 1063px)" srcset="src/img/catalogo-pc.jpeg">
+            <source media="(min-width: 530px)" srcset="src/img/catalogo-tablet.jpeg">
+            <source media="(min-width: 0px)" srcset="src/img/catalogo-mobile.jpeg">
+            <img src="src/img/ph-catalogo-pc.jpg" alt="Imagem de Catálogo">
         </picture>
     </article>
 
@@ -192,10 +192,10 @@
 
             while ($row_produtos = mysqli_fetch_array($resultado)) {
                 $id = $row_produtos['id_prod'];
-                $nome_img = "../src/img/produto" . $id . ".png";
+                $nome_img = "src/img/produto" . $id . ".png";
                 echo
                 "<div class='produto' style='margin-top: 0px;'>
-                    <a href='produto.php?id=$id'>
+                    <a href='paginas/produto.php?id=$id'>
                         <img src='$nome_img' alt='Produto'>
                     </a>
                     <div class='info-prod-mobile'>
@@ -205,7 +205,7 @@
                             "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
                         </div>
                         <div class='botoes-produto'>
-                        <a href='produto.php?id=$id'>
+                        <a href='paginas/produto.php?id=$id'>
                             <button class='btn-compra' btn-placeholder='Comprar'></button>
                         </a>
                             <ion-icon name='add-outline'></ion-icon>
@@ -262,16 +262,16 @@
         <h1>Conheça nossos Produtos</h1>
         <span class="conheca-conteudo">
             <div class="conhecaproduto">
-                <a href="#pulseira"><img src="../src/img/produto1.png" alt="Conheça Pulseiras">Pulseira</a>
+                <a href="#pulseira"><img src="src/img/produto1.png" alt="Conheça Pulseiras">Pulseira</a>
             </div>
             <div class="conhecaproduto">
-                <a href="#colar"><img src="../src/img/produto7.png" alt="Conheça Colares">Colar</a>
+                <a href="#colar"><img src="src/img/produto7.png" alt="Conheça Colares">Colar</a>
             </div>
             <div class="conhecaproduto">
-                <a href="#brinco"><img src="../src/img/produto36.png" alt="Conheça Brincos">Brinco</a>
+                <a href="#brinco"><img src="src/img/produto36.png" alt="Conheça Brincos">Brinco</a>
             </div>
             <div class="conhecaproduto">
-                <a href="#conjunto"><img src="../src/img/produto13.png" alt="Conheça Conjuntos">Conjunto</a>
+                <a href="#conjunto"><img src="src/img/produto13.png" alt="Conheça Conjuntos">Conjunto</a>
             </div>
         </span>    
      </article>
@@ -280,11 +280,11 @@
         <!-- Pulseira -->
     <a name="pulseira"></a>
     <article class="prod-destaque-esquerda">
-        <img src="../src/img/destaque-pulseira.png" alt="Pulseira em Destaque">
+        <img src="src/img/destaque-pulseira.png" alt="Pulseira em Destaque">
         <div class="pdd-texto">
             <h1>Pulseiras</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+            <a href="paginas/pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
     </article>
 
@@ -296,10 +296,10 @@
 
                 while ($row_produtos = mysqli_fetch_array($resultado)) {
                     $id = $row_produtos['id_prod'];
-                    $nome_img = "../src/img/produto" . $id . ".png";
+                    $nome_img = "src/img/produto" . $id . ".png";
                     echo
                     "<div class='produto' style='margin-top: 0px;'>
-                        <a href='produto.php?id=$id'>
+                        <a href='paginas/produto.php?id=$id'>
                             <img src='$nome_img' alt='Produto'>
                         </a>
                         <div class='info-prod-mobile'>
@@ -309,7 +309,7 @@
                                 "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
                             </div>
                             <div class='botoes-produto'>
-                            <a href='produto.php?id=$id'>
+                            <a href='paginas/produto.php?id=$id'>
                                 <button class='btn-compra' btn-placeholder='Comprar'></button>
                             </a>
                                 <ion-icon name='add-outline'></ion-icon>
@@ -329,9 +329,9 @@
         <div class="pdd-texto">
             <h1>Colares</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+            <a href="paginas/colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
-        <img src="../src/img/destaque-colar.png" alt="Colar em Destaque">
+        <img src="src/img/destaque-colar.png" alt="Colar em Destaque">
     </article>
 
     <article class="produtos-index">
@@ -342,10 +342,10 @@
 
                 while ($row_produtos = mysqli_fetch_array($resultado)) {
                     $id = $row_produtos['id_prod'];
-                    $nome_img = "../src/img/produto" . $id . ".png";
+                    $nome_img = "src/img/produto" . $id . ".png";
                     echo
                     "<div class='produto' style='margin-top: 0px;'>
-                        <a href='produto.php?id=$id'>
+                        <a href='paginas/produto.php?id=$id'>
                             <img src='$nome_img' alt='Produto'>
                         </a>
                         <div class='info-prod-mobile'>
@@ -355,7 +355,7 @@
                                 "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
                             </div>
                             <div class='botoes-produto'>
-                            <a href='produto.php?id=$id'>
+                            <a href='paginas/produto.php?id=$id'>
                                 <button class='btn-compra' btn-placeholder='Comprar'></button>
                             </a>
                                 <ion-icon name='add-outline'></ion-icon>
@@ -371,11 +371,11 @@
         <!-- Brinco -->
     <a name="brinco"></a>
     <article class="prod-destaque-esquerda">
-        <img src="../src/img/destaque-brinco.png" alt="Brinco em Destaque">
+        <img src="src/img/destaque-brinco.png" alt="Brinco em Destaque">
         <div class="pdd-texto">
             <h1>Brincos</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+            <a href="paginas/brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
     </article>
     
@@ -387,10 +387,10 @@
 
             while ($row_produtos = mysqli_fetch_array($resultado)) {
                 $id = $row_produtos['id_prod'];
-                $nome_img = "../src/img/produto" . $id . ".png";
+                $nome_img = "src/img/produto" . $id . ".png";
                 echo
                 "<div class='produto' style='margin-top: 0px;'>
-                    <a href='produto.php?id=$id'>
+                    <a href='paginas/produto.php?id=$id'>
                         <img src='$nome_img' alt='Produto'>
                     </a>
                     <div class='info-prod-mobile'>
@@ -400,7 +400,7 @@
                             "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
                         </div>
                         <div class='botoes-produto'>
-                        <a href='produto.php?id=$id'>
+                        <a href='paginas/produto.php?id=$id'>
                             <button class='btn-compra' btn-placeholder='Comprar'></button>
                         </a>
                             <ion-icon name='add-outline'></ion-icon>
@@ -419,9 +419,9 @@
         <div class="pdd-texto">
             <h1>Conjuntos</h1>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
-            <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
+            <a href="paginas/conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
-        <img src="../src/img/destaque-conjunto.png" alt="Conjunto em Destaque">
+        <img src="src/img/destaque-conjunto.png" alt="Conjunto em Destaque">
     </article>
 
     <article class="produtos-index">
@@ -432,10 +432,10 @@
 
                 while ($row_produtos = mysqli_fetch_array($resultado)) {
                     $id = $row_produtos['id_prod'];
-                    $nome_img = "../src/img/produto" . $id . ".png";
+                    $nome_img = "src/img/produto" . $id . ".png";
                     echo
                     "<div class='produto' style='margin-top: 0px;'>
-                        <a href='produto.php?id=$id'>
+                        <a href='paginas/produto.php?id=$id'>
                             <img src='$nome_img' alt='Produto'>
                         </a>
                         <div class='info-prod-mobile'>
@@ -445,7 +445,7 @@
                                 "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
                             </div>
                             <div class='botoes-produto'>
-                            <a href='produto.php?id=$id'>
+                            <a href='paginas/produto.php?id=$id'>
                                 <button class='btn-compra' btn-placeholder='Comprar'></button>
                             </a>
                                 <ion-icon name='add-outline'></ion-icon>
@@ -503,7 +503,7 @@
     </footer>
 
     <!--JAVASCRIPT-->
-    <script src="../src/script/javascript.js" type="text/javascript"></script>
+    <script src="src/script/javascript.js" type="text/javascript"></script>
         <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
