@@ -126,7 +126,10 @@ nav a.link-menupc {
     transition-duration: 0.3s;
 }
 
-nav a:hover {background-color: var(--cor4);}
+nav a:hover {
+    background-color: var(--cor4);
+    color: var(--cor2);
+}
 
     /*Alterna menu*/
 .alterna-menu, .alterna-botoes {
