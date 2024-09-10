@@ -613,13 +613,14 @@ nav .btnmenu-mobile {
 /* ATRIBUTOS PARA PRODUTO */
 .produto {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     margin: 10px;
     width: 33.4vh;
     height: 450px;
     padding: 20px;
     justify-content: space-around;
     box-shadow: 0 0 10px var(--sombra);
+    overflow: hidden;
 }
 
 .produto img {
