@@ -67,7 +67,7 @@
             </div>";
             echo // DIV responsável pelo texto
             "<div class='txt-pag-produto'>
-                <form action='' method='post'>
+                <form action='../src/script/adicionar_carrinho.php' method='post'>
                     <h1>" . $produto['nome_prod'] . "</h1>
                     <p class='preco-pag-produto'>R$" . $produto['preco'] . "</p>
                         <div class='checkbox-cor'>
@@ -80,12 +80,17 @@
                                 <input type='radio' name='cores[]' id='cor_$cor_prod' value='$cor_prod'>
                                 <label for='cor_$cor_prod' class='quadrado-cor' style='background-color: $hex;' title='$cor_prod'></label>";
                     }
-
                     echo "</div>"; // Fim da DIV checkbox-cor
-                    
-                    echo "<input type='submit' value='Comprar'>
-
+                    echo  "<span class='comprar-pag-produto'>
+                            <input type='submit' value='Comprar'>
+                            <input type='hidden' name='id_produto' value='$id_produto'>
+                            <button type='submit' class='add-prod-carrinho'>
+                                <ion-icon name='add-outline'></ion-icon> Adicionar ao Carrinho
+                            </button>
+                        </span>";
+                    echo "
                 </form>
+                
                 <p style='font-family: texto-negrito;'><ion-icon name='refresh-outline'></ion-icon> Troca Rápida e Fácil</p>
                 <p class='info-pag-produto'>
                     Se você não gostou, pode fazer a troca  <strong>&nbsp;GRÁTIS&nbsp;</strong> em até 7 dias!
@@ -267,8 +272,21 @@
     <!-- BARRA LATERAL - HISTÓRICO -->
     <aside id="carrinho" style="display: none;">
         <ion-icon name="bag-handle-outline"></ion-icon>
-        <h1>Seu carrinho está vazio!</h1> <br>
-        <p>Escolha algum produto e adicione ao carrinho para realizar sua compra!</p> <br>
+
+        <?php
+            if (isset($_SESSION['sacola']) && count($_SESSION['sacola']) > 0) {
+                foreach ($_SESSION['sacola'] as $id_produto => $detalhes) {
+                    $quantidade = $detalhes['quantidade'];
+                    $cor = $detalhes['cor'];
+
+                    echo "<p>Produto ID: $id_produto | Quantidade: $quantidade | Cor: $cor</p>";
+                }
+            } else {
+                echo "<h1>Sua sacola está vazia!</h1> <br>
+                    <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>";
+            }
+        ?>
+
         <a id="fecharcarrinho">Voltar</a>
     </aside>
 

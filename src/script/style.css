@@ -939,6 +939,15 @@ nav .btnmenu-mobile {
     box-shadow: 3px 3px 3px var(--sombra);
 }
 
+.comprar-pag-produto ion-icon {
+    margin-left: 20px;
+    position: relative;
+    top: 7;
+    font-size: 1.7em;
+    color: var(--cinza);
+    cursor: pointer;
+}
+
 .info-pag-produto, .descr-pag-produto {
     font-size: 0.9em;
     color: var(--cinza);

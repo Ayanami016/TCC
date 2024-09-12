@@ -134,8 +134,8 @@
     <!-- BARRA LATERAL - HISTÓRICO -->
     <aside id="carrinho" style="display: none;">
         <ion-icon name="bag-handle-outline"></ion-icon>
-        <h1>Seu carrinho está vazio!</h1> <br>
-        <p>Escolha algum produto e adicione ao carrinho para realizar sua compra!</p> <br>
+        <h1>Sua sacola está vazia!</h1> <br>
+        <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
         <a id="fecharcarrinho">Voltar</a>
     </aside>
 
