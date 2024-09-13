@@ -957,6 +957,43 @@ nav .btnmenu-mobile {
 
 .descr-pag-produto {margin-bottom: 0;}
 
+.txt-pag-produto form {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-direction: row;
+}
+
+.txt-pag-produto button {
+    position: relative;
+    bottom: 16;
+    width: 40px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 1.2em;
+}
+
+.txt-pag-produto button ion-icon {
+    position: absolute;
+    bottom: 20;
+    right: 5;
+}
+
+/* PRODUTOS DO CARRINHO */
+.prod-carrinho {
+    padding: 10px;
+    margin-bottom: 3px;
+}
+
+.prod-carrinho img {
+    margin-bottom: 5px;
+    width: 150px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px var(--sombra);
+}
+
 /* VOLTAR AO TOPO */
 .voltar-topo {
     width: 100%;

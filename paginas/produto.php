@@ -11,14 +11,15 @@
         $primeiroNome = '';
     }
 
-    // Inicializa o carrinho na sessão se ainda não existir
+    // Inicializa a sessão carrinho
     if (!isset($_SESSION['carrinho'])) {
         $_SESSION['carrinho'] = array();
     }
 
     // Verifica se um produto foi adicionado
-    if (isset($_GET['id']) && isset($_GET['nome_prod']) && isset($_GET['preco']) && isset($_GET['cor_prod'])) {
+    if (isset($_GET['id']) && isset($_GET['nome_img']) && isset($_GET['nome_prod']) && isset($_GET['preco']) && isset($_GET['cor_prod'])) {
         $id_produto = (int) $_GET['id'];
+        $nome_img = $_GET['nome_img'];
         $nome_prod = $_GET['nome_prod'];
         $preco = (float) $_GET['preco'];
         $cor_prod = $_GET['cor_prod'];
@@ -33,10 +34,11 @@
             }
         }
     
-        // Se o produto não estiver no carrinho, adiciona-o
+        // Se não estiver, adiciona!
         if (!$produtoExiste) {
             $_SESSION['carrinho'][] = array(
                 'id' => $id_produto,
+                'imagem' => $nome_img,
                 'nome' => $nome_prod,
                 'cor' => $cor_prod,
                 'preco' => $preco,
@@ -44,7 +46,7 @@
             );
         }
     
-        // Evita o reenvio do formulário e mantém o ID no URL
+        // Evita o reenvio do formulário afim de evitar quantidade++ (1 => 3)
         header("Location: produto.php?id=$id_produto");
         exit();
     }
@@ -122,30 +124,18 @@
                 echo "<span class='comprar-pag-produto'>
                         <form method='get' action='produto.php'>
                             <input type='hidden' name='id' value='$id_produto'>
+                            <input type='hidden' name='nome_img' id='nome_img' value='$nome_img'>
                             <input type='hidden' name='nome_prod' id='nome_prod' value='{$produto['nome_prod']}'>
                             <input type='hidden' name='preco' id='preco' value='{$produto['preco']}'>
                             <input type='hidden' name='cor_prod' id='cor_selecionada' value=''>
                             <input type='submit' value='Comprar'>
                             <button type='submit' class='add-prod-carrinho'>
-                                Adicionar ao Carrinho!
+                                <ion-icon name='bag-add-outline'></ion-icon>
                             </button>
                         </form>
                     </span>"; ?>
 
-                <?php
-
-                // // Lista de informações do Produto
-                // $item = array(['$id_produto' => '$produto[nome_prod]', '$produto[cor_prod]', '$produto[preco]']);
-                // foreach ($item as $key => $value) {
-                //     echo  "<span class='comprar-pag-produto'>
-                //         <input type='submit' value='Comprar'>
-                //         <input type='hidden' name='id_produto' value='$id_produto'>
-                //         <button type='submit' class='add-prod-carrinho'>
-                //             <a href='produto.php?id=$key?adicionar=$key'>Adicionar ao Carrinho!</a>
-                //         </button>
-                //     </span>";
-                // }
-
+<?php
                 echo "
                 <p style='font-family: texto-negrito;'><ion-icon name='refresh-outline'></ion-icon> Troca Rápida e Fácil</p>
                 <p class='info-pag-produto'>
@@ -327,16 +317,25 @@
 
     <!-- BARRA LATERAL - HISTÓRICO -->
     <aside id="carrinho" style="display: none;">
-    <ion-icon name="bag-handle-outline"></ion-icon>
         <?php
             if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
                 foreach ($_SESSION['carrinho'] as $id_produto => $item) {
-                    echo "<p>{$item['nome']} <br> Cor: {$item['cor']} <br> Preço: R$ {$item['preco']} <br> Quantidade: {$item['quantidade']} <br> FIM DO PRODUTO</p>";
+                    echo "
+                    <div class='prod-carrinho'>
+                        <img src='{$item['imagem']}' alt='{$item['nome']}'>
+                        <p>{$item['nome']}</p>
+                        <p style='font-family: texto-negrito;'>R&#36;{$item['preco']}</p>
+                        <p>{$item['cor']}</p>
+                        <p>Quantidade: {$item['quantidade']}</p>
+                    </div>";
                 }
+                echo "<a id='fecharcarrinho'>Voltar</a>";
             } else {
-                echo "<h1>Sua sacola está vazia!</h1> <br>
-                <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
-                <a id='fecharcarrinho'>Voltar</a>";
+                echo "
+                <ion-icon name='bag-handle-outline'></ion-icon>
+                    <h1>Sua sacola está vazia!</h1> <br>
+                    <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
+                    <a id='fecharcarrinho'>Voltar</a>";
             }
         ?>
     </aside>
