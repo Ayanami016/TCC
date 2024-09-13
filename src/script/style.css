@@ -352,6 +352,7 @@ nav .btnmenu-mobile {
 /* BARRA LATERAL - CARRINHO */
 #carrinho {
     z-index: 5;
+    overflow-y: auto;
     position: fixed;
     top: 0;
     right: 0;

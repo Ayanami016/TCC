@@ -11,6 +11,44 @@
         $primeiroNome = '';
     }
 
+    // Inicializa o carrinho na sessão se ainda não existir
+    if (!isset($_SESSION['carrinho'])) {
+        $_SESSION['carrinho'] = array();
+    }
+
+    // Verifica se um produto foi adicionado
+    if (isset($_GET['id']) && isset($_GET['nome_prod']) && isset($_GET['preco']) && isset($_GET['cor_prod'])) {
+        $id_produto = (int) $_GET['id'];
+        $nome_prod = $_GET['nome_prod'];
+        $preco = (float) $_GET['preco'];
+        $cor_prod = $_GET['cor_prod'];
+    
+        // Verifica se o produto com a mesma cor já está no carrinho
+        $produtoExiste = false;
+        foreach ($_SESSION['carrinho'] as $key => $produto) {
+            if ($produto['id'] == $id_produto && $produto['cor'] == $cor_prod) {
+                $_SESSION['carrinho'][$key]['quantidade']++;
+                $produtoExiste = true;
+                break;
+            }
+        }
+    
+        // Se o produto não estiver no carrinho, adiciona-o
+        if (!$produtoExiste) {
+            $_SESSION['carrinho'][] = array(
+                'id' => $id_produto,
+                'nome' => $nome_prod,
+                'cor' => $cor_prod,
+                'preco' => $preco,
+                'quantidade' => 1
+            );
+        }
+    
+        // Evita o reenvio do formulário e mantém o ID no URL
+        header("Location: produto.php?id=$id_produto");
+        exit();
+    }
+
     echo "
     <head>
         <link rel='shortcut icon' href='../src/favicon/android-chrome-512x512.png' type='image/x-icon'>
@@ -67,30 +105,48 @@
             </div>";
             echo // DIV responsável pelo texto
             "<div class='txt-pag-produto'>
-                <form action='../src/script/adicionar_carrinho.php' method='post'>
-                    <h1>" . $produto['nome_prod'] . "</h1>
-                    <p class='preco-pag-produto'>R$" . $produto['preco'] . "</p>
-                        <div class='checkbox-cor'>
-                            <p>Cores disponíveis: </p>";
+                <h1>" . $produto['nome_prod'] . "</h1>
+                <p class='preco-pag-produto'>R$" . $produto['preco'] . "</p>
+                    <div class='checkbox-cor'>
+                        <p>Cores disponíveis: </p>";
 
-                    foreach ($cores as $cor_prod) {
-                        $hex = isset($cor_disponivel[$cor_prod]) ? $cor_disponivel[$cor_prod] : '#000000';
-
-                        echo "
-                                <input type='radio' name='cores[]' id='cor_$cor_prod' value='$cor_prod'>
-                                <label for='cor_$cor_prod' class='quadrado-cor' style='background-color: $hex;' title='$cor_prod'></label>";
-                    }
-                    echo "</div>"; // Fim da DIV checkbox-cor
-                    echo  "<span class='comprar-pag-produto'>
-                            <input type='submit' value='Comprar'>
-                            <input type='hidden' name='id_produto' value='$id_produto'>
-                            <button type='submit' class='add-prod-carrinho'>
-                                <ion-icon name='add-outline'></ion-icon> Adicionar ao Carrinho
-                            </button>
-                        </span>";
+                foreach ($cores as $cor_prod) {
+                    $hex = isset($cor_disponivel[$cor_prod]) ? $cor_disponivel[$cor_prod] : '#000000';
+                    
                     echo "
-                </form>
-                
+                        <input type='radio' name='cor_prod' id='cor_$cor_prod' value='$cor_prod' onclick='selecionarCor(\"$cor_prod\")'>
+                        <label for='cor_$cor_prod' class='quadrado-cor' style='background-color: $hex;' title='$cor_prod'></label>";
+                }
+
+                echo "</div>"; // Fim da DIV checkbox-cor
+                echo "<span class='comprar-pag-produto'>
+                        <form method='get' action='produto.php'>
+                            <input type='hidden' name='id' value='$id_produto'>
+                            <input type='hidden' name='nome_prod' id='nome_prod' value='{$produto['nome_prod']}'>
+                            <input type='hidden' name='preco' id='preco' value='{$produto['preco']}'>
+                            <input type='hidden' name='cor_prod' id='cor_selecionada' value=''>
+                            <input type='submit' value='Comprar'>
+                            <button type='submit' class='add-prod-carrinho'>
+                                Adicionar ao Carrinho!
+                            </button>
+                        </form>
+                    </span>"; ?>
+
+                <?php
+
+                // // Lista de informações do Produto
+                // $item = array(['$id_produto' => '$produto[nome_prod]', '$produto[cor_prod]', '$produto[preco]']);
+                // foreach ($item as $key => $value) {
+                //     echo  "<span class='comprar-pag-produto'>
+                //         <input type='submit' value='Comprar'>
+                //         <input type='hidden' name='id_produto' value='$id_produto'>
+                //         <button type='submit' class='add-prod-carrinho'>
+                //             <a href='produto.php?id=$key?adicionar=$key'>Adicionar ao Carrinho!</a>
+                //         </button>
+                //     </span>";
+                // }
+
+                echo "
                 <p style='font-family: texto-negrito;'><ion-icon name='refresh-outline'></ion-icon> Troca Rápida e Fácil</p>
                 <p class='info-pag-produto'>
                     Se você não gostou, pode fazer a troca  <strong>&nbsp;GRÁTIS&nbsp;</strong> em até 7 dias!
@@ -271,23 +327,18 @@
 
     <!-- BARRA LATERAL - HISTÓRICO -->
     <aside id="carrinho" style="display: none;">
-        <ion-icon name="bag-handle-outline"></ion-icon>
-
+    <ion-icon name="bag-handle-outline"></ion-icon>
         <?php
-            if (isset($_SESSION['sacola']) && count($_SESSION['sacola']) > 0) {
-                foreach ($_SESSION['sacola'] as $id_produto => $detalhes) {
-                    $quantidade = $detalhes['quantidade'];
-                    $cor = $detalhes['cor'];
-
-                    echo "<p>Produto ID: $id_produto | Quantidade: $quantidade | Cor: $cor</p>";
+            if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
+                foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                    echo "<p>{$item['nome']} <br> Cor: {$item['cor']} <br> Preço: R$ {$item['preco']} <br> Quantidade: {$item['quantidade']} <br> FIM DO PRODUTO</p>";
                 }
             } else {
                 echo "<h1>Sua sacola está vazia!</h1> <br>
-                    <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>";
+                <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
+                <a id='fecharcarrinho'>Voltar</a>";
             }
         ?>
-
-        <a id="fecharcarrinho">Voltar</a>
     </aside>
 
     <!-- Escuro -->
@@ -341,6 +392,5 @@
         <!-- Ícones -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-         
 </body>
 </html>

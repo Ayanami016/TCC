@@ -216,45 +216,6 @@
             }
             echo "</span>";
         ?>
-        <!-- <span class="produtos-conteudo">
-            <div class="produto">
-                <img src="../src/img/ph-produto-anel.jpg" alt="Produto">
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-brinco.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            
-            <div class="produto">
-                <img src="../src/img/ph-produto-colar.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-            <div class="produto">
-                <img src="../src/img/ph-produto-pulseira.jpg" alt="Produto"  >
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit</p>
-                <p class="preco">R$900,00</p>
-                <div class="botoes-produto">
-                    <button class="btn-compra" btn-placeholder="Comprar"></button>
-                    <ion-icon name="add-outline"></ion-icon>
-                </div>
-            </div>
-        </span> -->
     </article>
 
     <!-- CONHEÇA NOSSOS PRODUTOS -->

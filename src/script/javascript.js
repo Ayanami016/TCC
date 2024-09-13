@@ -172,3 +172,19 @@ campoEditarTel.addEventListener("keypress", ()=>{
 function trocarImagem(novaImagem) {
     document.getElementById('img-principal').src = novaImagem;
 }
+
+// Função para pegar a cor selecionada e atualizá-la no campo hidden
+const radioButtons = document.querySelectorAll('input[name="cores[]"]');
+const corSelecionadaInput = document.getElementById('cor_selecionada');
+
+radioButtons.forEach(radio => {
+    radio.addEventListener('change', function() {
+        corSelecionadaInput.value = this.value;
+    });
+});
+
+// Apenas uma função de capturar a cor selecionada no produto
+// Criada para atualizar o input:hiden em produto.php
+function selecionarCor(cor) {
+    document.getElementById('cor_selecionada').value = cor;
+}
