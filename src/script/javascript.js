@@ -188,3 +188,16 @@ radioButtons.forEach(radio => {
 function selecionarCor(cor) {
     document.getElementById('cor_selecionada').value = cor;
 }
+
+// Verifica se na adição do produto ao carrinho uma cor está selecionada
+function verificarCorSelecionada() {
+    const corSelecionada = document.querySelector('input[name="cor_prod"]:checked');
+
+    if (!corSelecionada) {
+        alert('Por favor, selecione uma cor antes de adicionar o produto na sacola.');
+        return false;
+    }
+
+    document.getElementById('cor_selecionada').value = corSelecionada.value;
+    return true;
+}

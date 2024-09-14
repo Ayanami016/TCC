@@ -358,7 +358,7 @@ nav .btnmenu-mobile {
     right: 0;
     flex-direction: column;
     text-align: center;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     width: 300px;
     height: 100%;
@@ -983,15 +983,46 @@ nav .btnmenu-mobile {
 
 /* PRODUTOS DO CARRINHO */
 .prod-carrinho {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid var(--cor3);
     padding: 10px;
     margin-bottom: 3px;
 }
 
 .prod-carrinho img {
-    margin-bottom: 5px;
-    width: 150px;
+    margin: 0px 5px 5px 5px;
+    width: 100px;
     border-radius: 15px;
-    box-shadow: 0 0 10px var(--sombra);
+}
+
+.txt-prod-carrinho {
+    font-size: 0.8em;
+}
+
+.preco-prod-carrinho {
+    color: var(--cor2);
+    font-size: 1.4em !important;
+    font-family: texto-negrito;
+}
+
+#carrinho button {
+    cursor: pointer;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 1.1em;
+    font-family: texto-negrito;
+    background-color: var(--cor3);
+    color: var(--cor5);
+    transition-duration: 0.3s;
+}
+
+#carrinho button:hover {
+    background-color: var(--cor5);
+    color: var(--cor3);
 }
 
 /* VOLTAR AO TOPO */

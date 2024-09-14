@@ -144,7 +144,7 @@ if (isset($_SESSION['nome_exibir'])) {
         <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25">Conjuntos</a>
     </span>
 
-    <!-- BARRA LATERAL - HISTÓRICO -->
+    <!-- BARRA LATERAL - SACOLA -->
     <aside id="carrinho" style="display: none;">
         <ion-icon name="bag-handle-outline"></ion-icon>
         <h1>Sua sacola está vazia!</h1> <br>

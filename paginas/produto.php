@@ -51,6 +51,26 @@
         exit();
     }
 
+    // Deletando o produto do carrinho
+    if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+        $id_produto = (int)$_GET['id'];
+        $cor_prod = $_GET['cor'];
+
+        // Procura o produto no carrinho e o remove
+        foreach ($_SESSION['carrinho'] as $key => $produto) {
+            if ($produto['id'] == $id_produto && $produto['cor'] == $cor_prod) {
+                unset($_SESSION['carrinho'][$key]);
+                // Reindexa o array para evitar buracos
+                $_SESSION['carrinho'] = array_values($_SESSION['carrinho']);
+                break;
+            }
+        }
+
+        // Redireciona para a mesma página para evitar reenvio de formulários
+        header("Location: produto.php?id=$id_produto");
+        exit();
+    }
+
     echo "
     <head>
         <link rel='shortcut icon' href='../src/favicon/android-chrome-512x512.png' type='image/x-icon'>
@@ -122,7 +142,7 @@
 
                 echo "</div>"; // Fim da DIV checkbox-cor
                 echo "<span class='comprar-pag-produto'>
-                        <form method='get' action='produto.php'>
+                        <form method='get' action='produto.php' id='form-add-carrinho' onsubmit='return verificarCorSelecionada();'>
                             <input type='hidden' name='id' value='$id_produto'>
                             <input type='hidden' name='nome_img' id='nome_img' value='$nome_img'>
                             <input type='hidden' name='nome_prod' id='nome_prod' value='{$produto['nome_prod']}'>
@@ -315,27 +335,47 @@
         <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25">Conjuntos</a>
     </span>
 
-    <!-- BARRA LATERAL - HISTÓRICO -->
+    <!-- BARRA LATERAL - SACOLA -->
     <aside id="carrinho" style="display: none;">
         <?php
             if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
+                $preco_total = 0;
+                echo "<div>"; // Para conter todos os produtos para o space-around do #carrinho aplicar corretamente
                 foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                    // Calcula o preço total
+                    $subtotal = $item['preco'] * $item['quantidade'];
+                    $preco_total += $subtotal;
+
                     echo "
                     <div class='prod-carrinho'>
+                        <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
+                            <ion-icon name='close-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
+                        </a>
                         <img src='{$item['imagem']}' alt='{$item['nome']}'>
-                        <p>{$item['nome']}</p>
-                        <p style='font-family: texto-negrito;'>R&#36;{$item['preco']}</p>
-                        <p>{$item['cor']}</p>
-                        <p>Quantidade: {$item['quantidade']}</p>
+                        <div class='txt-prod-carrinho'>
+                            <p>{$item['nome']}</p>
+                            <p class='preco-prod-carrinho'>R&#36;{$item['preco']}.00</p>
+                            <p>{$item['cor']}</p>
+                            <p>Quantidade: {$item['quantidade']}</p>
+                        </div>
                     </div>";
                 }
-                echo "<a id='fecharcarrinho'>Voltar</a>";
-            } else {
+                // Preço Total
+                echo "<h1 style='margin-top: 5px; font-size: 2em; color: var(--cor2);'>Total: R$" . number_format($preco_total, 2, '.', '.') . "</h1>";
+                echo "</div>";
                 echo "
-                <ion-icon name='bag-handle-outline'></ion-icon>
-                    <h1>Sua sacola está vazia!</h1> <br>
-                    <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
-                    <a id='fecharcarrinho'>Voltar</a>";
+                <div>
+                    <a id='fecharcarrinho'>Voltar</a> <br>
+                    <a href='checkout.php'><button>Ir para o checkout</button></a>
+                </div>";
+            } else {
+                echo " 
+                <div>
+                    <ion-icon name='bag-handle-outline'></ion-icon>
+                        <h1>Sua sacola está vazia!</h1> <br>
+                        <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
+                        <a id='fecharcarrinho'>Voltar</a>
+                </div>";
             }
         ?>
     </aside>
