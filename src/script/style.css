@@ -940,10 +940,12 @@ nav .btnmenu-mobile {
     box-shadow: 3px 3px 3px var(--sombra);
 }
 
+.comprar-pag-produto {margin: 30px 0 0 20px;}
+
 .comprar-pag-produto ion-icon {
     margin-left: 20px;
     position: relative;
-    top: 7;
+    top: 12;
     font-size: 1.7em;
     color: var(--cinza);
     cursor: pointer;
@@ -979,6 +981,17 @@ nav .btnmenu-mobile {
     position: absolute;
     bottom: 20;
     right: 5;
+}
+
+.txt-pag-produto a {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    border-radius: 15px;
+    background-color: var(--cor3);
+    color: var(--cor5);
+    font-size: 1.2em;
+    font-family: texto-negrito;
+    transition-duration: 0.3s;
 }
 
 /* PRODUTOS DO CARRINHO */

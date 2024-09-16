@@ -47,7 +47,7 @@
         }
     
         // Evita o reenvio do formulário afim de evitar quantidade++ (1 => 3)
-        header("Location: produto.php?id=$id_produto");
+        header("Location: " . $_SERVER['HTTP_REFERER']);
         exit();
     }
 
@@ -67,7 +67,7 @@
         }
 
         // Redireciona para a mesma página para evitar reenvio de formulários
-        header("Location: produto.php?id=$id_produto");
+        header("Location: " . $_SERVER['HTTP_REFERER']);
         exit();
     }
 
@@ -148,7 +148,7 @@
                             <input type='hidden' name='nome_prod' id='nome_prod' value='{$produto['nome_prod']}'>
                             <input type='hidden' name='preco' id='preco' value='{$produto['preco']}'>
                             <input type='hidden' name='cor_prod' id='cor_selecionada' value=''>
-                            <input type='submit' value='Comprar'>
+                            <a href='checkout.php' class='btn-comprar'>Comprar</a>
                             <button type='submit' class='add-prod-carrinho'>
                                 <ion-icon name='bag-add-outline'></ion-icon>
                             </button>
@@ -216,7 +216,7 @@
     <!-- MENU -->
     <header>
         <span>
-            <a href="../index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
+            <a href="index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
         </span>
 
         <form action="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=" method="post">
