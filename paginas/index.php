@@ -243,7 +243,7 @@
                 echo "
                 <div>
                     <a id='fecharcarrinho'>Voltar</a> <br>
-                    <a href='checkout.php'><button>Ir para o checkout</button></a>
+                    <a href='checkout.php'><button>Finalizar Compra</button></a>
                 </div>";
             } else {
                 echo " 
@@ -305,8 +305,6 @@
                         <a href='produto.php?id=$id'>
                             <button class='btn-compra' btn-placeholder='Comprar'></button>
                         </a>
-                            <ion-icon name='add-outline'></ion-icon>
-                            <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
                         </div>
                     </div>
                 </div>";
@@ -370,8 +368,7 @@
                             <a href='produto.php?id=$id'>
                                 <button class='btn-compra' btn-placeholder='Comprar'></button>
                             </a>
-                                <ion-icon name='add-outline'></ion-icon>
-                                <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                                
                             </div>
                         </div>
                     </div>";
@@ -416,8 +413,7 @@
                             <a href='produto.php?id=$id'>
                                 <button class='btn-compra' btn-placeholder='Comprar'></button>
                             </a>
-                                <ion-icon name='add-outline'></ion-icon>
-                                <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                                
                             </div>
                         </div>
                     </div>";
@@ -461,8 +457,7 @@
                         <a href='produto.php?id=$id'>
                             <button class='btn-compra' btn-placeholder='Comprar'></button>
                         </a>
-                            <ion-icon name='add-outline'></ion-icon>
-                            <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                            
                         </div>
                     </div>
                 </div>";
@@ -506,8 +501,7 @@
                             <a href='produto.php?id=$id'>
                                 <button class='btn-compra' btn-placeholder='Comprar'></button>
                             </a>
-                                <ion-icon name='add-outline'></ion-icon>
-                                <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+                                
                             </div>
                         </div>
                     </div>";

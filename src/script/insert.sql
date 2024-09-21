@@ -1,6 +1,6 @@
-use tcc;
+USE tcc;
 
-insert into produto (descricao_prod, nome_prod, tipo_prod, cor_prod, material_prod, tamanho_prod, estoque, preco) values
+INSERT INTO produto (descricao_prod, nome_prod, tipo_prod, cor_prod, material_prod, tamanho_prod, estoque, preco) VALUES
 ('Pulseira elegante e simples com pingentes de olho grego.',	'Pulseira Olho Grego Folheada em Prata',	'Pulseira, Mais Vendidos',	'Azul Escuro, Azul Claro',	'Prata',	'Ajustável',	'20',	'12.00'),
 ('Pulseira elegante com pedras.',	'Pulseira Folheada em Prata com Pedrarias',	'Pulseira, Index',	'Preto, Rosa, Transparente',	'Prata, Joia',	'Ajustável',	'20',	'12.00'),
 ('Pulseira simples com ponto de luz com formato de estrela.',	'Pulseira Ponto de Luz Folheada em Prata com Pingente de Estrela',	'Pulseira, Index',	'Transparente',	'Prata',	'Ajustável',	'20',	'12.00'),

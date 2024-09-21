@@ -236,7 +236,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 echo "
                 <div>
                     <a id='fecharcarrinho'>Voltar</a> <br>
-                    <a href='checkout.php'><button>Ir para o checkout</button></a>
+                    <a href='checkout.php'><button>Finalizar Compra</button></a>
                 </div>";
             } else {
                 echo " 

@@ -1,75 +1,75 @@
 <?php
 
-// Verifica se usuário está logado
-session_start();
-if (isset($_SESSION['nome_exibir'])) {
-    // Divida o nome completo em partes
-    $nomeCompleto = $_SESSION['nome_exibir'];
-    $partesNome = explode(' ', $nomeCompleto);
-    $primeiroNome = $partesNome[0];
-} else {
-    $primeiroNome = '';
-}
+    // Verifica se usuário está logado
+    session_start();
+    if (isset($_SESSION['nome_exibir'])) {
+        // Divida o nome completo em partes
+        $nomeCompleto = $_SESSION['nome_exibir'];
+        $partesNome = explode(' ', $nomeCompleto);
+        $primeiroNome = $partesNome[0];
+    } else {
+        $primeiroNome = '';
+    }
 
-// Inicializa a sessão carrinho
-if (!isset($_SESSION['carrinho'])) {
-    $_SESSION['carrinho'] = array();
-}
+    // Inicializa a sessão carrinho
+    if (!isset($_SESSION['carrinho'])) {
+        $_SESSION['carrinho'] = array();
+    }
 
-// Verifica se um produto foi adicionado
-if (isset($_GET['id']) && isset($_GET['nome_img']) && isset($_GET['nome_prod']) && isset($_GET['preco']) && isset($_GET['cor_prod'])) {
-    $id_produto = (int) $_GET['id'];
-    $nome_img = $_GET['nome_img'];
-    $nome_prod = $_GET['nome_prod'];
-    $preco = (float) $_GET['preco'];
-    $cor_prod = $_GET['cor_prod'];
+    // Verifica se um produto foi adicionado
+    if (isset($_GET['id']) && isset($_GET['nome_img']) && isset($_GET['nome_prod']) && isset($_GET['preco']) && isset($_GET['cor_prod'])) {
+        $id_produto = (int) $_GET['id'];
+        $nome_img = $_GET['nome_img'];
+        $nome_prod = $_GET['nome_prod'];
+        $preco = (float) $_GET['preco'];
+        $cor_prod = $_GET['cor_prod'];
 
-    // Verifica se o produto com a mesma cor já está no carrinho
-    $produtoExiste = false;
-    foreach ($_SESSION['carrinho'] as $key => $produto) {
-        if ($produto['id'] == $id_produto && $produto['cor'] == $cor_prod) {
-            $_SESSION['carrinho'][$key]['quantidade']++;
-            $produtoExiste = true;
-            break;
+        // Verifica se o produto com a mesma cor já está no carrinho
+        $produtoExiste = false;
+        foreach ($_SESSION['carrinho'] as $key => $produto) {
+            if ($produto['id'] == $id_produto && $produto['cor'] == $cor_prod) {
+                $_SESSION['carrinho'][$key]['quantidade']++;
+                $produtoExiste = true;
+                break;
+            }
         }
-    }
 
-    // Se não estiver, adiciona!
-    if (!$produtoExiste) {
-        $_SESSION['carrinho'][] = array(
-            'id' => $id_produto,
-            'imagem' => $nome_img,
-            'nome' => $nome_prod,
-            'cor' => $cor_prod,
-            'preco' => $preco,
-            'quantidade' => 1
-        );
-    }
-
-    // Evita o reenvio do formulário afim de evitar quantidade++ (1 => 3)
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
-}
-
-// Deletando o produto do carrinho
-if (isset($_GET['action']) && $_GET['action'] == 'delete') {
-    $id_produto = (int)$_GET['id'];
-    $cor_prod = $_GET['cor'];
-
-    // Procura o produto no carrinho e o remove
-    foreach ($_SESSION['carrinho'] as $key => $produto) {
-        if ($produto['id'] == $id_produto && $produto['cor'] == $cor_prod) {
-            unset($_SESSION['carrinho'][$key]);
-            // Reindexa o array para evitar buracos
-            $_SESSION['carrinho'] = array_values($_SESSION['carrinho']);
-            break;
+        // Se não estiver, adiciona!
+        if (!$produtoExiste) {
+            $_SESSION['carrinho'][] = array(
+                'id' => $id_produto,
+                'imagem' => $nome_img,
+                'nome' => $nome_prod,
+                'cor' => $cor_prod,
+                'preco' => $preco,
+                'quantidade' => 1
+            );
         }
+
+        // Evita o reenvio do formulário afim de evitar quantidade++ (1 => 3)
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit();
     }
 
-    // Redireciona para a mesma página para evitar reenvio de formulários
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
-}
+    // Deletando o produto do carrinho
+    if (isset($_GET['action']) && $_GET['action'] == 'delete') {
+        $id_produto = (int)$_GET['id'];
+        $cor_prod = $_GET['cor'];
+
+        // Procura o produto no carrinho e o remove
+        foreach ($_SESSION['carrinho'] as $key => $produto) {
+            if ($produto['id'] == $id_produto && $produto['cor'] == $cor_prod) {
+                unset($_SESSION['carrinho'][$key]);
+                // Reindexa o array para evitar buracos
+                $_SESSION['carrinho'] = array_values($_SESSION['carrinho']);
+                break;
+            }
+        }
+
+        // Redireciona para a mesma página para evitar reenvio de formulários
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -257,67 +257,49 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
         ?>
     </aside>
 
-    <!-- ALTERAR DADOS -->
-    <article id="alterar-dados">
-        <form action="../src/script/altera_dados.php" method="post">
-            <h1>Alterar Dados</h1>
-            <label for="editar-nome">Novo nome: </label> <br>
-            <input type="text" name="editar-nome" id="editar-nome" placeholder="<?php echo 'Nome atual: ' . $_SESSION['nome_exibir']?>"> <br>
-
-            <label for="editar-tel">Novo telefone: </label> <br>
-            <input type="text" name="editar-tel" id="editar-tel" class="editar-tel" maxlength="14" placeholder="<?php echo 'Telefone atual: ' . $_SESSION['tel_exibir']?>"> <br>
-
-            <label for="editar-senha">Nova senha:  </label> <br>
-            <input type="password" name="editar-senha" id="editar-senha" placeholder="Digite sua nova senha"> <br>
-            
-            <div class="btn-altdados">
-                <input type="submit" value="Alterar">
-                <a href="excluir-conta.php" class="excluir-conta">Excluir minha conta</a>
-                <!-- <input type="submit"value="Excluir minha conta" class="excluir-conta"> -->
-            </div>
-        </form>
-    </article>
-
-    <!-- Escuro -->
-    <div id="escuro" style="display: none;"></div>
-
-    <!-- RODAPÉ -->
-    <footer id="rodape">
-        <!-- Categorias -->
-       <span>
-            <h1>Categorias</h1>
-            <ul>
-                <li><a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=pulseira">Pulseiras</a></li>
-                <li><a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index">Colares</a></li>
-                <li><a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=brinco">Brincos</a></li>
-                <li class="ultimo"><a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=conjunto">Conjuntos</a></li>
-            </ul>
-        </span>
-
-        <!-- Minha Conta -->
-        <span>
-            <h1>Conta</h1>
-            <ul>
-                <li><a href="login.php">Iniciar Sessão</a></li>
-                <li class="ultimo"><a href="cadastro.php">Criar Conta</a></li>
-            </ul>
-        </span>
-
-        <!-- Contato -->
-        <span>
-            <h1>Entre em Contato</h1>
-            <ul>
-                <li><a href="#">Número de Telefone</a></li>
-                <li class="ultimo"><a href="#">E-mail</a></li>
-            </ul>
-        </span>
-
-        <!-- Brands -->
-        <span>
-            <a href="https://github.com/Ayanami016/TCC" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
-            <a href="#" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
-        </span>
-    </footer>
+    <!-- CHECKOUT -->
+    <div id="checkout">
+        <div class="itens-checkout">
+            <h1 style="margin-bottom: 20px;">Checkout</h1>
+            <?php
+            $preco_checkout = 0;
+                foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                    // Calcula o preço total
+                    $subtotal = $item['preco'] * $item['quantidade'];
+                    $preco_checkout += $subtotal;
+                    echo "
+                        <div class='prod-checkout'>
+                            <img src='{$item['imagem']}' alt='{$item['nome']}'>
+                            <div class='txt-prod-checkout nome-checkout'>
+                                <p>{$item['nome']}</p>
+                                <p><strong>Cor: </strong>{$item['cor']}</p>
+                            </div>
+                            <div class='txt-prod-checkout'>
+                                <p class='preco-prod-checkout'>R&#36;{$item['preco']}.00</p>
+                            </div>
+                            <div class='txt-prod-checkout'>    
+                                <p>Quantidade: {$item['quantidade']}</p>
+                            </div>
+                            <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
+                                <ion-icon name='trash-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
+                            </a>
+                        </div>";
+                }
+            ?>
+        </div>
+        <div class="preco-checkout">
+            <h1>Resumo da Compra</h1>
+            <?php
+                echo "
+                <span class='info-preco-checkout'>
+                    <h2 style='color: var(--cor3);'>Total:</h2>
+                    <p><strong>R&#36;$preco_checkout.00</strong></p>
+                </span>";
+            ?>
+            <button class="finalizar-checkout"><ion-icon name="card-outline"></ion-icon> &nbsp;Finalizar Compra</button>
+            <button class="continuar-checkout">Continuar Comprando</button>
+        </div>
+    </div>
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>

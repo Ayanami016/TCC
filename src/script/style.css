@@ -1053,6 +1053,106 @@ nav .btnmenu-mobile {
     font-family: texto-negrito;
 }
 
+/* CHECKOUT */
+#checkout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin-top: 10vh;
+    min-height: 90vh;
+    padding: 0px 60px;
+}
+
+.itens-checkout h1 {
+    font-size: 3em;
+    color: var(--cor1);
+}
+
+.prod-checkout {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--cor3);
+    padding: 10px;
+    margin-bottom: 3px;
+}
+
+.prod-checkout img {
+    margin: 0px 5px 5px 5px;
+    width: 100px;
+    border-radius: 15px;
+}
+
+.txt-prod-checkout {
+    margin: 0 15px;
+    font-size: 1em;
+}
+
+.nome-checkout {
+    width: 300px;
+}
+
+.preco-prod-checkout {
+    color: var(--cor2);
+    font-size: 1.4em !important;
+    font-weight: bold;
+}
+
+.preco-checkout {
+    text-align: center;
+    width: 400px;
+    padding: 20px;
+    border: 2px solid var(--cor3);
+    border-radius: 20px;
+    box-shadow: 0 0 10px var(--sombra);
+}
+
+.preco-checkout h1 {color: var(--cor2);}
+
+.info-preco-checkout {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 2px solid var(--cor3);
+}
+
+.preco-checkout h2, .preco-checkout p {
+    margin-top: 10px;
+    padding-bottom: 5px;
+    font-size: 1.3em;
+}
+
+.preco-checkout button {
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    font-size: 1.2em;
+}
+
+.preco-checkout .finalizar-checkout {
+    background-color: var(--cor3);
+    color: white;
+}
+
+.preco-checkout .finalizar-checkout:active {background-color: var(--cor2);}
+
+.preco-checkout .continuar-checkout {
+    background-color: white;
+    color: var(--cor2);
+}
+
+.preco-checkout .continuar-checkout:active {
+    background-color: var(--cor5);
+    color: var(--cor1);
+}
+
 /* RODAPÉ */
 #rodape {
     display: flex;
