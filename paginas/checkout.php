@@ -77,7 +77,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bella Acessórios - Página Inicial</title>
+    <title>Resumo da Compra</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
@@ -147,7 +147,7 @@
                     <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
                     <div class="listamenu btnsacola">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
-                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
             </span>
@@ -193,7 +193,7 @@
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
-                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
             </span>
@@ -260,7 +260,7 @@
     <!-- CHECKOUT -->
     <div id="checkout">
         <div class="itens-checkout">
-            <h1 style="margin-bottom: 20px;">Checkout</h1>
+            <h1 style="margin-bottom: 20px;">Seu Carrinho</h1>
             <?php
             $preco_checkout = 0;
                 foreach ($_SESSION['carrinho'] as $id_produto => $item) {
@@ -296,8 +296,8 @@
                     <p><strong>R&#36;$preco_checkout.00</strong></p>
                 </span>";
             ?>
-            <button class="finalizar-checkout"><ion-icon name="card-outline"></ion-icon> &nbsp;Finalizar Compra</button>
-            <button class="continuar-checkout">Continuar Comprando</button>
+            <a href="finalizar-compra.php"><button class="finalizar-checkout"><ion-icon name="card-outline"></ion-icon> &nbsp;Finalizar Compra</button></a>
+            <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="continuar-checkout">Continuar Comprando</button></a>
         </div>
     </div>
 

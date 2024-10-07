@@ -1,5 +1,5 @@
 <?php
-  
+
 // Verifica se usuário está logado
 session_start();
 if (isset($_SESSION['nome_exibir'])) {
@@ -77,12 +77,20 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colares</title>
+    <title>Finalizar Compra</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
+    <style>
+        <?php if (!empty($primeiroNome)): ?>
+        nav a.link-menupc {padding: 5vh 19px 4.4vh 19px;}
+
+        nav .ajusteconta {width: 105px;}
+        <?php endif; ?>
+    </style>
 </head>
 <body>
+    <!-- MENU -->
     <header>
         <span>
             <a href="index.php"><img src="../src/img/Bella Logo com Fundo.png" alt="Logo" class="logo"></a>
@@ -112,7 +120,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 <!-- Conta -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnconta">
                         <?php if (!empty($primeiroNome)) : ?>
                         <!-- Logado -->
                         <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
@@ -128,7 +136,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 <!-- Suporte -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnsuporte">
                         <a href="#" class="link-listamenu">Contato</a>
                         <a href="faq.html" class="link-listamenu">FAQ</a>
                     </div>
@@ -137,8 +145,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 <!-- Carrinho -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
-                    <div class="listamenu">
-<a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
+                    <div class="listamenu btnsacola">
+                        <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -157,7 +165,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                         Conta
                     <?php endif; ?>
 
-                    <div class="listamenu btnconta">
+                    <div class="listamenu">
                         <?php if (!empty($primeiroNome)): ?>
                             <!-- Itens do menu para usuários logados -->
                             <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
@@ -174,7 +182,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 <!-- Suporte -->
                 <button class="btnmenu-pc">
                     <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
-                    <div class="listamenu btnsuporte">
+                    <div class="listamenu">
                         <a href="#" class="link-listamenu">Contato</a>
                         <a href="#" class="link-listamenu">FAQ</a>
                     </div>
@@ -183,8 +191,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 <!-- Carrinho -->
                 <button class="btnmenu-pc">
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
-                    <div class="listamenu btncarrinho">
-<a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
+                    <div class="listamenu">
+                        <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
                         <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
@@ -197,7 +205,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
             <input type="search" name="pesquisa" id="pesquisa" placeholder="Buscar">
         </form>
     </span>
-        <span class="menu-pc-mobile">
+    <span class="menu-pc-mobile">
         <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25">Pulseiras</a>
         <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index">Colares</a>
         <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25">Brincos</a>
@@ -249,253 +257,116 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
         ?>
     </aside>
 
-    <!-- Link âncora para voltar ao topo da página -->
-    <a name="topo"></a>
+    <!-- FINALIZAR COMPRA -->
+    <div id="checkout" style="margin-top: 18vh;">
+        <div class="itens-checkout">
+            <h1 style="margin-bottom: 20px;"><ion-icon name="bag-check-outline"></ion-icon> Finalizar Compra</h1>
+            <!-- Lista de Itens -->
+            <div class="containers-finalizar-compra">
+                <h2>Lista de Itens</h2>
+                <?php
+                    $preco_checkout = 0;
+                        foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                            // Calcula o preço total
+                            $subtotal = $item['preco'] * $item['quantidade'];
+                            $preco_checkout += $subtotal;
+                            echo "
+                                <div class='prod-checkout'>
+                                    <img src='{$item['imagem']}' alt='{$item['nome']}'>
+                                    <div class='txt-prod-checkout nome-checkout'>
+                                        <p>{$item['nome']}</p>
+                                        <p><strong>Cor: </strong>{$item['cor']}</p>
+                                    </div>
+                                    <div class='txt-prod-checkout'>
+                                        <p class='preco-prod-checkout'>R&#36;{$item['preco']}.00</p>
+                                    </div>
+                                    <div class='txt-prod-checkout'>    
+                                        <p>Quantidade: {$item['quantidade']}</p>
+                                    </div>
+                                    <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
+                                        <ion-icon name='trash-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
+                                    </a>
+                                </div>";
+                        }
+                    ?>
+            </div>
 
-    <article id="catalogo">
-        <!-- Imagens (por enquanto placeholders, eles são originais do index) -->
-        <picture>
-            <source media="(min-width: 1063px)" srcset="../src/img/catalogo-pc.jpeg">
-            <source media="(min-width: 530px)" srcset="../src/img/catalogo-tablet.jpeg">
-            <source media="(min-width: 0px)" srcset="../src/img/catalogo-mobile.jpeg">
-            <img src="../src/img/ph-catalogo-pc.jpg" alt="Imagem de Catálogo">
-        </picture>
-    </article>
-<?php
-    include("../src/script/conexao.php");
+            <!-- Dados para Entrega -->
+            <div class="containers-finalizar-compra">
+                <h2>Dados para Entrega</h2>
+                <span>
+                    <label for="cep">CEP: </label>
+                    <input type="text" name="cep" id="cep" style="width: 120px" placeholder="CEP*" maxlength="9" onblur="buscarCEP(this.value)" required>
+                    <label for="rua">Rua: </label>
+                    <input type="text" name="rua" id="rua" placeholder="Rua*" required>
+                </span>
+                <span>
+                    <label for="bairro">Bairro: </label>
+                    <input type="text" name="bairro" id="bairro" style="width: 120px;" placeholder="Bairro*" required>
+                    <label for="cidade">Cidade: </label>
+                    <input type="text" name="cidade" id="cidade" placeholder="Cidade*" required>
+                    <label for="estado">Estado: </label>
+                    <input type="text" name="estado" id="estado" style="width: 80px" placeholder="Estado*" required>
+                </span>
+                <span>
+                    <label for="num">Número: </label>
+                    <input type="text" name="num" id="num" style="width: 100px" placeholder="Número*" required>
+                    <label for="complemento">Complemento: </label>
+                    <input type="text" name="complemento" id="complemento" placeholder="Complemento">
+                </span>
+            </div>
 
-    if ($conexao->connect_error) {
-        die("Há uma falha no banco de dados!" . $conexao->connect_error);
-    }
+            <!-- Método de Pagamento -->
+            <div class="containers-finalizar-compra">
+                <h2>Método de Pagamento</h2>
+                <select name="pagamento" id="pagamento" onchange="metodoPagamento()">
+                    <option value="">A escolher</option>
+                    <option value="pix">PIX</option>
+                    <option value="cartao">Cartão de Crédito</option>
+                    <option value="boleto">Boleto</option>
+                </select>
 
-    // Pesquisa - Menu method post
-    $pesquisa = isset($_POST['pesquisa']) ? $_POST['pesquisa'] : '';
-
-    // Filtro method get
-    $preco_ordem = $_GET['preco-ordem'];
-    $precomin = $_GET['min'];
-    $precomax = $_GET['max'];
-    $mat = $_GET['material'];
-    $tam = $_GET['tamanho'];
-    $cat = $_GET['categoria'];
-    // Adendo: cor não entra em filtro, apenas na pesquisa!
-
-    //      ___
-    //  _.-|   |          |\__/,|   (`\
-    // {   |   |          |o o  |__ _) )
-    //  "-.|___|        _.( T   )  `  /
-    //   .--'-`-.     _((_ `^--' /_<  \
-    // .+|______|__.-||__)`-'(((/  (((/ MIAU MIAU MIAU
-
-    // Consulta inicial básica para o condicional funcionar
-    $result_pesquisa = "select * from produto where 1=1";
-
-    // Condicionais do filtro
-        // Preço Min e Máx - Campos de Texto
-    if (!empty($precomin)) {$result_pesquisa .= " and preco >= $precomin";}
-    if (!empty($precomax)) {$result_pesquisa .= " and preco <= $precomax";}
-
-    // Adição da pesquisa
-    $result_pesquisa .= " and (
-        descricao_prod like '%$pesquisa%' or
-        nome_prod like '%$pesquisa%' or
-        tipo_prod like '%$pesquisa%' or
-        cor_prod like '%$pesquisa%' or
-        material_prod like '%$pesquisa%' or
-        tamanho_prod like '%$pesquisa%'
-    )";
-       
-        // Material, Tamanho e Categoria
-    if (!empty($mat)) {$result_pesquisa .= " and material_prod like '$mat'";}
-    if (!empty($tam)) {$result_pesquisa .= " and tamanho_prod like '$tam'";}
-    if (!empty($cat)) {$result_pesquisa .= " and tipo_prod like '$cat'";}
-
-        // Preço Ordenado
-    if (!empty($preco_ordem)) {
-        if ($preco_ordem == 'asc') {
-            $result_pesquisa .= " order by preco asc";
-        } elseif ($preco_ordem == 'desc') {
-            $result_pesquisa .= " order by preco desc";
-        }
-    }
-
-    // Resultado Final
-    $resultados = mysqli_query($conexao, $result_pesquisa);
-
-    // Contagem de Resultados para exibição
-    $quantia_results = mysqli_num_rows($resultados);
-
-    echo "<div id='container-produtos' style='margin-top: 0;'>";
-    // pesquisa maior que 0
-    if ($pesquisa != '' && mysqli_num_rows($resultados) > 0) {
-        echo "<h1>EXIBINDO RESULTADOS PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
-        echo "<p>Resultado: " . $quantia_results . " produto(s)</p>";
-    // pesquisa igual a 0
-    } else if ($pesquisa != '' && mysqli_num_rows($resultados) == 0) {
-        echo "<h1>NENHUM RESULTADO ENCONTRADO PARA &#34;" . strtoupper(htmlspecialchars($pesquisa)) . "&#34;</h1>";
-    // pesquisa relacionada ao filtro, pois não terá termo definido na $pesquisa
-    } else {
-        if (mysqli_num_rows($resultados) == 0) {
-            echo "<h1>NENHUM RESULTADO ENCONTRADO :( </h1>";
-        } else {
-            echo "<h1>EXIBINDO RESULTADOS</h1>";
-            echo "<p>Resultado: " . $quantia_results . " produto(s)</p>";
-        }
-    }
-
-    //FILTRO MOBILE
-    echo "<span id='filtro-mobile' class='ajuste-filtro-mobile'><ion-icon name='options-outline'></ion-icon></span>";
-    echo 
-    "<div id='aba-filtro-mobile' class='ajustar-aba-filtro'>    
-        <form action='pesquisa.php' method='get' name='pesquisa-filtro' id='pesquisa-filtro'>
-        
-        <!-- PREÇO -->
-        <h1>Preço</h1>
-            <span class='filtrar-preco'>
-                <input type='text' class='txt-preco' name='min' id='min' placeholder='Min.'>
-                <input type='text' class='txt-preco' name='max' id='max' placeholder='Máx.'>
-            </span>
-            <br>
-
-        <label for='preco'>Ordenar por:</label>
-        <select name='preco-ordem' id='preco-ordem'>
-            <option value=''>A escolher</option>
-            <option value='desc'>Maiores preços</option>
-            <option value='asc'>Menores preços</option>
-        </select>
-
-        <!-- MATERIAL -->
-        <h1>Material</h1>
-        <select name='material' id='material'>
-            <option value=''>A escolher</option>
-            <option value='%Prata%'>Prata</option>
-            <option value='%Joia%'>Pedras</option>
-            <option value='%Aço Inoxidável%'>Aço inoxidável</option>
-        </select>
-
-        <!-- TAMANHO -->
-        <h1>Tamanho</h1>
-        <select name='tamanho' id='tamanho'>
-            <option value=''>A escolher</option>
-            <option value='pequeno'>Pequeno</option>
-            <option value='médio'>Médio</option>
-            <option value='grande'>Grande</option>
-            <option value='ajustavel'>Ajustável</option>
-        </select>
-
-        <!-- TIPO - CATEGORIA -->
-        <h1>Categoria</h1>
-        <select name='categoria' id='categoria'>
-            <option value=''>A escolher</option>
-            <option value='%pulseira%'>Pulseiras</option>
-            <option value='%colar%'>Colares</option>
-            <option value='%brinco%'>Brincos</option>
-            <option value='%conjunto%'>Conjuntos</option>
-        </select>
-
-        <!-- BOTÃO FILTRAR -->
-        <input type='submit' value='Filtrar' class='btn-filtrar'>
-        </form>
-    </div>";
-    
-    // Div que agrupa filtros e produtos mostrados
-    echo "<div id='pesquisa-prod'>";
-    // FILTRO
-    echo 
-    "<div id='filtro'>    
-        <form action='pesquisa.php' method='get' name='pesquisa-filtro' id='pesquisa-filtro'>
-        
-        <!-- PREÇO -->
-        <h1>Preço</h1>
-            <span class='filtrar-preco'>
-                <input type='text' class='txt-preco' name='min' id='min' placeholder='Min.'>
-                <input type='text' class='txt-preco' name='max' id='max' placeholder='Máx.'>
-            </span>
-            <br>
-
-        <label for='preco'>Ordenar por:</label>
-        <select name='preco-ordem' id='preco-ordem'>
-            <option value=''>A escolher</option>
-            <option value='desc'>Maiores preços</option>
-            <option value='asc'>Menores preços</option>
-        </select>
-
-        <!-- MATERIAL -->
-        <h1>Material</h1>
-        <select name='material' id='material'>
-            <option value=''>A escolher</option>
-            <option value='%Prata%'>Prata</option>
-            <option value='%Joia%'>Pedras</option>
-            <option value='%Aço Inoxidável%'>Aço inoxidável</option>
-        </select>
-
-        <!-- TAMANHO -->
-        <h1>Tamanho</h1>
-        <select name='tamanho' id='tamanho'>
-            <option value=''>A escolher</option>
-            <option value='pequeno'>Pequeno</option>
-            <option value='médio'>Médio</option>
-            <option value='grande'>Grande</option>
-            <option value='ajustavel'>Ajustável</option>
-        </select>
-
-        <!-- TIPO - CATEGORIA -->
-        <h1>Categoria</h1>
-        <select name='categoria' id='categoria'>
-            <option value=''>A escolher</option>
-            <option value='%pulseira%'>Pulseiras</option>
-            <option value='%colar%'>Colares</option>
-            <option value='%brinco%'>Brincos</option>
-            <option value='%conjunto%'>Conjuntos</option>
-        </select>
-
-        <!-- BOTÃO FILTRAR -->
-        <input type='submit' value='Filtrar' class='btn-filtrar'>
-        </form>
-    </div>";
-
-    // Div Produtos
-    echo "<div id='produtos-resultado'>";
-
-    // Listando Resultados
-    while ($row_produtos = mysqli_fetch_array($resultados)) {
-        $id = $row_produtos['id_prod'];
-        $nome_img = "../src/img/produto" . $id . ".png";
-        echo
-        "<div class='produto' style='margin-top: 0px;'>
-            <a href='produto.php?id=$id'>
-                <img src='$nome_img' alt='Produto'>
-            </a>
-            <div class='info-prod-mobile'>
-                <div class='info-txt'>
-                    <p>" . $row_produtos['nome_prod'] . "</p>
-                    <p class='preco'> R$" . $row_produtos['preco'] . 
-                    "</p><p class='descricao-prod'>" . $row_produtos['descricao_prod'] . "</p>
+                <div id="pix" style="margin: 10px; display: none;">
+                    <p>&#x1F537 Ao gerar o Código Pix do pedido você pode pagar escaneando o <strong>QR Code</strong>     ou <strong>Copiar e Colar</strong>.</p>
                 </div>
-                <div class='botoes-produto'>
-                <a href='produto.php?id=$id'>
-                    <button class='btn-compra' btn-placeholder='Comprar'></button>
-                </a>
-                    <ion-icon name='add-outline'></ion-icon>
-                    <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
+
+                <div id="info_cartao" style="display: none;">
+                    <span>
+                        <label>Número do Cartão:</label>
+                        <input type="text" name="numero-cartao" maxlength="16" style="width: 70%;"> <br>
+                    </span>
+                    <span>
+                        <label>Nome no Cartão:</label>
+                        <input type="text" name="nome-cartao" style="width: 70%;"> <br>
+                    </span>
+                    <span>
+                        <label>MM/AA:</label>
+                        <input type="text" name="validade-cartao" maxlength="5" style="width: 20%;"> <br>
+                        <label>CVV:</label>
+                        <input type="text" name="cvv" maxlength="3" style="width: 20%;">
+                    </span>
+                </div>
+
+                <div id="boleto" style="margin: 10px; display: none;">
+                    <p><ion-icon name="barcode-outline"></ion-icon> Ao gerar o Boleto você pode pagar escaneando o <strong>código de barras</strong> ou <strong>Copiar e Colar</strong>.</p>
                 </div>
             </div>
-        </div>";
-    }
 
-    //Fim DIVs
-    echo "</div></div></div>";
-
-    mysqli_close($conexao);
-?>
-
-    <!-- Escuro -->
-    <div id="escuro" style="display: none;"></div>
-
-    <!-- VOLTAR AO TOPO -->
-    <div class="voltar-topo">
-        <a href="#topo">Voltar ao Topo <ion-icon name="chevron-up-outline"></ion-icon></a>
+        </div>
+        <div class="preco-checkout preco-checkout-fixo">
+            <h1>Resumo da Compra</h1>
+            <?php
+                echo "
+                <span class='info-preco-checkout'>
+                    <h2 style='color: var(--cor3);'>Total:</h2>
+                    <p><strong>R&#36;$preco_checkout.00</strong></p>
+                </span>";
+            ?>
+            <a href="finalizar-compra.php"><button class="finalizar-checkout"><ion-icon name="bag-check-outline"></ion-icon> &nbsp;Confirmar Pedido</button></a>
+            <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="continuar-checkout">Continuar Comprando</button></a>
+        </div>
     </div>
+
     <!-- RODAPÉ -->
     <footer id="rodape">
         <!-- Categorias -->

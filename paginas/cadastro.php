@@ -66,7 +66,7 @@
                     <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
                     <div class="listamenu">
 <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
-                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
             </span>
@@ -112,7 +112,7 @@
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu btncarrinho">
 <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
-                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
             </span>

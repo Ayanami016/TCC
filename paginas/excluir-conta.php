@@ -147,7 +147,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                     <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
                     <div class="listamenu btnsacola">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
-                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
             </span>
@@ -193,7 +193,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
-                        <a href="#" class="link-listamenu">Checkout</a>
+                        <a href="checkout.php" class="link-listamenu">Checkout</a>
                     </div>
                 </button>
             </span>

@@ -201,3 +201,58 @@ function verificarCorSelecionada() {
     document.getElementById('cor_selecionada').value = corSelecionada.value;
     return true;
 }
+
+// ViaCEP
+function buscarCEP(cep) {
+    cep = cep.replace(/\D/g, '');  // Remove caracteres não numéricos
+    
+    // Verifica se o CEP tem 8 dígitos
+    if (cep.length === 8) {
+        document.getElementById('loading').style.display = 'block';
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+                if (!data.erro) {
+                    document.getElementById('rua').value = data.logradouro;
+                    document.getElementById('bairro').value = data.bairro;
+                    document.getElementById('cidade').value = data.localidade;
+                    document.getElementById('estado').value = data.uf;
+                } else {
+                    alert("CEP não encontrado.");
+                }
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                alert("Erro ao buscar CEP. Tente novamente.");
+                console.error("Erro ao buscar CEP:", error);
+            });
+    } else {
+        alert("Formato de CEP inválido.");
+    }
+}
+
+// Métodos de Pagamento
+function metodoPagamento() {
+    const select = document.getElementById('pagamento')
+    const valor = select.value
+
+    var infoCartao = document.getElementById('info_cartao');
+    var pix = document.getElementById('pix');
+    var boleto = document.getElementById('boleto');
+
+    infoCartao.style.display = 'none';
+    pix.style.display = 'none';
+    boleto.style.display = 'none';
+
+    if (valor === 'cartao') {
+        infoCartao.style.display = 'flex';
+        console.log("cartao selecionado")
+    } else if (valor === 'pix') {
+        pix.style.display = 'inherit';
+        console.log("pix selecionado")
+    } else if (valor === 'boleto') {
+        boleto.style.display = 'flex';
+        console.log("boleto selecionado")
+    }
+}

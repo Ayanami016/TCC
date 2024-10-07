@@ -1,6 +1,15 @@
 CREATE DATABASE tcc;
 USE tcc;
 
+CREATE TABLE cliente (
+    id_cliente INT(8) AUTO_INCREMENT PRIMARY KEY,
+    nome_cli VARCHAR(80) NOT NULL,
+    email_cli VARCHAR(80) NOT NULL UNIQUE,
+    cpf_cli VARCHAR(14) NOT NULL UNIQUE,
+    tel_cli VARCHAR(14) NOT NULL UNIQUE,
+    senha_cli VARCHAR(20) NOT NULL
+) CHARSET = utf8;
+
 CREATE TABLE endereco (
 	id_endereco INT(8) AUTO_INCREMENT PRIMARY KEY,
 	rua_end VARCHAR(80) NOT NULL,
@@ -12,15 +21,6 @@ CREATE TABLE endereco (
 	cep_end VARCHAR(9) NOT NULL,
 	fk_cliente INT(8),
 		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
-) CHARSET = utf8;
-
-CREATE TABLE cliente (
-    id_cliente INT(8) AUTO_INCREMENT PRIMARY KEY,
-    nome_cli VARCHAR(80) NOT NULL,
-    email_cli VARCHAR(80) NOT NULL UNIQUE,
-    cpf_cli VARCHAR(14) NOT NULL UNIQUE,
-    tel_cli VARCHAR(14) NOT NULL UNIQUE,
-    senha_cli VARCHAR(20) NOT NULL
 ) CHARSET = utf8;
 
 CREATE TABLE produto (
@@ -35,15 +35,6 @@ CREATE TABLE produto (
     preco DECIMAL(10,2) NOT NULL
 ) CHARSET = utf8;
 
-CREATE TABLE item (
-    id_item INT(8) AUTO_INCREMENT PRIMARY KEY,
-    fk_pedido INT(8),
-    fk_produto INT(8),
-    quantidade_prod INT(8) NOT NULL,
-		FOREIGN KEY (fk_pedido) REFERENCES pedido (id_pedido),
-		FOREIGN KEY (fk_produto) REFERENCES produto (id_prod)
-) CHARSET = utf8;
-
 CREATE TABLE pedido (
     id_pedido INT(8) AUTO_INCREMENT PRIMARY KEY,
     datahora_ped DATETIME NOT NULL,
@@ -54,6 +45,15 @@ CREATE TABLE pedido (
     frete_ped DECIMAL(10,2),
     fk_cliente INT(8),
 		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
+) CHARSET = utf8;
+
+CREATE TABLE item (
+    id_item INT(8) AUTO_INCREMENT PRIMARY KEY,
+    fk_pedido INT(8),
+    fk_produto INT(8),
+    quantidade_prod INT(8) NOT NULL,
+		FOREIGN KEY (fk_pedido) REFERENCES pedido (id_pedido),
+		FOREIGN KEY (fk_produto) REFERENCES produto (id_prod)
 ) CHARSET = utf8;
 
 CREATE TABLE entrega (
