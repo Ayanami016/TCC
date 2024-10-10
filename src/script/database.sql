@@ -10,19 +10,6 @@ CREATE TABLE cliente (
     senha_cli VARCHAR(20) NOT NULL
 ) CHARSET = utf8;
 
-CREATE TABLE endereco (
-	id_endereco INT(8) AUTO_INCREMENT PRIMARY KEY,
-	rua_end VARCHAR(80) NOT NULL,
-	numero_end INT(10) NOT NULL,
-	complemento_end VARCHAR(20),
-	bairro_end VARCHAR(25) NOT NULL,
-	cidade_end VARCHAR(80) NOT NULL,
-	estado_end VARCHAR(2) NOT NULL,
-	cep_end VARCHAR(9) NOT NULL,
-	fk_cliente INT(8),
-		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
-) CHARSET = utf8;
-
 CREATE TABLE produto (
     id_prod INT(8) AUTO_INCREMENT PRIMARY KEY,
     descricao_prod VARCHAR(255) NOT NULL,
@@ -40,7 +27,7 @@ CREATE TABLE pedido (
     datahora_ped DATETIME NOT NULL,
     valor_ped DECIMAL(10,2) NOT NULL,
     pagamento_metodo_ped VARCHAR(35) NOT NULL,
-    status_ped VARCHAR(30) NOT NULL,
+    status_ped ENUM('Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Preparando', -- Atributo visível ao usuário
     comprovante_ped VARCHAR(155) NOT NULL,
     frete_ped DECIMAL(10,2),
     fk_cliente INT(8),
@@ -58,14 +45,18 @@ CREATE TABLE item (
 
 CREATE TABLE entrega (
     id_ent INT(8) AUTO_INCREMENT PRIMARY KEY,
-    status_ent VARCHAR(20) NOT NULL,
-    metodo_envio VARCHAR(80) NOT NULL,
+    status_ent ENUM('Postado', 'A caminho', 'Entregue') DEFAULT 'Postado', -- Atributo que não será visível ao usuário
+    cep_ent VARCHAR(9) NOT NULL,
+    rua_ent VARCHAR(80) NOT NULL,
+	numero_ent INT(10) NOT NULL,
+	complemento_ent VARCHAR(20),
+	bairro_ent VARCHAR(25) NOT NULL,
+	cidade_ent VARCHAR(80) NOT NULL,
+	estado_ent VARCHAR(2) NOT NULL,
     fk_cliente INT(8),
     fk_ped INT(8),
-    fk_endereco INT(8),
 		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente),
-		FOREIGN KEY (fk_ped) REFERENCES pedido (id_pedido),
-		FOREIGN KEY (fk_endereco) REFERENCES endereco (id_endereco)
+		FOREIGN KEY (fk_ped) REFERENCES pedido (id_pedido)
 ) CHARSET = utf8;
 
 -- TRIGGER PARA REDUÇÃO DO ESTOQUE
@@ -76,5 +67,5 @@ BEGIN
     UPDATE produto
     SET estoque = estoque - NEW.quantidade_prod
     WHERE id_prod = NEW.fk_produto;
-END$$
+END $$
 DELIMITER ;
