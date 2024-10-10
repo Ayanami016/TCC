@@ -258,18 +258,21 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     </aside>
 
     <!-- FINALIZAR COMPRA -->
-    <div id="checkout" style="margin-top: 18vh;">
+    <div id="checkout" style="margin: 18vh 0 10vh 0;">
         <div class="itens-checkout">
             <h1 style="margin-bottom: 20px;"><ion-icon name="bag-check-outline"></ion-icon> Finalizar Compra</h1>
             <!-- Lista de Itens -->
             <div class="containers-finalizar-compra">
                 <h2>Lista de Itens</h2>
                 <?php
-                    $preco_checkout = 0;
+                    $subtotal = 0;
+                    $frete = 0;
+                    $preco_final = 0;
                         foreach ($_SESSION['carrinho'] as $id_produto => $item) {
                             // Calcula o preço total
-                            $subtotal = $item['preco'] * $item['quantidade'];
-                            $preco_checkout += $subtotal;
+                            $subtotal += $item['preco'] * $item['quantidade'];
+                            $frete = $subtotal * 0.25; // O frete é calculado pegando 25% do valor
+                            
                             echo "
                                 <div class='prod-checkout'>
                                     <img src='{$item['imagem']}' alt='{$item['nome']}'>
@@ -278,7 +281,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                                         <p><strong>Cor: </strong>{$item['cor']}</p>
                                     </div>
                                     <div class='txt-prod-checkout'>
-                                        <p class='preco-prod-checkout'>R&#36;{$item['preco']}.00</p>
+                                        <p class='preco-prod-checkout'>R&#36;" . number_format($item['preco'], 2, '.', ',') . "</p>
                                     </div>
                                     <div class='txt-prod-checkout'>    
                                         <p>Quantidade: {$item['quantidade']}</p>
@@ -288,7 +291,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                                     </a>
                                 </div>";
                         }
-                    ?>
+                    $preco_final = $subtotal + $frete;
+                ?>
             </div>
 
             <!-- Dados para Entrega -->
@@ -354,12 +358,25 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 
         </div>
         <div class="preco-checkout preco-checkout-fixo">
-            <h1>Resumo da Compra</h1>
+        <h1>Resumo da Compra</h1>
             <?php
+                // Subtotal e Frete
                 echo "
-                <span class='info-preco-checkout'>
-                    <h2 style='color: var(--cor3);'>Total:</h2>
-                    <p><strong>R&#36;$preco_checkout.00</strong></p>
+                    <span class='info-preco-checkout'>
+                        <h2>Subtotal:</h2>
+                        <p><strong>R&#36;" . number_format($subtotal, 2, '.', ',') . "</strong></p>
+                    </span>
+                    <span class='info-preco-checkout'>
+                        <h2>Frete:</h2>
+                        <p><strong>R&#36;" . number_format($frete, 2, '.', ',') . "</strong></p>
+                    </span>
+                ";  
+
+                // Valor Final
+                echo "
+                <span class='info-preco-checkout' style='border-bottom: 2px solid var(--cor3);'>
+                    <h2 style='color: var(--cor2); font-size: 1.6em;'>Total:</h2>
+                    <p style='color: var(--cor2);'><strong>R&#36;" . number_format($preco_final, 2, '.', ',') . "</strong></p>
                 </span>";
             ?>
             <a href="finalizar-compra.php"><button class="finalizar-checkout"><ion-icon name="bag-check-outline"></ion-icon> &nbsp;Confirmar Pedido</button></a>

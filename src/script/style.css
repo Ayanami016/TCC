@@ -1114,7 +1114,6 @@ nav .btnmenu-mobile {
 .info-preco-checkout {
     display: flex;
     justify-content: space-around;
-    border-bottom: 2px solid var(--cor3);
 }
 
 .preco-checkout h2, .preco-checkout p {

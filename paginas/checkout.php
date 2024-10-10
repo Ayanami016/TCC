@@ -262,38 +262,55 @@
         <div class="itens-checkout">
             <h1 style="margin-bottom: 20px;">Seu Carrinho</h1>
             <?php
-            $preco_checkout = 0;
-                foreach ($_SESSION['carrinho'] as $id_produto => $item) {
-                    // Calcula o preço total
-                    $subtotal = $item['preco'] * $item['quantidade'];
-                    $preco_checkout += $subtotal;
-                    echo "
-                        <div class='prod-checkout'>
-                            <img src='{$item['imagem']}' alt='{$item['nome']}'>
-                            <div class='txt-prod-checkout nome-checkout'>
-                                <p>{$item['nome']}</p>
-                                <p><strong>Cor: </strong>{$item['cor']}</p>
-                            </div>
-                            <div class='txt-prod-checkout'>
-                                <p class='preco-prod-checkout'>R&#36;{$item['preco']}.00</p>
-                            </div>
-                            <div class='txt-prod-checkout'>    
-                                <p>Quantidade: {$item['quantidade']}</p>
-                            </div>
-                            <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
-                                <ion-icon name='trash-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
-                            </a>
-                        </div>";
-                }
+                $subtotal = 0;
+                $frete = 0;
+                $preco_final = 0;
+                    foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                        // Calcula o preço total
+                        $subtotal += $item['preco'] * $item['quantidade'];
+                        $frete = $subtotal * 0.25; // O frete é calculado pegando 25% do valor
+                        
+                        echo "
+                            <div class='prod-checkout'>
+                                <img src='{$item['imagem']}' alt='{$item['nome']}'>
+                                <div class='txt-prod-checkout nome-checkout'>
+                                    <p>{$item['nome']}</p>
+                                    <p><strong>Cor: </strong>{$item['cor']}</p>
+                                </div>
+                                <div class='txt-prod-checkout'>
+                                    <p class='preco-prod-checkout'>R&#36;" . number_format($item['preco'], 2, '.', ',') . "</p>
+                                </div>
+                                <div class='txt-prod-checkout'>    
+                                    <p>Quantidade: {$item['quantidade']}</p>
+                                </div>
+                                <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
+                                    <ion-icon name='trash-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
+                                </a>
+                            </div>";
+                    }
+                $preco_final = $subtotal + $frete;
             ?>
         </div>
         <div class="preco-checkout">
             <h1>Resumo da Compra</h1>
             <?php
+                // Subtotal e Frete
                 echo "
-                <span class='info-preco-checkout'>
-                    <h2 style='color: var(--cor3);'>Total:</h2>
-                    <p><strong>R&#36;$preco_checkout.00</strong></p>
+                    <span class='info-preco-checkout'>
+                        <h2>Subtotal:</h2>
+                        <p><strong>R&#36;" . number_format($subtotal, 2, '.', ',') . "</strong></p>
+                    </span>
+                    <span class='info-preco-checkout'>
+                        <h2>Frete:</h2>
+                        <p><strong>R&#36;" . number_format($frete, 2, '.', ',') . "</strong></p>
+                    </span>
+                ";  
+
+                // Valor Final
+                echo "
+                <span class='info-preco-checkout' style='border-bottom: 2px solid var(--cor3);'>
+                    <h2 style='color: var(--cor2); font-size: 1.6em;'>Total:</h2>
+                    <p style='color: var(--cor2);'><strong>R&#36;" . number_format($preco_final, 2, '.', ',') . "</strong></p>
                 </span>";
             ?>
             <a href="finalizar-compra.php"><button class="finalizar-checkout"><ion-icon name="card-outline"></ion-icon> &nbsp;Finalizar Compra</button></a>
