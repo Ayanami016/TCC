@@ -310,7 +310,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                     <label for="cidade">Cidade: </label>
                     <input type="text" name="cidade" id="cidade" placeholder="Cidade*" required>
                     <label for="estado">Estado: </label>
-                    <input type="text" name="estado" id="estado" style="width: 80px" placeholder="Estado*" required>
+                    <select name="estado" id="estado">
+                        
+                    </select>
                 </span>
                 <span>
                     <label for="num">Número: </label>
@@ -331,7 +333,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 </select>
 
                 <div id="pix" style="margin: 10px; display: none;">
-                    <p>&#x1F537 Ao gerar o Código Pix do pedido você pode pagar escaneando o <strong>QR Code</strong>     ou <strong>Copiar e Colar</strong>.</p>
+                    <p>&#x1F537 Ao gerar o Código Pix do pedido você pode pagar escaneando o <strong>QR Code</strong> ou <strong>Copiar e Colar</strong>.</p>
                 </div>
 
                 <div id="info_cartao" style="display: none;">
