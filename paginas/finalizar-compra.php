@@ -259,157 +259,157 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 
     <!-- FINALIZAR COMPRA -->
     <div id="checkout" style="margin: 18vh 0 10vh 0;">
-        <div class="itens-checkout">
-            <h1 style="margin-bottom: 20px;"><ion-icon name="bag-check-outline"></ion-icon> Finalizar Compra</h1>
-            <!-- Lista de Itens -->
-            <div class="containers-finalizar-compra">
-                <h2>Lista de Itens</h2>
-                <?php
-                    $subtotal = 0;
-                    $frete = 0;
-                    $preco_final = 0;
-                        foreach ($_SESSION['carrinho'] as $id_produto => $item) {
-                            // Calcula o preço total
-                            $subtotal += $item['preco'] * $item['quantidade'];
-                            $frete = $subtotal * 0.25; // O frete é calculado pegando 25% do valor
-                            
-                            echo "
-                                <div class='prod-checkout'>
-                                    <img src='{$item['imagem']}' alt='{$item['nome']}'>
-                                    <div class='txt-prod-checkout nome-checkout'>
-                                        <p>{$item['nome']}</p>
-                                        <p><strong>Cor: </strong>{$item['cor']}</p>
-                                    </div>
-                                    <div class='txt-prod-checkout'>
-                                        <p class='preco-prod-checkout'>R&#36;" . number_format($item['preco'], 2, '.', ',') . "</p>
-                                    </div>
-                                    <div class='txt-prod-checkout'>    
-                                        <p>Quantidade: {$item['quantidade']}</p>
-                                    </div>
-                                    <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
-                                        <ion-icon name='trash-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
-                                    </a>
-                                </div>";
-                        }
-                    $preco_final = $subtotal + $frete;
-                ?>
-            </div>
+        <form action="../src/script/processar_pedido.php" method="post">
+            <div class="itens-checkout">
+                <h1 style="margin-bottom: 20px;"><ion-icon name="bag-check-outline"></ion-icon> Finalizar Compra</h1>
+                <!-- Lista de Itens -->
+                <div class="containers-finalizar-compra">
+                    <h2>Lista de Itens</h2>
+                    <?php
+                        $subtotal = 0;
+                        $frete = 0;
+                        $preco_final = 0;
+                            foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                                // Calcula o preço total
+                                $subtotal += $item['preco'] * $item['quantidade'];
+                                $frete = $subtotal * 0.25; // O frete é calculado pegando 25% do valor
+            
+                                echo "
+                                    <div class='prod-checkout'>
+                                        <img src='{$item['imagem']}' alt='{$item['nome']}'>
+                                        <div class='txt-prod-checkout nome-checkout'>
+                                            <p>{$item['nome']}</p>
+                                            <p><strong>Cor: </strong>{$item['cor']}</p>
+                                        </div>
+                                        <div class='txt-prod-checkout'>
+                                            <p class='preco-prod-checkout'>R&#36;" . number_format($item['preco'], 2, '.', ',') . "</p>
+                                        </div>
+                                        <div class='txt-prod-checkout'>
+                                            <p>Quantidade: {$item['quantidade']}</p>
+                                        </div>
+                                        <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
+                                            <ion-icon name='trash-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
+                                        </a>
+                                    </div>";
+                            }
+                        $preco_final = $subtotal + $frete;
+                    ?>
 
-            <!-- Dados para Entrega -->
-            <div class="containers-finalizar-compra">
-                <h2>Dados para Entrega</h2>
-                <span>
-                    <label for="cep">CEP: </label>
-                    <input type="text" name="cep" id="cep" style="width: 120px" placeholder="CEP*" maxlength="9" onblur="buscarCEP(this.value)" required>
-                    <label for="rua">Rua: </label>
-                    <input type="text" name="rua" id="rua" placeholder="Rua*" required>
-                </span>
-                <span>
-                    <label for="bairro">Bairro: </label>
-                    <input type="text" name="bairro" id="bairro" style="width: 120px;" placeholder="Bairro*" required>
-                    <label for="cidade">Cidade: </label>
-                    <input type="text" name="cidade" id="cidade" placeholder="Cidade*" required>
-                    <label for="estado">Estado: </label>
-                    <select name="estado" id="estado">
-                        <option value="AC">AC</option>
-                        <option value="AL">AL</option>
-                        <option value="AP">AP</option>
-                        <option value="AM">AM</option>
-                        <option value="BA">BA</option>
-                        <option value="CE">CE</option>
-                        <option value="DF">DF</option>
-                        <option value="ES">ES</option>
-                        <option value="GO">GO</option>
-                        <option value="MA">MA</option>
-                        <option value="MT">MT</option>
-                        <option value="MS">MS</option>
-                        <option value="MG">MG</option>
-                        <option value="PA">PA</option>
-                        <option value="PB">PB</option>
-                        <option value="PR">PR</option>
-                        <option value="PE">PE</option>
-                        <option value="PI">PI</option>
-                        <option value="RJ">RJ</option>
-                        <option value="RN">RN</option>
-                        <option value="RS">RS</option>
-                        <option value="RO">RO</option>
-                        <option value="RR">RR</option>
-                        <option value="SC">SC</option>
-                        <option value="SP">SP</option>
-                        <option value="SE">SE</option>
-                        <option value="TO">TO</option>
+                    <!-- Inputs dos valores de pedido e produto -->
+                    <input type="hidden" name="frete" value="<?php echo $frete; ?>">
+                    <input type="hidden" name="valor-pedido" value="<?php echo $preco_final; ?>">
+
+                </div>
+                <!-- Dados para Entrega -->
+                <div class="containers-finalizar-compra">
+                    <h2>Dados para Entrega</h2>
+                    <span>
+                        <label for="cep">CEP: </label>
+                        <input type="text" name="cep" id="cep" style="width: 120px" placeholder="CEP*" maxlength="9" onblur="buscarCEP(this.value)" required>
+                        <label for="rua">Rua: </label>
+                        <input type="text" name="rua" id="rua" placeholder="Rua*" required>
+                    </span>
+                    <span>
+                        <label for="bairro">Bairro: </label>
+                        <input type="text" name="bairro" id="bairro" style="width: 200px;" placeholder="Bairro*" required>
+                        <label for="cidade">Cidade: </label>
+                        <input type="text" name="cidade" id="cidade" placeholder="Cidade*" style="width: 200px;" required>
+                        <label for="estado">Estado: </label>
+                        <select name="uf" id="uf">
+                            <option value="AC">AC</option>
+                            <option value="AL">AL</option>
+                            <option value="AP">AP</option>
+                            <option value="AM">AM</option>
+                            <option value="BA">BA</option>
+                            <option value="CE">CE</option>
+                            <option value="DF">DF</option>
+                            <option value="ES">ES</option>
+                            <option value="GO">GO</option>
+                            <option value="MA">MA</option>
+                            <option value="MT">MT</option>
+                            <option value="MS">MS</option>
+                            <option value="MG">MG</option>
+                            <option value="PA">PA</option>
+                            <option value="PB">PB</option>
+                            <option value="PR">PR</option>
+                            <option value="PE">PE</option>
+                            <option value="PI">PI</option>
+                            <option value="RJ">RJ</option>
+                            <option value="RN">RN</option>
+                            <option value="RS">RS</option>
+                            <option value="RO">RO</option>
+                            <option value="RR">RR</option>
+                            <option value="SC">SC</option>
+                            <option value="SP">SP</option>
+                            <option value="SE">SE</option>
+                            <option value="TO">TO</option>
+                        </select>
+                    </span>
+                    <span>
+                        <label for="num">Número: </label>
+                        <input type="text" name="num" id="num" style="width: 100px" placeholder="Número*" required>
+                        <label for="complemento">Complemento: </label>
+                        <input type="text" name="complemento" id="complemento" placeholder="Complemento">
+                    </span>
+                </div>
+                <!-- Método de Pagamento -->
+                <div class="containers-finalizar-compra">
+                    <h2>Método de Pagamento</h2>
+                    <select name="pagamento" id="pagamento" onchange="metodoPagamento()">
+                        <option value="">A escolher</option>
+                        <option value="pix">PIX</option>
+                        <option value="cartao">Cartão de Crédito</option>
+                        <option value="boleto">Boleto</option>
                     </select>
-                </span>
-                <span>
-                    <label for="num">Número: </label>
-                    <input type="text" name="num" id="num" style="width: 100px" placeholder="Número*" required>
-                    <label for="complemento">Complemento: </label>
-                    <input type="text" name="complemento" id="complemento" placeholder="Complemento">
-                </span>
-            </div>
-
-            <!-- Método de Pagamento -->
-            <div class="containers-finalizar-compra">
-                <h2>Método de Pagamento</h2>
-                <select name="pagamento" id="pagamento" onchange="metodoPagamento()">
-                    <option value="">A escolher</option>
-                    <option value="pix">PIX</option>
-                    <option value="cartao">Cartão de Crédito</option>
-                    <option value="boleto">Boleto</option>
-                </select>
-
-                <div id="pix" style="margin: 10px; display: none;">
-                    <p>&#x1F537 Ao gerar o Código Pix do pedido você pode pagar escaneando o <strong>QR Code</strong> ou <strong>Copiar e Colar</strong>.</p>
-                </div>
-
-                <div id="info_cartao" style="display: none;">
-                    <span>
-                        <label>Número do Cartão:</label>
-                        <input type="text" name="numero-cartao" maxlength="16" style="width: 70%;"> <br>
-                    </span>
-                    <span>
-                        <label>Nome no Cartão:</label>
-                        <input type="text" name="nome-cartao" style="width: 70%;"> <br>
-                    </span>
-                    <span>
-                        <label>MM/AA:</label>
-                        <input type="text" name="validade-cartao" maxlength="5" style="width: 20%;"> <br>
-                        <label>CVV:</label>
-                        <input type="text" name="cvv" maxlength="3" style="width: 20%;">
-                    </span>
-                </div>
-
-                <div id="boleto" style="margin: 10px; display: none;">
-                    <p><ion-icon name="barcode-outline"></ion-icon> Ao gerar o Boleto você pode pagar escaneando o <strong>código de barras</strong> ou <strong>Copiar e Colar</strong>.</p>
+                    <div id="pix" style="margin: 10px; display: none;">
+                        <p>&#x1F537 Ao gerar o Código Pix do pedido você pode pagar escaneando o <strong>QR Code</strong> ou <strong>Copiar e Colar</strong>.</p>
+                    </div>
+                    <div id="info_cartao" style="display: none;">
+                        <span>
+                            <label>Número do Cartão:</label>
+                            <input type="text" name="numero-cartao" maxlength="16" style="width: 70%;"> <br>
+                        </span>
+                        <span>
+                            <label>Nome no Cartão:</label>
+                            <input type="text" name="nome-cartao" style="width: 70%;"> <br>
+                        </span>
+                        <span>
+                            <label>MM/AA:</label>
+                            <input type="text" name="validade-cartao" maxlength="5" style="width: 20%;"> <br>
+                            <label>CVV:</label>
+                            <input type="text" name="cvv" maxlength="3" style="width: 20%;">
+                        </span>
+                    </div>
+                    <div id="boleto" style="margin: 10px; display: none;">
+                        <p><ion-icon name="barcode-outline"></ion-icon> Ao gerar o Boleto você pode pagar escaneando o <strong>código de barras</strong> ou <strong>Copiar e Colar</strong>.</p>
+                    </div>
                 </div>
             </div>
-
-        </div>
-        <div class="preco-checkout preco-checkout-fixo">
-        <h1>Resumo da Compra</h1>
-            <?php
-                // Subtotal e Frete
-                echo "
-                    <span class='info-preco-checkout'>
-                        <h2>Subtotal:</h2>
-                        <p><strong>R&#36;" . number_format($subtotal, 2, '.', ',') . "</strong></p>
-                    </span>
-                    <span class='info-preco-checkout'>
-                        <h2>Frete:</h2>
-                        <p><strong>R&#36;" . number_format($frete, 2, '.', ',') . "</strong></p>
-                    </span>
-                ";  
-
-                // Valor Final
-                echo "
-                <span class='info-preco-checkout' style='border-bottom: 2px solid var(--cor3);'>
-                    <h2 style='color: var(--cor2); font-size: 1.6em;'>Total:</h2>
-                    <p style='color: var(--cor2);'><strong>R&#36;" . number_format($preco_final, 2, '.', ',') . "</strong></p>
-                </span>";
-            ?>
-            <a href="finalizar-compra.php"><button class="finalizar-checkout"><ion-icon name="bag-check-outline"></ion-icon> &nbsp;Confirmar Pedido</button></a>
-            <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="continuar-checkout">Continuar Comprando</button></a>
-        </div>
+            <div class="preco-checkout preco-checkout-fixo">
+            <h1>Resumo da Compra</h1>
+                <?php
+                    // Subtotal e Frete
+                    echo "
+                        <span class='info-preco-checkout'>
+                            <h2>Subtotal:</h2>
+                            <p><strong>R&#36;" . number_format($subtotal, 2, '.', ',') . "</strong></p>
+                        </span>
+                        <span class='info-preco-checkout'>
+                            <h2>Frete:</h2>
+                            <p><strong>R&#36;" . number_format($frete, 2, '.', ',') . "</strong></p>
+                        </span>
+                    ";
+                    // Valor Final
+                    echo "
+                    <span class='info-preco-checkout' style='border-bottom: 2px solid var(--cor3);'>
+                        <h2 style='color: bvar(--cor2); font-size: 1.6em;'>Total:</h2>
+                        <p style='color: var(--cor2);'><strong>R&#36;" . number_format($preco_final, 2, '.', ',') . "</strong></p>
+                    </span>";
+                ?>
+                <input type="submit" value="Confirmar Pedido" class="finalizar-checkout">
+                <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="continuar-checkout">Continuar Comprando</button></a>
+            </div>
+        </form>
     </div>
 
     <!-- RODAPÉ -->

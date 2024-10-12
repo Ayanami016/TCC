@@ -1122,7 +1122,7 @@ nav .btnmenu-mobile {
     font-size: 1.3em;
 }
 
-.preco-checkout button {
+.preco-checkout button, .preco-checkout input {
     border: none;
     border-radius: 15px;
     cursor: pointer;
@@ -1181,8 +1181,9 @@ nav .btnmenu-mobile {
 }
 
 .containers-finalizar-compra select {
-    padding-left: 10px;
-    width: 100%;
+    padding: 5px;
+    margin-left: 20px;
+    width: 60px;
     height: 5vh;
     font-size: 1em;
 }

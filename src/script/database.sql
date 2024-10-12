@@ -22,25 +22,25 @@ CREATE TABLE produto (
     preco DECIMAL(10,2) NOT NULL
 ) CHARSET = utf8;
 
+CREATE TABLE item (
+    id_item INT(8) AUTO_INCREMENT PRIMARY KEY,
+    fk_produto INT(8),
+    quantidade_prod INT(8) NOT NULL, -- Checar de onde isso está vindo
+		FOREIGN KEY (fk_produto) REFERENCES produto (id_prod)
+) CHARSET = utf8;
+
 CREATE TABLE pedido (
     id_pedido INT(8) AUTO_INCREMENT PRIMARY KEY,
     datahora_ped DATETIME NOT NULL,
-    valor_ped DECIMAL(10,2) NOT NULL,
-    pagamento_metodo_ped VARCHAR(35) NOT NULL,
+    valor_ped DECIMAL(10,2) NOT NULL, -- CONSTA
+    pagamento_metodo_ped VARCHAR(35) NOT NULL, -- CONSTA
     status_ped ENUM('Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Preparando', -- Atributo visível ao usuário
-    comprovante_ped VARCHAR(155) NOT NULL,
-    frete_ped DECIMAL(10,2),
-    fk_cliente INT(8),
-		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
-) CHARSET = utf8;
-
-CREATE TABLE item (
-    id_item INT(8) AUTO_INCREMENT PRIMARY KEY,
-    fk_pedido INT(8),
-    fk_produto INT(8),
-    quantidade_prod INT(8) NOT NULL,
-		FOREIGN KEY (fk_pedido) REFERENCES pedido (id_pedido),
-		FOREIGN KEY (fk_produto) REFERENCES produto (id_prod)
+    comprovante_ped VARCHAR(155) NOT NULL, -- Gerado automaticamente
+    frete_ped DECIMAL(10,2), -- CONSTA
+    fk_cliente INT(8), -- Checar ligação
+    fk_item INT(8),
+		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente),
+        FOREIGN KEY (fk_item) REFERENCES item (id_item)
 ) CHARSET = utf8;
 
 CREATE TABLE entrega (
@@ -52,9 +52,9 @@ CREATE TABLE entrega (
 	complemento_ent VARCHAR(20),
 	bairro_ent VARCHAR(25) NOT NULL,
 	cidade_ent VARCHAR(80) NOT NULL,
-	estado_ent VARCHAR(2) NOT NULL,
-    fk_cliente INT(8),
-    fk_ped INT(8),
+	estado_ent VARCHAR(2) NOT NULL, -- Todos os atributos de endereço constam
+    fk_cliente INT(8), -- Checar ligação
+    fk_ped INT(8), -- Checar ligação
 		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente),
 		FOREIGN KEY (fk_ped) REFERENCES pedido (id_pedido)
 ) CHARSET = utf8;

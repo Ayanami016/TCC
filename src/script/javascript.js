@@ -208,22 +208,19 @@ function buscarCEP(cep) {
     
     // Verifica se o CEP tem 8 dígitos
     if (cep.length === 8) {
-        document.getElementById('loading').style.display = 'block';
         fetch(`https://viacep.com.br/ws/${cep}/json/`)
             .then(response => response.json())
             .then(data => {
-                document.getElementById('loading').style.display = 'none';
                 if (!data.erro) {
                     document.getElementById('rua').value = data.logradouro;
                     document.getElementById('bairro').value = data.bairro;
                     document.getElementById('cidade').value = data.localidade;
-                    document.getElementById('estado').value = data.uf;
+                    document.getElementById('uf').value = data.uf;
                 } else {
                     alert("CEP não encontrado.");
                 }
             })
             .catch(error => {
-                document.getElementById('loading').style.display = 'none';
                 alert("Erro ao buscar CEP. Tente novamente.");
                 console.error("Erro ao buscar CEP:", error);
             });
