@@ -3,7 +3,7 @@ session_start();
 include('conexao.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Endereço
+    // Endereço para entrega
     $cep = $_POST['cep'];
     $rua = $_POST['rua'];
     $bairro = $_POST['bairro'];
@@ -12,52 +12,58 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $numero = $_POST['numero'];
     $complemento = $_POST['complemento'];
 
-    // Entrega e Produto
+    // Cliente - Requer Login
+    $id_cliente = $_SESSION['id_cliente'];
+
+    // Frete, Valor e Método de Pagamento
     $frete = $_POST['frete'];
     $valor_pedido = $_POST['valor-pedido'];
-
-    $id_cliente = $_SESSION['id_cliente']; // Necessário login
-
-    $insertEndereco = "INSERT INTO endereco (rua_end, numero_end, bairro_end, cidade_end, estado_end, cep_end, fk_cliente) 
-                       VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($insertEndereco);
-    $stmt->bind_param("ssssssi", $rua, $numero, $bairro, $cidade, $estado, $cep, $id_cliente);
-    $stmt->execute();
-    $id_endereco = $stmt->insert_id; // Obtém o ID do endereço inserido
-
-    // 2. Criar um novo pedido
-    $valor_total = 0;
-    foreach ($_SESSION['carrinho'] as $item) {
-        $valor_total += $item['preco'] * $item['quantidade'];
-    }
-    
     $metodo_pagamento = $_POST['metodo_pagamento'];
-    $status_ped = "Aguardando Pagamento"; // Defina o status inicial do pedido
 
-    $insertPedido = "INSERT INTO pedido (datahora_ped, valor_ped, pagamento_metodo_ped, status_ped, fk_cliente) 
-                     VALUES (NOW(), ?, ?, ?, ?)";
-    $stmt = $conn->prepare($insertPedido);
-    $stmt->bind_param("dssi", $valor_total, $metodo_pagamento, $status_ped, $id_cliente);
+    // Inserindo endereço na tabela entrega
+    $insert_ent = "INSERT INTO entrega (cep_ent, rua_ent, numero_ent, complemento_ent, bairro_ent, cidade_ent, estado_ent, fk_cliente) 
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($insert_ent);
+    $stmt->bind_param("sssisssi", $cep, $rua, $numero, $complemento, $bairro, $cidade, $uf, $id_cliente);
     $stmt->execute();
-    $id_pedido = $stmt->insert_id; // Obtém o ID do pedido
+    $id_endereco = $stmt->insert_id; // ?
 
-    // 3. Salvar os itens do carrinho na tabela 'item'
+    // Insere o pedido
+    $status_ped = "Pedido realizado";
+    $insert_ped = "INSERT INTO pedido (datahora_ped, valor_ped, pagamento_metodo_ped, status_ped, frete_ped, fk_cliente) 
+                     VALUES (NOW(), ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($insert_ped);
+    $stmt->bind_param("dssdi", $valor_pedido, $metodo_pagamento, $status_ped, $frete, $id_cliente);
+    $stmt->execute();
+    $id_pedido = $stmt->insert_id; // ?
+
+    // Insere itens na tabela item
     foreach ($_SESSION['carrinho'] as $item) {
-        $insertItem = "INSERT INTO item (fk_pedido, fk_produto, quantidade_prod) VALUES (?, ?, ?)";
-        $stmt = $conn->prepare($insertItem);
-        $stmt->bind_param("iii", $id_pedido, $item['id'], $item['quantidade']);
+        $insert_item = "INSERT INTO item (fk_produto, quantidade_prod) VALUES (?, ?)";
+        $stmt = $conn->prepare($insert_item);
+        $stmt->bind_param("ii", $item['id'], $item['quantidade']);
+        $stmt->execute();
+        $id_item = $stmt->insert_id; // ?
+
+        // Atualiza o pedido com a referência ao item
+        $updatePedidoItem = "UPDATE pedido SET fk_item = ? WHERE id_pedido = ?";
+        $stmt = $conn->prepare($updatePedidoItem);
+        $stmt->bind_param("ii", $id_item, $id_pedido);
         $stmt->execute();
     }
 
-    // 4. Criar o registro de entrega
-    $insertEntrega = "INSERT INTO entrega (status_ent, metodo_envio, fk_cliente, fk_ped, fk_endereco) 
-                      VALUES ('Processando', 'Correios', ?, ?, ?)";
+    // Cria o registro de entrega com base no pedido e endereço
+    $insertEntrega = "UPDATE entrega SET fk_ped = ? WHERE id_ent = ?";
     $stmt = $conn->prepare($insertEntrega);
-    $stmt->bind_param("iii", $id_cliente, $id_pedido, $id_endereco);
+    $stmt->bind_param("ii", $id_pedido, $id_endereco);
     $stmt->execute();
 
-    // 5. Limpar o carrinho e redirecionar para uma página de confirmação
+    // Limpa o carrinho
     unset($_SESSION['carrinho']);
-    header('Location: confirmacao.php?pedido=' . $id_pedido);
+
+    // Página de conclusão do pedido
+    // A página aparecerá que o pedido foi confirmado e as informações seguintes de pagamento.
+    // Útil para aparecer código pix e boleto.
+    header('Location: /TCC/paginas/confirmacao.php?pedido=' . $id_pedido);
 }
 ?>

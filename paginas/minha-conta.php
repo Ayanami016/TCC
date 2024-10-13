@@ -237,7 +237,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
         <div class="caixa-compra">
             <ion-icon name="bag-handle-outline"></ion-icon>
             <p>Realize a sua primeira compra!</p>
-            <a href="index.php"><button class="btn-index" btn-placeholder="Ir para Loja"></button></a>
+            <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="btn-index" btn-placeholder="Ir para Loja"></button></a>
         </div>
     </article>
 

@@ -2,11 +2,10 @@
     include('conexao.php');
     session_start();
 
-    // Deletar a conta
     if (isset($_SESSION['id_usuario'])) {
         $id_usuario = $_SESSION['id_usuario'];
 
-        // Deletar a conta
+        // Deleta a conta
         $delete = "DELETE FROM cliente WHERE id_cliente = '$id_usuario'";
 
         if (mysqli_query($conexao, $delete)) {

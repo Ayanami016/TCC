@@ -34,7 +34,7 @@ CREATE TABLE pedido (
     datahora_ped DATETIME NOT NULL,
     valor_ped DECIMAL(10,2) NOT NULL, -- CONSTA
     pagamento_metodo_ped VARCHAR(35) NOT NULL, -- CONSTA
-    status_ped ENUM('Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Preparando', -- Atributo visível ao usuário
+    status_ped ENUM('Pedido realizado', 'Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Pedido realizado', -- Atributo visível ao usuário
     comprovante_ped VARCHAR(155) NOT NULL, -- Gerado automaticamente
     frete_ped DECIMAL(10,2), -- CONSTA
     fk_cliente INT(8), -- Checar ligação
