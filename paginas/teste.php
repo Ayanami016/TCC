@@ -206,53 +206,44 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
     <!-- BARRA LATERAL - SACOLA -->
     <aside id="carrinho" style="display: none;">
         <?php
-            if (!isset($_SESSION['id_usuario'])) {
-               echo "<div>
-                    <ion-icon name='person-circle-outline'></ion-icon>
-                    <p>É necessário fazer login para acessar sua sacola!</p> <br>
-                    <a style='color: var(--cor4);' href='login.php'>Entrar em sua Conta</a> <br><br>
-                    <a id='fecharcarrinho'>Voltar</a>
-               </div>";
-            } else {
-                if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
-                    $preco_total = 0;
-                    echo "<div>"; // Para conter todos os produtos para o space-around do #carrinho aplicar corretamente
-                    foreach ($_SESSION['carrinho'] as $id_produto => $item) {
-                        // Calcula o preço total
-                        $subtotal = $item['preco'] * $item['quantidade'];
-                        $preco_total += $subtotal;
-    
-                        echo "
-                        <div class='prod-carrinho'>
-                            <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
-                                <ion-icon name='close-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
-                            </a>
-                            <img src='{$item['imagem']}' alt='{$item['nome']}'>
-                            <div class='txt-prod-carrinho'>
-                                <p>{$item['nome']}</p>
-                                <p class='preco-prod-carrinho'>R&#36;{$item['preco']}.00</p>
-                                <p>{$item['cor']}</p>
-                                <p>Quantidade: {$item['quantidade']}</p>
-                            </div>
-                        </div>";
-                    }
-                    // Preço Total
-                    echo "<h1 style='margin-top: 5px; font-size: 2em; color: var(--cor2);'>Total: R$" . number_format($preco_total, 2, '.', '.') . "</h1>";
-                    echo "</div>";
+            if (isset($_SESSION['carrinho']) && !empty($_SESSION['carrinho'])) {
+                $preco_total = 0;
+                echo "<div>"; // Para conter todos os produtos para o space-around do #carrinho aplicar corretamente
+                foreach ($_SESSION['carrinho'] as $id_produto => $item) {
+                    // Calcula o preço total
+                    $subtotal = $item['preco'] * $item['quantidade'];
+                    $preco_total += $subtotal;
+
                     echo "
-                    <div>
-                        <a id='fecharcarrinho'>Voltar</a> <br>
-                        <a href='checkout.php'><button>Finalizar Compra</button></a>
-                    </div>";
-                } else {
-                    echo " 
-                    <div>
-                        <ion-icon name='bag-handle-outline'></ion-icon>
-                            <h1>Sua sacola está vazia!</h1> <br>
-                            <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
-                            <a id='fecharcarrinho'>Voltar</a>
+                    <div class='prod-carrinho'>
+                        <a href='?action=delete&id={$item['id']}&cor={$item['cor']}'>
+                            <ion-icon name='close-outline' style='color: var(--cor3); font-size: 1.5em;'></ion-icon>
+                        </a>
+                        <img src='{$item['imagem']}' alt='{$item['nome']}'>
+                        <div class='txt-prod-carrinho'>
+                            <p>{$item['nome']}</p>
+                            <p class='preco-prod-carrinho'>R&#36;{$item['preco']}.00</p>
+                            <p>{$item['cor']}</p>
+                            <p>Quantidade: {$item['quantidade']}</p>
+                        </div>
                     </div>";
                 }
+                // Preço Total
+                echo "<h1 style='margin-top: 5px; font-size: 2em; color: var(--cor2);'>Total: R$" . number_format($preco_total, 2, '.', '.') . "</h1>";
+                echo "</div>";
+                echo "
+                <div>
+                    <a id='fecharcarrinho'>Voltar</a> <br>
+                    <a href='checkout.php'><button>Finalizar Compra</button></a>
+                </div>";
+            } else {
+                echo " 
+                <div>
+                    <ion-icon name='bag-handle-outline'></ion-icon>
+                        <h1>Sua sacola está vazia!</h1> <br>
+                        <p>Escolha algum produto e adicione à sacola para realizar sua compra!</p> <br>
+                        <a id='fecharcarrinho'>Voltar</a>
+                </div>";
             }
         ?>
     </aside>
