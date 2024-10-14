@@ -71,8 +71,10 @@ BEGIN
 END $$
 DELIMITER ;
 
+select * from produto;
 select * from cliente;
 select * from pedido;
 select * from entrega;
+select * from item_pedido;
 
 select * from pedido where fk_cliente = 1;

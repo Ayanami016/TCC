@@ -462,7 +462,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
         $id = $row_produtos['id_prod'];
         $nome_img = "../src/img/produto" . $id . ".png";
         echo
-        "<div class='produto' style='margin-top: 0px;'>
+        "<div class='produto'>
             <a href='produto.php?id=$id'>
                 <img src='$nome_img' alt='Produto'>
             </a>

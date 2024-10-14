@@ -56,9 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // Insere o(s) produto(s) do carrinho na tabela item, vinculando ao pedido
     foreach ($_SESSION['carrinho'] as $item) {
-        $insert_item = "INSERT INTO item_pedido (fk_pedido, fk_produto, quantidade_prod) VALUES (?, ?, ?)";
+        $insert_item = "INSERT INTO item_pedido (fk_pedido, fk_produto, quantidade_prod, cor_selecionada) VALUES (?, ?, ?, ?)";
         $stmt = $conexao->prepare($insert_item);
-        $stmt->bind_param("iii", $id_pedido, $item['id'], $item['quantidade']);
+        $stmt->bind_param("iiis", $id_pedido, $item['id'], $item['quantidade'], $item['cor']);
         $stmt->execute();
     }
 

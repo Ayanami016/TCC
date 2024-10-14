@@ -741,6 +741,11 @@ nav .btnmenu-mobile {
     background-color: var(--cor5);
 }
 
+/* HISTÓRICO DE PEDIDOS */
+.pedidos {
+    border: 2px solid red;
+}
+
 /* ALTERAR DADOS */
 #alterar-dados, #excluir-conta {
     display: flex;

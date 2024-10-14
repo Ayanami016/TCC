@@ -249,51 +249,81 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                     SELECT 
                         pedido.id_pedido, 
                         pedido.status_ped, 
-                        produto.id_prod,
+                        produto.id_prod, 
                         produto.nome_prod, 
                         item_pedido.quantidade_prod, 
                         item_pedido.cor_selecionada,
-                        pedido.datahora_ped 
+                        pedido.datahora_ped
                     FROM pedido
                     JOIN item_pedido ON pedido.id_pedido = item_pedido.fk_pedido
-                    JOIN produto ON item_pedido.fk_produto = produto.id_produto
+                    JOIN produto ON item_pedido.fk_produto = produto.id_prod
                     WHERE pedido.fk_cliente = ?
                     ORDER BY pedido.datahora_ped DESC
                 ";
 
                 $stmt = $conexao->prepare($consulta);
-                $stmt->bind_param('i', $id_usuario);
+                $stmt->bind_param("i", $_SESSION['id_usuario']);
                 $stmt->execute();
-                $result = $stmt->get_result();
-                
-                if ($result->num_rows == 0) {
+                $resultados = $stmt->get_result();
+
+                $pedido_atual = null; // Acompanha o pedido atual
+
+                if ($resultados->num_rows == 0) {
+                    // Se não houver pedidos, exibe a mensagem
                     echo "
                     <ion-icon name='bag-handle-outline'></ion-icon>
                     <p>Realize a sua primeira compra!</p>
                     <a href='pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria='>
-                        <button class='btn-index' btn-placeholder='Ir para Loja'>Ir para Loja</button>
+                        <button class='btn-index' btn-placeholder='Ir para Loja'></button>
                     </a>";
                 } else {
-                    // Exibe os pedidos
-                    echo "<div class='historico-pedidos'>";
-                    while ($pedido = $result->fetch_assoc()) {
-                        // Exibe detalhes do pedido e dos itens
-                        echo "<div class='pedido'>";
-                        echo "<p><strong>Pedido ID:</strong> " . $pedido['id_pedido'] . "</p>";
-                        echo "<p><strong>Data do pedido:</strong> " . date('d/m/Y H:i:s', strtotime($pedido['datahora_ped'])) . "</p>";
-                        echo "<p><strong>Status do pedido:</strong> " . $pedido['status_ped'] . "</p>";
+                    $pedido_atual = null; // Variável para acompanhar o pedido atual
+
+                    // Listando os pedidos do cliente
+                    while ($row_pedidos = mysqli_fetch_array($resultados)) {
+                        $id_pedido = $row_pedidos['id_pedido'];
+                        $id_prod = $row_pedidos['id_prod'];
+                        $nome_img = "../src/img/produto" . $id_prod . ".png"; // Imagem do produto
+                        $nome_prod = $row_pedidos['nome_prod'];
+                        $quantidade = $row_pedidos['quantidade_prod'];
+                        $cor = $row_pedidos['cor_selecionada'];
+                        $status_ped = $row_pedidos['status_ped'];
+
+                        // Se o pedido mudou, fecha a div anterior (se já houver um pedido sendo exibido)
+                        if ($pedido_atual !== $id_pedido) {
+                            // Fecha a div anterior, se existir
+                            if ($pedido_atual !== null) {
+                                echo "</div>"; // Fecha a div do pedido anterior
+                            }
+                            
+                            // Abre uma nova div para o novo pedido
+                            echo "
+                            <div class='pedidos'>
+                                <h3>ID do Pedido: #$id_pedido</h3>
+                                <p><strong>Status:</strong> $status_ped</p>";
+                            
+                            // Atualiza a variável para o pedido atual
+                            $pedido_atual = $id_pedido;
+                        }
                         
-                        // Detalhes do produto
-                        echo "<div class='item-pedido'>";
-                        echo "<img src='/TCC/imagens/produtos/" . $pedido['imagem_produto'] . "' alt='Imagem do produto' style='width:100px; height:100px;'>";
-                        echo "<p><strong>Produto:</strong> " . $pedido['nome_produto'] . "</p>";
-                        echo "<p><strong>Cor pedida:</strong> " . $pedido['cor_pedida'] . "</p>";
-                        echo "<p><strong>Quantidade:</strong> " . $pedido['quantidade_prod'] . "</p>";
-                        echo "</div>";
-                        echo "<hr>";
-                        echo "</div>"; // Fim do pedido
+                        // Exibe os produtos do pedido atual
+                        echo "
+                            <div class='pedido-produto'>
+                                <a href='produto.php?id=$id_prod'>
+                                    <img src='$nome_img' alt='Produto' style='width: 100px;'>
+                                </a>
+                                <div class='info-produto'>
+                                    <p><strong>$nome_prod</strong></p>
+                                    <p><strong>Cor:</strong> $cor</p>
+                                    <p><strong>Quantidade:</strong> $quantidade</p>
+                                </div>
+                            </div>";
                     }
-                    echo "</div>";
+
+                    // Fecha a última div do último pedido
+                    if ($pedido_atual !== null) {
+                        echo "</div>"; // Fecha a div do último pedido
+                    }
                 }
             ?>
         </div>
