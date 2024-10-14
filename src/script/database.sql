@@ -22,46 +22,47 @@ CREATE TABLE produto (
     preco DECIMAL(10,2) NOT NULL
 ) CHARSET = utf8;
 
-CREATE TABLE item (
-    id_item INT(8) AUTO_INCREMENT PRIMARY KEY,
-    fk_produto INT(8),
-    quantidade_prod INT(8) NOT NULL, -- Checar de onde isso está vindo
-		FOREIGN KEY (fk_produto) REFERENCES produto (id_prod)
-) CHARSET = utf8;
-
 CREATE TABLE pedido (
     id_pedido INT(8) AUTO_INCREMENT PRIMARY KEY,
     datahora_ped DATETIME NOT NULL,
-    valor_ped DECIMAL(10,2) NOT NULL, -- CONSTA
-    pagamento_metodo_ped VARCHAR(35) NOT NULL, -- CONSTA
-    status_ped ENUM('Pedido realizado', 'Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Pedido realizado', -- Atributo visível ao usuário
-    comprovante_ped VARCHAR(155) NOT NULL, -- Gerado automaticamente
-    frete_ped DECIMAL(10,2), -- CONSTA
-    fk_cliente INT(8), -- Checar ligação
-    fk_item INT(8),
-		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente),
-        FOREIGN KEY (fk_item) REFERENCES item (id_item)
+    valor_ped DECIMAL(10,2) NOT NULL, 
+    pagamento_metodo_ped VARCHAR(35) NOT NULL, 
+    status_ped ENUM('Pedido realizado', 'Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Pedido realizado',
+    comprovante_ped VARCHAR(155) NOT NULL, 
+    frete_ped DECIMAL(10,2), 
+    fk_cliente INT(8), 
+		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
 ) CHARSET = utf8;
+
+CREATE TABLE item_pedido (
+    id_item INT(8) AUTO_INCREMENT PRIMARY KEY,
+    fk_pedido INT(8),
+    fk_produto INT(8),
+    quantidade_prod INT(8) NOT NULL,
+		FOREIGN KEY (fk_pedido) REFERENCES pedido (id_pedido),
+		FOREIGN KEY (fk_produto) REFERENCES produto (id_prod)
+) CHARSET = utf8;
+
 
 CREATE TABLE entrega (
     id_ent INT(8) AUTO_INCREMENT PRIMARY KEY,
-    status_ent ENUM('Embalando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Embalando', -- Atributo que não será visível ao usuário
+    status_ent ENUM('Embalando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Embalando',
     cep_ent VARCHAR(9) NOT NULL,
     rua_ent VARCHAR(80) NOT NULL,
 	numero_ent INT(10) NOT NULL,
 	complemento_ent VARCHAR(20),
 	bairro_ent VARCHAR(25) NOT NULL,
 	cidade_ent VARCHAR(80) NOT NULL,
-	estado_ent VARCHAR(2) NOT NULL, -- Todos os atributos de endereço constam
-    fk_cliente INT(8), -- Checar ligação
-    fk_ped INT(8), -- Checar ligação
+	estado_ent VARCHAR(2) NOT NULL, 
+    fk_cliente INT(8), 
+    fk_pedido INT(8), 
 		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente),
-		FOREIGN KEY (fk_ped) REFERENCES pedido (id_pedido)
+		FOREIGN KEY (fk_pedido) REFERENCES pedido (id_pedido)
 ) CHARSET = utf8;
 
 -- TRIGGER PARA REDUÇÃO DO ESTOQUE
 DELIMITER $$ 
-CREATE TRIGGER baixa_estoque AFTER INSERT ON item
+CREATE TRIGGER baixa_estoque AFTER INSERT ON item_pedido
 FOR EACH ROW
 BEGIN
     UPDATE produto
