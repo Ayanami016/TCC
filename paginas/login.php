@@ -34,12 +34,11 @@
             </span>
 
 
-            <!--Menu Mobile-->
             <span class="alterna-botoes">
                 <!-- Conta -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnconta">
                         <?php if (!empty($primeiroNome)) : ?>
                         <!-- Logado -->
                         <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
@@ -55,14 +54,14 @@
                 <!-- Suporte -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                    <div class="listamenu">
+                    <div class="listamenu btnsuporte">
                         <a href="#" class="link-listamenu">Contato</a>
                         <a href="faq.html" class="link-listamenu">FAQ</a>
                     </div>
                 </button>
 
                 <!-- Carrinho -->
-                <button class="btnmenu-pc">
+                <button class="btnmenu-mobile">
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>

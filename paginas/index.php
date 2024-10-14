@@ -143,7 +143,7 @@
                 </button>
 
                 <!-- Carrinho -->
-                <button class="btnmenu-pc">
+                <button class="btnmenu-mobile">
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
