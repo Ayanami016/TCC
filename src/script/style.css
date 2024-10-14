@@ -756,6 +756,11 @@ nav .btnmenu-mobile {
     flex-direction: row;
 }
 
+.pedido-produto img {
+    border-radius: 7px;
+    width: 70px;
+}
+
 .pedido-produto .info-produto {
     align-items: center;
     text-align: left;

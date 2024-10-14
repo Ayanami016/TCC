@@ -311,7 +311,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                             <div class='pedido-produto'>
                                 <div>
                                     <a href='produto.php?id=$id_prod'>
-                                        <img src='$nome_img' alt='Produto' style='width: 70px;'>
+                                        <img src='$nome_img' alt='Produto'>
                                     </a>
                                 </div>
                                 <div class='info-produto'>
