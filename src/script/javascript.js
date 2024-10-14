@@ -242,13 +242,13 @@ function metodoPagamento() {
     pix.style.display = 'none';
     boleto.style.display = 'none';
 
-    if (valor === 'cartao') {
+    if (valor === 'CARTÃO') {
         infoCartao.style.display = 'flex';
         console.log("cartao selecionado")
-    } else if (valor === 'pix') {
+    } else if (valor === 'PIX') {
         pix.style.display = 'inherit';
         console.log("pix selecionado")
-    } else if (valor === 'boleto') {
+    } else if (valor === 'BOLETO') {
         boleto.style.display = 'flex';
         console.log("boleto selecionado")
     }

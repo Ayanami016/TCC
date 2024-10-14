@@ -25,11 +25,11 @@ CREATE TABLE produto (
 CREATE TABLE pedido (
     id_pedido INT(8) AUTO_INCREMENT PRIMARY KEY,
     datahora_ped DATETIME NOT NULL,
-    valor_ped DECIMAL(10,2) NOT NULL, 
+    frete_ped DECIMAL(10,2),
+    valortotal_ped DECIMAL(10,2) NOT NULL, 
     pagamento_metodo_ped VARCHAR(35) NOT NULL, 
     status_ped ENUM('Pedido realizado', 'Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Pedido realizado',
     comprovante_ped VARCHAR(155) NOT NULL, 
-    frete_ped DECIMAL(10,2), 
     fk_cliente INT(8), 
 		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
 ) CHARSET = utf8;
@@ -71,6 +71,7 @@ BEGIN
 END $$
 DELIMITER ;
 
+select * from cliente;
 select * from pedido;
 select * from entrega;
-select * from item;
+select * from item_pedido;

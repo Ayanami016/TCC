@@ -309,6 +309,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                     ?>
 
                     <!-- Inputs dos valores de pedido e produto -->
+                    <input type="hidden" name="subtotal" value="<?echo $subtotal; ?>">
                     <input type="hidden" name="frete" value="<?php echo $frete; ?>">
                     <input type="hidden" name="valor-pedido" value="<?php echo $preco_final; ?>">
 
@@ -328,7 +329,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                         <label for="cidade">Cidade: </label>
                         <input type="text" name="cidade" id="cidade" placeholder="Cidade*" style="width: 200px;" required>
                         <label for="estado">Estado: </label>
-                        <select name="uf" id="uf">
+                        <select name="uf" id="uf" required>
                             <option value="AC">AC</option>
                             <option value="AL">AL</option>
                             <option value="AP">AP</option>
@@ -370,9 +371,9 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                     <h2>Método de Pagamento</h2>
                     <select name="pagamento" id="pagamento" onchange="metodoPagamento()">
                         <option value="">A escolher</option>
-                        <option value="pix">PIX</option>
-                        <option value="cartao">Cartão de Crédito</option>
-                        <option value="boleto">Boleto</option>
+                        <option value="PIX">PIX</option>
+                        <option value="CARTÃO">Cartão de Crédito</option>
+                        <option value="BOLETO">Boleto</option>
                     </select>
                     <div id="pix" style="margin: 10px; display: none;">
                         <p>&#x1F537 Ao gerar o Código Pix do pedido você pode pagar escaneando o <strong>QR Code</strong> ou <strong>Copiar e Colar</strong>.</p>
