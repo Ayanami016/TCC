@@ -143,11 +143,15 @@
                 </button>
 
                 <!-- Carrinho -->
-                <button class="btnmenu-mobile">
-                    <ion-icon name="bag-handle-outline" class="iconsacola" color="light"></ion-icon>
-                    <div class="listamenu btnsacola">
+                <button class="btnmenu-pc">
+                    <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
+                    <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
+                        <?php if (!isset($_SESSION['id_usuario'])): ?>
+                        <a href="login.php" class="link-listamenu">Checkout</a>
+                        <?php else: ?>
                         <a href="checkout.php" class="link-listamenu">Checkout</a>
+                        <?php endif; ?>
                     </div>
                 </button>
             </span>
@@ -193,7 +197,11 @@
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
+                        <?php if (!isset($_SESSION['id_usuario'])): ?>
+                        <a href="login.php" class="link-listamenu">Checkout</a>
+                        <?php else: ?>
                         <a href="checkout.php" class="link-listamenu">Checkout</a>
+                        <?php endif; ?>
                     </div>
                 </button>
             </span>

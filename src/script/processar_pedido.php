@@ -37,24 +37,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $id_pedido = $stmt->insert_id;
 
-    // Insere itens na tabela item
-    foreach ($_SESSION['carrinho'] as $item) {
-        $insert_item = "INSERT INTO item (fk_produto, quantidade_prod) VALUES (?, ?)";
+     // Insere o(s) produto(s) do carrinho na tabela item, vinculando ao pedido
+     foreach ($_SESSION['carrinho'] as $item) {
+        $insert_item = "INSERT INTO item (fk_pedido, fk_produto, quantidade_prod) VALUES (?, ?, ?)";
         $stmt = $conexao->prepare($insert_item);
-        $stmt->bind_param("ii", $item['id'], $item['quantidade']);
-        $stmt->execute();
-        $id_item = $stmt->insert_id;
-
-        // Atualiza o pedido com a referência ao item
-        $updatePedidoItem = "UPDATE pedido SET fk_item = ? WHERE id_pedido = ?";
-        $stmt = $conexao->prepare($updatePedidoItem);
-        $stmt->bind_param("ii", $id_item, $id_pedido);
+        $stmt->bind_param("iii", $id_pedido, $item['id'], $item['quantidade']);
         $stmt->execute();
     }
 
-    // Cria o registro de entrega com base no pedido e endereço
-    $insertEntrega = "UPDATE entrega SET fk_ped = ? WHERE id_ent = ?";
-    $stmt = $conexao->prepare($insertEntrega);
+    // Atualiza a entrega com a referência ao pedido
+    $update_ent = "UPDATE entrega SET fk_ped = ? WHERE id_ent = ?";
+    $stmt = $conexao->prepare($update_ent);
     $stmt->bind_param("ii", $id_pedido, $id_endereco);
     $stmt->execute();
 
