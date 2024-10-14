@@ -743,7 +743,24 @@ nav .btnmenu-mobile {
 
 /* HISTÓRICO DE PEDIDOS */
 .pedidos {
-    border: 2px solid red;
+    border: 2px solid var(--cor3);
+    border-radius: 15px;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 120%;
+    background-color: white;
+}
+
+.pedido-produto {
+    display: flex;
+    flex-direction: row;
+}
+
+.pedido-produto .info-produto {
+    align-items: center;
+    text-align: left;
+    font-size: 0.85em;
+    padding: 7px;
 }
 
 /* ALTERAR DADOS */

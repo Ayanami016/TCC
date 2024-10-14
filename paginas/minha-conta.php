@@ -299,8 +299,8 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                             // Abre uma nova div para o novo pedido
                             echo "
                             <div class='pedidos'>
-                                <h3>ID do Pedido: #$id_pedido</h3>
-                                <p><strong>Status:</strong> $status_ped</p>";
+                                <h3>$status_ped</h3>
+                                <p>ID do Pedido: #$id_pedido</p>";
                             
                             // Atualiza a variável para o pedido atual
                             $pedido_atual = $id_pedido;
@@ -309,9 +309,11 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                         // Exibe os produtos do pedido atual
                         echo "
                             <div class='pedido-produto'>
-                                <a href='produto.php?id=$id_prod'>
-                                    <img src='$nome_img' alt='Produto' style='width: 100px;'>
-                                </a>
+                                <div>
+                                    <a href='produto.php?id=$id_prod'>
+                                        <img src='$nome_img' alt='Produto' style='width: 70px;'>
+                                    </a>
+                                </div>
                                 <div class='info-produto'>
                                     <p><strong>$nome_prod</strong></p>
                                     <p><strong>Cor:</strong> $cor</p>
