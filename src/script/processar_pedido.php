@@ -20,6 +20,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $valor_pedido = $_POST['valor-pedido'];
     $metodo_pagamento = $_POST['pagamento'];
 
+    // Se o método de pagamento tá vazio
+    if (empty($metodo_pagamento)) {
+        echo "<script>alert('Necessário selecionar um método de pagamento');</script>";
+        echo "<script>window.location.href='/TCC/paginas/finalizar-compra.php';</script>";
+        exit();
+    }
+
     // Inserindo endereço na tabela entrega
     $insert_ent = "INSERT INTO entrega (cep_ent, rua_ent, numero_ent, complemento_ent, bairro_ent, cidade_ent, estado_ent, fk_cliente) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -64,9 +71,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Limpa o carrinho
     unset($_SESSION['carrinho']);
 
+    // Script para redirecionar para geração do boleto, pix ou direto para a confirmação do pedido
+    switch ($metodo_pagamento) {
+        case 'BOLETO':
+            header('Location: gerar_boleto.php');
+            break; 
+        case 'PIX':
+            header('Location: gerar_pix.php');
+            break;
+        default:
+            header('Location: /TCC/paginas/confirmacao.php?pedido=' . $id_pedido);
+            break;
+    }
+
     // Página de conclusão do pedido
     // A página aparecerá que o pedido foi confirmado e as informações seguintes de pagamento.
     // Útil para aparecer código pix e boleto.
-    header('Location: /TCC/paginas/confirmacao.php?pedido=' . $id_pedido);
+    // header('Location: /TCC/paginas/confirmacao.php?pedido=' . $id_pedido);
 }
 ?>

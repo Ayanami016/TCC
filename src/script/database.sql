@@ -39,10 +39,10 @@ CREATE TABLE item_pedido (
     fk_pedido INT(8),
     fk_produto INT(8),
     quantidade_prod INT(8) NOT NULL,
+    cor_selecionada VARCHAR(80) NOT NULL,
 		FOREIGN KEY (fk_pedido) REFERENCES pedido (id_pedido),
 		FOREIGN KEY (fk_produto) REFERENCES produto (id_prod)
 ) CHARSET = utf8;
-
 
 CREATE TABLE entrega (
     id_ent INT(8) AUTO_INCREMENT PRIMARY KEY,
@@ -74,4 +74,5 @@ DELIMITER ;
 select * from cliente;
 select * from pedido;
 select * from entrega;
-select * from item_pedido;
+
+select * from pedido where fk_cliente = 1;
