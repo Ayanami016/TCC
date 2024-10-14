@@ -223,7 +223,7 @@
                     <span class="icon-relevarsenha" onclick="Mostrar_Senha()">
                         <ion-icon name="eye-off-outline" id="iconsenha" onclick="Mudar_IconSenha()"></ion-icon>
                     </span>
-                    <input type="password" name="senha" id="senha" required>
+                    <input type="password" name="senha" id="senha" maxlength="20" required>
                     <label for="senha">Senha</label>
                 </div>
 
@@ -232,7 +232,7 @@
                     <span class="icon-relevarsenha" onclick="Mostrar_ConfirmarSenha()">
                         <ion-icon name="eye-off-outline" id="iconconfirmarsenha" onclick="Mudar_IconConfirmarSenha()"></ion-icon>
                     </span>
-                    <input type="password" name="confirmarsenha" id="confirmarsenha" required>
+                    <input type="password" name="confirmarsenha" id="confirmarsenha" maxlength="20" required>
                     <label for="confirmarsenha">Confirmar Senha</label>
                 </div>
 

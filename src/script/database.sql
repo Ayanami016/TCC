@@ -45,7 +45,7 @@ CREATE TABLE pedido (
 
 CREATE TABLE entrega (
     id_ent INT(8) AUTO_INCREMENT PRIMARY KEY,
-    status_ent ENUM('Postado', 'A caminho', 'Entregue') DEFAULT 'Postado', -- Atributo que não será visível ao usuário
+    status_ent ENUM('Embalando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Embalando', -- Atributo que não será visível ao usuário
     cep_ent VARCHAR(9) NOT NULL,
     rua_ent VARCHAR(80) NOT NULL,
 	numero_ent INT(10) NOT NULL,
@@ -69,3 +69,7 @@ BEGIN
     WHERE id_prod = NEW.fk_produto;
 END $$
 DELIMITER ;
+
+select * from pedido;
+select * from entrega;
+select * from item;

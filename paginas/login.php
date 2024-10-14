@@ -193,7 +193,7 @@
                     <span class="icon-relevarsenha" onclick="Mostrar_Senha()">
                         <ion-icon name="eye-off-outline" id="iconsenha" onclick="Mudar_IconSenha()"></ion-icon>
                     </span>
-                    <input type="password" name="senha" id="senha" required>
+                    <input type="password" name="senha" id="senha" maxlength="20" required>
                     <label for="senha">Senha</label>
                 </div>
                 <!--Esqueceu a Senha-->

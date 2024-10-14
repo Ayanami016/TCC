@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conexao->prepare($insert_ent);
     $stmt->bind_param("sssisssi", $cep, $rua, $numero, $complemento, $bairro, $cidade, $uf, $id_usuario);
     $stmt->execute();
-    $id_endereco = $stmt->insert_id; // ?
+    $id_endereco = $stmt->insert_id;
 
     // Insere o pedido
     $status_ped = "Pedido realizado";
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $conexao->prepare($insert_ped);
     $stmt->bind_param("dssdi", $valor_pedido, $metodo_pagamento, $status_ped, $frete, $id_usuario);
     $stmt->execute();
-    $id_pedido = $stmt->insert_id; // ?
+    $id_pedido = $stmt->insert_id;
 
     // Insere itens na tabela item
     foreach ($_SESSION['carrinho'] as $item) {
@@ -43,7 +43,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt = $conexao->prepare($insert_item);
         $stmt->bind_param("ii", $item['id'], $item['quantidade']);
         $stmt->execute();
-        $id_item = $stmt->insert_id; // ?
+        $id_item = $stmt->insert_id;
 
         // Atualiza o pedido com a referência ao item
         $updatePedidoItem = "UPDATE pedido SET fk_item = ? WHERE id_pedido = ?";
