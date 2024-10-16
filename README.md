@@ -28,7 +28,8 @@ Antes de tudo, ao baixar o projeto, <u>renomeie o nome da pasta "TCC-Main" para 
 [ :white_check_mark: ] Banco de Dados dos Produtos <br>
 [ :white_check_mark: ] Página de Detalhe dos Produtos <br>
 [ :white_check_mark: ] Checkout <br>
-[ :large_orange_diamond: ] Finalização da Compra <br>
+[ :white_check_mark: ] Finalização da Compra <br>
+[ :large_orange_diamond: ] Confirmação e geração dos métodos de pagamento <br>
 [ :white_check_mark: ] Cadastro e Login de usuário <br>
 [ :white_check_mark: ] Alteração de dados <br>
 
