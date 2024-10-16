@@ -3,7 +3,7 @@
         'name' => 'tcc/pagamento',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '644c8993d6972b698d0c8239c2180f887aa509df',
+        'reference' => 'b66c4b079adc10a54652e8ea72e067b564bfda9e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -58,7 +58,7 @@
         'tcc/pagamento' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '644c8993d6972b698d0c8239c2180f887aa509df',
+            'reference' => 'b66c4b079adc10a54652e8ea72e067b564bfda9e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

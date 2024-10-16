@@ -51,7 +51,7 @@ CREATE TABLE entrega (
     rua_ent VARCHAR(80) NOT NULL,
 	numero_ent INT(10) NOT NULL,
 	complemento_ent VARCHAR(20),
-	bairro_ent VARCHAR(25) NOT NULL,
+	bairro_ent VARCHAR(80) NOT NULL,
 	cidade_ent VARCHAR(80) NOT NULL,
 	estado_ent VARCHAR(2) NOT NULL, 
     fk_cliente INT(8), 
@@ -76,5 +76,3 @@ select * from cliente;
 select * from pedido;
 select * from entrega;
 select * from item_pedido;
-
-select * from pedido where fk_cliente = 1;
