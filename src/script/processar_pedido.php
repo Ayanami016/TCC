@@ -68,8 +68,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ii", $id_pedido, $id_endereco);
     $stmt->execute();
 
-    // Limpa o carrinho
-    unset($_SESSION['carrinho']);
+    $_SESSION['valor_pedido'] = $valor_pedido;
+    $_SESSION['id_pedido'] = $id_pedido;
 
     // Script para redirecionar para geração do boleto, pix ou direto para a confirmação do pedido
     switch ($metodo_pagamento) {
@@ -84,9 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
     }
 
-    // Página de conclusão do pedido
-    // A página aparecerá que o pedido foi confirmado e as informações seguintes de pagamento.
-    // Útil para aparecer código pix e boleto.
-    // header('Location: /TCC/paginas/confirmacao.php?pedido=' . $id_pedido);
+    // Limpa o carrinho
+    unset($_SESSION['carrinho']);
 }
 ?>
