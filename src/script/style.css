@@ -769,7 +769,7 @@ nav .btnmenu-mobile {
 }
 
 /* ALTERAR DADOS */
-#alterar-dados, #excluir-conta {
+#alterar-dados, #excluir-conta, #confirmacao {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1235,6 +1235,34 @@ nav .btnmenu-mobile {
     position: fixed;
     top: 30vh;
     left: 135vh;
+}
+
+/* CONFIRMAÇÃO DO PEDIDO */
+#confirmacao {
+    min-height: 90vh !important;
+    flex-direction: column;
+}
+
+#confirmacao h1 {
+    font-size: 3em;
+    color: var(--cor1);
+}
+
+#confirmacao h2 {
+    color: var(--cor2);
+}
+
+#confirmacao .logo {width: 70px;}
+
+#confirmacao p {
+    font-size: 1.2em;
+}
+
+#confirmacao .infos-boleto {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 /* RODAPÉ */

@@ -28,7 +28,7 @@ CREATE TABLE pedido (
     frete_ped DECIMAL(10,2),
     valortotal_ped DECIMAL(10,2) NOT NULL, 
     pagamento_metodo_ped VARCHAR(35) NOT NULL, 
-    status_ped ENUM('Pedido realizado', 'Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Pedido realizado',
+    status_ped ENUM('Aguardando pagamento', 'Preparando', 'Postado', 'A caminho', 'Entregue') DEFAULT 'Aguardando pagamento',
     comprovante_ped VARCHAR(155) NOT NULL, 
     fk_cliente INT(8), 
 		FOREIGN KEY (fk_cliente) REFERENCES cliente (id_cliente)
@@ -73,6 +73,6 @@ DELIMITER ;
 
 select * from produto;
 select * from cliente;
-select * from pedido;
+select * from pedido where id_pedido = '3' and status_ped = 'Aguardado pagamento';
 select * from entrega;
 select * from item_pedido;
