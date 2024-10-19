@@ -16,15 +16,27 @@ if (isset($_SESSION['nome_exibir'])) {
     // Total de 48 números
     // eu me recuso a programar conforme o que cada número representa
     // (exceto os dois primeiros)
-    function num_boleto($tres = '0', $random = '') {
-        // três primeiros dígitos - banco emissor
-        for ($i = 0; $i < 3; $i++) {$tres .= random_int(0, 9);}
-        // Random
-        for ($i = 0; $i < 43; $i++) {$random .= random_int(0, 9);}
+function num_boleto($tres = '0', $random = '') {
+    // três primeiros dígitos - banco emissor
+    for ($i = 0; $i < 3; $i++) {$tres .= random_int(0, 9);}
+    // Random
+    for ($i = 0; $i < 43; $i++) {$random .= random_int(0, 9);}
 
-        return  $tres . 9 . $random;
-        // número 9 indica a moeda do Brasil
-    }
+    return  $tres . 9 . $random;
+    // número 9 indica a moeda do Brasil
+}
+
+// Código PIX
+    // Total de 35 caracteres
+function codigoPIX($codigo = '') {
+    $lower = implode('', range('a', 'z'));
+    $n = implode('', range(0, 9));
+    $alfanumerico = $lower . $n . $n;
+
+    for ($i = 0; $i < 35; $i++) {$codigo .= $alfanumerico[rand(0, strlen($alfanumerico) - 1)];}
+
+    return $codigo;
+}
 
 // Consulta SQL do status, pegando o id do pedido
 $id_pedido = $_SESSION['pedido'];
@@ -264,6 +276,16 @@ $vencimento = $data->format('d/m/Y');
                         <div style="text-align: center;">
                             <img style="margin-bottom: 10px;" src="../src/img/codigo-barras-colorido.png" alt="Código de barras do boleto">
                             <p>' . num_boleto() . '</p>
+                            <p>ID do pedido: #' . $id_pedido . '</p>
+                        </div>
+                    </div>';
+                } elseif ($metodo_pagamento == 'PIX') {
+                    echo '<div id="pix">
+                        <img class="qrcode" src="../src/img/qrcode-colorido.png" alt="QR Code">
+                        <div style="text-align: center;">
+                            <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
+                            <p>Data de vencimento: <strong>' . $vencimento . '</strong></p>
+                            <p>Código PIX: <strong>' . codigoPIX() . '</strong></p>
                         </div>
                     </div>';
                 }
@@ -271,6 +293,10 @@ $vencimento = $data->format('d/m/Y');
                 echo 'Método de pagamento não definido.';
             }
         ?>
+        <span>
+            <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="voltar-loja">Voltar à Loja</button></a>
+            <button class="acompanhar-pedido"><a href="#">Acompanhar Pedido</a></button>
+        </span>
     </div>
 
     <!--JAVASCRIPT-->

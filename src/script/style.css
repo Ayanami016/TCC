@@ -1265,6 +1265,59 @@ nav .btnmenu-mobile {
     justify-content: space-between;
 }
 
+#confirmacao #pix {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#pix .qrcode {
+    margin: 15px 0;
+    width: 280px;
+    border-radius: 15px;
+    border: 4px solid var(--cor1);
+}
+
+#confirmacao span {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#confirmacao span button {
+    margin-top: 10px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2em;
+    font-family: texto-negrito;
+    transition-duration: 0.3s;
+    cursor: pointer;
+}
+
+#confirmacao span button a {font-family: texto-negrito;}
+
+.voltar-loja {
+    background-color: var(--cor4);
+    color: var(--cor1);
+}
+
+.voltar-loja:hover {
+    background-color: var(--cor2);
+    color: var(--cor5);
+}
+
+.acompanhar-pedido {
+    background-color: var(--cor2);
+    color: var(--cor4);
+}
+
+.acompanhar-pedido:hover {
+    background-color: var(--cor4);
+    color: var(--cor1);
+}
+
 /* RODAPÉ */
 #rodape {
     display: flex;
