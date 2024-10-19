@@ -17,7 +17,7 @@ $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
 // Gerando números aleatórios
     // Agência (apenas os dois últimos)
 function num_agencia($n = '00') {
-    for ($i = 0; $i <= 2; $i++) {
+    for ($i = 0; $i < 2; $i++) {
         $n .= random_int(1, 9);
     }
     return $n;
@@ -52,7 +52,10 @@ $html = '<!DOCTYPE html>
                     padding: 20px;
                 }
 
-                #topo img {width: 100px;}
+                #topo img {
+                    margin-left: 20px;
+                    width: 100px;
+                }
             </style>
         </head>
         <body>
@@ -63,8 +66,8 @@ $html = '<!DOCTYPE html>
                             <img src="' . $base64 . '" alt="Logo">
                         </td>
                         <td style="text-align: right; width: 70%;">
-                            <p>Boleto para pagamento do pedido de <strong>"NOME USUÁRIO"</strong></p>
-                            <p>Agência <strong>"NUMERO ALEATORIO x4"</strong> Conta <strong>"NUMERO ALEATORIO x8 - x1"</strong></p>
+                            <p style="margin-right: 20px;">Boleto para pagamento do pedido <br> de <strong>"NOME USUÁRIO"</strong></p>
+                            <p style="margin-right: 20px;">Agência <strong>' . num_agencia() . '</strong> Conta <strong>' . num_conta() . '</strong></p>
                         </td>
                     </tr>
                 </table>

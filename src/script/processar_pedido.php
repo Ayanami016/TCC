@@ -68,8 +68,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param("ii", $id_pedido, $id_endereco);
     $stmt->execute();
 
-    $_SESSION['valor_pedido'] = $valor_pedido;
-    $_SESSION['id_pedido'] = $id_pedido;
+    // Array de Sessions necessárias para geração do boleto
+    $Dados = array (
+        'valor_pedido' => $_SESSION['valor_pedido'],
+        'id_usuario' => $_SESSION['id_usuario']
+    );
+
+    // $_SESSION['valor_pedido'] = $valor_pedido;
+    // $_SESSION['id_pedido'] = $id_pedido;
 
     // Script para redirecionar para geração do boleto, pix ou direto para a confirmação do pedido
     switch ($metodo_pagamento) {
