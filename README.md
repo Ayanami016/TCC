@@ -8,6 +8,9 @@
 Trabalho de Conclusão de Curso do 3º ano de Desenvolvimento de Sistemas. <br>
 Disponível para computadores, tablet e celular.
 
+## Progresso do Projeto
+▓▓▓▓▓▓▓▓▓▒ 90% 
+
 ## :computer: Instalação
 **Programas usados:**
 - Visual Studio Code;
@@ -24,14 +27,14 @@ Antes de tudo, ao baixar o projeto, <u>renomeie o nome da pasta "TCC-Main" para 
    - Certifique-se que tanto o Apache quanto o MySQL esteja ligado para o PHP carregar corretamente.
 
 ## :chart_with_upwards_trend: Status
-[ :large_orange_diamond: ] Interface <br>
 [ :white_check_mark: ] Banco de Dados dos Produtos <br>
 [ :white_check_mark: ] Página de Detalhe dos Produtos <br>
 [ :white_check_mark: ] Checkout <br>
 [ :white_check_mark: ] Finalização da Compra <br>
-[ :large_orange_diamond: ] Confirmação e geração dos métodos de pagamento <br>
+[ :white_check_mark: ] Confirmação e geração dos métodos de pagamento <br>
 [ :white_check_mark: ] Cadastro e Login de usuário <br>
 [ :white_check_mark: ] Alteração de dados <br>
+[🔶] Correção de Bugs
 
 ## ⚠️ Aviso
 O banco de dados **NÃO POSSUI** proteção de dados pessoais!
