@@ -208,10 +208,6 @@
                     <input type="password" name="senha" id="senha" maxlength="20" required>
                     <label for="senha">Senha</label>
                 </div>
-                <!--Esqueceu a Senha-->
-                <div class="remember-forgot">
-                    <a href="#">Esqueceu a Senha?</a>
-                </div>
                 <!--Iniciar Sessão-->
                 <input type="submit" class="btn-form" value="INICIAR SESSÃO"></input>
                 <div class="cad-login">

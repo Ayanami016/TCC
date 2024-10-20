@@ -70,9 +70,3 @@ BEGIN
     WHERE id_prod = NEW.fk_produto;
 END $$
 DELIMITER ;
-
-select * from produto;
-select * from cliente;
-select * from pedido where id_pedido = '3' and status_ped = 'Aguardado pagamento';
-select * from entrega;
-select * from item_pedido;

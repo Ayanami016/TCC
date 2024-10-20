@@ -297,21 +297,6 @@ nav .btnmenu-mobile {
 
 .icon-relevarsenha {cursor: pointer;}
 
-    /* Esqueceu senha */
-.remember-forgot a {
-    display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    font-size: .9em;
-    color: var(--cor2);
-    text-decoration: none;
-}
-
-.remember-forgot a:hover {
-    color: var(--cor2);
-    font-weight: bold;
-}
-
     /* Botão Login */
 .btn-form {
     margin-top: 20px;

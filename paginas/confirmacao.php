@@ -48,6 +48,7 @@ $stmt->bind_param("i", $id_pedido);
 $stmt->execute();
 $stmt->bind_result($status_pedido);
 $stmt->fetch();
+$stmt->close();
 
 // Data de Vencimento
 $datahora = $_SESSION['datahora'];
@@ -286,7 +287,20 @@ $vencimento = $data->format('d/m/Y');
                             <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
                             <p>Data de vencimento: <strong>' . $vencimento . '</strong></p>
                             <p>Código PIX: <strong>' . codigoPIX() . '</strong></p>
+                            <p>ID do pedido: #' . $id_pedido . '</p>
                         </div>
+                    </div>';
+                } else {
+                    // Atualiza o status de pagamento ao pagar no cartão
+                    $novo_status = "Preparando";
+                    $atualizar_status = "UPDATE pedido SET status_ped = ? WHERE id_pedido = ?";
+                    $stmt = $conexao->prepare($atualizar_status);
+                    $stmt->bind_param('si', $novo_status, $id_pedido);
+                    $stmt->execute();
+
+                    echo '<div style="text-align: center;">
+                            <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
+                            <p>ID do pedido: #' . $id_pedido . '</p>
                     </div>';
                 }
             } else {
