@@ -35,6 +35,15 @@
 
 
             <span class="alterna-botoes">
+                <!-- Suporte -->
+                <button class="btnmenu-mobile">
+                    <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
+                    <div class="listamenu btnsuporte">
+                        <a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank" class="link-listamenu"><ion-icon name="logo-instagram"></ion-icon> @bellaacessoriosreal</a>
+                        
+                    </div>
+                </button>
+                
                 <!-- Conta -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
@@ -48,15 +57,6 @@
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
                         <?php endif; ?>
-                    </div>
-                </button>
-
-                <!-- Suporte -->
-                <button class="btnmenu-mobile">
-                    <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                    <div class="listamenu btnsuporte">
-                        <a href="#" class="link-listamenu">Contato</a>
-                        <a href="faq.html" class="link-listamenu">FAQ</a>
                     </div>
                 </button>
 
@@ -76,6 +76,15 @@
 
             <!--Menu PC-->
             <span id="botoes-pc">
+                <!-- Suporte -->
+                <button class="btnmenu-pc">
+                    <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
+                    <div class="listamenu btnsuporte">
+                        <a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank" class="link-listamenu"><ion-icon name="logo-instagram"></ion-icon> @bellaacessoriosreal</a>
+                        
+                    </div>
+                </button>
+                
                 <!-- Conta -->
                 <button class="btnmenu-pc ajusteconta">
                     <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>
@@ -97,15 +106,6 @@
                             <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                             <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
                         <?php endif; ?>
-                    </div>
-                </button>
-
-                <!-- Suporte -->
-                <button class="btnmenu-pc">
-                    <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
-                    <div class="listamenu btnsuporte">
-                        <a href="#" class="link-listamenu">Contato</a>
-                        <a href="#" class="link-listamenu">FAQ</a>
                     </div>
                 </button>
 

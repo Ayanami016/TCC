@@ -108,6 +108,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 
 
             <span class="alterna-botoes">
+                <!-- Suporte -->
+                <button class="btnmenu-mobile">
+                    <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
+                    <div class="listamenu btnsuporte">
+                        <a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank" class="link-listamenu"><ion-icon name="logo-instagram"></ion-icon> @bellaacessoriosreal</a>
+                        
+                    </div>
+                </button>
+                
                 <!-- Conta -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
@@ -121,15 +130,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
                         <?php endif; ?>
-                    </div>
-                </button>
-
-                <!-- Suporte -->
-                <button class="btnmenu-mobile">
-                    <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                    <div class="listamenu btnsuporte">
-                        <a href="#" class="link-listamenu">Contato</a>
-                        <a href="faq.html" class="link-listamenu">FAQ</a>
                     </div>
                 </button>
 
@@ -149,6 +149,15 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
 
             <!--Menu PC-->
             <span id="botoes-pc">
+                <!-- Suporte -->
+                <button class="btnmenu-pc">
+                    <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
+                    <div class="listamenu btnsuporte">
+                        <a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank" class="link-listamenu"><ion-icon name="logo-instagram"></ion-icon> @bellaacessoriosreal</a>
+                        
+                    </div>
+                </button>
+
                 <!-- Conta -->
                 <button class="btnmenu-pc ajusteconta">
                     <ion-icon name="person-outline" class="iconbtn"></ion-icon><br>
@@ -171,15 +180,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                             <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                             <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
                         <?php endif; ?>
-                    </div>
-                </button>
-
-                <!-- Suporte -->
-                <button class="btnmenu-pc">
-                    <ion-icon name="chatbubbles-outline" class="iconbtn"></ion-icon><br>Suporte
-                    <div class="listamenu btnsuporte">
-                        <a href="#" class="link-listamenu">Contato</a>
-                        <a href="#" class="link-listamenu">FAQ</a>
                     </div>
                 </button>
 
@@ -492,7 +492,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 <a href='produto.php?id=$id'>
                     <button class='btn-compra' btn-placeholder='Comprar'></button>
                 </a>
-                    <ion-icon name='add-outline'></ion-icon>
                     <ion-icon name='bag-check-outline' class='icon-mobile-compra'></ion-icon>
                 </div>
             </div>
@@ -546,7 +545,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
         <!-- Brands -->
         <span>
             <a href="https://github.com/Ayanami016/TCC" target="_blank"><ion-icon name="logo-github"></ion-icon></a>
-            <a href="#" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank"><ion-icon name="logo-instagram"></ion-icon></a>
         </span>
     </footer>
 
