@@ -64,7 +64,7 @@ $vencimento = $data->format('d/m/Y');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bella Acessórios - Página Inicial</title>
+    <title>Agradecemos pelo Pedido!</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
@@ -184,7 +184,11 @@ $vencimento = $data->format('d/m/Y');
                     <ion-icon name="bag-handle-outline" class="iconbtn"></ion-icon><br>Sacola
                     <div class="listamenu">
                         <a href="#" class="link-listamenu mostrarsacola">Ver Sacola</a>
+                        <?php if (!isset($_SESSION['id_usuario'])): ?>
+                        <a href="login.php" class="link-listamenu">Checkout</a>
+                        <?php else: ?>
                         <a href="checkout.php" class="link-listamenu">Checkout</a>
+                        <?php endif; ?>
                     </div>
                 </button>
             </span>

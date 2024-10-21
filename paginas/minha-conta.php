@@ -351,8 +351,14 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
         <span>
             <h1>Conta</h1>
             <ul>
+                <?php if(!isset($_SESSION['id_usuario'])): ?>
                 <li><a href="login.php">Iniciar Sessão</a></li>
                 <li class="ultimo"><a href="cadastro.php">Criar Conta</a></li>
+                <?php else: ?>
+                <li><a href="minha-conta.php">Minha Conta</a></li>
+                <li><a href="#">Histórico</a></li>
+                <li class="ultimo"><a href="../src/script/destroy_session.php">Encerrar Sessão</a></li>
+                <?php endif; ?>
             </ul>
         </span>
 
@@ -360,8 +366,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
         <span>
             <h1>Entre em Contato</h1>
             <ul>
-                <li><a href="#">Número de Telefone</a></li>
-                <li class="ultimo"><a href="#">E-mail</a></li>
+                <li class="ultimo"><a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank"><ion-icon style="font-size: 1.25em;" name="logo-instagram"></ion-icon> @bellaacessoriosreal</a></li>
             </ul>
         </span>
 
