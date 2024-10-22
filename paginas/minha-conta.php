@@ -341,7 +341,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                 // Botões dependendo do status do pedido
                 if ($status_ped == "Aguardando pagamento") {
                     echo "<span class='pedidos-botoes'>
-                            <a href='confirmacao.php'><button class='btn-pagar-ped'><ion-icon name='cash-outline'></ion-icon> Pagar</button></a>
+                            <a href='confirmacao.php?id_pedido=$id_pedido'><button class='btn-pagar-ped'><ion-icon name='cash-outline'></ion-icon> Pagar</button></a>
                             <a href='#'><button class='btn-cancelar-ped'><ion-icon name='close-circle-outline'></ion-icon> Cancelar</button></a>
                         </span>";
                 } elseif ($status_ped == "Preparando") {
