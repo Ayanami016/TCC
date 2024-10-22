@@ -14,10 +14,16 @@
     --cor4: #d9b4e0;
     --cor5: #E2CCE3;
     --vermelho: #d90b0b;
+    --aguardando: #ed7e1c;
+    --preparando: #edca1c;
+    --postado: #2336c4;
+    --acaminho: #216eeb;
+    --entregue:#17bd48;
     --prateado: linear-gradient(135deg, #e0e0e0, #f1f1f1, #d1d1d1, #f1f1f1, #e0e0e0);
     --transparente: linear-gradient(360deg, #b8b8b85b, #ffffff); 
     --cinza: rgb(78, 78, 78);
     --sombra: rgba(66, 34, 87, 0.247);
+
 }
 
 /* FONTES */
@@ -751,6 +757,48 @@ nav .btnmenu-mobile {
     text-align: left;
     font-size: 0.85em;
     padding: 7px;
+}
+
+    /* Botões da Div .pedidos */
+.pedidos-botoes {
+    margin-top: 5px;
+    justify-content: space-around;
+    display: flex;
+}
+
+.pedidos-botoes button {
+    display: flex;
+    width: 100px;
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 0.7em;
+    cursor: pointer;
+    transition-duration: 0.3s;
+}
+
+.pedidos-botoes ion-icon {font-size: 1.5em;}
+
+.btn-pagar-ped {
+    background-color: var(--cor3);
+    color: white;
+}
+
+.btn-pagar-ped:hover {
+    background-color: white;
+    color: var(--cor3);
+}
+
+.btn-cancelar-ped {
+    background-color: white;
+    color: var(--vermelho);
+}
+
+.btn-cancelar-ped:hover {
+    background-color: var(--vermelho);
+    color: white;
 }
 
 /* ALTERAR DADOS */

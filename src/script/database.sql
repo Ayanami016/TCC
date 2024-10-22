@@ -70,3 +70,6 @@ BEGIN
     WHERE id_prod = NEW.fk_produto;
 END $$
 DELIMITER ;
+
+update pedido set status_ped = 'Preparando' where id_pedido = 3;
+select * from pedido;

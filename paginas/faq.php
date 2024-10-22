@@ -125,7 +125,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                         <?php if (!empty($primeiroNome)) : ?>
                         <!-- Logado -->
                         <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
-                        <a href="#" class="link-listamenu">Histórico</a>
+                        <a href="historico.php" class="link-listamenu">Histórico</a>
                         <a href="../src/script/destroy_session.php" class="link-listamenu">Encessar Sessão</a>
                         <?php else: ?>
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
@@ -174,7 +174,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete') {
                         <?php if (!empty($primeiroNome)): ?>
                             <!-- Itens do menu para usuários logados -->
                             <a href="minha-conta.php" class="link-listamenu">Minha Conta</a>
-                            <a href="#" class="link-listamenu">Histórico</a>
+                            <a href="historico.php" class="link-listamenu">Histórico</a>
                             <a href="../src/script/destroy_session.php" class="link-listamenu">Encerrar Sessão</a>
                         <?php else: ?>
                             <!-- Itens do menu para usuários não logados -->
