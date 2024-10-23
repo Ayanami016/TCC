@@ -10,6 +10,8 @@ if (isset($_SESSION['nome_exibir'])) {
 } else {
     $primeiroNome = '';
 }
+
+include('../src/script/session_carrinho.php');
 ?>
 
 <!DOCTYPE html>
@@ -214,92 +216,131 @@ if (isset($_SESSION['nome_exibir'])) {
         ?>
     </aside>
 
-    <?php
-        include('../src/script/conexao.php');
-        $id_usuario = $_SESSION['id_usuario'];
-        $consulta = "
-            SELECT 
-                pedido.id_pedido, 
-                pedido.status_ped, 
-                produto.id_prod, 
-                produto.nome_prod, 
-                item_pedido.quantidade_prod, 
-                item_pedido.cor_selecionada,
-                pedido.datahora_ped
-            FROM pedido
-            JOIN item_pedido ON pedido.id_pedido = item_pedido.fk_pedido
-            JOIN produto ON item_pedido.fk_produto = produto.id_prod
-            WHERE pedido.fk_cliente = ?
-            ORDER BY pedido.datahora_ped DESC
-        ";
+    <!-- HISTÓRICO -->
+    <div id="historico">
+        <h1><ion-icon name="wallet-outline"></ion-icon> &nbsp;Seu Histórico</h1>
+        <!-- Pedidos -->
+        <?php
+            include('../src/script/conexao.php');
+            $id_usuario = $_SESSION['id_usuario'];
+            $consulta = "
+                SELECT 
+                    pedido.id_pedido, 
+                    pedido.status_ped, 
+                    produto.id_prod, 
+                    produto.nome_prod, 
+                    item_pedido.quantidade_prod, 
+                    item_pedido.cor_selecionada,
+                    pedido.datahora_ped
+                FROM pedido
+                JOIN item_pedido ON pedido.id_pedido = item_pedido.fk_pedido
+                JOIN produto ON item_pedido.fk_produto = produto.id_prod
+                WHERE pedido.fk_cliente = ?
+                ORDER BY pedido.datahora_ped DESC
+            ";
 
-        $stmt = $conexao->prepare($consulta);
-        $stmt->bind_param("i", $_SESSION['id_usuario']);
-        $stmt->execute();
-        $resultados = $stmt->get_result();
+            $stmt = $conexao->prepare($consulta);
+            $stmt->bind_param("i", $_SESSION['id_usuario']);
+            $stmt->execute();
+            $resultados = $stmt->get_result();
 
-        $pedido_atual = null; // Acompanha o pedido atual
+            $pedido_atual = null; // Acompanha o pedido atual
 
-        if ($resultados->num_rows == 0) {
-            // Se não houver pedidos, exibe a mensagem
-            echo "
-            <ion-icon name='bag-handle-outline'></ion-icon>
-            <p>Realize a sua primeira compra!</p>
-            <a href='pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria='>
-                <button class='btn-index' btn-placeholder='Ir para Loja'></button>
-            </a>";
-        } else {
-            $pedido_atual = null; // Variável para acompanhar o pedido atual
+            if ($resultados->num_rows == 0) {
+                // Se não houver pedidos, exibe a mensagem
+                echo "
+                <ion-icon name='bag-handle-outline'></ion-icon>
+                <p>Realize a sua primeira compra!</p>
+                <a href='pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria='>
+                    <button class='btn-index' btn-placeholder='Ir para Loja'></button>
+                </a>";
+            } else {
+                $pedido_atual = null; // Variável para acompanhar o pedido atual
 
-            // Listando os pedidos do cliente
-            while ($row_pedidos = mysqli_fetch_array($resultados)) {
-                $id_pedido = $row_pedidos['id_pedido'];
-                $id_prod = $row_pedidos['id_prod'];
-                $nome_img = "../src/img/produto" . $id_prod . ".png"; // Imagem do produto
-                $nome_prod = $row_pedidos['nome_prod'];
-                $quantidade = $row_pedidos['quantidade_prod'];
-                $cor = $row_pedidos['cor_selecionada'];
-                $status_ped = $row_pedidos['status_ped'];
+                // Listando os pedidos do cliente
+                while ($row_pedidos = mysqli_fetch_array($resultados)) {
+                    $id_pedido = $row_pedidos['id_pedido'];
+                    $id_prod = $row_pedidos['id_prod'];
+                    $nome_img = "../src/img/produto" . $id_prod . ".png"; // Imagem do produto
+                    $nome_prod = $row_pedidos['nome_prod'];
+                    $quantidade = $row_pedidos['quantidade_prod'];
+                    $cor = $row_pedidos['cor_selecionada'];
+                    $status_ped = $row_pedidos['status_ped'];
 
-                // Se o pedido mudou, fecha a div anterior (se já houver um pedido sendo exibido)
-                if ($pedido_atual !== $id_pedido) {
-                    // Fecha a div anterior, se existir
-                    if ($pedido_atual !== null) {
-                        echo "</div>"; // Fecha a div do pedido anterior
+                    // Se o pedido mudou, fecha a div anterior (se já houver um pedido sendo exibido)
+                    if ($pedido_atual !== $id_pedido) {
+                        // Fecha a div anterior, se existir
+                        if ($pedido_atual !== null) {
+                            echo "</div>"; // Fecha a div do pedido anterior
+                        }
+
+                        // Definindo cor do status
+                        switch ($status_ped) {
+                            case 'Preparando':
+                                $cor_status = 'color: var(--preparando)';
+                                break;
+                            case 'Postado':
+                                $cor_status = 'color: var(--postado)';
+                                break;
+                            case 'A caminho':
+                                $cor_status = 'color: var(--acaminho)';
+                                break;
+                            case 'Entregue':
+                                $cor_status = 'color: var(--entregue)';
+                                break;
+                            default:
+                                $cor_status = 'color: var(--aguardando)';
+                                break;
+                        }
+                        
+                        // Abre uma nova div para o novo pedido
+                        echo "
+                        <div class='pedidos'>
+                            <h3 style='$cor_status'>$status_ped</h3>
+                            <p>ID do Pedido: #$id_pedido</p>";
+                        
+                        // Atualiza a variável para o pedido atual
+                        $pedido_atual = $id_pedido;
                     }
                     
-                    // Abre uma nova div para o novo pedido
+                    // Exibe os produtos do pedido atual
                     echo "
-                    <div class='pedidos'>
-                        <h3>$status_ped</h3>
-                        <p>ID do Pedido: #$id_pedido</p>";
-                    
-                    // Atualiza a variável para o pedido atual
-                    $pedido_atual = $id_pedido;
+                        <div class='pedido-produto'>
+                            <div>
+                                <a href='produto.php?id=$id_prod'>
+                                    <img src='$nome_img' alt='Produto'>
+                                </a>
+                            </div>
+                            <div class='info-produto'>
+                                <p><strong>$nome_prod</strong></p>
+                                <p><strong>Cor:</strong> $cor</p>
+                                <p><strong>Quantidade:</strong> $quantidade</p>
+                            </div>
+                        </div>";
                 }
-                
-                // Exibe os produtos do pedido atual
-                echo "
-                    <div class='pedido-produto'>
-                        <div>
-                            <a href='produto.php?id=$id_prod'>
-                                <img src='$nome_img' alt='Produto'>
-                            </a>
-                        </div>
-                        <div class='info-produto'>
-                            <p><strong>$nome_prod</strong></p>
-                            <p><strong>Cor:</strong> $cor</p>
-                            <p><strong>Quantidade:</strong> $quantidade</p>
-                        </div>
-                    </div>";
-            }
 
-            // Fecha a última div do último pedido
-            if ($pedido_atual !== null) {
-                echo "</div>"; // Fecha a div do último pedido
+                // Botões que dependem do status do pedido
+                if ($status_ped == "Aguardando pagamento") {
+                    $_SESSION['cancel-pedido'] = $id_pedido;
+                    echo "<span class='pedidos-botoes'>
+                            <a href='confirmacao.php?id_pedido=$id_pedido'><button class='btn-pagar-ped'><ion-icon name='cash-outline'></ion-icon> Pagar</button></a>
+                            <a href='cancelar-pedido.php'><button class='btn-cancelar-ped'><ion-icon name='close-circle-outline'></ion-icon> Cancelar</button></a>
+                        </span>";
+                } elseif ($status_ped == "Preparando") {
+                    $_SESSION['cancel-pedido'] = $id_pedido;
+                    echo "<span class='pedidos-botoes'>
+                            <a href='cancelar-pedido.php'><button class='btn-cancelar-ped'><ion-icon name='close-circle-outline'></ion-icon> Cancelar</button></a>
+                        </span>";
+                }
+
+                // Fecha a última div do último pedido
+                if ($pedido_atual !== null) {
+                    echo "</div>"; // Fecha a div do último pedido
+                }
             }
-        }
-    ?>
+        ?> 
+    </div>
+    
 
     <!-- RODAPÉ -->
     <footer id="rodape">

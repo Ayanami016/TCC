@@ -326,7 +326,7 @@ include('../src/script/session_carrinho.php');
                     </div>";
                 }
 
-                // Botões dependendo do status do pedido
+                // Botões que dependem do status do pedido
                 if ($status_ped == "Aguardando pagamento") {
                     $_SESSION['cancel-pedido'] = $id_pedido;
                     echo "<span class='pedidos-botoes'>
