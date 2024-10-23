@@ -298,7 +298,7 @@
         <img src="../src/img/destaque-pulseira.png" alt="Pulseira em Destaque">
         <div class="pdd-texto">
             <h1>Pulseiras</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
+            <p>Complete o seu visual com nossas pulseiras cheias de estilo! Elegantes, delicadas e perfeitas para qualquer ocasião, elas trazem o toque final que seu look merece.</p>
             <a href="pulseira.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25pulseira%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
     </article>
@@ -342,7 +342,7 @@
     <article class="prod-destaque-direita">
         <div class="pdd-texto">
             <h1>Colares</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
+            <p>Realce sua beleza com um colar que combina sofisticação e personalidade. Com design exclusivo, ele vai deixar você brilhar em qualquer ambiente.</p>
             <a href="colar.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=Colar%2C+Index"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
         <img src="../src/img/destaque-colar.png" alt="Colar em Destaque">
@@ -387,7 +387,7 @@
         <img src="../src/img/destaque-brinco.png" alt="Brinco em Destaque">
         <div class="pdd-texto">
             <h1>Brincos</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
+            <p>Delicadeza e elegância se unem em nossos brincos deslumbrantes. Seja qual for o estilo, eles vão destacar sua beleza com um brilho especial.</p>
             <a href="brinco.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25brinco%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
     </article>
@@ -430,7 +430,7 @@
     <article class="prod-destaque-direita">
         <div class="pdd-texto">
             <h1>Conjuntos</h1>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est perspiciatis consequatur veritatis temporibus nesciunt eum quasi veniam ipsa recusandae porro voluptas tempore dolorem eveniet quae, odio omnis natus aliquam atque!</p>
+            <p>Para quem não abre mão de um look impecável, nossos conjuntos são a escolha perfeita. Harmoniosamente combinados, eles trazem charme e sofisticação em cada detalhe.</p>
             <a href="conjunto.php?min=&max=&preco-ordem=&material=&tamanho=&categoria=%25onjunto%25"><button class="btn-saibamais" btn-placeholder="Saiba Mais"></button></a>
         </div>
         <img src="../src/img/destaque-conjunto.png" alt="Conjunto em Destaque">
