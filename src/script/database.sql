@@ -71,5 +71,6 @@ BEGIN
 END $$
 DELIMITER ;
 
-update pedido set status_ped = 'Aguardando pagamento' where id_pedido = 12;
+update pedido set status_ped = 'Entregue' where id_pedido = 10;
 select * from pedido;
+select * from item_pedido;

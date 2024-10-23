@@ -74,7 +74,7 @@
         $_SESSION['valor'] = $valor_pedido;
         $_SESSION['datahora'] = $datahora;
 
-        header('Location: /TCC/paginas/confirmacao.php?pedido=' . $id_pedido);
+        header('Location: /TCC/paginas/confirmacao.php?id_pedido=' . $id_pedido);
 
         // Limpa o carrinho
         unset($_SESSION['carrinho']);

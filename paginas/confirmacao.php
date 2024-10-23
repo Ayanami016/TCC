@@ -287,52 +287,52 @@ if (isset($_GET['id_pedido'])) {
 
     <!-- CONFIRMAÇÃO DA COMPRA -->
     <div id="confirmacao">
-    <h1><ion-icon name="sparkles-outline"></ion-icon>&nbsp;Agradecemos pelo pedido!&nbsp;<ion-icon name="sparkles-outline"></ion-icon></h1>
-    <h2>Status: <?php echo $status_pedido; ?></h2>
-    <p>ID do pedido: #<?php echo $id_pedido; ?> </p>
+        <h1><ion-icon name="sparkles-outline"></ion-icon>&nbsp;Agradecemos pelo pedido!&nbsp;<ion-icon name="sparkles-outline"></ion-icon></h1>
+        <h2>Status: <?php echo $status_pedido; ?></h2>
+        <p>ID do pedido: #<?php echo $id_pedido; ?> </p>
 
-    <?php
-        if ($metodo_pagamento == 'BOLETO') {
-            echo '<div id="boleto">
-                <div class="infos-boleto">
-                    <img class="logo" src="../src/favicon/android-chrome-192x192.png" alt="Logo Bella Acessórios">
-                    <div style="text-align: right;">
+        <?php
+            if ($metodo_pagamento == 'BOLETO') {
+                echo '<div id="boleto">
+                    <div class="infos-boleto">
+                        <img class="logo" src="../src/favicon/android-chrome-192x192.png" alt="Logo Bella Acessórios">
+                        <div style="text-align: right;">
+                            <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
+                            <p>Data de vencimento: <strong>' . $vencimento . '</strong></p>
+                        </div>
+                    </div>
+                    <div style="text-align: center;">
+                        <img style="margin-bottom: 10px;" src="../src/img/codigo-barras-colorido.png" alt="Código de barras do boleto">
+                        <p>' . num_boleto() . '</p>
+                    </div>
+                </div>';
+            } elseif ($metodo_pagamento == 'PIX') {
+                echo '<div id="pix">
+                    <img class="qrcode" src="../src/img/qrcode-colorido.png" alt="QR Code">
+                    <div style="text-align: center;">
                         <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
                         <p>Data de vencimento: <strong>' . $vencimento . '</strong></p>
+                        <p>Código PIX: <strong>' . codigoPIX() . '</strong></p>
                     </div>
-                </div>
-                <div style="text-align: center;">
-                    <img style="margin-bottom: 10px;" src="../src/img/codigo-barras-colorido.png" alt="Código de barras do boleto">
-                    <p>' . num_boleto() . '</p>
-                </div>
-            </div>';
-        } elseif ($metodo_pagamento == 'PIX') {
-            echo '<div id="pix">
-                <img class="qrcode" src="../src/img/qrcode-colorido.png" alt="QR Code">
-                <div style="text-align: center;">
-                    <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
-                    <p>Data de vencimento: <strong>' . $vencimento . '</strong></p>
-                    <p>Código PIX: <strong>' . codigoPIX() . '</strong></p>
-                </div>
-            </div>';
-        } else {
-            // Atualiza o status de pagamento ao pagar no cartão
-            $novo_status = "Preparando";
-            $atualizar_status = "UPDATE pedido SET status_ped = ? WHERE id_pedido = ?";
-            $stmt = $conexao->prepare($atualizar_status);
-            $stmt->bind_param('si', $novo_status, $id_pedido);
-            $stmt->execute();
+                </div>';
+            } else {
+                // Atualiza o status de pagamento ao pagar no cartão
+                $novo_status = "Preparando";
+                $atualizar_status = "UPDATE pedido SET status_ped = ? WHERE id_pedido = ?";
+                $stmt = $conexao->prepare($atualizar_status);
+                $stmt->bind_param('si', $novo_status, $id_pedido);
+                $stmt->execute();
 
-            echo '<div style="text-align: center;">
-                    <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
-            </div>';
-        }
-    ?>
-    <span>
-        <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="voltar-loja">Voltar à Loja</button></a>
-        <button class="acompanhar-pedido"><a href="historico.php">Acompanhar Pedido</a></button>
-    </span>
-</div>
+                echo '<div style="text-align: center;">
+                        <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
+                </div>';
+            }
+        ?>
+        <span>
+            <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="voltar-loja">Voltar à Loja</button></a>
+            <button class="acompanhar-pedido"><a href="historico.php">Acompanhar Pedido</a></button>
+        </span>
+    </div>
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
