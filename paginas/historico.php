@@ -244,10 +244,7 @@ include('../src/script/session_carrinho.php');
             $stmt->execute();
             $resultados = $stmt->get_result();
 
-            $pedido_atual = null; // Acompanha o pedido atual
-
             if ($resultados->num_rows == 0) {
-                // Se não houver pedidos, exibe a mensagem
                 echo "
                 <ion-icon name='bag-handle-outline'></ion-icon>
                 <p>Realize a sua primeira compra!</p>
@@ -261,17 +258,30 @@ include('../src/script/session_carrinho.php');
                 while ($row_pedidos = mysqli_fetch_array($resultados)) {
                     $id_pedido = $row_pedidos['id_pedido'];
                     $id_prod = $row_pedidos['id_prod'];
-                    $nome_img = "../src/img/produto" . $id_prod . ".png"; // Imagem do produto
+                    $nome_img = "../src/img/produto" . $id_prod . ".png";
                     $nome_prod = $row_pedidos['nome_prod'];
                     $quantidade = $row_pedidos['quantidade_prod'];
                     $cor = $row_pedidos['cor_selecionada'];
                     $status_ped = $row_pedidos['status_ped'];
 
-                    // Se o pedido mudou, fecha a div anterior (se já houver um pedido sendo exibido)
+                    // Se o pedido mudou, fecha a div anterior
                     if ($pedido_atual !== $id_pedido) {
-                        // Fecha a div anterior, se existir
+                        // Fecha a div anterior se existir
                         if ($pedido_atual !== null) {
-                            echo "</div>"; // Fecha a div do pedido anterior
+                            // Botões que dependem do status do pedido
+                            if ($status_ped == "Aguardando pagamento") {
+                                $_SESSION['cancel-pedido'] = $pedido_atual;
+                                echo "<span class='pedidos-botoes'>
+                                        <a href='confirmacao.php?id_pedido=$pedido_atual'><button class='btn-pagar-ped'><ion-icon name='cash-outline'></ion-icon> Pagar</button></a>
+                                        <a href='cancelar-pedido.php'><button class='btn-cancelar-ped'><ion-icon name='close-circle-outline'></ion-icon> Cancelar</button></a>
+                                    </span>";
+                            } elseif ($status_ped == "Preparando") {
+                                $_SESSION['cancel-pedido'] = $pedido_atual;
+                                echo "<span class='pedidos-botoes'>
+                                        <a href='cancelar-pedido.php'><button class='btn-cancelar-ped'><ion-icon name='close-circle-outline'></ion-icon> Cancelar</button></a>
+                                    </span>";
+                            }
+                            echo "</div>";
                         }
 
                         // Definindo cor do status
@@ -292,18 +302,16 @@ include('../src/script/session_carrinho.php');
                                 $cor_status = 'color: var(--aguardando)';
                                 break;
                         }
-                        
-                        // Abre uma nova div para o novo pedido
+
+                        // Abre uma nova div para outro pedido
                         echo "
                         <div class='pedidos'>
                             <h3 style='$cor_status'>$status_ped</h3>
                             <p>ID do Pedido: #$id_pedido</p>";
-                        
-                        // Atualiza a variável para o pedido atual
+
                         $pedido_atual = $id_pedido;
                     }
-                    
-                    // Exibe os produtos do pedido atual
+
                     echo "
                         <div class='pedido-produto'>
                             <div>
@@ -319,26 +327,25 @@ include('../src/script/session_carrinho.php');
                         </div>";
                 }
 
-                // Botões que dependem do status do pedido
+                // Botões para o último pedido após o loop
                 if ($status_ped == "Aguardando pagamento") {
-                    $_SESSION['cancel-pedido'] = $id_pedido;
+                    $_SESSION['cancel-pedido'] = $pedido_atual;
                     echo "<span class='pedidos-botoes'>
-                            <a href='confirmacao.php?id_pedido=$id_pedido'><button class='btn-pagar-ped'><ion-icon name='cash-outline'></ion-icon> Pagar</button></a>
+                            <a href='confirmacao.php?id_pedido=$pedido_atual'><button class='btn-pagar-ped'><ion-icon name='cash-outline'></ion-icon> Pagar</button></a>
                             <a href='cancelar-pedido.php'><button class='btn-cancelar-ped'><ion-icon name='close-circle-outline'></ion-icon> Cancelar</button></a>
                         </span>";
                 } elseif ($status_ped == "Preparando") {
-                    $_SESSION['cancel-pedido'] = $id_pedido;
+                    $_SESSION['cancel-pedido'] = $pedido_atual;
                     echo "<span class='pedidos-botoes'>
                             <a href='cancelar-pedido.php'><button class='btn-cancelar-ped'><ion-icon name='close-circle-outline'></ion-icon> Cancelar</button></a>
                         </span>";
                 }
 
-                // Fecha a última div do último pedido
                 if ($pedido_atual !== null) {
                     echo "</div>"; // Fecha a div do último pedido
                 }
             }
-        ?> 
+        ?>
     </div>
     
 
