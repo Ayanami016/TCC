@@ -34,7 +34,7 @@ Antes de tudo, ao baixar o projeto, <u>renomeie o nome da pasta "TCC-Main" para 
 [ :white_check_mark: ] Confirmação e geração dos métodos de pagamento <br>
 [ :white_check_mark: ] Cadastro e Login de usuário <br>
 [ :white_check_mark: ] Alteração de dados <br>
-[🔶] Correção de Bugs
+[ :white_check_mark: ] 🐛 Correção de Bugs
 
 ## ⚠️ Aviso
 O banco de dados **NÃO POSSUI** proteção de dados pessoais!
