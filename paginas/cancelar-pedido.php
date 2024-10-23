@@ -1,8 +1,7 @@
 <?php
 
 // Verifica se usuário está logado
-include("../src/script/processar_pedido.php");
-include("../src/script/conexao.php");
+session_start();
 if (isset($_SESSION['nome_exibir'])) {
     // Divida o nome completo em partes
     $nomeCompleto = $_SESSION['nome_exibir'];
@@ -11,76 +10,6 @@ if (isset($_SESSION['nome_exibir'])) {
 } else {
     $primeiroNome = '';
 }
-
-// Número do Boleto
-    // Total de 48 números
-    // eu me recuso a programar conforme o que cada número representa
-    // (exceto os dois primeiros)
-function num_boleto($tres = '0', $random = '') {
-    // três primeiros dígitos - banco emissor
-    for ($i = 0; $i < 3; $i++) {$tres .= random_int(0, 9);}
-    // Random
-    for ($i = 0; $i < 43; $i++) {$random .= random_int(0, 9);}
-
-    return  $tres . 9 . $random;
-    // número 9 indica a moeda do Brasil
-}
-
-// Código PIX
-    // Total de 35 caracteres
-function codigoPIX($codigo = '') {
-    $lower = implode('', range('a', 'z'));
-    $n = implode('', range(0, 9));
-    $alfanumerico = $lower . $n . $n;
-
-    for ($i = 0; $i < 35; $i++) {$codigo .= $alfanumerico[rand(0, strlen($alfanumerico) - 1)];}
-
-    return $codigo;
-}
-
-// Consulta SQL do status, pegando o id do pedido
-$id_pedido = $_SESSION['pedido'];
-$valor_pedido = $_SESSION['valor'];
-
-$query = "SELECT status_ped FROM pedido WHERE id_pedido = ?";
-$stmt = $conexao->prepare($query);
-$stmt->bind_param("i", $id_pedido);
-$stmt->execute();
-$stmt->bind_result($status_pedido);
-$stmt->fetch();
-$stmt->close();
-
-// Data de Vencimento
-$datahora = $_SESSION['datahora'];
-
-$data = new DateTime($datahora);
-    // adiciona 3 dias
-$data->modify('+3 days');
-$vencimento = $data->format('d/m/Y');
-
-// Código que puxa corretamente o ID, valor total e datahora do pedido
-if (isset($_GET['id_pedido'])) {
-    $id_pedido = $_GET['id_pedido'];
-
-    $sql = "SELECT pagamento_metodo_ped, valortotal_ped, datahora_ped FROM pedido WHERE id_pedido = ?";
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param('i', $id_pedido);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($result->num_rows > 0) {
-        $pedido = $result->fetch_assoc();
-        $metodo_pagamento = $pedido['pagamento_metodo_ped'];
-        $valor_pedido = $pedido['valortotal_ped'];
-        $datahora_pedido = $pedido['datahora_ped'];
-    } else {
-        echo 'Pedido não encontrado.';
-        exit;
-    }
-} else {
-    echo 'ID do pedido não foi enviado.';
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -88,7 +17,7 @@ if (isset($_GET['id_pedido'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agradecemos pelo Pedido!</title>
+    <title>Bella Acessórios - Página Inicial</title>
     <link rel="stylesheet" href="../src/script/style.css">
     <link rel="stylesheet" href="../src/script/responsivo.css">
     <link rel="shortcut icon" href="../src/favicon/android-chrome-512x512.png" type="image/x-icon">
@@ -128,15 +57,6 @@ if (isset($_GET['id_pedido'])) {
 
             <!--Menu Mobile-->
             <span class="alterna-botoes">
-                <!-- Suporte -->
-                <button class="btnmenu-mobile">
-                    <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
-                    <div class="listamenu btnsuporte">
-                        <a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank" class="link-listamenu"><ion-icon name="logo-instagram"></ion-icon> @bellaacessoriosreal</a>
-                        
-                    </div>
-                </button>
-                
                 <!-- Conta -->
                 <button class="btnmenu-mobile">
                     <ion-icon name="person-circle-outline" class="iconconta" color="light"></ion-icon>
@@ -150,6 +70,15 @@ if (isset($_GET['id_pedido'])) {
                         <a href="login.php" class="link-listamenu">Iniciar Sessão</a>
                         <a href="cadastro.php" class="link-listamenu">Criar Conta</a>
                         <?php endif; ?>
+                    </div>
+                </button>
+
+                <!-- Suporte -->
+                <button class="btnmenu-mobile">
+                    <ion-icon name="chatbubbles-outline" class="iconsuporte" color="light"></ion-icon>
+                    <div class="listamenu btnsuporte">
+                        <a href="https://www.instagram.com/bellaacessoriosreal/profilecard/" target="_blank" class="link-listamenu"><ion-icon name="logo-instagram"></ion-icon> @bellaacessoriosreal</a>
+
                     </div>
                 </button>
 
@@ -285,54 +214,21 @@ if (isset($_GET['id_pedido'])) {
         ?>
     </aside>
 
-    <!-- CONFIRMAÇÃO DA COMPRA -->
-    <div id="confirmacao">
-    <h1><ion-icon name="sparkles-outline"></ion-icon>&nbsp;Agradecemos pelo pedido!&nbsp;<ion-icon name="sparkles-outline"></ion-icon></h1>
-    <h2>Status: <?php echo $status_pedido; ?></h2>
-    <p>ID do pedido: #<?php echo $id_pedido; ?> </p>
-
-    <?php
-        if ($metodo_pagamento == 'BOLETO') {
-            echo '<div id="boleto">
-                <div class="infos-boleto">
-                    <img class="logo" src="../src/favicon/android-chrome-192x192.png" alt="Logo Bella Acessórios">
-                    <div style="text-align: right;">
-                        <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
-                        <p>Data de vencimento: <strong>' . $vencimento . '</strong></p>
-                    </div>
-                </div>
-                <div style="text-align: center;">
-                    <img style="margin-bottom: 10px;" src="../src/img/codigo-barras-colorido.png" alt="Código de barras do boleto">
-                    <p>' . num_boleto() . '</p>
-                </div>
-            </div>';
-        } elseif ($metodo_pagamento == 'PIX') {
-            echo '<div id="pix">
-                <img class="qrcode" src="../src/img/qrcode-colorido.png" alt="QR Code">
-                <div style="text-align: center;">
-                    <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
-                    <p>Data de vencimento: <strong>' . $vencimento . '</strong></p>
-                    <p>Código PIX: <strong>' . codigoPIX() . '</strong></p>
-                </div>
-            </div>';
-        } else {
-            // Atualiza o status de pagamento ao pagar no cartão
-            $novo_status = "Preparando";
-            $atualizar_status = "UPDATE pedido SET status_ped = ? WHERE id_pedido = ?";
-            $stmt = $conexao->prepare($atualizar_status);
-            $stmt->bind_param('si', $novo_status, $id_pedido);
-            $stmt->execute();
-
-            echo '<div style="text-align: center;">
-                    <p>Valor: <strong>R$' . number_format($valor_pedido, 2, '.', ',') . '</strong></p>
-            </div>';
-        }
-    ?>
-    <span>
-        <a href="pesquisa.php?min=&max=&preco-ordem=&material=&tamanho=&categoria="><button class="voltar-loja">Voltar à Loja</button></a>
-        <button class="acompanhar-pedido"><a href="historico.php">Acompanhar Pedido</a></button>
-    </span>
-</div>
+    <!-- CANCELAR PEDIDO -->
+        <!-- Sim, reaproveitando CSS -->
+    <article id="excluir-conta">
+        <form action="../src/script/script_cancelar_pedido.php" method="post">
+            <ion-icon name="warning-outline" color="medium"></ion-icon>
+            <p>Tem certeza que deseja cancelar seu pedido?</p>
+            <a href="minha-conta.php">Voltar</a>
+            
+            <?php 
+                $id_pedido = $_SESSION['cancel-pedido'];
+                echo "<input type='hidden' name='id_pedido' value='$id_pedido'>";
+            ?>
+            <input type="submit" value="Cancelar pedido">
+        </form>
+    </article>
 
     <!--JAVASCRIPT-->
     <script src="../src/script/javascript.js" type="text/javascript"></script>
