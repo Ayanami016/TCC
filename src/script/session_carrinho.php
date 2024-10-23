@@ -34,6 +34,12 @@
             );
         }
 
+        // Verifica se foi clicado no botão "Comprar" para redirecionar ao checkout
+        if (isset($_GET['comprar']) && $_GET['comprar'] == 'comprado') {
+            header("Location: checkout.php");
+            exit();
+        }
+
         // Evita o reenvio do formulário afim de evitar quantidade++ (1 => 3)
         header("Location: " . $_SERVER['HTTP_REFERER']);
         exit();

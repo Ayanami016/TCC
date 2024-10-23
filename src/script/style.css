@@ -1358,8 +1358,7 @@ nav .btnmenu-mobile {
     align-items: center;
     width: 25%;
     margin-top: 20vh;
-    margin-bottom: 5vh;
-    min-height: 100vh;
+    min-height: 90vh;
 }
 
 #historico h1 {

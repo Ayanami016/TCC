@@ -194,7 +194,7 @@ function verificarCorSelecionada() {
     const corSelecionada = document.querySelector('input[name="cor_prod"]:checked');
 
     if (!corSelecionada) {
-        alert('Por favor, selecione uma cor antes de adicionar o produto na sacola.');
+        alert('Por favor, selecione uma cor antes de comprar ou adicionar o produto na sacola.');
         return false;
     }
 

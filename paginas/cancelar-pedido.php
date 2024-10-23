@@ -10,6 +10,8 @@ if (isset($_SESSION['nome_exibir'])) {
 } else {
     $primeiroNome = '';
 }
+
+include('../src/script/session_carrinho.php');
 ?>
 
 <!DOCTYPE html>
